@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../css/core.css" />
+    <title></title>
+
+    <script type="application/javascript" >
+        function openChart(resource, span) {
+            document.location.href = "../graph/"+resource + (span || "");
+        }
+    </script>
+</head>
+<body>
+
+<table>
+    <tr>
+        <td> <a href="#" onclick="openChart('all', '?span=week')">All this Week</a></td>
+        <td> <a href="#" onclick="openChart('all')">All Today</a></td>
+    </tr>
+    <tr>
+        <td> <a href="#" onclick="openChart('sensor2', '?span=week')">Outside this Week</a></td>
+        <td> <a href="#" onclick="openChart('sensor2')">Outside Today</a></td>
+    </tr>
+    <tr>
+        <td> <a href="#" onclick="openChart('sensor1', '?span=week')">Downstairs this Week</a></td>
+        <td> <a href="#" onclick="openChart('sensor1')">Downstairs Today</a></td>
+    </tr>
+    <tr>
+        <td> <a href="#" onclick="openChart('sensor4', '?span=week')">Upstairs this Week</a></td>
+        <td> <a href="#" onclick="openChart('sensor4')">Upstairs Today</a></td>
+    </tr>
+    <tr>
+        <td> <a href="#" onclick="openChart('sensor3', '?span=week')">Attic this Week</a></td>
+        <td> <a href="#" onclick="openChart('sensor3')">Attic Today</a></td>
+    </tr>
+    <tr>
+        <td> <a href="#" onclick="openChart('sensor5', '?span=week')">Mobile sensor this Week</a></td>
+        <td> <a href="#" onclick="openChart('sensor5')">Mobile sensor Today</a></td>
+    </tr>
+</table>
+</body>
+</html>
