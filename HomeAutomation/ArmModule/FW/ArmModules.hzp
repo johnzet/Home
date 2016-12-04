@@ -1,0 +1,192 @@
+<!DOCTYPE CrossStudio_Project_File>
+<solution Name="ArmModules" target="8" version="2">
+  <project Name="WaterGate">
+    <configuration
+      Name="Common"
+      project_dependencies="Common;EmbUnit;FreeRTOS;STM32F4"
+      project_directory="WaterGate"
+      project_type="Executable" />
+    <configuration
+      Name="Flash"
+      arm_target_flash_loader_file_path="$(LOADER:$(TargetsDir)/STM32/Release/STM32F2xx_Loader_rpc.elf)"
+      arm_target_loader_can_erase_all="Yes"
+      arm_target_loader_can_lock_all="No"
+      arm_target_loader_can_lock_range="No"
+      arm_target_loader_can_unlock_all="No"
+      arm_target_loader_can_unlock_range="No"
+      target_reset_script="FLASHReset()" />
+    <configuration Name="RAM" target_reset_script="Reset()" />
+    <folder Name="System Files">
+      <file file_name="$(StudioDir)/source/thumb_crt0.s" />
+      <file file_name="$(TargetsDir)/STM32/STM32_Startup.s" />
+    </folder>
+    <folder Name="src" exclude="" filter="" path="src" recurse="Yes" />
+    <folder
+      Name="include"
+      exclude=""
+      filter=""
+      path="include"
+      recurse="Yes" />
+  </project>
+  <project Name="HVAC">
+    <configuration
+      Name="Common"
+      project_dependencies="Common;EmbUnit;FreeRTOS;STM32F4"
+      project_directory="HVAC"
+      project_type="Executable" />
+    <configuration
+      Name="Flash"
+      arm_target_flash_loader_file_path="$(LOADER:$(TargetsDir)/STM32/Release/STM32F2xx_Loader_rpc.elf)"
+      arm_target_loader_can_erase_all="Yes"
+      arm_target_loader_can_lock_all="No"
+      arm_target_loader_can_lock_range="No"
+      arm_target_loader_can_unlock_all="No"
+      arm_target_loader_can_unlock_range="No"
+      target_reset_script="FLASHReset()" />
+    <configuration Name="RAM" target_reset_script="Reset()" />
+    <folder Name="System Files">
+      <file file_name="$(StudioDir)/source/thumb_crt0.s" />
+      <file file_name="$(TargetsDir)/STM32/STM32_Startup.s" />
+    </folder>
+    <folder Name="src" exclude="" filter="" path="src" recurse="Yes" />
+    <folder
+      Name="include"
+      exclude=""
+      filter=""
+      path="include"
+      recurse="Yes" />
+  </project>
+  <configuration Name="THUMB Debug" inherited_configurations="THUMB;Debug" />
+  <configuration
+    Name="THUMB"
+    Platform="ARM"
+    arm_instruction_set="Thumb"
+    arm_library_instruction_set="Thumb"
+    c_preprocessor_definitions="__THUMB"
+    hidden="Yes" />
+  <configuration
+    Name="Debug"
+    c_preprocessor_definitions="DEBUG"
+    gcc_debugging_level="Level 3"
+    gcc_optimization_level="None"
+    hidden="Yes" />
+  <configuration
+    Name="THUMB Release"
+    inherited_configurations="THUMB;Release" />
+  <configuration
+    Name="Release"
+    c_preprocessor_definitions="NDEBUG"
+    gcc_debugging_level="Level 1"
+    gcc_optimization_level="Level 1"
+    hidden="Yes" />
+  <project Name="FreeRTOS">
+    <configuration
+      Name="Common"
+      build_treat_warnings_as_errors="No"
+      c_user_include_directories=".;include;include/freeRtosPortability"
+      project_directory="Dependencies/FreeRTOS"
+      project_type="Library" />
+    <folder Name="src" exclude="" filter="" path="src" recurse="Yes" />
+    <folder
+      Name="include"
+      exclude=""
+      filter=""
+      path="include"
+      recurse="Yes" />
+  </project>
+  <project Name="EmbUnit">
+    <configuration
+      Name="Common"
+      project_directory="Dependencies/EmbUnit"
+      project_type="Library" />
+    <folder Name="src" exclude="" filter="*.c" path="embUnit" recurse="Yes" />
+    <folder
+      Name="include"
+      exclude=""
+      filter="*.h"
+      path="embUnit"
+      recurse="Yes" />
+  </project>
+  <project Name="STM32F4">
+    <configuration
+      Name="Common"
+      c_user_include_directories="include"
+      project_directory="Dependencies/STM32F4"
+      project_type="Library" />
+    <folder Name="src" exclude="exclude" filter="" path="src" recurse="Yes" />
+    <folder
+      Name="include"
+      exclude=""
+      filter=""
+      path="include"
+      recurse="Yes" />
+  </project>
+  <project Name="Common">
+    <configuration
+      Name="Common"
+      c_user_include_directories=".;include;../FreeRTOS/include;../STM32F4/include;../FreeRTOS/include/freeRtosPortability;../EmbUnit"
+      project_dependencies=""
+      project_directory="Dependencies/Common"
+      project_type="Library" />
+    <folder
+      Name="src"
+      exclude="BME280.cpp"
+      filter=""
+      path="src"
+      recurse="Yes" />
+    <folder
+      Name="include"
+      exclude=""
+      filter=""
+      path="include"
+      recurse="Yes" />
+    <folder Name="test" exclude="" filter="" path="test" recurse="Yes" />
+  </project>
+  <configuration
+    Family="STM32"
+    Name="Common"
+    Placement="Flash"
+    Target="STM32F405RG"
+    arm_architecture="v7EM"
+    arm_assembler_variant="gcc"
+    arm_compiler_variant="gcc"
+    arm_core_type="Cortex-M4"
+    arm_fp_abi="Hard"
+    arm_fpu_type="FPv4-SP-D16"
+    arm_instruction_set="Thumb"
+    arm_linker_allow_multiple_definition="Yes"
+    arm_linker_heap_size="32768"
+    arm_linker_jtag_pad_pre_dr="1"
+    arm_linker_jtag_pad_pre_ir="5"
+    arm_linker_process_stack_size="2048"
+    arm_linker_stack_size="2048"
+    arm_simulator_memory_simulation_filename="$(TargetsDir)/STM32/STM32SimulatorMemory$(HostDLL)"
+    arm_simulator_memory_simulation_parameter="STM32F405RG;0x100000;0x20000"
+    arm_target_connect_with_reset="No"
+    arm_target_debug_interface_type="ADIv5"
+    arm_target_interface_type="SWD"
+    arm_target_loader_applicable_loaders="Flash"
+    arm_target_loader_default_loader="Flash"
+    arm_target_restrict_memory_accesses="No"
+    arm_use_gcc_libraries="Yes"
+    build_treat_warnings_as_errors="No"
+    c_preprocessor_definitions="STARTUP_FROM_RESET=1;hide_STDOUT_OVER_DEBUGIO=1;INITIALIZE_STACK=1;hide_DISABLE_WATCHDOG=1;HIDE_UNIT_TESTS_ONLY=1;HIDE_TARGET_IS_SIMULATOR;HSI_VALUE=180000000;STM32F405xx;STM32F40_41xxx;ARM_MATH_CM4;__SYSTEM_STM32F4XX;__TARGET_PROCESSOR_STM32F405RG;__FPU_PRESENT;MODIFIED_HEAP_4;traceMALLOC=traceMallocImpl;traceFREE=traceFreeImpl"
+    c_user_include_directories="include;../Dependencies/FreeRTOS/include;../Dependencies/FreeRTOS/include/freeRtosPortability;../Dependencies/STM32F4/include;../Dependencies/Common/include;../Dependencies/EmbUnit"
+    cpp_enable_exceptions="Yes"
+    cpp_enable_rtti="Yes"
+    debug_initial_breakpoint=""
+    debug_register_definition_file="$(TargetsDir)/STM32/STM32F40x_Peripherals.xml"
+    double_is_float="Yes"
+    gcc_c_language_standard="gnu11"
+    gcc_cplusplus_language_standard="gnu++1y"
+    gcc_enable_all_warnings="Yes"
+    link_include_standard_libraries="Yes"
+    linker_memory_map_file="$(TargetsDir)/STM32/STM32F405RG_MemoryMap.xml"
+    linker_output_format="hex"
+    linker_section_placement_file="$(StudioDir)/targets/Cortex_M/flash_placement.xml"
+    property_groups_file_path="$(TargetsDir)/STM32/propertyGroups.xml"
+    target_get_partname_script="GetPartName()"
+    target_match_partname_script="MatchPartName(&quot;$(Target)&quot;)"
+    target_script_file="$(TargetsDir)/STM32/STM32_Target.js"
+    target_trace_initialize_script="EnableTrace(&quot;$(TraceInterfaceType)&quot;)" />
+</solution>

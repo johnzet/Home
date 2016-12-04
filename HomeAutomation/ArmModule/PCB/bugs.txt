@@ -1,0 +1,14 @@
+RESET may need a 5k pullup resistor - an additional 10k is just barely enough
+
+Add a header connection for reset
+Add a header connection for 24VDC
+
+Rs should be about 5ohms
+Rs needs to be much beefier
+fuse needs to be bigger - maybe 1amp polyfuse
+
+Re XBee S2C: Poor power supply can lead to poor radio performance, especially if the supply voltage is not kept within
+tolerance or is excessively noisy. To help reduce noise, we recommend placing both a 1uF and 8.2pF capacitor as
+near to (pad 2/SMT, pin 1/TH) on the PCB as possible. If using a switching regulator for your power supply,
+switching frequencies above 500kHz are preferred. Power supply ripple should be limited to a maximum 50mV
+peak to peak.

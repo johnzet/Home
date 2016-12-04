@@ -1,0 +1,10 @@
+RefDes,Value,Pattern,Name,Voltage,
+C1,1uF,CAP_0603,CAP_0603,50V,
+C2,8.2pF,CAP_0603,CAP_0603,50V,
+D1,BAT54S,SOT23,BAT54S,,
+"J1, J2",3.5mm,SCREWTERMINAL-3.5MM-2,Header1x2,,SparkFun
+Q1,BSH108,SOT23,MOSFET_N,,DigiKey 568-6216-1-ND 
+R1,10K,RES_0603,RES_0603,,
+U1,XBee,XBEE-SMD,XBEE-1B3,,
+,Xbee sockets,,,,SparkFun
+,M3 hardware,,,,
