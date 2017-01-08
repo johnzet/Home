@@ -118,6 +118,9 @@ public class BME280Sensor extends JsonResponseSensor {
 
     private void assembleDataLoggingSample(final Measurement temp, final Measurement hum, final Measurement barom) throws IOException {
 
+        if (temp == null || hum == null || barom == null) {
+            return;
+        }
         final Sample sample;
         RrdDb rrdDb;
         rrdDb = new RrdDb(this.getDataLoggerDbFileName());

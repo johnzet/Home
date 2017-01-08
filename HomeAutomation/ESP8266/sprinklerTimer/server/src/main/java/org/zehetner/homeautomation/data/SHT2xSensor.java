@@ -108,6 +108,9 @@ public class SHT2xSensor extends JsonResponseSensor {
 
     private void assembleDataLoggingSample(final Measurement temp, final Measurement hum) throws IOException {
 
+        if (temp == null || hum == null) {
+            return;
+        }
         final Sample sample;
         RrdDb rrdDb;
         rrdDb = new RrdDb(this.getDataLoggerDbFileName());
