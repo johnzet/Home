@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html style="height: 100%; overflow-y: visible;">
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" type="text/css" href="css/core.css" />
+    <title></title>
+    <script type="application/javascript">
+        function navigateTo(location) {
+            var iframe = document.getElementById("contentIframe");
+            iframe.src = location;
+        }
+    </script>
+
+</head>
+<body style="height: 100%; overflow-y: hidden; margin: 0;">
+
+<table style="width: 100%; height:100%;">
+    <tr style="height:40px;">
+        <td>
+            <div class="top-links" style=""><span>
+                <button onclick="navigateTo('html/rootContent.html');">Home</button>
+                <button onclick="navigateTo('html/fan.html');">Fan</button>
+                <button onclick="navigateTo('sprinklers');">Sprinklers</button>
+                <button onclick="navigateTo('html/sensors.html');">Sensors</button>
+                <button onclick="navigateTo('html/charts.html');">Charts</button>
+            </span>
+            </div>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <iframe id="contentIframe" src="html/rootContent.html"
+                    style="width: 100%; height: 100%; overflow: visible; border: none;"
+            ></iframe>
+        </td>
+    </tr>
+
+
+</table>
+</body>
+</html>
