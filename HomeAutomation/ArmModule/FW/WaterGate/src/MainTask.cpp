@@ -574,7 +574,7 @@ bool MainTask::getIpAddress() {
 
 bool MainTask::getTimeFromServerByHttp() {
     HttpPacket packet = HttpPacket();
-    packet.setAddress(0xC0A80102);
+    packet.setAddress(CONFIG_SERVER_IP_ADDRESS);
 //    packet.setDestPort(80);
     packet.setFrameId(01);
     packet.setFrameType(0x20);

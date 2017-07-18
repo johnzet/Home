@@ -3,6 +3,7 @@
 
 #include <stm32f4xx.h>
 #include <stm32f4xx_conf.h>
+#include <CommonConfig.h>
 #include <FreeRTOS.h>
 #include <task.h>
 #include <timers.h>

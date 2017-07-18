@@ -11,6 +11,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <typeinfo>
+#include <CommonConfig.h>
 #include <TaskWrapper.h>
 #include <LEDs.h>
 #include <AtCmdPacket.h>
