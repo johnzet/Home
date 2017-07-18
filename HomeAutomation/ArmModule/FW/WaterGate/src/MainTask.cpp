@@ -584,15 +584,14 @@ bool MainTask::getTimeFromServerByHttp() {
 
 //while(true) {
     wiFiTransmitterTask->sendIpv4TxRequestPacket(&packet, "/house/config");
-    vTaskDelay(10/portTICK_PERIOD_MS);
 
     HttpPacket* p;
     uint8_t loopCnt = 0;
     do {
 
+        vTaskDelay(100/portTICK_PERIOD_MS);
         p = this->wifiReceiverTask->getIpv4TxResponsePacket();
-        vTaskDelay(200/portTICK_PERIOD_MS);
-    } while(p == NULL && loopCnt++ < 100);
+    } while(p == NULL && loopCnt++ < 200);
 
     if (p == NULL) {
         return false;
@@ -602,8 +601,6 @@ bool MainTask::getTimeFromServerByHttp() {
     
     char* payload = p->getPayload()->getStr();
     uint32_t length = p->getPayload()->size();
-
-//length is 0x0800039f
 
     payload[length-1] = NULL;   // just in case
     char* token = "\"rtcShortcut\": \"";
@@ -775,6 +772,9 @@ uint8_t MainTask::getActiveWaterSensorCount() {
         
         RTC_DateTypeDef date = s->getDate();
         RTC_TimeTypeDef time = s->getTime();
+        if (date.RTC_Year == 0) {
+            break;
+        }
         if (clock->getSecondsAgo(&date, &time) < 2*24*3600) {
             count++;
         }
