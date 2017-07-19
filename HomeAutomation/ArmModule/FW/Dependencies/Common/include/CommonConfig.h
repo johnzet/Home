@@ -1,0 +1,10 @@
+#ifndef COMMON_CONFIG_H
+#define COMMON_CONFIG_H
+
+
+#define CONFIG_SERVER_IP_ADDRESS 0xC0A80103
+
+
+
+
+#endif
