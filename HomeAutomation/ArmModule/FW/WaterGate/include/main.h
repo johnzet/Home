@@ -23,7 +23,7 @@
 #include <stm32f4xx_iwdg.h>
 #include <stm32f4xx_dbgmcu.h>
 #include <WiFiReceiverTask.h>
-#include <WiFITransmitterTask.h>
+#include <WiFiTransmitterTask.h>
 #include <XBeeTask.h>
 #include <LEDs.h>
 #include <delay.h>
@@ -302,6 +302,15 @@ extern "C" {
         freedBlock->pxPrevBlock = NULL;
     }
 #endif
+}
+
+void assertValidHeapObject(void* heapPtr, char* typeName) {
+    assert(isHeapAddress(heapPtr));
+    BlockLink_t* trackedMemory = (BlockLink_t*)(heapPtr - heapSTRUCT_SIZE);
+    assert(trackedMemory->pxNextBlock != NULL && trackedMemory->pxPrevBlock != NULL);  // not freed
+    if (typeName != NULL) {
+        assert(strncmp(typeName, trackedMemory->typeName, sizeof(trackedMemory->typeName)) == 0);
+    }
 }
 
 

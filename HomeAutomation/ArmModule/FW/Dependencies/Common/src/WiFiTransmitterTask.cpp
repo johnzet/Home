@@ -45,23 +45,24 @@ void WiFiTransmitterTask::sendAtCmd(AtCmdPacket* packet) {
 void WiFiTransmitterTask::addIpv4TxRequestHeaderToPayload(HttpPacket* packet, char* resource) {
     char* buffer = new char[20];
 
-    Zstring payload = Zstring("GET ");
-    payload.appendS(resource);
-    payload.appendS(" HTTP/1.0\r\n");
-    payload.appendS("Host: ");
+    Zstring* payload = new Zstring("GET ");
+    payload->appendS(resource);
+    payload->appendS(" HTTP/1.0\r\n");
+    payload->appendS("Host: ");
     formatIpAddress(buffer, packet->getAddress());
-    payload.appendS(buffer);
-    payload.appendS("\r\n");
-    payload.appendS("Content-type: */*; charset=UTF-8\r\n");
-    //payload.appendS("Transfer-Encoding: chunked\r\n");
+    payload->appendS(buffer);
+    payload->appendS("\r\n");
+    payload->appendS("Content-type: */*; charset=UTF-8\r\n");
+    //payload->appendS("Transfer-Encoding: chunked\r\n");
 
-    payload.appendS("Connection: close\r\n");
-    payload.appendS("Content-Length: ");
-    payload.appendI(0);
-    payload.appendS("\r\n");
-    payload.appendS("\r\n");  // indicates the end of headers
+    payload->appendS("Connection: close\r\n");
+    payload->appendS("Content-Length: ");
+    payload->appendI(0);
+    payload->appendS("\r\n");
+    payload->appendS("\r\n");  // indicates the end of headers
 
-    packet->setPayload(&payload);
+    packet->setPayload(payload);
+    delete payload;
     delete[] buffer;
 }
 
@@ -82,7 +83,7 @@ bool WiFiTransmitterTask::wifiWriteBuffer(Zstring* buffer) {
     xQueueReset(this->transmissionStatusQueue);
     uint8_t cksum = 0;
     for (uint32_t i=0; i<buffer->size(); i++) {
-        while (USART_GetFlagStatus(USART1, USART_FLAG_TXE) == RESET);
+        while (USART_GetFlagStatus(USART1, USART_FLAG_TXE) == RESET) {taskYIELD()}
         char c = buffer->getChar(i);
         if (i > 2) {
             cksum = (cksum + c) & 0xFF;
@@ -91,13 +92,13 @@ bool WiFiTransmitterTask::wifiWriteBuffer(Zstring* buffer) {
             if (c == 0x7E || c == 0x7D || c == 0x11 || c == 0x13) {
                 USART_SendData(USART1, 0x7D);
                 c = c ^ 0x20;
-                while (USART_GetFlagStatus(USART1, USART_FLAG_TXE) == RESET);
+                while (USART_GetFlagStatus(USART1, USART_FLAG_TXE) == RESET) {taskYIELD()}
             }
         }
         USART_SendData(USART1, c);
     }
 
-    while (USART_GetFlagStatus(USART1, USART_FLAG_TXE) == RESET);
+    while (USART_GetFlagStatus(USART1, USART_FLAG_TXE) == RESET) {taskYIELD()}
     USART_SendData(USART1, (0xff - cksum) & 0xFF);
 
     bool returnValue;

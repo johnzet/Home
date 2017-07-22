@@ -576,20 +576,20 @@ void XBeeTask::loadRemoteAtCmdResponsePacketByte(uint8_t c, bool isFirstByte, bo
 void XBeeTask::xbeeWriteBuffer(Zstring* buffer) {
     uint8_t cksum = 0;
     for (uint32_t i=0; i<buffer->size(); i++) {
-        while (USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET);
+        while (USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET) {taskYIELD();}
         char c = buffer->getChar(i);
         if (i > 2) {
             cksum += (uint8_t)c;
             if (c == 0x7E || c == 0x7D || c == 0x11 || c == 0x13) {
                 USART_SendData(USART2, 0x7D);
                 c = c ^ 0x20;
-                while (USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET);
+                while (USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET) {taskYIELD();}
             }
         }
         USART_SendData(USART2, c);
     }
 
-    while (USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET);
+    while (USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET) {taskYIELD();}
     USART_SendData(USART2, (uint8_t)(0xff - cksum));
 }
 
@@ -653,12 +653,12 @@ void XBeeTask::requestRssi(WaterSensorSample* sample) {
 //  Escape characters
 //  When sending or receiving a UART data frame, specific data values must be escaped (flagged) so they do not interfere
 //  with the data frame sequencing. To escape an interfering data byte, insert 0x7D and follow it with the byte to be
-//  escaped XOR’d with 0x20.
+//  escaped XORd with 0x20.
 //  Data bytes that need to be escaped:
-//  • 0x7E – Frame Delimiter
-//  • 0x7D – Escape
-//  • 0x11 – XON
-//  • 0x13 – XOFF
+//   0x7E  Frame Delimiter
+//   0x7D  Escape
+//   0x11  XON
+//   0x13  XOFF
 //
 //  The packet length is calculated on the raw (un-escaped) bytes.
 //  Likewise, the checksum is calculated on the raw (un-escaped) bytes.

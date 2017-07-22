@@ -90,9 +90,10 @@ void initPll() {
 
 
 int main(void) {
+    watchDogResetFlag = RCC_GetFlagStatus(RCC_FLAG_IWDGRST);
+
     initPll();
 
-    watchDogResetFlag = RCC_GetFlagStatus(RCC_FLAG_IWDGRST);
     initWatchdog();
     
     DBGMCU->APB1FZ |= DBGMCU_IWDG_STOP;

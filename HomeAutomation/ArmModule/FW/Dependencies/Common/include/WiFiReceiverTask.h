@@ -16,7 +16,7 @@
 #include <SysMonitorTask.h>
 #include <LEDs.h>
 #include <AtCmdPacket.h>
-#include <CLock.h>
+#include <Clock.h>
 #include <MessageList.h>
 
 #define NEWLINE "\r\n"

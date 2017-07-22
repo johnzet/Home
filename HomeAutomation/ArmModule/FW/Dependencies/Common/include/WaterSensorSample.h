@@ -14,8 +14,8 @@
 class WaterSensorSample {
 
     private:
-        char name[21];
         uint64_t address;
+        char name[21];
         float voltage;
         bool wet;
         uint8_t rssi;

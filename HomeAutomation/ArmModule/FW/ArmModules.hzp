@@ -3,6 +3,7 @@
   <project Name="WaterGate">
     <configuration
       Name="Common"
+      gcc_all_warnings_command_line_options="-Wall;-Wextra"
       project_dependencies="Common;EmbUnit;FreeRTOS;STM32F4"
       project_directory="WaterGate"
       project_type="Executable" />
@@ -83,6 +84,7 @@
     <configuration
       Name="Common"
       build_treat_warnings_as_errors="No"
+      c_preprocessor_definitions=""
       c_user_include_directories=".;include;include/freeRtosPortability"
       project_directory="Dependencies/FreeRTOS"
       project_type="Library" />
@@ -170,13 +172,17 @@
     arm_target_restrict_memory_accesses="No"
     arm_use_gcc_libraries="Yes"
     build_treat_warnings_as_errors="No"
+    c_additional_options=""
     c_preprocessor_definitions="STARTUP_FROM_RESET=1;hide_STDOUT_OVER_DEBUGIO=1;INITIALIZE_STACK=1;hide_DISABLE_WATCHDOG=1;HIDE_UNIT_TESTS_ONLY=1;HIDE_TARGET_IS_SIMULATOR;HSI_VALUE=180000000;STM32F405xx;STM32F40_41xxx;ARM_MATH_CM4;__SYSTEM_STM32F4XX;__TARGET_PROCESSOR_STM32F405RG;__FPU_PRESENT;MODIFIED_HEAP_4;traceMALLOC=traceMallocImpl;traceFREE=traceFreeImpl"
     c_user_include_directories="include;../Dependencies/FreeRTOS/include;../Dependencies/FreeRTOS/include/freeRtosPortability;../Dependencies/STM32F4/include;../Dependencies/Common/include;../Dependencies/EmbUnit"
     cpp_enable_exceptions="Yes"
     cpp_enable_rtti="Yes"
+    debug_dependent_projects="Yes"
     debug_initial_breakpoint=""
     debug_register_definition_file="$(TargetsDir)/STM32/STM32F40x_Peripherals.xml"
+    debug_restrict_memory_access="No"
     double_is_float="Yes"
+    gcc_all_warnings_command_line_options="-Wall;-Wextra"
     gcc_c_language_standard="gnu11"
     gcc_cplusplus_language_standard="gnu++1y"
     gcc_enable_all_warnings="Yes"

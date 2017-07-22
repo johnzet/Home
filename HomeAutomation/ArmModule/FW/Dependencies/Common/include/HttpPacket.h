@@ -13,11 +13,11 @@ class HttpPacket {
     private:
         uint8_t frameType;
         uint8_t frameId;
+        uint8_t protocol;
+        uint8_t options;
         uint32_t address;
         uint16_t destPort;
         uint16_t sourcePort;
-        uint8_t protocol;
-        uint8_t options;
         Zstring* payload;
 
     public:

@@ -1118,6 +1118,9 @@ bool MainTask::isValidHeapAddress(uint8_t* address) {
 //}
 
 void MainTask::createHttpDisplayResponse(HttpPacket* packet) {
+
+    assertValidHeapObject(packet, NULL);
+
     this->wiFiTransmitterTask->startChunkedIpv4Response(packet);
     taskYIELD();
 
@@ -1140,8 +1143,8 @@ void MainTask::createHttpDisplayResponse(HttpPacket* packet) {
     uint32_t lcdHeight = lcd->getHeight();
     msg->appendS("  var margin=10;\n");
     msg->appendS("  var viewportWidth = document.body.clientWidth - 2*margin;\n");
-    msg->appendS("  var lcdWidth = "); msg->appendI(lcdWidth); msg->appendS(";\n");
-    msg->appendS("  var lcdHeight = "); msg->appendI(lcdHeight); msg->appendS(";\n");
+    msg->appendS("  var lcdWidth = "); msg->appendI(static_cast<int>(lcdWidth)); msg->appendS(";\n");
+    msg->appendS("  var lcdHeight = "); msg->appendI(static_cast<int>(lcdHeight)); msg->appendS(";\n");
     msg->appendS("  var aspectRatio = lcdWidth/lcdHeight;\n");
     msg->appendS("  var viewportHeight = viewportWidth / aspectRatio;\n");
 
@@ -1154,9 +1157,12 @@ void MainTask::createHttpDisplayResponse(HttpPacket* packet) {
     msg->appendS("  xform.setAttribute(\"transform\", \"translate(\" + margin + \",\" + margin + \")scale(\" + (viewportWidth-2*margin)/lcdWidth + \", \" + (viewportHeight-2*margin)/lcdHeight + \")\");\n");
     msg->appendS("  svg.appendChild(xform);\n");
 
+    assertValidHeapObject(packet, NULL);
     this->wiFiTransmitterTask->sendIpv4ResponseChunk(packet, msg);
     msg->clear();
     taskYIELD();
+
+    assertValidHeapObject(msg, "ZstrM3");
 
     msg->appendS("var data=[");
     uint32_t chunkCounter = 0;
@@ -1165,17 +1171,19 @@ void MainTask::createHttpDisplayResponse(HttpPacket* packet) {
             uint8_t color = lcd->getPixel(column, row);
             if (color > 0) {
                 color = 0xF - color;
-                msg->appendI(row);
+                msg->appendI(static_cast<int>(row));
                 msg->appendS(",");
-                msg->appendI(column);
+                msg->appendI(static_cast<int>(column));
                 msg->appendS(",'");
                 msg->appendI(color);
                 msg->appendS("',");
                 
                 chunkCounter++;
                 if (chunkCounter > 100) {
+                    assertValidHeapObject(packet, NULL);
                     this->wiFiTransmitterTask->sendIpv4ResponseChunk(packet, msg);
                     msg->clear();
+                    assertValidHeapObject(msg, "ZstrM3");
                     taskYIELD();
                     chunkCounter = 0;
                 }
@@ -1184,10 +1192,12 @@ void MainTask::createHttpDisplayResponse(HttpPacket* packet) {
     }
     msg->appendS("-1,-1,-1];\n");
 
+    assertValidHeapObject(packet, NULL);
     this->wiFiTransmitterTask->sendIpv4ResponseChunk(packet, msg);
     msg->clear();
     taskYIELD();
 
+    assertValidHeapObject(msg, "ZstrM3");
 
     msg->appendS("  var border = document.createElementNS('http://www.w3.org/2000/svg', 'rect');\n");
     msg->appendS("  border.setAttribute('x', 0);\n");
@@ -1223,7 +1233,10 @@ void MainTask::createHttpDisplayResponse(HttpPacket* packet) {
     this->wiFiTransmitterTask->sendIpv4ResponseChunk(packet, msg);
     msg->clear();
     taskYIELD();
+    assertValidHeapObject(packet, NULL);
     this->wiFiTransmitterTask->endChunkedIpv4Response(packet);
+
+    assertValidHeapObject(msg, "ZstrM3");
     delete msg;
 }
 
@@ -1274,7 +1287,7 @@ void MainTask::createHttpTestModeResponse(HttpPacket* packet) {
     msg->appendS("<!doctype html>");
     msg->appendS("<html>");
     msg->appendS("<body>");
-    msg->appendS("<h2>System reset to test mode for 1 hour.  Exit early with teh reset command.");
+    msg->appendS("<h2>System reset to test mode for 1 hour.  Exit early with the reset command.");
     msg->appendS("</h2>");
     msg->appendS("</body></html>");
 

@@ -15,7 +15,7 @@
 #include <SysMonitorTask.h>
 #include <LEDs.h>
 #include <AtCmdPacket.h>
-#include <CLock.h>
+#include <Clock.h>
 #include <WaterSensorSample.h>
 #include <MessageList.h>
 
