@@ -1,0 +1,93 @@
+.back-button {
+    width:              50px;
+    height:             16px;
+    background-image:   url(../../assets/images/backBtn.png);
+    background-size:    100%;
+    background-color:   transparent;
+    border:             none;
+    cursor:             pointer;
+
+    position:           absolute;
+    top:                -15px;
+    left:               5px;
+
+}
+
+.RealTimeChart {
+    font-size: 10px;
+    background-color:   #fff;
+    position:           absolute;
+    top:                20px;
+    right:              0;
+    left:               0;
+    bottom:             0;
+}
+
+.RealTimeChart .axis path,
+.RealTimeChart .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+.RealTimeChart .line {
+    fill: none;
+    stroke: steelblue;
+    stroke-width: 1.5px;
+}
+
+.RealTimeChart .context .line {
+    stroke-width: 0.5px;
+}
+
+.RealTimeChart .brush .extent {
+    stroke: #fff;
+    fill-opacity: .125;
+    shape-rendering: crispEdges;
+}
+
+.RealTimeChart .line.highlight {
+    fill-opacity: 1;
+    stroke-opacity: 1;
+}
+
+.RealTimeChart .focus .line.highlight {
+    stroke-width: 3;
+}
+
+.RealTimeChart .context .line.highlight {
+    stroke-width: 1.0;
+}
+
+.RealTimeChart .line.fadeout {
+    fill-opacity: 0.2;
+    stroke-opacity: 0.2;
+}
+
+.RealTimeChart .hoverPointsOff {
+    visibility: hidden
+}
+
+.RealTimeChart .dojoxFloatingPaneCanvas, .RealTimeChart .dojoxFloatingPane .dijitContentPane {
+    padding: 0 !important;
+}
+
+.RealTimeChart .dijitGutter.dijitGutterH.dijitAlignBottom {
+    height: 10px;
+}
+
+.RealTimeChart .dojoxFloatingPane .dijitBorderContainer {
+    margin-bottom: 5px;
+}
+
+.RealTimeChart .dijitSpinnerButtonContainer {
+    height: 18px;
+}
+
+.RealTimeChart .dijitSpinnerButtonContainer .dijitArrowButtonInner {
+    line-height: 10px;
+}
+
+.RealTimeChart span.dojoxGridRowSelectorStatusText {
+    display: none;
+}
