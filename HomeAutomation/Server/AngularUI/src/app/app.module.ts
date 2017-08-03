@@ -3,12 +3,25 @@ import {NgModule} from "@angular/core";
 import {FormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
 import {RouterModule, Routes} from "@angular/router";
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import {AppComponent} from "./app.component";
+import {MainComponentComponent} from "./main-component/main-component.component";
 import {MainMenuComponent} from "./main-menu/main-menu.component";
-import {RtgPageComponent} from "./rtg-page/rtg-page.component";
+import {HomePageComponent} from "./sections/home-page/home-page.component";
+import {SprinklersPageComponent} from "./sections/sprinklers-page/sprinklers-page.component";
+import {HvacPageComponent} from "./sections/hvac-page/hvac-page.component";
+import {WatergatePageComponent } from './sections/watergate-page/watergate-page.component';
+import {SensorsPageComponent} from "./sections/sensors-page/sensors-page.component";
+import {ChartsPageComponent} from "./sections/charts-page/charts-page.component";
 
 const appRoutes: Routes = [
+    {path: 'home', component: HomePageComponent, data: {inMainMenu: true, label: "Home"}},
+    {path: 'sprinklers', component: SprinklersPageComponent, data: {inMainMenu: true, label: "Sprinklers"}},
+    {path: 'hvac', component: HvacPageComponent, data: {inMainMenu: true, label: "HVAC"}},
+    {path: 'watergate', component: WatergatePageComponent, data: {inMainMenu: true, label: "WaterGate"}},
+    {path: 'sensors', component: SensorsPageComponent, data: {inMainMenu: true, label: "Sensors"}},
+    {path: 'charts', component: ChartsPageComponent, data: {inMainMenu: true, label: "Charts"}},
     // {path: 'main:showPortfolio', component: MainPageComponent},
     // {path: 'wheel', component: WheelDiagramPageComponent},
     // {path: 'loom', component: LoomDiagramPageComponent},
@@ -42,17 +55,24 @@ const appRoutes: Routes = [
     //         ]
     //     }
     // },
-    // {path: 'home', component: HomeConditionsPageComponent},
-    // {path: '**', component: MainPageComponent}
+    {path: '', redirectTo: '/home', pathMatch: 'full'},
+    {path: '**', redirectTo: '/home', pathMatch: 'full'}
 ];
 
 @NgModule({
     declarations: [
         AppComponent,
         MainMenuComponent,
-        RtgPageComponent
+        MainComponentComponent,
+        HomePageComponent,
+        SprinklersPageComponent,
+        HvacPageComponent,
+        WatergatePageComponent,
+        SensorsPageComponent,
+        ChartsPageComponent
     ],
     imports: [
+        NgbModule.forRoot(),
         BrowserModule,
         FormsModule,
         HttpModule,
