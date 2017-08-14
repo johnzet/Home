@@ -1,0 +1,10 @@
+<div class="card-feed-entry">
+<span class="card-feed-title"><img class="card-feed-img" src="{{feed.feed.image}}"/> <a target="_blank" href="{{feed.feed.link}}">{{feed.feed.title}}</a> </span>
+<div *ngFor="let item of feed.items" class="card-feed-item" >
+    <img class="card-item-img" src="{{item.thumbnail}}"/><a target="_blank" href="{{item.link}}" class="card-item-title">{{item.title}}</a>
+    <!--<div class="card-item-description">{{item.description}}</div>-->
+    <div class="card-item-content">{{item.content}}</div>
+    <div class="card-item-author">{{item.author}}</div>
+    <div class="card-item-date">{{item.pubDate}}</div>
+</div>
+</div>
