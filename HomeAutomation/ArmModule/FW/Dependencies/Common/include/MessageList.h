@@ -18,7 +18,9 @@ class MessageList {
     public:
         MessageList();
         ~MessageList();
+        void init();
         void addMessage(char* msg);
+
         MessageRecord* getFirst();
         MessageRecord* getLast();
         MessageRecord* getNext(MessageRecord* currentRecord);

@@ -4,6 +4,7 @@
 #include <stm32f4xx.h>
 #include <arm_const_structs.h>
 #include <stm32f4xx_iwdg.h>
+#include <stm32f4xx_wwdg.h>
 #include <TaskWrapper.h>
 #include <semphr.h>
 #include <task.h>
@@ -24,6 +25,7 @@ class SysMonitorTask : public TaskClass {
     TaskClass** tasks;
     uint8_t taskCount;
     SemaphoreHandle_t* heartbeatSemaphores;
+    void patWatchDogs();
 };
 
 

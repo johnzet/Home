@@ -36,6 +36,17 @@ bool runPeripheralTests() {
     return true;
 }
 
+void initWindowWatchdog() {
+    RCC_APB1PeriphClockCmd(RCC_APB1Periph_WWDG, ENABLE);
+
+    WWDG_SetPrescaler(WWDG_Prescaler_8);    
+    WWDG_SetCounter(80);
+    WWDG_SetWindowValue(80);
+    WWDG_Enable(127);
+    WWDG_ClearFlag();
+    WWDG_EnableIT();
+}
+
 void initWatchdog() {
     RCC_LSICmd( ENABLE );
     while(IWDG_GetFlagStatus(IWDG_FLAG_PVU) && IWDG_GetFlagStatus(IWDG_FLAG_RVU));
@@ -92,8 +103,11 @@ void initPll() {
 int main(void) {
     watchDogResetFlag = RCC_GetFlagStatus(RCC_FLAG_IWDGRST);
 
+    delay_ms(3000);  // Give firmware push a chance
+
     initPll();
 
+    initWindowWatchdog();
     initWatchdog();
     
     DBGMCU->APB1FZ |= DBGMCU_IWDG_STOP;

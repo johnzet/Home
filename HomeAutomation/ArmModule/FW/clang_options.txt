@@ -1,0 +1,5 @@
+-Weverything
+-Wno-reserved-id-macro
+-Wno-old-style-cast
+-Wno-documentation
+-Wno-conversion

@@ -53,9 +53,15 @@ void SysMonitorTask::task() {
             currentTask++;
         }
         if (currentTask >= this->taskCount) {
-            IWDG_ReloadCounter();
+            patWatchDogs();
             currentTask = 0;
         }
         vTaskDelay(100 / portTICK_PERIOD_MS);
     }
 }
+
+ void SysMonitorTask::patWatchDogs() {
+    IWDG_ReloadCounter();
+    WWDG_SetCounter(0xFF);
+}
+
