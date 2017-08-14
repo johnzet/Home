@@ -7,11 +7,12 @@
         <ng-template ngbPanelContent>
             <div *ngFor="let item of feed.items" >
                 <div class="card-feed-item" >
-                    <img class="card-item-img" src="{{item.thumbnail}}" onerror="this.parentNode.removeChild(this)"/><a target="_blank" href="{{item.link}}" class="card-item-title">{{item.title}}</a>
+                    <!--<img class="card-item-img" src="{{item.thumbnail}}" onerror="this.parentNode.removeChild(this)"/>-->
+                    <a target="_blank" href="{{item.link}}" class="card-item-title">{{item.title}}</a>
                     <!--<div class="card-item-description">{{item.description}}</div>-->
                     <div class="card-item-content" [innerHTML]="item.content"></div>
-                    <div class="card-item-author">{{item.author}}</div>
-                    <div class="card-item-date">{{item.pubDate}}</div>
+                    <!--<div class="card-item-author">{{item.author}}</div>-->
+                    <!--<div class="card-item-date">{{item.pubDate}}</div>-->
                 </div>
             </div>
         </ng-template>

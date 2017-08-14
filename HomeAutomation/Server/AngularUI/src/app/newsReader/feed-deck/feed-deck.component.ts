@@ -19,7 +19,12 @@ export class FeedDeckComponent implements OnInit {
     }
 
     private refreshFeed() {
-        let deck:string[] = ["http://feeds.bbci.co.uk/news/world/rss.xml", "http://rss.cnn.com/rss/cnn_topstories.rss"];
+        let deck:string[] = [
+            "http://feeds.reuters.com/Reuters/worldNews",
+            "http://feeds.reuters.com/Reuters/businessNews",
+            "http://feeds.bbci.co.uk/news/world/rss.xml",
+            "http://www.democracynow.org/democracynow.rss"
+        ];
 
         this.feedService.getFeedContent(deck)
             .subscribe(
