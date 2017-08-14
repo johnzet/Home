@@ -9,19 +9,21 @@ import {FeedService} from "../feed.service";
 })
 export class FeedDeckComponent implements OnInit {
 
-    private feed: Feed;
+    private feeds: Feed[];
 
     constructor (private feedService: FeedService) {}
 
     ngOnInit() {
+        this.feeds = [];
         this.refreshFeed();
     }
 
     private refreshFeed() {
-        this.feedService.getFeedContent("http://feeds.bbci.co.uk/news/world/rss.xml")
+        let deck:string[] = ["http://feeds.bbci.co.uk/news/world/rss.xml", "http://rss.cnn.com/rss/cnn_topstories.rss"];
+
+        this.feedService.getFeedContent(deck)
             .subscribe(
-                f => this.feed = f,
-                // feed => this.feed = feed.items,
+                f => this.feeds = f,
                 error => console.log(error));
     }
 }
