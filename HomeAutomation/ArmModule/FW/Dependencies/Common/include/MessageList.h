@@ -3,6 +3,7 @@
 
 #include <MessageRecord.h>
 #include <FreeRTOS.h>
+#include <semphr.h>
 #include <task.h>
 #include <Clock.h>
 
@@ -14,6 +15,7 @@ class MessageList {
         MessageRecord* endPtr;
         uint32_t listLength;
         uint32_t listMaxLength;
+        SemaphoreHandle_t messageMutex;
 
     public:
         MessageList();
@@ -24,7 +26,7 @@ class MessageList {
         MessageRecord* getFirst();
         MessageRecord* getLast();
         MessageRecord* getNext(MessageRecord* currentRecord);
-        MessageRecord* getMostRecentMessage(uint32_t minutesOld);
+        MessageRecord* popMessage();
 };
 
 

@@ -29,6 +29,8 @@
   <ProjectSessionItem path="ArmModules;Common"/>
   <ProjectSessionItem path="ArmModules;Common;include"/>
   <ProjectSessionItem path="ArmModules;Common;src"/>
+  <ProjectSessionItem path="ArmModules;HVAC"/>
+  <ProjectSessionItem path="ArmModules;HVAC;src"/>
   <ProjectSessionItem path="ArmModules;STM32F4"/>
   <ProjectSessionItem path="ArmModules;STM32F4;src"/>
   <ProjectSessionItem path="ArmModules;WaterGate"/>
@@ -70,16 +72,16 @@
   <Watches active="0" update="Never"/>
  </Watch4>
  <Files>
-  <SessionOpenFile windowGroup="DockEditLeft" x="27" y="55" useTextEdit="1" useBinaryEdit="0" left="0" path="Dependencies/Common/src/SysMonitorTask.cpp" debugPath="Dependencies/Common/src/SysMonitorTask.cpp" selected="0" top="34" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="14" y="5" useTextEdit="1" useBinaryEdit="0" left="0" path="Dependencies/Common/include/SysMonitorTask.h" debugPath="Dependencies/Common/include/SysMonitorTask.h" selected="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="55" useTextEdit="1" useBinaryEdit="0" left="0" path="Dependencies/Common/src/SysMonitorTask.cpp" debugPath="Dependencies/Common/src/SysMonitorTask.cpp" selected="0" top="34" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="5" useTextEdit="1" useBinaryEdit="0" left="0" path="Dependencies/Common/include/SysMonitorTask.h" debugPath="Dependencies/Common/include/SysMonitorTask.h" selected="0" top="0" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" useBinaryEdit="0" left="0" path="Dependencies/STM32F4/include/stm32f4xx_wwdg.h" debugPath="Dependencies/STM32F4/include/stm32f4xx_wwdg.h" selected="0" top="72" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="58" useTextEdit="1" useBinaryEdit="0" left="0" path="Dependencies/STM32F4/src/stm32f4xx_wwdg.c" debugPath="Dependencies/STM32F4/src/stm32f4xx_wwdg.c" selected="0" top="36" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="157" useTextEdit="1" useBinaryEdit="0" left="0" path="HVAC/src/main.cpp" debugPath="HVAC/src/main.cpp" selected="0" top="137" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="6" useTextEdit="1" useBinaryEdit="0" left="0" path="Dependencies/Common/src/Flash.cpp" debugPath="Dependencies/Common/src/Flash.cpp" selected="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="27" useTextEdit="1" useBinaryEdit="0" left="0" path="Dependencies/Common/include/Flash.h" debugPath="Dependencies/Common/include/Flash.h" selected="1" top="17" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="27" useTextEdit="1" useBinaryEdit="0" left="0" path="Dependencies/Common/include/Flash.h" debugPath="Dependencies/Common/include/Flash.h" selected="0" top="17" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="28" useTextEdit="1" useBinaryEdit="0" left="0" path="Dependencies/Common/include/MessageList.h" debugPath="Dependencies/Common/include/MessageList.h" selected="0" top="0" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="19" useTextEdit="1" useBinaryEdit="0" left="0" path="Dependencies/Common/include/MessageRecord.h" debugPath="Dependencies/Common/include/MessageRecord.h" selected="0" top="0" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="13" useTextEdit="1" useBinaryEdit="0" left="0" path="Dependencies/Common/src/MessageList.cpp" debugPath="Dependencies/Common/src/MessageList.cpp" selected="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="148" useTextEdit="1" useBinaryEdit="0" left="0" path="WaterGate/src/main.cpp" debugPath="WaterGate/src/main.cpp" selected="1" top="124" codecName="Default"/>
  </Files>
  <ARMCrossStudioWindow activeProject="WaterGate" fileDialogDefaultFilter="*.c" autoConnectTarget="ARM Simulator" buildConfiguration="THUMB Debug" debugSearchFileMap="" fileDialogInitialDirectory="" debugSearchPath="" autoConnectCapabilities="268735"/>
 </session>
