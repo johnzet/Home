@@ -182,13 +182,13 @@ int main(void) {
         wiFiReceiverTask->startTask("WiFiRcvr" /* task name */, 3 /* priority */, 512 /* stack depth */);
 
         wiFiTransmitterTask->init();
-        wiFiTransmitterTask->startTask("WifiXmtr" /* task name */, 4 /* priority */, 512 /* stack depth */);
+        wiFiTransmitterTask->startTask("WifiXmtr" /* task name */, 3 /* priority */, 512 /* stack depth */);
 
         xbeeTask->init();
         xbeeTask->startTask("XBee" /* task name */, 3 /* priority */, 512 /* stack depth */);
 
         mainTask->init();
-        mainTask->startTask("Main" /* task name */, 2 /* priority */, 3000 /* stack depth */);
+        mainTask->startTask("Main" /* task name */, 3 /* priority */, 3000 /* stack depth */);
 
         const uint8_t count = 4;
         TaskClass* tasks[count] = {wiFiReceiverTask, wiFiTransmitterTask, xbeeTask, mainTask};

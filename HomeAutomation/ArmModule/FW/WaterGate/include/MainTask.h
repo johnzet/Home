@@ -83,6 +83,7 @@ class MainTask : public TaskClass {
     TimerHandle_t testModeTimer;
     TimerHandle_t alarmLongTimer;
     bool checkHealth(char* buffer);
+    char* getOverallStatusMessage();
 
     WaterSensorSample* getRegisteredWaterSensor(uint64_t address);
     WaterSensorSample* updateWaterSensorRegistration(WaterSensorSample* sample);

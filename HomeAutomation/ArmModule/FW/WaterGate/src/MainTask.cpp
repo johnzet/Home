@@ -421,10 +421,14 @@ void MainTask::updateLcdMainPage(char* buffer, Font* largeFont, Font* medFont, F
             lcd->drawString(0, 90, buffer, smallFont, 0b1100, spacing);
         }
     }
-    MessageRecord* lastMsg = messageList->getMostRecentMessage(10);
-    if (lastMsg != NULL) {
-        lcd->drawString(0, 110, lastMsg->text, smallFont, 0b1100, spacing);
+    char* msg = getOverallStatusMessage();
+    if (msg != NULL) {
+        lcd->drawString(0, 110, msg, smallFont, 0b1100, spacing);
     }
+}
+
+char* MainTask::getOverallStatusMessage() {
+    return "*******";  // this method must free memory
 }
 
 void MainTask::updateLcdSensorList(char* buffer, Font* font, Font* smallFont, uint8_t pageNumber) {
@@ -953,7 +957,10 @@ void MainTask::createHttpStatusResponse(HttpPacket* packet) {
     this->wiFiTransmitterTask->sendIpv4ResponseChunk(packet, msg);
     msg->clear();
     taskYIELD();
+
     this->wiFiTransmitterTask->endChunkedIpv4Response(packet);
+    taskYIELD();
+
     delete msg;
     delete[] buffer;
 }

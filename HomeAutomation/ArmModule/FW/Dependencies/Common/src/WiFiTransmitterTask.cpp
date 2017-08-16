@@ -83,7 +83,7 @@ bool WiFiTransmitterTask::wifiWriteBuffer(Zstring* buffer) {
     xQueueReset(this->transmissionStatusQueue);
     uint8_t cksum = 0;
     for (uint32_t i=0; i<buffer->size(); i++) {
-        while (USART_GetFlagStatus(USART1, USART_FLAG_TXE) == RESET) {taskYIELD()}
+        while (USART_GetFlagStatus(USART1, USART_FLAG_TXE) == RESET) {taskYIELD()}   // common hang point
         char c = buffer->getChar(i);
         if (i > 2) {
             cksum = (cksum + c) & 0xFF;
