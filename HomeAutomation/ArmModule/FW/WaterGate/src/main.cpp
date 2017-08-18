@@ -179,22 +179,25 @@ int main(void) {
 
     if (postPass) {       
         wiFiReceiverTask->init();
+        uint8_t count = 1;
         wiFiReceiverTask->startTask("WiFiRcvr" /* task name */, 3 /* priority */, 512 /* stack depth */);
 
         wiFiTransmitterTask->init();
+        count++;
         wiFiTransmitterTask->startTask("WifiXmtr" /* task name */, 3 /* priority */, 512 /* stack depth */);
 
         xbeeTask->init();
+        count++;
         xbeeTask->startTask("XBee" /* task name */, 3 /* priority */, 512 /* stack depth */);
 
         mainTask->init();
+        count++;
         mainTask->startTask("Main" /* task name */, 3 /* priority */, 3000 /* stack depth */);
 
-        const uint8_t count = 4;
         TaskClass* tasks[count] = {wiFiReceiverTask, wiFiTransmitterTask, xbeeTask, mainTask};
         SysMonitorTask* sysMonitorTask = new SysMonitorTask(tasks, count);
         sysMonitorTask->init();
-        sysMonitorTask->startTask("SysMon", 4, 512);
+        sysMonitorTask->startTask("SysMon", 3, 512);
 
         checkStackLevel();
         vTaskStartScheduler(); // blocking call

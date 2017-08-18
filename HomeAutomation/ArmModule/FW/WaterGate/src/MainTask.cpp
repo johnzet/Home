@@ -345,7 +345,7 @@ bool MainTask::checkHealth(char* buffer) {
         sprintf(buffer, "Weak Battery in %s", lowestBattery->getName());
         return false;
     }
-    if (lowestRssi != NULL && lowestRssi->getRssi() > 80.0f) {
+    if (lowestRssi != NULL && lowestRssi->getRssi() > 90.0f) {
         sprintf(buffer, "Weak Signal to %s", lowestRssi->getName());
         return false;
     }
@@ -592,10 +592,17 @@ bool MainTask::getTimeFromServerByHttp() {
     HttpPacket* p;
     uint8_t loopCnt = 0;
     do {
-
         vTaskDelay(100/portTICK_PERIOD_MS);
         p = this->wifiReceiverTask->getIpv4TxResponsePacket();
     } while(p == NULL && loopCnt++ < 200);
+
+    if (p== NULL) {
+        loopCnt = 0;
+        do {
+            vTaskDelay(100/portTICK_PERIOD_MS);
+            p = this->wifiReceiverTask->getIpv4TxResponsePacket();
+        } while(p == NULL && loopCnt++ < 200);
+    }
 
     if (p == NULL) {
         return false;
