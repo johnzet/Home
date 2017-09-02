@@ -515,7 +515,7 @@ public class FirmwarePusher {
 
     private boolean verifyChunk(int[] buffer, int bufferLength, final int highAddress, final int lowAddress) {
         boolean success;
-        System.out.println("  Verifying 0x" + Integer.toHexString((highAddress << 16) + lowAddress));
+        System.out.println("Verifying 0x" + Integer.toHexString((highAddress << 16) + lowAddress));
         success = true;
         try {
             this.udpReader.clearData();
@@ -542,37 +542,29 @@ public class FirmwarePusher {
         return success;
     }
 
-    private boolean pushFirmware(String fileName) throws IOException, InterruptedException {
+    private boolean pushFirmware(String fileName, Socket tcpSocket) throws IOException, InterruptedException {
 
         try {
-
-            setPort(new int[]{0x0B, (int)0xEE}, true);
-            applyChanges(true);
-            writeChanges(true);
-
-            String hostName = remoteIpAddress[0] + "." + remoteIpAddress[1] + "." + remoteIpAddress[2] + "." + remoteIpAddress[3];
-            Socket tcpSocket = new Socket(hostName, 0x0BEE);
-            tcpSocket.setTcpNoDelay(true);
-            tcpSocket.setSoTimeout(10000);
-            out = tcpSocket.getOutputStream();
-            in = new BufferedReader(new InputStreamReader(tcpSocket.getInputStream()));
+            // This should do nothing.  It is there just in case.
+            setRemoteUdpModeTcp();
+            applyChanges(false);
 
             setRemoteDestinationAddressesTcp();
             setRemoteUdpModeTcp();
             applyChanges(false);
-            writeChanges(false);
+            writeChanges(true);
 
             setApiMode();
             sendRemoteAtCommand("DO", new int[]{0x14});  // device options
+            remoteDisableRtsAndCts();
+            setDestPort(new int[] {(this.outUdpSocket.getLocalPort() & 0xff00) >> 8, this.outUdpSocket.getLocalPort() & 0x00ff}, true);
+            setEvenParity();
             applyChanges(true);
             writeChanges(true);
 
             remoteReset();
 
-            remoteDisableRtsAndCts();
             setSlowBaudRate();
-            setDestPort(new int[] {(this.outUdpSocket.getLocalPort() & 0xff00) >> 8, this.outUdpSocket.getLocalPort() & 0x00ff}, true);
-            setEvenParity();
             setTransparentMode();
             applyChanges(true);
             writeChanges(true);
@@ -584,10 +576,6 @@ public class FirmwarePusher {
                 System.out.println("Firmware upload was SUCCESSFUL");
             }
 
-            out.close();
-            in.close();
-            tcpSocket.close();
-
             System.out.println("Done.");
         } catch (Throwable t) {
             t.printStackTrace();
@@ -596,13 +584,41 @@ public class FirmwarePusher {
         return true;
     }
 
+    private void closeTcp(Socket tcpSocket) throws IOException {
+        if (tcpSocket != null) {
+            tcpSocket.close();
+        }
+        if (out != null) {
+            out.close();
+        }
+        if (in != null) {
+            in.close();
+        }
+    }
+
+    private Socket openTcp() throws IOException, InterruptedException {
+        setPort(new int[]{0x0B, (int)0xEE}, true);
+        applyChanges(true);
+        writeChanges(true);
+
+        String hostName = remoteIpAddress[0] + "." + remoteIpAddress[1] + "." + remoteIpAddress[2] + "." + remoteIpAddress[3];
+        Socket tcpSocket = new Socket(hostName, 0x0BEE);
+        tcpSocket.setTcpNoDelay(true);
+        tcpSocket.setSoTimeout(10000);
+        out = tcpSocket.getOutputStream();
+        in = new BufferedReader(new InputStreamReader(tcpSocket.getInputStream()));
+
+        return tcpSocket;
+    }
+
     public void restoreConfig() {
         System.out.println("Restoring...");
         try {
-            setNormalBaudRate();
-            applyChanges(true);
-            writeChanges(true);
+            // This should do nothing.  It is there just in case.
+            setRemoteUdpModeTcp();
+            applyChanges(false);
 
+            setNormalBaudRate();
             setApiMode();
             setNoParity();
             applyChanges(true);
@@ -613,16 +629,43 @@ public class FirmwarePusher {
             restoreResetPins();
 
             setPort(new int[]{80}, true);
-            setDestPort(new int[]{0x0B, 0xEE}, true);
             setRemoteTcpMode();
             applyChanges(true);
             writeChanges(true);
+
             remoteSoftwareReset();  // takes at least 2 seconds, but does cause a join notification
+
+            setRemoteTcpMode();
 
             this.outUdpSocket.close();
             this.udpReader.close();
 
             System.out.println("Restore Done.");
+        } catch (Throwable t) {
+            t.printStackTrace();
+        }
+    }
+
+    public void reset(Socket tcpSocket) {
+        System.out.println("Resetting ARM device...");
+        try {
+
+            setRemoteUdpModeTcp();
+            applyChanges(false);
+
+            resetWithFlashSelected();  // resets the board, not the WiFi
+            remoteEnableRtsAndCts();
+            restoreResetPins();
+            setRemoteTcpMode();
+            applyChanges(true);
+            writeChanges(false);
+
+            setPort(new int[]{80}, false);
+            applyChanges(false);
+            writeChanges(false);
+
+
+            System.out.println("Reset Done.");
         } catch (Throwable t) {
             t.printStackTrace();
         }
@@ -707,45 +750,71 @@ public class FirmwarePusher {
         return data;
     }
 
-    public static void main ( String[] args )
-    {
+    public static void main ( String[] args ) throws IOException, InterruptedException {
 //        System.out.println("args length: " + args.length);
 //        System.out.println("arg 0 = " + args[0]);
 
+        FirmwarePusher pusher = null;
+        Socket tcpSocket = null;
         try
         {
             if (args.length == 0 || "-h".equals(args[0]) || "-help".equals(args[0])) {
-                System.out.println("Usage:\tFirmwarePusher -h\r\n" +
-                                       "\t\tFirmwarePusher -help\r\n" +
-                                       "\t\tFirmwarePusher <Remote IP Address> -r (restore WiFI config) [-d] \r\n" +
-                                       "\t\tFirmwarePusher <Remote IP Address> <firmware filename> [-d] \r\n");
+                pusher.showUsage();
                 System.exit(1);
             }
 
 
-            FirmwarePusher pusher = new FirmwarePusher(args[0].trim(), args[1].trim());
+            pusher = new FirmwarePusher(args[0].trim(), args[1].trim());
             pusher.init();
             Thread.sleep(100); // wait for udp reader to start
 
+            pusher.setPort(new int[]{0x0B, 0xEE}, true);
+            pusher.setRemoteTcpMode();
+            pusher.applyChanges(true);
+            pusher.writeChanges(true);
+
+
+            tcpSocket = pusher.openTcp();
             if (args.length >= 3 && "-d".equals(args[2])) debug = true;
-            if ("-r".equals(args[1])) {
+            if ("-restore".equals(args[1])) {
+                pusher.restoreConfig();
+            } else if ("-reset".equals(args[1])) {
+                pusher.reset(tcpSocket);
+            } else if ("-push".equals(args[1])) {
+                pusher.pushFirmware(args[2].trim(), tcpSocket);
                 pusher.restoreConfig();
             } else {
-                pusher.pushFirmware(args[1].trim());
-                pusher.restoreConfig();
+                pusher.showUsage();
             }
 
-            pusher.outUdpSocket.close();
-            pusher.udpReader.close();
-
-
-            pusher.udpReader.kill();
-            pusher.udpReader.join();
         }
         catch ( Exception e )
         {
             e.printStackTrace();
         }
+        finally {
+            if (pusher != null){
+                pusher.closeTcp(tcpSocket);
+                pusher.outUdpSocket.close();
+                pusher.udpReader.close();
+
+
+                pusher.udpReader.kill();
+                pusher.udpReader.join();
+            }
+        }
+    }
+
+    private void showUsage() {
+
+    }
+
+    private void shutDown() {
+        System.out.println("Usage:\tFirmwarePusher -h\r\n" +
+                "\t\tFirmwarePusher -help\r\n" +
+                "\t\tFirmwarePusher <Remote IP Address> -restore (restore WiFI config) [-d] \r\n" +
+                "\t\tFirmwarePusher <Remote IP Address> -reset (reset the ARM device) [-d] \r\n" +
+                "\t\tFirmwarePusher <Remote IP Address> -push <firmware filename> [-d] \r\n");
     }
 
 
