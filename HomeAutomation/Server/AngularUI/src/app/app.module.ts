@@ -14,6 +14,9 @@ import {HvacPageComponent} from "./sections/hvac-page/hvac-page.component";
 import {WatergatePageComponent } from './sections/watergate-page/watergate-page.component';
 import {SensorsPageComponent} from "./sections/sensors-page/sensors-page.component";
 import {ChartsPageComponent} from "./sections/charts-page/charts-page.component";
+import {FeedCardComponent } from './newsReader/feed-card/feed-card.component';
+import {FeedService} from "./newsReader/feed.service";
+import {FeedDeckComponent } from './newsReader/feed-deck/feed-deck.component';
 
 const appRoutes: Routes = [
     {path: 'home', component: HomePageComponent, data: {inMainMenu: true, label: "Home"}},
@@ -69,17 +72,18 @@ const appRoutes: Routes = [
         HvacPageComponent,
         WatergatePageComponent,
         SensorsPageComponent,
-        ChartsPageComponent
+        ChartsPageComponent,
+        FeedCardComponent,
+        FeedDeckComponent
     ],
     imports: [
         NgbModule.forRoot(),
         BrowserModule,
         FormsModule,
         HttpModule,
-        RouterModule.forRoot(appRoutes),
-
+        RouterModule.forRoot(appRoutes)
     ],
-    providers: [],
+    providers: [FeedService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
