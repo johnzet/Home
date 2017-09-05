@@ -3,7 +3,15 @@
   <project Name="WaterGate">
     <configuration
       Name="Common"
+      Target="STM32F405RG"
+      arm_architecture="v7EM"
+      arm_core_type="Cortex-M4"
+      arm_fpu_type="FPv4-SP-D16"
+      arm_simulator_memory_simulation_parameter="STM32F405RG;0x100000;0x20000"
+      debug_register_definition_file="$(TargetsDir)/STM32/STM32F405_Peripherals.xml"
       gcc_all_warnings_command_line_options="-Wall;-Wextra"
+      linker_memory_map_file="$(TargetsDir)/STM32/STM32F405RG_MemoryMap.xml"
+      macros="DeviceVectorsFile=STM32F405xx.vec"
       project_dependencies="Common;EmbUnit;FreeRTOS;STM32F4"
       project_directory="WaterGate"
       project_type="Executable" />
@@ -20,6 +28,7 @@
     <folder Name="System Files">
       <file file_name="$(StudioDir)/source/thumb_crt0.s" />
       <file file_name="$(TargetsDir)/STM32/STM32_Startup.s" />
+      <file file_name="STM32F405RG_MemoryMap.xml" />
     </folder>
     <folder Name="src" exclude="" filter="" path="src" recurse="Yes" />
     <folder
@@ -28,6 +37,16 @@
       filter=""
       path="include"
       recurse="Yes" />
+    <configuration
+      Name="THUMB"
+      Target="STM32F405RG"
+      arm_architecture="v7EM"
+      arm_core_type="Cortex-M4"
+      arm_fpu_type="FPv4-SP-D16"
+      arm_simulator_memory_simulation_parameter="STM32F405RG;0x100000;0x20000"
+      debug_register_definition_file="$(TargetsDir)/STM32/STM32F405_Peripherals.xml"
+      linker_memory_map_file="$(TargetsDir)/STM32/STM32F405RG_MemoryMap.xml"
+      macros="DeviceVectorsFile=STM32F405xx.vec" />
   </project>
   <project Name="HVAC">
     <configuration
@@ -112,7 +131,15 @@
   <project Name="STM32F4">
     <configuration
       Name="Common"
+      Target="STM32F405RG"
+      arm_architecture="v7EM"
+      arm_core_type="Cortex-M4"
+      arm_fpu_type="FPv4-SP-D16"
+      arm_simulator_memory_simulation_parameter="STM32F405RG;0x100000;0x20000"
       c_user_include_directories="include"
+      debug_register_definition_file="$(TargetsDir)/STM32/STM32F405_Peripherals.xml"
+      linker_memory_map_file="$(TargetsDir)/STM32/STM32F405RG_MemoryMap.xml"
+      macros="DeviceVectorsFile=STM32F405xx.vec"
       project_directory="Dependencies/STM32F4"
       project_type="Library" />
     <folder Name="src" exclude="exclude" filter="" path="src" recurse="Yes" />
@@ -122,6 +149,10 @@
       filter=""
       path="include"
       recurse="Yes" />
+    <configuration
+      Name="Flash"
+      arm_target_flash_loader_file_path="$(LOADER:$(TargetsDir)/STM32/Release/STM32F2xx_Loader_rpc.elf)"
+      arm_target_loader_can_erase_all="Yes" />
   </project>
   <project Name="Common">
     <configuration
@@ -156,6 +187,7 @@
     arm_fp_abi="Hard"
     arm_fpu_type="FPv4-SP-D16"
     arm_instruction_set="Thumb"
+    arm_library_architecture="v7EM"
     arm_linker_allow_multiple_definition="Yes"
     arm_linker_heap_size="32768"
     arm_linker_jtag_pad_pre_dr="1"
@@ -179,8 +211,9 @@
     cpp_enable_rtti="Yes"
     debug_dependent_projects="Yes"
     debug_initial_breakpoint=""
-    debug_register_definition_file="$(TargetsDir)/STM32/STM32F40x_Peripherals.xml"
+    debug_register_definition_file="/Users/johnzet/projects/Home/HomeAutomation/ArmModule/FW/Dependencies/STM32F4/STM32F40x_Peripherals.xml"
     debug_restrict_memory_access="No"
+    debug_threads_script="/Users/johnzet/projects/Home/HomeAutomation/ArmModule/FW/threads.js"
     double_is_float="Yes"
     gcc_all_warnings_command_line_options="-Wall;-Wextra"
     gcc_c_language_standard="gnu11"

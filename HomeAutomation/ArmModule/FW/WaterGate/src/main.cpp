@@ -36,6 +36,17 @@ bool runPeripheralTests() {
     return true;
 }
 
+void initWindowWatchdog() {
+    RCC_APB1PeriphClockCmd(RCC_APB1Periph_WWDG, ENABLE);
+
+    WWDG_SetPrescaler(WWDG_Prescaler_8);    
+    WWDG_SetCounter(80);
+    WWDG_SetWindowValue(80);
+    WWDG_Enable(127);
+    WWDG_ClearFlag();
+    WWDG_EnableIT();
+}
+
 void initWatchdog() {
     RCC_LSICmd( ENABLE );
     while(IWDG_GetFlagStatus(IWDG_FLAG_PVU) && IWDG_GetFlagStatus(IWDG_FLAG_RVU));
@@ -87,45 +98,42 @@ void initPll() {
     //SystemCoreClockUpdate();
     SystemCoreClock = 180000000;
 }
-
-
+ 
 int main(void) {
     watchDogResetFlag = RCC_GetFlagStatus(RCC_FLAG_IWDGRST);
-
-    initPll();
-
-    initWatchdog();
-    
-    DBGMCU->APB1FZ |= DBGMCU_IWDG_STOP;
-
     RCC_ClearFlag();
-    NVIC_PriorityGroupConfig( NVIC_PriorityGroup_4 );  //  http://www.freertos.org/RTOS-Cortex-M3-M4.html
-    // Stm32F4 interrupt priorities in FreeRtos range from 0x80 to 0xF0.  Subpriority is 0 or 1.
-
-//    printf("\033[2J\033[H\033[0m");  // clear terminal screen
-//    printf("Otto Version 0.1" NEWLINE);
-//    printf("HSI_VALUE = %f MHz" NEWLINE, HSI_VALUE/1000000.0);
-//    printf("SYSCLK clock rate = %f MHz" NEWLINE, sysclk/1000000.0);
-//    printf("HCLK   clock rate = %f MHz" NEWLINE, hclk/1000000.0);
-//    printf("PCLK1  clock rate = %f MHz" NEWLINE, pclk1/1000000.0);
-//    printf("PCLK2  clock rate = %f MHz" NEWLINE, pclk2/1000000.0);
-//    printf(NEWLINE "Starting POST" NEWLINE);
-
-
-    bool unitPass = (watchDogResetFlag == SET) || runUnitTests();
+ 
+    initPll();
+ 
+    initWatchdog();    
+    DBGMCU->APB1FZ |= DBGMCU_IWDG_STOP;
+ 
+    bool unitPass = runUnitTests();
 //    testResetHeapState();
 
-    messageList = new MessageList();
-    leds = new LEDs();  
+     NVIC_PriorityGroupConfig( NVIC_PriorityGroup_4 );  //  http://www.freertos.org/RTOS-Cortex-M3-M4.html
+     // Stm32F4 interrupt priorities in FreeRtos range from 0x80 to 0xF0.  Subpriority is 0 or 1.
+ 
     clock = new Clock();
-
+    messageList = new MessageList();
+ 
+    messageList->addMessage("WaterGate firmware Version 0.21");
+    char buffer[80];
+    sprintf(buffer, "HSI_VALUE = %f MHz", HSI_VALUE/1000000.0);   messageList->addMessage(buffer);
+    sprintf(buffer, "SYSCLK = %f MHz", sysclk/1000000.0);   messageList->addMessage(buffer);
+    sprintf(buffer, "HCLK = %f MHz", hclk/1000000.0);   messageList->addMessage(buffer);
+    sprintf(buffer, "PCLK1 = %f MHz", pclk1/1000000.0);   messageList->addMessage(buffer);
+    sprintf(buffer, "PCLK2 = %f MHz", pclk2/1000000.0);   messageList->addMessage(buffer);
+    if (watchDogResetFlag == SET) messageList->addMessage("FIRST RUN FOLLOWING A WATCHDOG RESET");
+ 
+    leds = new LEDs();  
     waterValve = new WaterValve();
-
+ 
     sensorSampleQueue = xQueueCreate(10, sizeof(WaterSensorSample));
-    httpRequestQueue = xQueueCreate(2, 4);
+    httpRequestQueue = xQueueCreate(10, 4);
     QueueHandle_t transmissionStatusQueue = xQueueCreate(1, sizeof(bool));
     assert(transmissionStatusQueue != NULL);
-
+ 
     WiFiReceiverTask* wiFiReceiverTask = new WiFiReceiverTask(httpRequestQueue, transmissionStatusQueue);
     WiFiTransmitterTask* wiFiTransmitterTask = new WiFiTransmitterTask(messageList, transmissionStatusQueue);
     xbeeTask = new XBeeTask(sensorSampleQueue);
@@ -146,48 +154,53 @@ int main(void) {
 
     leds->init();
     leds->allOff();
+    if (watchDogResetFlag == SET) leds->setRedState(true);
     lcd->init();
     waterValve->init();
 
 
-    bool peripheralPass = (watchDogResetFlag == SET) || runPeripheralTests();
+    bool peripheralPass = runPeripheralTests();
     bool postPass = unitPass & peripheralPass;
 
-    if (watchDogResetFlag == RESET) {
+    
 
-        if (postPass) {
-            printf(NEWLINE "POST Passed." NEWLINE);
-            leds->setGreenState(true);
-        } else {
-            printf(NEWLINE "There were test failures." NEWLINE "HALTED" NEWLINE);
-            messageList->addMessage("There were test failures.");
-            leds->setRedState(true);
-            while(true) {
-                leds->setRedState(true);  // Any line - Allows a breakpoint top be set.
-            }
+    if (postPass) {
+        messageList->addMessage("POST Passed.");
+        leds->setGreenState(true);
+    } else {
+        messageList->addMessage("There were test failures.");
+        messageList->addMessage("HALTED");
+        leds->setRedState(true);
+        while(true) {
+            leds->setRedState(true);  // Any line - Allows a breakpoint top be set.
         }
     }
+
     
     clock->init();
 
+    // 0 = lowest priority, highest priority is (configMAX_PRIORITIES -1)
     if (postPass) {       
         wiFiReceiverTask->init();
+        uint8_t count = 1;
         wiFiReceiverTask->startTask("WiFiRcvr" /* task name */, 3 /* priority */, 512 /* stack depth */);
 
         wiFiTransmitterTask->init();
-        wiFiTransmitterTask->startTask("WifiXmtr" /* task name */, 4 /* priority */, 512 /* stack depth */);
+        count++;
+        wiFiTransmitterTask->startTask("WifiXmtr" /* task name */, 3 /* priority */, 512 /* stack depth */);
 
         xbeeTask->init();
+        count++;
         xbeeTask->startTask("XBee" /* task name */, 3 /* priority */, 512 /* stack depth */);
 
         mainTask->init();
-        mainTask->startTask("Main" /* task name */, 2 /* priority */, 3000 /* stack depth */);
+        count++;
+        mainTask->startTask("Main" /* task name */, 3 /* priority */, 3000 /* stack depth */);
 
-        const uint8_t count = 4;
         TaskClass* tasks[count] = {wiFiReceiverTask, wiFiTransmitterTask, xbeeTask, mainTask};
         SysMonitorTask* sysMonitorTask = new SysMonitorTask(tasks, count);
         sysMonitorTask->init();
-        sysMonitorTask->startTask("SysMon", 4, 512);
+        sysMonitorTask->startTask("SysMon", 3, 512);
 
         checkStackLevel();
         vTaskStartScheduler(); // blocking call

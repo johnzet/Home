@@ -345,7 +345,7 @@ bool MainTask::checkHealth(char* buffer) {
         sprintf(buffer, "Weak Battery in %s", lowestBattery->getName());
         return false;
     }
-    if (lowestRssi != NULL && lowestRssi->getRssi() > 80.0f) {
+    if (lowestRssi != NULL && lowestRssi->getRssi() > 90.0f) {
         sprintf(buffer, "Weak Signal to %s", lowestRssi->getName());
         return false;
     }
@@ -421,10 +421,14 @@ void MainTask::updateLcdMainPage(char* buffer, Font* largeFont, Font* medFont, F
             lcd->drawString(0, 90, buffer, smallFont, 0b1100, spacing);
         }
     }
-    MessageRecord* lastMsg = messageList->getMostRecentMessage(10);
-    if (lastMsg != NULL) {
-        lcd->drawString(0, 110, lastMsg->text, smallFont, 0b1100, spacing);
+    char* msg = getOverallStatusMessage();
+    if (msg != NULL) {
+        lcd->drawString(0, 110, msg, smallFont, 0b1100, spacing);
     }
+}
+
+char* MainTask::getOverallStatusMessage() {
+    return "*******";  // this method must free memory
 }
 
 void MainTask::updateLcdSensorList(char* buffer, Font* font, Font* smallFont, uint8_t pageNumber) {
@@ -469,7 +473,8 @@ bool MainTask::setup() {
         if (count > 200) {
             leds->setRedState(true);
             messageList->addMessage("WiFi modem has not joined.");
-            return false;
+//            return false;
+            break;
         }
     }
 
@@ -584,21 +589,11 @@ bool MainTask::getTimeFromServerByHttp() {
 
 //while(true) {
     wiFiTransmitterTask->sendIpv4TxRequestPacket(&packet, "/house/config");
-
-    HttpPacket* p;
-    uint8_t loopCnt = 0;
-    do {
-
-        vTaskDelay(100/portTICK_PERIOD_MS);
-        p = this->wifiReceiverTask->getIpv4TxResponsePacket();
-    } while(p == NULL && loopCnt++ < 200);
-
-    if (p == NULL) {
+    HttpPacket* p = new HttpPacket();
+    if (xQueueReceive(wifiReceiverTask->getReceivedIpv4PacketQueue(), p, 1000/portTICK_PERIOD_MS) != pdPASS) {
         return false;
     }
 
-
-    
     char* payload = p->getPayload()->getStr();
     uint32_t length = p->getPayload()->size();
 
@@ -624,7 +619,6 @@ bool MainTask::getTimeFromServerByHttp() {
         return false;
     }
         
-
     //delete p;
     return true;
 }
@@ -841,6 +835,8 @@ void MainTask::createHttpStatusResponse(HttpPacket* packet) {
     msg->appendS("Status Reply Message<br/><br/>");
     clock->prettyPrint(buffer);
     msg->appendS(buffer);
+    taskYIELD();
+
     msg->appendS("<br/><br/>Main stack level = ");
     sprintf(buffer, "%.2f%%", STACK_LEVEL);
     msg->appendS(buffer);
@@ -878,10 +874,10 @@ void MainTask::createHttpStatusResponse(HttpPacket* packet) {
     msg->appendS(buffer);
     msg->appendS("</pre>");
 
-//    msg.appendS("<b>Runtime stats</b><pre>");
+//    msg->appendS("<b>Runtime stats</b><pre>");
 //    xTaskGetRunTimeStats(buffer);
-//    msg.appendS(buffer);
-//    msg.appendS("</pre>");
+//    msg->appendS(buffer);
+//    msg->appendS("</pre>");
 
     this->wiFiTransmitterTask->sendIpv4ResponseChunk(packet, msg);
     msg->clear();
@@ -953,7 +949,10 @@ void MainTask::createHttpStatusResponse(HttpPacket* packet) {
     this->wiFiTransmitterTask->sendIpv4ResponseChunk(packet, msg);
     msg->clear();
     taskYIELD();
+
     this->wiFiTransmitterTask->endChunkedIpv4Response(packet);
+    taskYIELD();
+
     delete msg;
     delete[] buffer;
 }
@@ -1133,9 +1132,6 @@ void MainTask::createHttpDisplayResponse(HttpPacket* packet) {
     msg->appendS("<head><style>table, th, td {border: 1px solid black;}</style></head>");
     msg->appendS("<body>\n");
    
-    msg->appendS("<h1>ARM module</h1><br/>");
-
-
     msg->appendS("<script type='text/javascript'>\n");
 
 

@@ -19,6 +19,7 @@ class HttpPacket {
         uint16_t destPort;
         uint16_t sourcePort;
         Zstring* payload;
+        bool complete;
 
     public:
         HttpPacket();
@@ -33,6 +34,7 @@ class HttpPacket {
         void setProtcol(uint8_t protocol);
         void setOptions(uint8_t options);
         void setPayload(Zstring* payload);
+        void setComplete(bool isComplete);
 
         uint8_t getFrameType();
         uint8_t getFrameId();
@@ -42,6 +44,7 @@ class HttpPacket {
         uint8_t getProtcol();
         uint8_t getOptions();
         Zstring* getPayload();
+        bool isComplete();
 
 };
 

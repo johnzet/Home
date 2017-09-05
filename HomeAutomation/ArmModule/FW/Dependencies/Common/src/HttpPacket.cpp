@@ -9,6 +9,7 @@ HttpPacket::HttpPacket() {
     sourcePort = 0;
     protocol = 0;
     options = 0;
+    complete = false;
 }
 
 HttpPacket::HttpPacket(HttpPacket* p) {
@@ -21,6 +22,7 @@ HttpPacket::HttpPacket(HttpPacket* p) {
     this->setPayload(p->getPayload());
     this->setProtcol(p->getProtcol());
     this->setSourcePort(p->getSourcePort());
+    this->setComplete(p->isComplete());
 }
 
 HttpPacket::~HttpPacket() {
@@ -99,5 +101,13 @@ uint8_t HttpPacket::getOptions() {
 
 Zstring* HttpPacket::getPayload() {
     return this->payload;
+}
+
+void HttpPacket::setComplete(bool complete) {
+    this->complete = complete;
+}
+
+bool HttpPacket::isComplete() {
+    return this->complete;
 }
 

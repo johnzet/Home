@@ -1,6 +1,16 @@
 #include <Flash.h>
 
-bool Flash::loadConfigFromFlash() {
+void Flash::init(MessageList* messageList) {
+        flashSector = FLASH_Sector_11;
+        baseFlashAddress = 0x080E0000;
+        flashBankSize = 1 << 17;  // 128k
+
+        
+
+
+}
+
+//bool Flash::loadConfigFromFlash() {
 //    uint32_t marker;
 //    uint32_t version;
 //#ifndef TARGET_IS_SIMULATOR
@@ -46,16 +56,13 @@ bool Flash::loadConfigFromFlash() {
 //        }
 //    }
 //    FLASH_Lock();
-return true;
+//return true;
+//}
+
+uint32_t Flash::getFlashMemoryBankStart() {
+    return baseFlashAddress;
 }
 
-void Flash::setUseTestFlashBank(bool useTestBank) {
-//    // Sector 23 is at the top of the 2MB flash.  Program memory goes into the bottom at 0x0800 0000. 
-//    if (useTestBank) {
-//        flashSector = FLASH_Sector_22;
-//        baseFlashAddress = 0x081C0000;  //  128k long
-//    } else {
-//        flashSector = FLASH_Sector_23;
-//        baseFlashAddress = 0x081E0000;  //  128k long
-//    }
+uint32_t Flash::getFlashMemoryBankSize() {
+    return flashBankSize;
 }

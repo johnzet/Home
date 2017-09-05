@@ -2,14 +2,15 @@
 <session>
  <Bookmarks/>
  <Breakpoints groups="Breakpoints" active_group="Breakpoints">
-  <BreakpointListItem trigger="" line="138" counter="0" hardwareBreakpoint="" isFunctionBreakpoint="false" action="" expression="" group="Breakpoints" type="Breakpoint" state="4" filename="ArmModules.hzp" useHWbreakpoint="false"/>
+  <BreakpointListItem trigger="" line="146" counter="0" hardwareBreakpoint="" isFunctionBreakpoint="false" action="" expression="" group="Breakpoints" type="Breakpoint" state="2" filename="WaterGate/include/main.h" useHWbreakpoint="false"/>
+  <Exceptions set="MemManage;UsageFault_Coprocessor;UsageFault_CheckingError;UsageFault_StateError;BusFault;ExceptionEntryReturnFault;HardFault"/>
  </Breakpoints>
  <ExecutionProfileWindow/>
  <FrameBufferWindow>
   <FrameBufferWindow bufferHeight="-1" addressSpace="" addressText="" bufferWidth="-1"/>
  </FrameBufferWindow>
  <Memory1>
-  <MemoryWindow addressSpace="" dataSize="1" autoEvaluate="0" viewMode="0" addressOrder="0" columnsText="" refreshPeriod="0" name="WaterGate" radix="16" sizeText="" addressText=""/>
+  <MemoryWindow addressSpace="" dataSize="1" autoEvaluate="0" viewMode="0" addressOrder="0" columnsText="" refreshPeriod="0" name="WaterGate" radix="16" sizeText="sizeof httpPayloadPtr" addressText="&amp;httpPayloadPtr"/>
   <MemoryWindow addressSpace="" dataSize="1" autoEvaluate="0" viewMode="0" addressOrder="0" columnsText="" refreshPeriod="0" name="HVAC" radix="16" sizeText="" addressText=""/>
  </Memory1>
  <Memory2>
@@ -29,13 +30,19 @@
   <ProjectSessionItem path="ArmModules;Common"/>
   <ProjectSessionItem path="ArmModules;Common;include"/>
   <ProjectSessionItem path="ArmModules;Common;src"/>
+  <ProjectSessionItem path="ArmModules;FreeRTOS"/>
+  <ProjectSessionItem path="ArmModules;FreeRTOS;include"/>
+  <ProjectSessionItem path="ArmModules;FreeRTOS;include;freeRtosPortability"/>
+  <ProjectSessionItem path="ArmModules;FreeRTOS;src"/>
+  <ProjectSessionItem path="ArmModules;FreeRTOS;src;freeRtosPortability"/>
   <ProjectSessionItem path="ArmModules;WaterGate"/>
   <ProjectSessionItem path="ArmModules;WaterGate;include"/>
   <ProjectSessionItem path="ArmModules;WaterGate;src"/>
+  <ProjectSessionItem path="ArmModules;WaterGate;System Files"/>
   <SourceCodeControlLogin password="DAD884A24F492D397B9E926544848C15" user="john.zehetner@gmail.com"/>
  </Project>
  <Register1>
-  <RegisterWindow visibleNodes="CPU - Current Context/r0;CPU - Current Context/r1;CPU - Current Context/r2;CPU - Current Context/r3;CPU - Current Context/r4;CPU - Current Context/r5;CPU - Current Context/r6;CPU - Current Context/r7;CPU - Current Context/r8;CPU - Current Context/r9;CPU - Current Context/r10;CPU - Current Context/r11;CPU - Current Context/r12;CPU - Current Context/sp(r13);CPU - Current Context/lr(r14);CPU - Current Context/pc(r15);CPU - Current Context/apsr;CPU/r0;CPU/r1;CPU/r2;CPU/r3;CPU/r4;CPU/r5;CPU/r6;CPU/r7;CPU/r8;CPU/r9;CPU/r10;CPU/r11;CPU/r12;CPU/sp(r13);CPU/lr(r14);CPU/pc(r15);CPU/xpsr;CPU/msp;CPU/psp;CPU/cfbp" binaryNodes="" asciiNodes="" openNodes="CPU - Current Context" name="WaterGate" decimalNodes="" octalNodes="" unsignedNodes=""/>
+  <RegisterWindow visibleNodes="CPU - Current Context/r0;CPU - Current Context/r1;CPU - Current Context/r2;CPU - Current Context/r3;CPU - Current Context/r4;CPU - Current Context/r5;CPU - Current Context/r6;CPU - Current Context/r7;CPU - Current Context/r8;CPU - Current Context/r9;CPU - Current Context/r10;CPU - Current Context/r11;CPU - Current Context/r12;CPU - Current Context/sp(r13);CPU - Current Context/lr(r14);CPU - Current Context/pc(r15);CPU - Current Context/apsr" binaryNodes="" asciiNodes="" openNodes="" name="WaterGate" decimalNodes="" octalNodes="" unsignedNodes=""/>
   <RegisterWindow visibleNodes="CPU - Current Context/r0;CPU - Current Context/r1;CPU - Current Context/r2;CPU - Current Context/r3;CPU - Current Context/r4;CPU - Current Context/r5;CPU - Current Context/r6;CPU - Current Context/r7;CPU - Current Context/r8;CPU - Current Context/r9;CPU - Current Context/r10;CPU - Current Context/r11;CPU - Current Context/r12;CPU - Current Context/sp(r13);CPU - Current Context/lr(r14);CPU - Current Context/pc(r15);CPU - Current Context/apsr;CPU/r0;CPU/r1;CPU/r2;CPU/r3;CPU/r4;CPU/r5;CPU/r6;CPU/r7;CPU/r8;CPU/r9;CPU/r10;CPU/r11;CPU/r12;CPU/sp(r13);CPU/lr(r14);CPU/pc(r15);CPU/xpsr;CPU/msp;CPU/psp;CPU/cfbp" binaryNodes="" asciiNodes="" openNodes="CPU - Current Context" name="HVAC" decimalNodes="" octalNodes="" unsignedNodes=""/>
  </Register1>
  <Register2>
@@ -66,11 +73,6 @@
  <Watch4>
   <Watches active="0" update="Never"/>
  </Watch4>
- <Files>
-  <SessionOpenFile windowGroup="DockEditLeft" x="65" y="113" useTextEdit="1" useBinaryEdit="0" left="0" path="WaterGate/src/main.cpp" debugPath="WaterGate/src/main.cpp" selected="0" top="88" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="40" y="1138" useTextEdit="1" useBinaryEdit="0" left="0" path="WaterGate/src/MainTask.cpp" debugPath="WaterGate/src/MainTask.cpp" selected="0" top="1130" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="25" y="5" useTextEdit="1" useBinaryEdit="0" left="0" path="WaterGate/include/MainTask.h" debugPath="WaterGate/include/MainTask.h" selected="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="3" useTextEdit="1" useBinaryEdit="0" left="0" path="WaterGate/CommonConfig.h" debugPath="WaterGate/CommonConfig.h" selected="1" top="0" codecName="Default"/>
- </Files>
- <ARMCrossStudioWindow activeProject="WaterGate" fileDialogDefaultFilter="*.c" autoConnectTarget="Olimex ARM-USB-OCD" buildConfiguration="THUMB Debug" debugSearchFileMap="" fileDialogInitialDirectory="" debugSearchPath="" autoConnectCapabilities="266111"/>
+ <Files/>
+ <ARMCrossStudioWindow activeProject="WaterGate" fileDialogDefaultFilter="*.c" autoConnectTarget="Olimex ARM-USB-OCD" buildConfiguration="THUMB Debug" debugSearchFileMap="../Dependencies/STM32F4/include/core_cmFunc.h&#xa;" fileDialogInitialDirectory="" debugSearchPath="" autoConnectCapabilities="266111"/>
 </session>

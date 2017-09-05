@@ -83,7 +83,7 @@ bool WiFiTransmitterTask::wifiWriteBuffer(Zstring* buffer) {
     xQueueReset(this->transmissionStatusQueue);
     uint8_t cksum = 0;
     for (uint32_t i=0; i<buffer->size(); i++) {
-        while (USART_GetFlagStatus(USART1, USART_FLAG_TXE) == RESET) {taskYIELD()}
+        while (USART_GetFlagStatus(USART1, USART_FLAG_TXE) == RESET) {taskYIELD()}   // common hang point
         char c = buffer->getChar(i);
         if (i > 2) {
             cksum = (cksum + c) & 0xFF;
@@ -102,9 +102,13 @@ bool WiFiTransmitterTask::wifiWriteBuffer(Zstring* buffer) {
     USART_SendData(USART1, (0xff - cksum) & 0xFF);
 
     bool returnValue;
-    if ((xQueueReceive(this->transmissionStatusQueue, &returnValue, 100/portTICK_PERIOD_MS) != pdPASS) || returnValue == false) {
-        //messageList->addMessage("WiFiTransmission failure");
-        return false;
+    if ((xQueueReceive(this->transmissionStatusQueue, &returnValue, 100/portTICK_PERIOD_MS) != pdPASS)) {
+        if (returnValue == false) {
+            messageList->addMessage("WiFiTransmission failure");
+            return false;
+        } else {
+            messageList->addMessage("Potential WiFiTransmission failure (success timeout)");
+        }
     }
     return true;
 }
@@ -200,4 +204,3 @@ Zstring* WiFiTransmitterTask::assembleIpV4TxPacket(HttpPacket* packet) {
 void WiFiTransmitterTask::formatIpAddress(char* buffer, uint32_t address) {
     sprintf(buffer, "%u.%u.%u.%u", (address & 0xff000000)>>24, (address & 0x00ff0000)>>16, (address & 0x0000ff00)>>8, (address & 0x000000ff));
 }
-
