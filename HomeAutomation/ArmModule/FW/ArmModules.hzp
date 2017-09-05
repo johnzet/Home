@@ -213,6 +213,7 @@
     debug_initial_breakpoint=""
     debug_register_definition_file="/Users/johnzet/projects/Home/HomeAutomation/ArmModule/FW/Dependencies/STM32F4/STM32F40x_Peripherals.xml"
     debug_restrict_memory_access="No"
+    debug_threads_script="/Users/johnzet/projects/Home/HomeAutomation/ArmModule/FW/threads.js"
     double_is_float="Yes"
     gcc_all_warnings_command_line_options="-Wall;-Wextra"
     gcc_c_language_standard="gnu11"

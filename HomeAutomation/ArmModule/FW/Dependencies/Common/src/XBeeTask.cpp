@@ -116,6 +116,7 @@ void XBeeTask::irqHandler() {
     
     if( USART_GetITStatus(USART2, USART_IT_RXNE) != RESET) {
         uint8_t c = USART2->DR;
+        USART_ClearITPendingBit(USART2, USART_IT_RXNE);
         BaseType_t xHigherPriorityTaskWoken;
         xQueueSendFromISR(this->usartQueue, &c, &xHigherPriorityTaskWoken);
         if (xHigherPriorityTaskWoken != pdFALSE) {

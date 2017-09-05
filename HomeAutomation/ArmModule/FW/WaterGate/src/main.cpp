@@ -108,7 +108,7 @@ int main(void) {
     initWatchdog();    
     DBGMCU->APB1FZ |= DBGMCU_IWDG_STOP;
  
-    bool unitPass = (watchDogResetFlag == SET) || runUnitTests();
+    bool unitPass = runUnitTests();
 //    testResetHeapState();
 
      NVIC_PriorityGroupConfig( NVIC_PriorityGroup_4 );  //  http://www.freertos.org/RTOS-Cortex-M3-M4.html
@@ -117,13 +117,14 @@ int main(void) {
     clock = new Clock();
     messageList = new MessageList();
  
-    messageList->addMessage("WaterGate firmware Version 0.2");
+    messageList->addMessage("WaterGate firmware Version 0.21");
     char buffer[80];
     sprintf(buffer, "HSI_VALUE = %f MHz", HSI_VALUE/1000000.0);   messageList->addMessage(buffer);
     sprintf(buffer, "SYSCLK = %f MHz", sysclk/1000000.0);   messageList->addMessage(buffer);
     sprintf(buffer, "HCLK = %f MHz", hclk/1000000.0);   messageList->addMessage(buffer);
     sprintf(buffer, "PCLK1 = %f MHz", pclk1/1000000.0);   messageList->addMessage(buffer);
     sprintf(buffer, "PCLK2 = %f MHz", pclk2/1000000.0);   messageList->addMessage(buffer);
+    if (watchDogResetFlag == SET) messageList->addMessage("FIRST RUN FOLLOWING A WATCHDOG RESET");
  
     leds = new LEDs();  
     waterValve = new WaterValve();
@@ -153,30 +154,32 @@ int main(void) {
 
     leds->init();
     leds->allOff();
+    if (watchDogResetFlag == SET) leds->setRedState(true);
     lcd->init();
     waterValve->init();
 
 
-    bool peripheralPass = (watchDogResetFlag == SET) || runPeripheralTests();
+    bool peripheralPass = runPeripheralTests();
     bool postPass = unitPass & peripheralPass;
 
-    if (watchDogResetFlag == RESET) {
+    
 
-        if (postPass) {
-            messageList->addMessage("POST Passed.");
-            leds->setGreenState(true);
-        } else {
-            messageList->addMessage("There were test failures.");
-            messageList->addMessage("HALTED");
-            leds->setRedState(true);
-            while(true) {
-                leds->setRedState(true);  // Any line - Allows a breakpoint top be set.
-            }
+    if (postPass) {
+        messageList->addMessage("POST Passed.");
+        leds->setGreenState(true);
+    } else {
+        messageList->addMessage("There were test failures.");
+        messageList->addMessage("HALTED");
+        leds->setRedState(true);
+        while(true) {
+            leds->setRedState(true);  // Any line - Allows a breakpoint top be set.
         }
     }
+
     
     clock->init();
 
+    // 0 = lowest priority, highest priority is (configMAX_PRIORITIES -1)
     if (postPass) {       
         wiFiReceiverTask->init();
         uint8_t count = 1;

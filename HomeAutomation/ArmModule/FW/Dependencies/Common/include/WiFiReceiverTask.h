@@ -21,6 +21,7 @@
 
 #define NEWLINE "\r\n"
 #define BUFFER_LENGTH 2000
+#define TRANSLATED_NULL 3
 
 extern LEDs* leds;
 extern Clock* clock;
@@ -35,6 +36,7 @@ class WiFiReceiverTask : public TaskClass {
     void init();
     void task();
     void irqHandler();
+    void reassemblePackets(HttpPacket *packet);
 
     // Rx Request
 
@@ -49,8 +51,7 @@ class WiFiReceiverTask : public TaskClass {
 
     // Tx Response
     bool getAtCmdResponsePacket(AtCmdPacket* packet);
-    HttpPacket* getIpv4TxResponsePacket();
-
+    QueueHandle_t getReceivedIpv4PacketQueue();
 
 
 
@@ -61,9 +62,9 @@ class WiFiReceiverTask : public TaskClass {
     QueueHandle_t usartQueue;
     QueueHandle_t httpRequestQueue;
     QueueHandle_t transmissionStatusQueue;
+    QueueHandle_t receivedIpv4PacketQueue;
     char workingBuffer[BUFFER_LENGTH];
     bool httpRequestReceived;
-    bool httpResponseReceived;
     HttpPacket* packet;
     HttpPacket* responsePacket;
     AtCmdPacket* atCmdRxPacket;

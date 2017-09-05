@@ -7,7 +7,6 @@ extern "C" {
 
 WiFiReceiverTask::WiFiReceiverTask(QueueHandle_t httpRequestQueue, QueueHandle_t transmissionStatusQueue) {
     httpRequestReceived = false;
-    httpResponseReceived = false;
     modemHasJoined = false;
     atCmdRxPacket = NULL;
     workingBuffer[0] = NULL;
@@ -18,6 +17,7 @@ WiFiReceiverTask::WiFiReceiverTask(QueueHandle_t httpRequestQueue, QueueHandle_t
 
     packet = NULL;
     responsePacket = NULL;
+    receivedIpv4PacketQueue = xQueueCreate(1, sizeof(HttpPacket));
 }
 
 WiFiReceiverTask::~WiFiReceiverTask() {
@@ -49,8 +49,10 @@ void WiFiReceiverTask::task() {
         }
 
         char c;
-        if (xQueueReceive(this->usartQueue, &c, 10/portTICK_PERIOD_MS) == pdPASS) {
+        if (xQueueReceive(this->usartQueue, &c, 0) == pdPASS) {
             loadPacketByte(c);
+        } else {
+            vTaskDelay(10/portTICK_PERIOD_MS);
         }
 
         if (httpRequestReceived) {
@@ -107,8 +109,9 @@ void WiFiReceiverTask::initWiFiUsart() {
         USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);
 
         NVIC_InitTypeDef NVIC_InitStructure;
+//        NVICPriorityGroupConfig(NVICPriorityGroup4);
         NVIC_InitStructure.NVIC_IRQChannel = USART1_IRQn;
-        NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = configLOWEST_PRIORITY_INTERRUPT;
+        NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = configMIDDLE_PRIORITY_INTERRUPT;
         NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
         NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
         NVIC_Init(&NVIC_InitStructure);        
@@ -129,6 +132,7 @@ void WiFiReceiverTask::irqHandler() {
     
     if( USART_GetITStatus(USART1, USART_IT_RXNE) != RESET) {
         uint8_t c = USART1->DR;
+        USART_ClearITPendingBit(USART1, USART_IT_RXNE);
         BaseType_t xHigherPriorityTaskWoken;
         xQueueSendFromISR(this->usartQueue, &c, &xHigherPriorityTaskWoken);
         if (xHigherPriorityTaskWoken != pdFALSE) {
@@ -258,9 +262,9 @@ void WiFiReceiverTask::loadPacketByte(uint8_t c) {
             } else if (frameType == 0xFE) {
                 leds->setRedState(true);
                 bool success = false;
-                xQueueSend(this->transmissionStatusQueue, &success, 100/portTICK_PERIOD_MS);
+                xQueueSend(this->transmissionStatusQueue, &success, 0);
 
-                // sprintf(buffer, "WiFi: Frame Error\r\n");   // noisy
+                //sprintf(buffer, "WiFi: Frame Error\r\n");   // noisy
                 //messageList->addMessage(buffer);
                 count = 0;
             } else {
@@ -337,11 +341,12 @@ void WiFiReceiverTask::loadIpV4PacketByte(uint8_t c, bool isFirstByte, bool isLa
             break;
         default:
             assert(count-10 < BUFFER_LENGTH && count-11 >= 0);
-            workingBuffer[count-11] = c;
+            workingBuffer[count-11] = c==NULL? TRANSLATED_NULL : c;
             workingBuffer[count-10] = NULL;
             if (isLastByte) {
                 Zstring payload = Zstring();
-                payload.appendS(this->workingBuffer, (uint32_t)(count-11));
+                payload.appendS(this->workingBuffer, (uint32_t)(count-10));
+                assert(payload.size() < 2000);
 
                 HttpPacket* p = new HttpPacket();
                 pvPortSetTypeName(p, "HttpPkW1");
@@ -354,33 +359,63 @@ void WiFiReceiverTask::loadIpV4PacketByte(uint8_t c, bool isFirstByte, bool isLa
                 p->setOptions(options);
                 p->setPayload(&payload);
 
-                if (this->packet != NULL) {
-                    delete this->packet;
-                    this->packet = NULL;
-                }
-                this->packet = p;
+                reassemblePackets(p);
 
-                assert(payload.size() < 2000);
-                char* resource = new char[payload.size()];
-                pvPortSetTypeName(resource, "charArW1");
-                bool isRequest = (sscanf(payload.getStr(), "GET %50s HTTP", resource) > 0);
-                char version;
-                bool isResponse = (sscanf(payload.getStr(), "HTTP/1.%c 200 OK", &version) > 0);
-                if (isRequest) {
-                    httpRequestReceived = true;
-                } else if (isResponse) {
-                    httpResponseReceived = true;
-                    if (this->responsePacket != NULL) {
-                        delete this->responsePacket;
-                        this->responsePacket = NULL;
+                if (this->packet != NULL && this->packet->isComplete()) {
+                    char* resource = new char[this->packet->getPayload()->size()];
+                    pvPortSetTypeName(resource, "charArW1");
+                    bool isRequest = (sscanf(this->packet->getPayload()->getStr(), "GET %50s HTTP", resource) > 0);
+                    char version;
+                    bool isResponse = (sscanf(this->packet->getPayload()->getStr(), "HTTP/1.%c 200 OK", &version) > 0);
+                    if (isRequest) {
+                        httpRequestReceived = true;
+                    } else if (isResponse) {
+                        if (this->responsePacket != NULL) {
+                            delete this->responsePacket;
+                            this->responsePacket = NULL;
+                        }
+                        this->responsePacket = new HttpPacket(this->packet);
+                        pvPortSetTypeName(this->responsePacket, "HttpPkW2");
+                        xQueueSend(this->receivedIpv4PacketQueue, this->responsePacket, 0);
                     }
-                    this->responsePacket = new HttpPacket(this->packet);
-                    pvPortSetTypeName(this->responsePacket, "HttpPkW2");
+                    delete[] resource;
                 }
-                delete[] resource;
                 count = 0;
             }
             break;
+    }
+}
+
+QueueHandle_t WiFiReceiverTask::getReceivedIpv4PacketQueue() {
+    return this->receivedIpv4PacketQueue;
+}
+
+void WiFiReceiverTask::reassemblePackets(HttpPacket *packet) {
+    if (this->packet != NULL && this->packet->isComplete()) {
+        delete this->packet;
+        this->packet = NULL;
+    }
+
+    if (this->packet == NULL) {
+        this->packet = packet;
+    } else {
+        this->packet->getPayload()->appendS(packet->getPayload()->getStr(), packet->getPayload()->size());
+    }
+
+    if (this->packet != NULL) {
+        char *lengthPtr = strstr(this->packet->getPayload()->getStr(), "Content-Length:");
+        uint32_t contentLength = 0;
+        if (lengthPtr != NULL) {
+            lengthPtr += strlen("Content-Length:") + 1;
+            sscanf(lengthPtr, "%u", &contentLength);
+
+            char *httpPayloadPtr = strstr(lengthPtr, "\r\n\r") + 3;
+            if (contentLength <= strlen(httpPayloadPtr)) {
+                this->packet->setComplete(true);
+            }
+        } else {
+            packet->setComplete(true);
+        }
     }
 }
 
@@ -430,7 +465,7 @@ void WiFiReceiverTask::loadAtCmdResponsePacketByte(uint8_t c, bool isFirstByte, 
         count = 0;
         
         bool success = (status == 0);
-        xQueueSend(this->transmissionStatusQueue, &success, 100/portTICK_PERIOD_MS);
+        xQueueSend(this->transmissionStatusQueue, &success, 0);
 
     }
 }
@@ -456,7 +491,8 @@ void WiFiReceiverTask::loadModemStatusPacketByte(uint8_t c, bool isFirstByte, bo
     if (isLastByte) {
 //        this->transmissionStatus = status;
         bool success = (status == 2);
-        xQueueSend(this->transmissionStatusQueue, &success, 100/portTICK_PERIOD_MS);
+        if (status != 2) messageList->addMessage("Bad status from loadModemStatusPacketByte");
+        xQueueSend(this->transmissionStatusQueue, &success, 0);
 
         count = 0;
     }
@@ -482,7 +518,8 @@ void WiFiReceiverTask::loadTransmissionStatusPacketByte(uint8_t c, bool isFirstB
     if (isLastByte) {
         this->modemStatus = status;
         bool success = (status == 0);
-        xQueueSend(this->transmissionStatusQueue, &success, 100/portTICK_PERIOD_MS);
+        if (success == false) messageList->addMessage("Bad status in loadTransmissionStatusPacketByte");
+        xQueueSend(this->transmissionStatusQueue, &success, 0);
         count = 0;
     }
 }
@@ -503,23 +540,15 @@ bool WiFiReceiverTask::getAtCmdResponsePacket(AtCmdPacket* packet) {
     return true;
 }
 
-HttpPacket* WiFiReceiverTask::getIpv4TxResponsePacket() {
-    if (httpResponseReceived) {
-        httpResponseReceived = false;
-        return this->responsePacket;
-    }
-    return NULL;
-}
-
 //  Escape characters
 //  When sending or receiving a UART data frame, specific data values must be escaped (flagged) so they do not interfere
 //  with the data frame sequencing. To escape an interfering data byte, insert 0x7D and follow it with the byte to be
-//  escaped XOR’d with 0x20.
+//  escaped XORd with 0x20.
 //  Data bytes that need to be escaped:
-//  • 0x7E – Frame Delimiter
-//  • 0x7D – Escape
-//  • 0x11 – XON
-//  • 0x13 – XOFF
+//   0x7E  Frame Delimiter
+//   0x7D  Escape
+//   0x11  XON
+//   0x13  XOFF
 //
 //  The packet length is calculated on the raw (un-escaped) bytes.
 //  Likewise, the checksum is calculated on the raw (un-escaped) bytes.
