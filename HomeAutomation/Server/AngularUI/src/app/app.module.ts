@@ -18,6 +18,7 @@ import {ChartsPageComponent} from "./sections/charts-page/charts-page.component"
 import {FeedCardComponent } from './newsReader/feed-card/feed-card.component';
 import {FeedService} from "./newsReader/feed.service";
 import {FeedDeckComponent } from './newsReader/feed-deck/feed-deck.component';
+import {RtgPageComponent} from "./rtg-page/rtg-page.component";
 
 const appRoutes: Routes = [
     {path: 'home', component: HomePageComponent, data: {inMainMenu: true, label: "Home"}},
@@ -75,7 +76,8 @@ const appRoutes: Routes = [
         SensorsPageComponent,
         ChartsPageComponent,
         FeedCardComponent,
-        FeedDeckComponent
+        FeedDeckComponent,
+        RtgPageComponent
     ],
     imports: [
         NgbModule.forRoot(),

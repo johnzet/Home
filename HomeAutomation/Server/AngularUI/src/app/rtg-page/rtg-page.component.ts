@@ -1,4 +1,4 @@
-import {Component, AfterContentInit, ElementRef, ViewEncapsulation, HostListener} from '@angular/core';
+import {Component, AfterViewInit, ElementRef, ViewEncapsulation, HostListener} from '@angular/core';
 import {Router} from '@angular/router';
 import {RealTimeGraphService} from 'assets/javascript/RealTimeGraphController';
 import {RealTimeChart} from 'assets/javascript/RealTimeChart';
@@ -11,15 +11,15 @@ import {RealTimeChart} from 'assets/javascript/RealTimeChart';
     providers: [RealTimeGraphService, RealTimeChart]
 })
 
-export class RtgPageComponent implements AfterContentInit {
+export class RtgPageComponent implements AfterViewInit {
 
     constructor(private router: Router, private elementRef: ElementRef,
                 private rtgService: RealTimeGraphService, private rtg: RealTimeChart) {
     }
 
-    ngAfterContentInit() {
-        let node = this.elementRef.nativeElement;
-        this.rtg.init(this.rtgService, node);
+    ngAfterViewInit() {
+        // let node = this.elementRef.nativeElement;
+        this.rtg.init(this.rtgService, document.getElementById("rtgContainer"));
         this.rtg.loadThenRender();
     }
 

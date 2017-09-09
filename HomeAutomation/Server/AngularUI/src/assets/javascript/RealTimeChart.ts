@@ -398,7 +398,7 @@ export class RealTimeChart {
 
     handleResize(size?: any) {
         if (!this.svg) return;  // resize() was called before render()
-        let svg_main_width = this.domNode.clientWidth;
+        let svg_main_width = this.domNode.clientWidth || 100;
         let svg_main_height = this.domNode.clientHeight || 100;
         if (size) {
             svg_main_width = size.w;
