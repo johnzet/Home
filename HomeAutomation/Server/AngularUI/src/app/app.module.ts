@@ -4,6 +4,7 @@ import {FormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
 import {RouterModule, Routes} from "@angular/router";
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {AppComponent} from "./app.component";
 import {MainComponentComponent} from "./main-component/main-component.component";
@@ -79,6 +80,7 @@ const appRoutes: Routes = [
     imports: [
         NgbModule.forRoot(),
         BrowserModule,
+        BrowserAnimationsModule,
         FormsModule,
         HttpModule,
         RouterModule.forRoot(appRoutes)

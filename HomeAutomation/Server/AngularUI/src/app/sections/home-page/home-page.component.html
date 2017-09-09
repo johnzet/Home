@@ -1,16 +1,54 @@
 
-<br/>
-<span style="display: block !important; width: 320px; text-align: center; font-family: sans-serif; font-size: 12px;"><a href="http://www.wunderground.com/cgi-bin/findweather/getForecast?query=zmw:80524.1.99999&bannertypeclick=wu_clean2day" title="Fort Collins, CO Weather Forecast" target="_blank"><img src="http://weathersticker.wunderground.com/weathersticker/cgi-bin/banner/ban/wxBanner?bannertype=wu_clean2day_metric_cond&airportcode=FNL&ForcedCity=Fort Collins&ForcedState=CO&zip=80524&language=EN" alt="Find more about Weather in Fort Collins, CO" width="300" /></a><br><a href="http://www.wunderground.com/cgi-bin/findweather/getForecast?query=zmw:80524.1.99999&bannertypeclick=wu_clean2day" title="Get latest Weather Forecast updates" style="font-family: sans-serif; font-size: 12px" target="_blank">Click for weather forecast</a></span>
+<ngb-accordion>
+    <ngb-panel>
+        <ng-template ngbPanelTitle>
+            <span> Current Conditions </span>
+        </ng-template>
+        <ng-template ngbPanelContent>
+            <div>
+                Current temp = unknown
+            </div>
+        </ng-template>
+    </ngb-panel>
 
-<br/>
+    <ngb-panel>
+        <ng-template ngbPanelTitle>
+            <span>Weather Underground </span>
+        </ng-template>
+        <ng-template ngbPanelContent>
+            <div>
+                <span style="display: block !important; width: 320px; text-align: center; font-family: sans-serif; font-size: 12px;"><a href="http://www.wunderground.com/cgi-bin/findweather/getForecast?query=zmw:80524.1.99999&bannertypeclick=wu_clean2day" title="Fort Collins, CO Weather Forecast" target="_blank"><img src="http://weathersticker.wunderground.com/weathersticker/cgi-bin/banner/ban/wxBanner?bannertype=wu_clean2day_metric_cond&airportcode=FNL&ForcedCity=Fort Collins&ForcedState=CO&zip=80524&language=EN" alt="Find more about Weather in Fort Collins, CO" width="300" /></a><br><a href="http://www.wunderground.com/cgi-bin/findweather/getForecast?query=zmw:80524.1.99999&bannertypeclick=wu_clean2day" title="Get latest Weather Forecast updates" style="font-family: sans-serif; font-size: 12px" target="_blank">Click for weather forecast</a></span>
+            </div>
+        </ng-template>
+    </ngb-panel>
 
-<a href="https://www.accuweather.com/en/us/fort-collins-co/80524/biking-current-weather/35246_pc" class="aw-widget-legal">
-    <!--
-    By accessing and/or using this code snippet, you agree to AccuWeather’s terms and conditions (in English) which can be found at https://www.accuweather.com/en/free-weather-widgets/terms and AccuWeather’s Privacy Statement (in English) which can be found at https://www.accuweather.com/en/privacy.
-    -->
-</a><div id="awtd1502163872221" class="aw-widget-36hour"  data-locationkey="35246_PC" data-unit="c" data-language="en-us" data-useip="false" data-uid="awtd1502163872221" data-editlocation="true" data-lifestyle="biking"></div>
+    <ngb-panel>
+        <ng-template ngbPanelTitle >
+            <span (click)="loadScript('../assets/javascript/accuweatherLaunch.js')">AccuWeather </span>
+        </ng-template>
+        <ng-template ngbPanelContent >
+            <div >
+                <a href="https://www.accuweather.com/en/us/fort-collins-co/80524/biking-current-weather/35246_pc" class="aw-widget-legal">
+                <!--
+                By accessing and/or using this code snippet, you agree to AccuWeather’s terms and conditions (in English) which can be found at https://www.accuweather.com/en/free-weather-widgets/terms and AccuWeather’s Privacy Statement (in English) which can be found at https://www.accuweather.com/en/privacy.
+                -->
+                </a><div id="awtd1502163872221" class="aw-widget-36hour"  data-locationkey="35246_PC" data-unit="c" data-language="en-us" data-useip="false" data-uid="awtd1502163872221" data-editlocation="true" data-lifestyle="biking"></div>
+            </div>
+        </ng-template>
+    </ngb-panel>
 
-<app-feed-deck ></app-feed-deck>
+    <ngb-panel>
+        <ng-template ngbPanelTitle>
+            <span> News Feeds </span>
+        </ng-template>
+        <ng-template ngbPanelContent>
+            <div >
+                <app-feed-deck ></app-feed-deck>
+            </div>
+        </ng-template>
+    </ngb-panel>
+</ngb-accordion>
+
 
 
 
