@@ -15,7 +15,7 @@ public class Sensor extends AbstractEntity {
         super();
     }
 
-
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false, name = "sensor_type")
     private SensorType sensorType;
 
@@ -28,6 +28,7 @@ public class Sensor extends AbstractEntity {
     @Column(nullable = false, name = "property_name")
     private String propertyName;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false, name = "meas_unit")
     private Unit unit;
 
