@@ -11,6 +11,10 @@ public interface SampleRepository extends JpaRepository<Sample, Long> {
 
     List<Sample> findBySensorId(Long sensorId);
 
-    List<Sample> findBySensorIdAndTimeMsGreaterThanEqual(Long sensorId, Long timeMs);
+    List<Sample> findBySensorIdAndTimeMsGreaterThanEqualOrderByTimeMsAsc(Long sensorId, Long timeMs);
+
+    List<Sample> findBySensorIdAndTimeMsGreaterThanEqualAndTimeMsLessThanEqualOrderByTimeMsAsc(Long sensorId, Long startTime, Long endTime);
+
+    List<Sample> findBySensorIdOrderByTimeMsAsc(Long sensorId);
 
 }

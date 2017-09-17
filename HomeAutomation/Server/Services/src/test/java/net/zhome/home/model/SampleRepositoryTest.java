@@ -48,7 +48,7 @@ public class SampleRepositoryTest {
         sampleRepo.saveAndFlush(s1);
         sampleRepo.saveAndFlush(s2);
         sampleRepo.saveAndFlush(s3);
-        assertEquals(1, sampleRepo.findBySensorIdAndTimeMsGreaterThanEqual(1L, 11L).size());
+        assertEquals(1, sampleRepo.findBySensorIdAndTimeMsGreaterThanEqualOrderByTimeMsAsc(1L, 11L).size());
 
         sampleRepo.deleteAll();
         assertEquals(0, sampleRepo.findBySensorId(1L).size());

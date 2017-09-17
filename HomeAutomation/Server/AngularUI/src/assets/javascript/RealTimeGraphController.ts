@@ -80,6 +80,10 @@ export class RealTimeGraphService {
         });
     }
 
+    reload(startMs?: number, endMs?: number): void {
+        alert("reload: " + startMs + " to " + endMs);
+    }
+
     handleWarning(err: any, caught?: Observable<any>) : ObservableInput<{}> {
         console.log(err);
         return caught;

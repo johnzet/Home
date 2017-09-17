@@ -46,7 +46,8 @@ public class DbUtilsTest {
 
 //    @Test
     public void addDemoData() {
-        long sampleCount = 10000;
+        long sampleCount = 100;
+        long existingCount = sampleRepository.count();
         List<Sensor> sensors = sensorRepository.findAll();
         for (Sensor sensor : sensors) {
             for (int i=0; i<sampleCount; i++) {
@@ -58,7 +59,7 @@ public class DbUtilsTest {
                 sampleRepository.save(sample);
             }
         }
-        assertEquals(sampleCount * sensors.size(), sampleRepository.count());
+        assertTrue((sampleCount * sensors.size() + existingCount) <= sampleRepository.count());
     }
 
 

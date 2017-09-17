@@ -81,3 +81,12 @@
 .RealTimeChart span.dojoxGridRowSelectorStatusText {
     display: none;
 }
+
+.RealTimeChart .lowerButtonPane {
+    fill:           red;
+}
+
+.RealTimeChart .lowerButtonPane button{
+    stroke-width:   2;
+    stroke:         black;
+}

@@ -7,13 +7,12 @@ let d3 = require("assets/javascript/d3");
 export class RealTimeChart {
 
     private rtgService: RealTimeGraphService;
-    private seriesCount: number = 5;
+    private seriesCount: number = 0;
     private labelTable: string[];
     private domNode: HTMLElement;
     private totalDataPointCount: number = 0;
     private dataSet: any;
-    private sensorIds: number[];
-    private sensorIdMaxIndex: number = 0;
+    private sensorIdMap: number[] = null;
     private isLogScale: boolean;
     private svgContainer: HTMLElement;
     private mostRecentDataDate: number;
@@ -68,10 +67,12 @@ export class RealTimeChart {
                 err => that.rtgService.handleError,
                 function() {
                     // load complete
-                    that.render();
-                    that.handleResize();
-                    that.lineSetChanged();
                     that.handleData(dataSet);
+                    that.render();
+                    that.lineSetChanged();
+                    that.handleResize();
+                    that.update();
+                    that.registerAdditionalHandlers();
                 }
             );
     }
@@ -80,9 +81,10 @@ export class RealTimeChart {
         let that = this;
         let metaData = {};
         this.dataSet = [];
-        this.sensorIdMaxIndex = 0;
         if (dataModel) {
+            let metaData = dataModel.metaData;
             let mixedData = dataModel.mixedData;
+            if (metaData) this.initSensorIdMap(metaData);
             if (mixedData) mixedData.forEach(function(lineData) {
 
                 that.setData(
@@ -90,7 +92,21 @@ export class RealTimeChart {
                     lineData.data);
             });
         }
-        this.update();
+    }
+
+    initSensorIdMap(metaData: any) {
+        let that = this;
+        this.sensorIdMap = [];
+        this.seriesCount = 0;
+        this.labelTable = [];
+        let index = 0;
+        metaData.forEach(function(sensorHost: any) {
+            sensorHost.sensors.forEach(function(sensor:any) {
+                that.labelTable[index] = sensorHost.location + " " + sensor.shortName;
+                that.sensorIdMap[sensor.id] = index++;
+                that.seriesCount++;
+            });
+        });
     }
 
     setData(index: number, sensorData: number[]) {
@@ -100,7 +116,7 @@ export class RealTimeChart {
             let point: any = {};
             point.value = dataPoint[1];
             point.date = dataPoint[0];
-            that.mostRecentDataDate = point.date;
+            that.mostRecentDataDate = Math.max(that.mostRecentDataDate, point.date);
             that.dataSet[index].push(point);
             that._accumulateMinAndMaxValues(index, point.value);
         });
@@ -112,13 +128,18 @@ export class RealTimeChart {
         // }
     }
 
+    registerAdditionalHandlers() {
+        let that = this;
+        this.svg.selectAll("rect.background")
+            .on("onkeypress", function() {console.log("that.rtgService.reload");})
+        ;
+        this.svg.selectAll("rect.extent")
+            .on("click", function() {let ext = that.brush.extent(); that.rtgService.reload(ext[0], ext[1])})
+        ;
+    }
+
     _getIndexFromSensorId(sensorId: number) {
-        if (!this.sensorIds) this.sensorIds = [];
-        if (!this.sensorIdMaxIndex) this.sensorIdMaxIndex = 0;
-        if (!this.sensorIds[sensorId]) {
-            this.sensorIds[sensorId] = this.sensorIdMaxIndex++;
-        }
-        return this.sensorIds[sensorId];
+        return this.sensorIdMap[sensorId];
     }
 
     _accumulateMinAndMaxValues(index, value) {
@@ -153,7 +174,6 @@ export class RealTimeChart {
     }
 
     _getBinSize(narrowedDataSet, isFocusChart) {
-
         let binSize = 1;
         if (!narrowedDataSet) return binSize;
 
@@ -332,10 +352,23 @@ export class RealTimeChart {
         context.append("g")
             .attr("class", "x2 x axis");
 
-        this.color = d3.scale.category10()
+        this.color = d3.scale.category20()
             .domain([0, this.seriesCount]);
 
+        let lowerButtonPane = svg.append("g")
+            .attr("class", "lowerButtonPane")
+            .attr("fill", "#f00")
+        ;
 
+
+        lowerButtonPane.append("rect")
+             .attr("class", "button")
+            .attr("fill", "#f00")
+            .attr("stroke", "#000")
+            .attr("width", 100)
+            .attr("height", 20)
+            // .text("All Time")
+        ;
     }
 
     lineSetChanged() {
@@ -375,12 +408,12 @@ export class RealTimeChart {
             .attr("x", 15)
             .attr("y", 10.5)
             .text(function (d) {
-                return d.label;
+                return d;
             });
 
         this.legend.selectAll('.series')
-            .data(labels, function (d) {
-                return d.label;
+            .data(labels, function (d,i) {
+                return i;
             })
             .exit()
             .remove();
@@ -425,7 +458,7 @@ export class RealTimeChart {
         let labels = this.getLabels();
         if (!labels) return;
 
-        let maxLabelWidth = 50;  //this._getWidestLabelWidth(labels);
+        let maxLabelWidth = this._getWidestLabelWidth(labels);
         this.legend.selectAll('.series.legend')
             .data(labels)
             .attr("transform", function (d, i) {
@@ -537,6 +570,15 @@ export class RealTimeChart {
 
         this.clipMouseOvers();
 
+        // this.svg.selectAll(".lowerButtonPane button")
+        //     .attr("fill", "#f00")
+        //     .attr("width", 100)
+        //     .attr("height", 20)
+        // ;
+
+        this.svg.selectAll(".lowerButtonPane")
+            .attr("transform", "translate(" + margin2.left + ", " + ( 50) + ")")
+        ;
     }
 
     resize(size) {
@@ -571,15 +613,15 @@ export class RealTimeChart {
     }
 
     hoverSeriesMouseover() {
-
+console.log("hover mouse over");
     }
 
     hoverSeriesMouseout() {
-
+console.log("hover mouse out");
     }
 
     getLabels() {
-        return ["1", "2", "3", "4", "5", "6"]; //this.labelTable;
+        return this.labelTable;
     }
 
     brushStart() {
@@ -893,7 +935,7 @@ export class RealTimeChart {
         return data;
     }
 
-    _getPointClosest(series, timePos, timeGranularity, yPos, valueGranularity) {
+    _getPointClosest(series, timePos, timeGranularity, yPos, valueGranularity, key) {
         if (!series || series.length < 2) return null;
 
         let closestIndex = this._search(series, timePos);
@@ -905,6 +947,8 @@ export class RealTimeChart {
         if (Math.abs(closestPoint.date - timePos) > timeGranularity) return null;
 
         if (Math.abs(closestPoint.value - yPos) > valueGranularity) return null;
+
+        closestPoint.key = key;
 
         return closestPoint;
     }
@@ -983,7 +1027,7 @@ export class RealTimeChart {
                 extents[1] = Math.max(extents[1] || last, last);
             }
         }
-        let now: number = new Date().getTime();
+        let now: number = Math.max(new Date().getTime(), this.mostRecentDataDate);
         extents[0] = extents[0] || now;
         extents[1] = extents[1] || now;
         if (extents[0] == extents[1]) extents[0] = extents[1] - 15 * 1000;
@@ -1040,7 +1084,7 @@ export class RealTimeChart {
         for (let index: number = 0; index < this.seriesCount; index++) {
             let series = this.dataSet[index];
 
-            let closestPoint = this._getPointClosest(series, timePos, timeGranularity, yPos, valueGranularity);
+            let closestPoint = this._getPointClosest(series, timePos, timeGranularity, yPos, valueGranularity, index);
 
             if (closestPoint) {
                 dataPoints.push({
@@ -1205,17 +1249,17 @@ export class RealTimeChart {
         return retVal;
     }
 
-    // _getWidestLabelWidth(labels: string[]) {
-    //     let that = this;
-    //     let width = 0;
-    //
-    //     if (labels) labels.forEach(function (label) {
-    //         let bb = that._getTextBoundingBox(label, null);
-    //
-    //         width = Math.max(width, bb.width);
-    //     });
-    //     return width;
-    // }
+    _getWidestLabelWidth(labels: string[]) {
+        let that = this;
+        let width = 0;
+
+        if (labels) labels.forEach(function (label) {
+            let bb = that._getTextBoundingBox(label, null);
+
+            width = Math.max(width, bb.width);
+        });
+        return width;
+    }
 
     _getTextBoundingBox(str, optCssClass) {
         if (!this.svg) return 0;
