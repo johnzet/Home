@@ -11,6 +11,7 @@ import net.zhome.home.util.ZLogger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -49,6 +50,11 @@ public class SensorDataService {
         return getSensorDataCommon(sensorId, range);
     }
 
+    @RequestMapping(value = "/data/current", method = RequestMethod.GET, produces = "application/json")
+    public String getCurrentSensorData() {
+        return getSensorDataCurrent();
+    }
+
     @RequestMapping(value = "/data", method = RequestMethod.GET, produces = "text/html")
     public String getSensorDataUsage() {
         StringBuilder sb = new StringBuilder();
@@ -56,6 +62,7 @@ public class SensorDataService {
         sb.append("Usage: <br/><ul>");
         sb.append("<li>~/data (This usage statement)</li>");
         sb.append("<li>~/data/sensorId?range=&lt;time range&gt;</li>");
+        sb.append("<li>~/data/current</li>");
         sb.append("<li>&nbsp;&nbsp;range = all | &lt;start ms&gt;,&lt;end ms&gt; | &lt;n milliseconds ago&gt;</li>");
         sb.append("</ul>");
         sb.append("</body></html>");
@@ -90,6 +97,35 @@ public class SensorDataService {
             sb.append("]");
         }
         sb.append("]}");
+        return sb.toString();
+    }
+
+    private String getSensorDataCurrent() {
+        List<Sample> samples = sampleRepository.findByGreatestTimeMs();
+
+        ObjectMapper mapper = new ObjectMapper();
+        StringBuilder sb = new StringBuilder();
+        Long timeNow = new Date().getTime();
+
+        sb.append("[");
+        boolean first = true;
+        for (Sample sample : samples) {
+            if (!first) {
+                sb.append(",");
+            } else {
+                first = false;
+            }
+
+            if (Math.abs(timeNow - sample.getTimeMs()) < (10 * 60 * 1000)) {
+                try {
+                    sb.append(mapper.writeValueAsString(sample));
+                } catch (JsonProcessingException e) {
+                    log.error("json conversion exception", e);
+                }
+            }
+        }
+        sb.append("]");
+
         return sb.toString();
     }
 }

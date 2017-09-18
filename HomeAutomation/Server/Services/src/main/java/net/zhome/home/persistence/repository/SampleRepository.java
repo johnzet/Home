@@ -17,4 +17,6 @@ public interface SampleRepository extends JpaRepository<Sample, Long> {
 
     List<Sample> findBySensorIdOrderByTimeMsAsc(Long sensorId);
 
+    List<Sample> findByGreatestTimeMs();
+
 }
