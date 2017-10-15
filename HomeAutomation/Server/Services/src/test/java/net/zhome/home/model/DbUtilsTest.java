@@ -7,6 +7,8 @@ import net.zhome.home.persistence.model.SensorHost;
 import net.zhome.home.persistence.repository.SampleRepository;
 import net.zhome.home.persistence.repository.SensorHostRepository;
 import net.zhome.home.persistence.repository.SensorRepository;
+import org.junit.Ignore;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,6 +22,7 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+@Ignore
 @Component
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes= HouseServerApplication.class)
@@ -38,13 +41,13 @@ public class DbUtilsTest {
     public DbUtilsTest() {
     }
 
-//    @Test
+    @Test
     public void eraseAndInitDb() {   //   ERASES the db
         eraseTheDb();
         addSensors();
     }
 
-//    @Test
+    @Test
     public void addDemoData() {
         long sampleCount = 100;
         long existingCount = sampleRepository.count();
@@ -70,7 +73,7 @@ public class DbUtilsTest {
 
         assertEquals(0, sensorHostRepository.findAll().size());
         assertEquals(0, sensorRepository.findAll().size());
-        assertEquals(0, sampleRepository.findAll().size());
+        assertEquals(0, sampleRepository.count());
 
     }
 

@@ -1,6 +1,7 @@
 package net.zhome.home.application;
 
 import net.zhome.home.job.sensorPoller.SensorPollerManager;
+import net.zhome.home.persistence.repository.impl.SampleRepositoryCustomImpl;
 import net.zhome.home.persistence.repository.PersistenceJPAConfig;
 import net.zhome.home.util.ZLogger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication
 //@EnableAutoConfiguration
 @EntityScan(basePackages =            {"net.zhome.home.persistence.model"} )
-@EnableJpaRepositories(basePackages = {"net.zhome.home.persistence.repository"})
+@EnableJpaRepositories(basePackages = {"net.zhome.home.persistence.repository"}, repositoryBaseClass = SampleRepositoryCustomImpl.class)
 @ComponentScan(basePackages =         {"net.zhome.home.service", "net.zhome.home.job.sensorPoller"})
 @Import(PersistenceJPAConfig.class)
 public class HouseServerApplication extends SpringBootServletInitializer {
@@ -31,7 +32,6 @@ public class HouseServerApplication extends SpringBootServletInitializer {
         this.sensorPollerManager = sensorPollerManager;
         this.sensorPollerManager.start();
     }
-
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {

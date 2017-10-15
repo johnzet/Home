@@ -1,17 +1,18 @@
 package net.zhome.home.service;
 
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import net.zhome.home.persistence.model.Sample;
 import net.zhome.home.persistence.model.SensorHost;
 import net.zhome.home.persistence.repository.SampleRepository;
 import net.zhome.home.persistence.repository.SensorHostRepository;
 import net.zhome.home.util.ZLogger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -32,27 +33,20 @@ public class SensorDataService {
     }
 
     @RequestMapping(value = "/list", method = RequestMethod.GET, produces = "application/json")
-    public String getSensorList() {
-
-        ObjectMapper mapper = new ObjectMapper();
+    public ResponseEntity<List<SensorHost>> getSensorList() {
         List<SensorHost> sensorHosts = sensorHostRepository.findAll();
 
-        try {
-            return mapper.writeValueAsString(sensorHosts);
-        } catch (JsonProcessingException e) {
-            log.error("json conversion exception", e);
-        }
-        return "{}";
+        return getResponseEntity(sensorHosts);
     }
 
     @RequestMapping(value = "/data/{sensorId}", method = RequestMethod.GET, produces = "application/json")
-    public String getSensorData(@PathVariable("sensorId") long sensorId, @RequestParam("range") String range) {
+    public ResponseEntity<ConciseSensorData> getSensorData(@PathVariable("sensorId") long sensorId, @RequestParam("range") String range) {
         return getSensorDataCommon(sensorId, range);
     }
 
     @RequestMapping(value = "/data/current", method = RequestMethod.GET, produces = "application/json")
-    public String getCurrentSensorData() {
-        return getSensorDataCurrent();
+    public ResponseEntity<List<Sample>> getCurrentSensorData() {
+        return null; //getResponseEntity(sampleRepository.findCurrentSamples());
     }
 
     @RequestMapping(value = "/data", method = RequestMethod.GET, produces = "text/html")
@@ -69,7 +63,7 @@ public class SensorDataService {
         return sb.toString();
     }
 
-    private String getSensorDataCommon(long sensorId, String range) {
+    private ResponseEntity<ConciseSensorData> getSensorDataCommon(long sensorId, String range) {
         List<Sample> samples;
         if (range == null || range.trim().length() == 0 || "all".equals(range.trim().toLowerCase())) {
             samples = sampleRepository.findBySensorIdOrderByTimeMsAsc(sensorId);
@@ -80,52 +74,55 @@ public class SensorDataService {
             samples = sampleRepository.findBySensorIdAndTimeMsGreaterThanEqualOrderByTimeMsAsc(sensorId, Long.parseLong(range));
         }
 
-        StringBuilder sb = new StringBuilder(4096);
-        sb.append("{\"sensorId\": ").append(sensorId);
-        sb.append(", \"data\": [");
-        boolean first = true;
-        for (Sample sample : samples) {
-            if (!first) {
-                sb.append(",");
-            } else {
-                first = false;
-            }
-            sb.append("[");
-            sb.append(sample.getTimeMs());
-            sb.append(",");
-            sb.append(sample.getSensedValue());
-            sb.append("]");
-        }
-        sb.append("]}");
-        return sb.toString();
+        ConciseSensorData data = new ConciseSensorData(samples);
+        return getResponseEntity(data);
     }
 
-    private String getSensorDataCurrent() {
-        List<Sample> samples = sampleRepository.findByGreatestTimeMs();
+    private <T> ResponseEntity<T> getResponseEntity(T entity) {
+        HttpHeaders headers = new HttpHeaders();
+        return new ResponseEntity<>(entity, headers, HttpStatus.OK);
+    }
 
-        ObjectMapper mapper = new ObjectMapper();
-        StringBuilder sb = new StringBuilder();
-        Long timeNow = new Date().getTime();
+    private class ConciseSensorData {
+        private Long sensorId;
+        private List<ConciseSample> samples;
 
-        sb.append("[");
-        boolean first = true;
-        for (Sample sample : samples) {
-            if (!first) {
-                sb.append(",");
+        ConciseSensorData(final List<Sample> samples) {
+            this.samples = new ArrayList<>();
+            if (samples == null || samples.size() <= 0) {
+                this.sensorId = -1L;
             } else {
-                first = false;
-            }
-
-            if (Math.abs(timeNow - sample.getTimeMs()) < (10 * 60 * 1000)) {
-                try {
-                    sb.append(mapper.writeValueAsString(sample));
-                } catch (JsonProcessingException e) {
-                    log.error("json conversion exception", e);
+                this.sensorId = samples.get(0).getSensorId();
+                for (Sample s : samples) {
+                    this.samples.add(new ConciseSample(s));
                 }
             }
         }
-        sb.append("]");
 
-        return sb.toString();
+        public Long getSensorId() {
+            return sensorId;
+        }
+
+        public List<ConciseSample> getSamples() {
+            return samples;
+        }
+    }
+
+    private class ConciseSample {
+        private Long t;
+        private Float v;
+
+        ConciseSample(Sample s) {
+            this.t = s.getTimeMs();
+            this.v = s.getSensedValue();
+        }
+
+        public Long getT() {
+            return t;
+        }
+
+        public Float getV() {
+            return v;
+        }
     }
 }

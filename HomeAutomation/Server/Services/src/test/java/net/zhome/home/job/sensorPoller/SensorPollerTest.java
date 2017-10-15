@@ -1,7 +1,6 @@
 package net.zhome.home.job.sensorPoller;
 
 import net.zhome.home.application.HouseServerApplication;
-import net.zhome.home.persistence.model.Sample;
 import net.zhome.home.persistence.model.Sensor;
 import net.zhome.home.persistence.model.SensorHost;
 import net.zhome.home.persistence.repository.SampleRepository;
@@ -15,7 +14,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
@@ -64,9 +62,9 @@ public class SensorPollerTest {
 //        host = sensorHostRepo.findOne(host.getId());
         poller.loop(host);
 
-        List<Sample> samples = sampleRepo.findAll();
+        long sampleCount = sampleRepo.count();
 
-        assertEquals(2, samples.size());
+        assertEquals(2, sampleCount);
 
         sensorHostRepo.deleteAll();
         sensorRepo.deleteAll();

@@ -30,8 +30,8 @@ public class SampleRepositoryTest {
     public void SampleCrDeTest() throws Exception {
         Sample s1 = new Sample(1L, 10L, 12.3F);
         Sample s2 = new Sample(1L, 11L, 12.3F);
-        sampleRepo.saveAndFlush(s1);
-        sampleRepo.saveAndFlush(s2);
+        sampleRepo.save(s1);
+        sampleRepo.save(s2);
         assertEquals(2, sampleRepo.findBySensorId(1L).size());
 
         sampleRepo.delete(s2);
@@ -45,9 +45,9 @@ public class SampleRepositoryTest {
         Sample s1 = new Sample(1, 10L, 12.3F);
         Sample s2 = new Sample(1, 11L, 12.3F);
         Sample s3 = new Sample(2, 11L, 12.3F);
-        sampleRepo.saveAndFlush(s1);
-        sampleRepo.saveAndFlush(s2);
-        sampleRepo.saveAndFlush(s3);
+        sampleRepo.save(s1);
+        sampleRepo.save(s2);
+        sampleRepo.save(s3);
         assertEquals(1, sampleRepo.findBySensorIdAndTimeMsGreaterThanEqualOrderByTimeMsAsc(1L, 11L).size());
 
         sampleRepo.deleteAll();
@@ -69,7 +69,7 @@ public class SampleRepositoryTest {
             }
             sampleRepo.save(samples);
         }
-        sampleRepo.flush();
+//        sampleRepo.flush();
         assertEquals(count, sampleRepo.findBySensorId(1L).size());
         sampleRepo.deleteAll();
         assertEquals(0, sampleRepo.findBySensorId(1L).size());
@@ -77,5 +77,6 @@ public class SampleRepositoryTest {
         long end = new Date().getTime();
         System.out.println("Test duration = " + (end-start)/1000 + " Seconds");
     }
+
 
 }

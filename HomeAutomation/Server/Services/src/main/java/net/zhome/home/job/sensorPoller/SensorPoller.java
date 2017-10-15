@@ -59,7 +59,7 @@ public class SensorPoller extends Thread {
     public void run() {
         while(!stop) {
             try {
-                SensorHost sensorHost = sensorHostRepository.findOne(sensorHostId);
+                SensorHost sensorHost = sensorHostRepository.getOne(sensorHostId);
                 Thread.sleep(1000 * sensorHost.getIntervalS());
 
                 loop(sensorHost);
@@ -97,7 +97,7 @@ public class SensorPoller extends Thread {
             sample.setTimeMs(nowMs);
             sample.setSensedValue(value);
 
-            sampleRepository.saveAndFlush(sample);
+            sampleRepository.save(sample);
         }
     }
 
