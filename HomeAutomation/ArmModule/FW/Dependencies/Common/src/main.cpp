@@ -179,7 +179,9 @@ int main(void) {
         uint8_t specializedTaskCount = getSpecializedTaskCount();
         TaskClass** specializedTasks = getSpecializedTasks(httpRequestQueue, wiFiReceiverTask, wiFiTransmitterTask);
 
-        TaskClass* tasks[count + specializedTaskCount] = {wiFiReceiverTask, wiFiTransmitterTask};
+        TaskClass* tasks[count + specializedTaskCount];
+        tasks[0] = wiFiReceiverTask;
+        tasks[1] = wiFiTransmitterTask;
         for (int i=0; i<specializedTaskCount; i++) {
             tasks[count+i] = specializedTasks[i];
         }
