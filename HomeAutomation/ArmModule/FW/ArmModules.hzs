@@ -3,7 +3,6 @@
  <Bookmarks/>
  <Breakpoints groups="Breakpoints" active_group="Breakpoints">
   <BreakpointListItem trigger="" line="146" counter="0" hardwareBreakpoint="" isFunctionBreakpoint="false" action="" expression="" group="Breakpoints" type="Breakpoint" state="2" filename="WaterGate/include/main.h" useHWbreakpoint="false"/>
-  <Exceptions set="MemManage;UsageFault_Coprocessor;UsageFault_CheckingError;UsageFault_StateError;BusFault;ExceptionEntryReturnFault;HardFault"/>
  </Breakpoints>
  <ExecutionProfileWindow/>
  <FrameBufferWindow>
@@ -30,16 +29,13 @@
   <ProjectSessionItem path="ArmModules;Common"/>
   <ProjectSessionItem path="ArmModules;Common;include"/>
   <ProjectSessionItem path="ArmModules;Common;src"/>
-  <ProjectSessionItem path="ArmModules;FreeRTOS"/>
-  <ProjectSessionItem path="ArmModules;FreeRTOS;include"/>
-  <ProjectSessionItem path="ArmModules;FreeRTOS;include;freeRtosPortability"/>
-  <ProjectSessionItem path="ArmModules;FreeRTOS;src"/>
-  <ProjectSessionItem path="ArmModules;FreeRTOS;src;freeRtosPortability"/>
+  <ProjectSessionItem path="ArmModules;STM32F4"/>
+  <ProjectSessionItem path="ArmModules;STM32F4;include"/>
   <ProjectSessionItem path="ArmModules;WaterGate"/>
   <ProjectSessionItem path="ArmModules;WaterGate;include"/>
   <ProjectSessionItem path="ArmModules;WaterGate;src"/>
   <ProjectSessionItem path="ArmModules;WaterGate;System Files"/>
-  <SourceCodeControlLogin password="DAD884A24F492D397B9E926544848C15" user="john.zehetner@gmail.com"/>
+  <SourceCodeControlLogin password="7E8F884252C1CA937B9E926544848C15" user="john.zehetner@gmail.com"/>
  </Project>
  <Register1>
   <RegisterWindow visibleNodes="CPU - Current Context/r0;CPU - Current Context/r1;CPU - Current Context/r2;CPU - Current Context/r3;CPU - Current Context/r4;CPU - Current Context/r5;CPU - Current Context/r6;CPU - Current Context/r7;CPU - Current Context/r8;CPU - Current Context/r9;CPU - Current Context/r10;CPU - Current Context/r11;CPU - Current Context/r12;CPU - Current Context/sp(r13);CPU - Current Context/lr(r14);CPU - Current Context/pc(r15);CPU - Current Context/apsr" binaryNodes="" asciiNodes="" openNodes="" name="WaterGate" decimalNodes="" octalNodes="" unsignedNodes=""/>
@@ -73,6 +69,18 @@
  <Watch4>
   <Watches active="0" update="Never"/>
  </Watch4>
- <Files/>
+ <Files>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="50" useTextEdit="1" useBinaryEdit="0" left="0" path="Dependencies/Common/src/HttpServerTask.cpp" debugPath="Dependencies/Common/src/HttpServerTask.cpp" selected="0" top="29" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="16" useTextEdit="1" useBinaryEdit="0" left="0" path="Dependencies/Common/src/MainTask.cpp" debugPath="Dependencies/Common/src/MainTask.cpp" selected="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="49" useTextEdit="1" useBinaryEdit="0" left="0" path="Dependencies/Common/include/MainTask.h" debugPath="Dependencies/Common/include/MainTask.h" selected="0" top="41" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="32" useTextEdit="1" useBinaryEdit="0" left="0" path="Dependencies/Common/include/HttpServerTask.h" debugPath="Dependencies/Common/include/HttpServerTask.h" selected="0" top="5" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="4" useTextEdit="1" useBinaryEdit="0" left="0" path="WaterGate/src/WaterGateMain.cpp" debugPath="WaterGate/src/WaterGateMain.cpp" selected="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="34" useTextEdit="1" useBinaryEdit="0" left="0" path="WaterGate/src/WaterGateMainTask.cpp" debugPath="WaterGate/src/WaterGateMainTask.cpp" selected="1" top="22" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="4" useTextEdit="1" useBinaryEdit="0" left="0" path="Dependencies/Common/include/CommonConfig.h" debugPath="Dependencies/Common/include/CommonConfig.h" selected="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="517" useTextEdit="1" useBinaryEdit="0" left="0" path="Dependencies/Common/src/WiFiReceiverTask.cpp" debugPath="Dependencies/Common/src/WiFiReceiverTask.cpp" selected="0" top="496" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="125" useTextEdit="1" useBinaryEdit="0" left="0" path="Dependencies/Common/include/main.h" debugPath="Dependencies/Common/include/main.h" selected="0" top="119" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="41" useTextEdit="1" useBinaryEdit="0" left="0" path="Dependencies/Common/src/main.cpp" debugPath="Dependencies/Common/src/main.cpp" selected="0" top="29" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="16" useTextEdit="1" useBinaryEdit="0" left="0" path="Dependencies/Common/src/MessageList.cpp" debugPath="Dependencies/Common/src/MessageList.cpp" selected="0" top="0" codecName="Default"/>
+ </Files>
  <ARMCrossStudioWindow activeProject="WaterGate" fileDialogDefaultFilter="*.c" autoConnectTarget="Olimex ARM-USB-OCD" buildConfiguration="THUMB Debug" debugSearchFileMap="../Dependencies/STM32F4/include/core_cmFunc.h&#xa;" fileDialogInitialDirectory="" debugSearchPath="" autoConnectCapabilities="266111"/>
 </session>
