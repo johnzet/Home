@@ -5,6 +5,12 @@ import {HttpModule} from "@angular/http";
 import {RouterModule, Routes} from "@angular/router";
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
+    MatIconModule
+} from '@angular/material';
 
 import {AppComponent} from "./app.component";
 import {MainComponentComponent} from "./main-component/main-component.component";
@@ -83,6 +89,12 @@ const appRoutes: Routes = [
         NgbModule.forRoot(),
         BrowserModule,
         BrowserAnimationsModule,
+
+        MatToolbarModule,
+        MatSidenavModule,
+        MatListModule,
+        MatIconModule,
+
         FormsModule,
         HttpModule,
         RouterModule.forRoot(appRoutes)
