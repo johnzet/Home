@@ -1,7 +1,5 @@
 package net.zhome.home.persistence.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 
 @Entity
@@ -35,7 +33,6 @@ public class Sensor extends AbstractEntity {
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(nullable = false, name = "sensor_host")
 //    @Column(nullable = false, name = "sensor_host")
-    @JsonIgnore
     private SensorHost sensorHost;
 
     public SensorHost getSensorHost() {

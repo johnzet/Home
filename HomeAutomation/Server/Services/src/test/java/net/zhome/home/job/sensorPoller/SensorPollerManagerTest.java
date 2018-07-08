@@ -5,10 +5,11 @@ import net.zhome.home.persistence.model.SensorHost;
 import net.zhome.home.persistence.repository.SensorHostRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.stereotype.Component;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import javax.inject.Inject;
 
 import static org.junit.Assert.assertEquals;
 
@@ -17,7 +18,7 @@ import static org.junit.Assert.assertEquals;
 @SpringBootTest(classes= HouseServerApplication.class)
 public class SensorPollerManagerTest {
 
-    @Autowired
+    @Inject
     private
     SensorHostRepository sensorHostRepo;
 

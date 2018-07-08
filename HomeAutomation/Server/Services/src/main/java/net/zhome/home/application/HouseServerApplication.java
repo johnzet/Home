@@ -1,55 +1,41 @@
 package net.zhome.home.application;
 
 import net.zhome.home.job.sensorPoller.SensorPollerManager;
-import net.zhome.home.persistence.repository.PersistenceJPAConfig;
 import net.zhome.home.util.ZLogger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.web.support.SpringBootServletInitializer;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Import;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@SpringBootApplication
-//@EnableAutoConfiguration
-@EntityScan(basePackages =            {"net.zhome.home.persistence.model"} )
-@EnableJpaRepositories(basePackages = {"net.zhome.home.persistence.repository"})
-@ComponentScan(basePackages =         {"net.zhome.home.service", "net.zhome.home.job.sensorPoller"})
-@Import(PersistenceJPAConfig.class)
-public class HouseServerApplication extends SpringBootServletInitializer {
+import javax.inject.Inject;
+import javax.ws.rs.ApplicationPath;
+import javax.ws.rs.core.Application;
+import java.util.Map;
+import java.util.Set;
+
+@ApplicationPath("/resource")
+public class HouseServerApplication extends Application {
     private final ZLogger log = ZLogger.getLogger(this.getClass());
 
+    @Inject
     private SensorPollerManager sensorPollerManager;
 
-    @Autowired
-    public void setSensorPollerMnaager(SensorPollerManager sensorPollerManager) {
-        this.sensorPollerManager = sensorPollerManager;
-        this.sensorPollerManager.start();
+    public HouseServerApplication() {
+        super();
+        createDirectories();
     }
-
 
     @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(HouseServerApplication.class);
+    public Map<String, Object> getProperties() {
+        return super.getProperties();
     }
 
-    public static void main(String[] args) throws Exception {
-        ZLogger log = ZLogger.getLogger(HouseServerApplication.class);
-        if (! createDirectories()) {
-            log.error("Fatal error - exiting");
-            System.exit(1);
-        }
+    @Override
+    public Set<Object> getSingletons() {
+        Set<Object> singletons = super.getSingletons();
 
-        ApplicationContext ctx = new AnnotationConfigApplicationContext(PersistenceJPAConfig.class);
-        SpringApplication.run(HouseServerApplication.class, args);
+        sensorPollerManager.start();
+
+        return singletons;
     }
 
-    private static boolean createDirectories() {
+    private void createDirectories() {
         try {
             java.io.File logDir = new java.io.File("/var/HouseServer/log");
             logDir.mkdirs();
@@ -57,9 +43,7 @@ public class HouseServerApplication extends SpringBootServletInitializer {
         catch (Throwable t) {
             ZLogger log = ZLogger.getLogger(HouseServerApplication.class);
             log.error("Failed to create log directory", t);
-            return false;
         }
-        return true;
     }
 
 }

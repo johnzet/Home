@@ -7,51 +7,52 @@ import net.zhome.home.persistence.repository.SampleRepository;
 import net.zhome.home.persistence.repository.SensorHostRepository;
 import net.zhome.home.persistence.repository.SensorRepository;
 import net.zhome.home.util.ZLogger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
+import javax.ejb.Local;
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-@Component
+@Local
+@ApplicationScoped
 public class SensorPoller extends Thread {
     private final ZLogger log = ZLogger.getLogger(this.getClass());
 
     private long sensorHostId;
     private boolean stop = false;
-    private SensorHostRepository sensorHostRepository;
-    private SensorRepository sensorRepository;
-    private SampleRepository sampleRepository;
+
     private SensorHostInterface sensorHostInterface;
+    private SampleRepository sampleRepository;
 
-    public SensorPoller() {}
+    @Inject
+    private SensorHostRepository sensorHostRepository;
 
-    public SensorPoller(String name, long sensorHostId) {
-        this.sensorHostId = sensorHostId;
-    }
+    @Inject
+    private SensorRepository sensorRepository;
 
-    @Autowired
-    public void setSensorHostRepository(SensorHostRepository sensorHostRepository) {
-        this.sensorHostRepository = sensorHostRepository;
-    }
 
-    @Autowired
-    public void setSensorRepository(SensorRepository sensorRepository) {
-        this.sensorRepository = sensorRepository;
-    }
 
-    @Autowired
-    public void setSampleRepository(SampleRepository sampleRepository) {
-        this.sampleRepository = sampleRepository;
-    }
-
-    @Autowired
-    public void setSensorHostInterface(SensorHostInterface sensorHostInterface) {
+    @Inject
+    void setSensorHostInterface(SensorHostInterface sensorHostInterface) {
         this.sensorHostInterface = sensorHostInterface;
     }
 
-    public void setStop() {
+    @Inject
+    void setSampleRepository(SampleRepository sampleRepo) {
+        this.sampleRepository = sampleRepo;
+    }
+
+
+    public SensorPoller() {}
+
+    SensorPoller(String name, long sensorHostId) {
+        this.sensorHostId = sensorHostId;
+    }
+
+
+    void setStop() {
         stop = true;
     }
 

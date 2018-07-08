@@ -3,29 +3,32 @@ package net.zhome.home.job.sensorPoller;
 import net.zhome.home.persistence.model.SensorHost;
 import net.zhome.home.persistence.repository.SensorHostRepository;
 import net.zhome.home.util.ZLogger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
-import org.springframework.stereotype.Component;
 
+import javax.ejb.Local;
+import javax.ejb.Singleton;
+import javax.ejb.Stateful;
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Component
+@Local
+@Singleton
+@ApplicationScoped
+@Stateful
 public class SensorPollerManager extends Thread {
     private final ZLogger log = ZLogger.getLogger(this.getClass());
     private Map<Long, SensorPoller> polledSensors = new HashMap<>();
     private boolean stop = false;
+
     private SensorHostRepository sensorHostRepository;
 
-    @Autowired
-    public void setSensorHostRepository(SensorHostRepository sensorHostRepository) {
-        this.sensorHostRepository = sensorHostRepository;
+    @Inject
+    void setSensorHostRepository(SensorHostRepository sensorHostRepo) {
+        this.sensorHostRepository = sensorHostRepo;
     }
-
-    private @Autowired
-    AutowireCapableBeanFactory beanFactory;
 
     public void stopMe() {
         stop = true;
@@ -78,7 +81,7 @@ public class SensorPollerManager extends Thread {
         for (SensorHost host : activeHosts) {
             if (!polledSensors.containsKey(host.getId())) {
                 SensorPoller poller = new SensorPoller("Sensor Poller for " + host.getLocation(), host.getId());
-                if (beanFactory != null) beanFactory.autowireBean(poller);
+//                if (beanFactory != null) beanFactory.autowireBean(poller);
                 polledSensors.put(host.getId(), poller);
                 log.warn("Normal: Added sensor poller " + poller.getId() + "  For sensor host " + host.getLocation());
             }

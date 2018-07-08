@@ -4,11 +4,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
+//@Entity
 @MappedSuperclass
 //@Cacheable
 //@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class AbstractEntity {
-    @SuppressWarnings("unused")
+//    @SuppressWarnings("unused")
     @Id
     @GeneratedValue
     public Long id;
