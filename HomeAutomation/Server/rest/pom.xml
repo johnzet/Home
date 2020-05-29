@@ -6,12 +6,12 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.zhome</groupId>
-    <artifactId>home-automation-server-rest</artifactId>
+    <artifactId>home-automation-server</artifactId>
     <packaging>war</packaging>
     <version>1.0.0-SNAPSHOT</version>
 
-    <name>Home Automation Server Rest Services</name>
-    <description>Rest Services for the Home automation server using JBoss and Angular</description>
+    <name>Home Automation Server</name>
+    <description>Home automation server using JBoss and Angular</description>
     <url>http://home.zhome.net</url>
 
     <properties>
