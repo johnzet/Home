@@ -8,30 +8,29 @@ import net.zhome.home.persistence.model.SensorHost;
 import net.zhome.home.persistence.repository.SampleRepository;
 import net.zhome.home.persistence.repository.SensorHostRepository;
 import net.zhome.home.util.ZLogger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
 
+import javax.inject.Inject;
+import javax.ws.rs.*;
 import java.util.Date;
 import java.util.List;
 
-@RestController
-@RequestMapping("/sensor")
+@Path("/sensor")
+@Consumes({ "application/json" })
+@Produces({ "application/json" })
 public class SensorDataService {
     private final ZLogger log = ZLogger.getLogger(this.getClass());
 
     private SampleRepository sampleRepository;
     private SensorHostRepository sensorHostRepository;
 
-    public SensorDataService() {
-    }
-
-    @Autowired
+    @Inject
     public SensorDataService(SampleRepository sampleRepository, SensorHostRepository sensorHostRepository) {
         this.sampleRepository = sampleRepository;
         this.sensorHostRepository = sensorHostRepository;
     }
 
-    @RequestMapping(value = "/list", method = RequestMethod.GET, produces = "application/json")
+    @GET
+    @Path("/list")
     public String getSensorList() {
 
         ObjectMapper mapper = new ObjectMapper();
@@ -45,28 +44,30 @@ public class SensorDataService {
         return "{}";
     }
 
-    @RequestMapping(value = "/data/{sensorId}", method = RequestMethod.GET, produces = "application/json")
-    public String getSensorData(@PathVariable("sensorId") long sensorId, @RequestParam("range") String range) {
+    @GET
+    @Path("/data/{sensorId}")
+    public String getSensorData(@PathParam("sensorId") long sensorId, @QueryParam("range") String range) {
         return getSensorDataCommon(sensorId, range);
     }
 
-    @RequestMapping(value = "/data/current", method = RequestMethod.GET, produces = "application/json")
+    @GET
+    @Path("/data/current")
     public String getCurrentSensorData() {
         return getSensorDataCurrent();
     }
 
-    @RequestMapping(value = "/data", method = RequestMethod.GET, produces = "text/html")
+    @GET
+    @Produces({"test/html" })
+    @Path("/data")
     public String getSensorDataUsage() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("<html><body>");
-        sb.append("Usage: <br/><ul>");
-        sb.append("<li>~/data (This usage statement)</li>");
-        sb.append("<li>~/data/sensorId?range=&lt;time range&gt;</li>");
-        sb.append("<li>~/data/current</li>");
-        sb.append("<li>&nbsp;&nbsp;range = all | &lt;start ms&gt;,&lt;end ms&gt; | &lt;n milliseconds ago&gt;</li>");
-        sb.append("</ul>");
-        sb.append("</body></html>");
-        return sb.toString();
+        return "<html><body>" +
+                "Usage: <br/><ul>" +
+                "<li>~/data (This usage statement)</li>" +
+                "<li>~/data/sensorId?range=&lt;time range&gt;</li>" +
+                "<li>~/data/current</li>" +
+                "<li>&nbsp;&nbsp;range = all | &lt;start ms&gt;,&lt;end ms&gt; | &lt;n milliseconds ago&gt;</li>" +
+                "</ul>" +
+                "</body></html>";
     }
 
     private String getSensorDataCommon(long sensorId, String range) {

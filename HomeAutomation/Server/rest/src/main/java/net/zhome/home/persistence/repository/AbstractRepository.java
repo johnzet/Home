@@ -33,9 +33,15 @@ public class AbstractRepository<T extends AbstractEntity> {
         return em.find(type, id);
     }
 
-    public void save(AbstractEntity entity){
-        em.persist(entity);
-        em.flush();
+    public void save(T entity){
+        if (entity.getId() == null) {
+            em.persist(entity);
+            em.flush();
+        } else {
+            em.merge(entity);
+            em.refresh(entity);
+            em.flush();
+        }
     }
 
     public void saveAll(List<T> entities) {

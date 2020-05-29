@@ -6,15 +6,17 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.zhome</groupId>
-    <artifactId>home-automation-server</artifactId>
+    <artifactId>home-automation-server-rest</artifactId>
     <packaging>war</packaging>
     <version>1.0.0-SNAPSHOT</version>
 
-    <name>Home Automation Server</name>
-    <description>Home automation server using JBoss and Angular</description>
+    <name>Home Automation Server Rest Services</name>
+    <description>Rest Services for the Home automation server using JBoss and Angular</description>
     <url>http://home.zhome.net</url>
 
     <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <wildfly.version>13.0.0.Final</wildfly.version>
         <h2database.version>1.4.197</h2database.version>
@@ -231,31 +233,16 @@
             <artifactId>postgresql</artifactId>
             <version>9.1-901-1.jdbc4</version>
         </dependency>
-
-
-
-
-
-
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.8.8</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.ws.rs</groupId>
+            <artifactId>javax.ws.rs-api</artifactId>
+            <version>2.0.1</version>
+        </dependency>
 
     </dependencies>
-
-    <build>
-        <!-- Set the name of the WAR, used as the context root when the app is deployed -->
-        <finalName>${project.artifactId}</finalName>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.6.0</version>
-                    <configuration>
-                        <source>1.8</source>
-                        <target>1.8</target>
-                    </configuration>
-                </plugin>
-
-            </plugins>
-        </pluginManagement>
-    </build>
 </project>

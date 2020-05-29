@@ -1,22 +1,24 @@
 package net.zhome.home.service;
 
-import net.zhome.home.util.ZLogger;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
+import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import java.util.Calendar;
 import java.util.Date;
 
-@RestController
-//@RequestMapping("/config")
+@Path("/config")
+@Consumes({ "application/json" })
+@Produces({ "application/json" })
+
 public class ConfigService {
-    private final ZLogger log = ZLogger.getLogger(this.getClass());
+//    private final ZLogger log = ZLogger.getLogger(this.getClass());
 
     public ConfigService() {
     }
 
-    @RequestMapping(value = "/config", method = RequestMethod.GET, produces = "application/json")
+    @GET
+    @Path("/config")
     public String getSensorList() {
 
 //        {

@@ -1,24 +1,21 @@
 package net.zhome.home.job.sensorPoller;
 
 import net.zhome.home.persistence.model.SensorHost;
+import net.zhome.home.persistence.repository.SampleRepository;
 import net.zhome.home.persistence.repository.SensorHostRepository;
 import net.zhome.home.util.ZLogger;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.ejb.Local;
 import javax.ejb.Stateful;
 import javax.inject.Inject;
-import javax.inject.Singleton;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @Local
-@Singleton
 @Stateful
-@Transactional
-public class SensorPollerManager extends Thread {
+public class SensorPollerManager {
     private final ZLogger log = ZLogger.getLogger(this.getClass());
     private Map<Long, SensorPoller> polledSensors = new HashMap<>();
     private boolean stop = false;
@@ -26,18 +23,17 @@ public class SensorPollerManager extends Thread {
     private SensorHostRepository sensorHostRepository;
 
     @Inject
-    public void setSensorHostRepository(SensorHostRepository sensorHostRepo) {
-        this.sensorHostRepository = sensorHostRepo;
+    void setSensorHostRepository(SensorHostRepository sensorHostRepository) {
+        this.sensorHostRepository = sensorHostRepository;
     }
 
-    public void stopMe() {
-        stop = true;
-        log.warn("Normal: Stopping poller manager");
-    }
+    @Inject
+    private SensorHostInterface sensorHostInterface;
 
-    @Override
-    public void run() {
+    @Inject
+    private SampleRepository sampleRepository;
 
+    private Runnable runnable = ()  ->  {
         while(!stop) {
             try {
                 Thread.sleep(60 * 1000);
@@ -54,7 +50,21 @@ public class SensorPollerManager extends Thread {
                 log.error("Caught exception in SensorPoller thread: ", t);
             }
         }
+    };
+    private Thread thread = new Thread(runnable);
+
+//    public void stop() {
+//        stop = true;
+//        log.warn("Normal: Stopping poller manager");
+//    }
+
+    public void start() {
+        thread.start();
     }
+
+//    public boolean isAlive() {
+//        return thread.isAlive();
+//    }
 
     private void startNewPollers() {
         for (SensorPoller poller : polledSensors.values()) {
@@ -80,10 +90,10 @@ public class SensorPollerManager extends Thread {
     private void addActivePollers(List<SensorHost> activeHosts) {
         for (SensorHost host : activeHosts) {
             if (!polledSensors.containsKey(host.getId())) {
-                SensorPoller poller = new SensorPoller("Sensor Poller for " + host.getLocation(), host.getId());
+                SensorPoller poller = new SensorPoller(host, sensorHostInterface, sampleRepository);
 //                if (beanFactory != null) beanFactory.autowireBean(poller);
                 polledSensors.put(host.getId(), poller);
-                log.warn("Normal: Added sensor poller " + poller.getId() + "  For sensor host " + host.getLocation());
+                log.warn("Normal: Added sensor poller " + poller.getName() + "  For sensor host " + host.getLocation());
             }
         }
     }

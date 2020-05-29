@@ -4,72 +4,40 @@ import net.zhome.home.persistence.model.Sample;
 import net.zhome.home.persistence.model.Sensor;
 import net.zhome.home.persistence.model.SensorHost;
 import net.zhome.home.persistence.repository.SampleRepository;
-import net.zhome.home.persistence.repository.SensorHostRepository;
-import net.zhome.home.persistence.repository.SensorRepository;
 import net.zhome.home.util.ZLogger;
 
-import javax.ejb.Local;
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-@Local
-@ApplicationScoped
-public class SensorPoller extends Thread {
+public class SensorPoller {
     private final ZLogger log = ZLogger.getLogger(this.getClass());
 
-    private Long sensorHostId;
     private boolean stop = false;
 
+    private SensorHost sensorHost;
     private SensorHostInterface sensorHostInterface;
     private SampleRepository sampleRepository;
 
-    @Inject
-    private SensorHostRepository sensorHostRepository;
+    void setSampleRepository(SampleRepository sampleRepository) {
+        this.sampleRepository = sampleRepository;
+    }
 
-    @Inject
-    private SensorRepository sensorRepository;
-
-
-
-    @Inject
     void setSensorHostInterface(SensorHostInterface sensorHostInterface) {
         this.sensorHostInterface = sensorHostInterface;
     }
 
-    @Inject
-    void setSampleRepository(SampleRepository sampleRepo) {
-        this.sampleRepository = sampleRepo;
-    }
 
-
-    public SensorPoller() {}
-
-    SensorPoller(String name, long sensorHostId) {
-        this.sensorHostId = sensorHostId;
-    }
-
-
-    void setStop() {
-        stop = true;
-    }
-
-    @Override
-    public void run() {
-        while(!stop) {
+    private Runnable runnable = () -> {
+        while (!stop) {
             try {
-                SensorHost sensorHost = sensorHostRepository.findById(sensorHostId);
                 Thread.sleep(1000 * sensorHost.getIntervalS());
 
                 loop(sensorHost);
-            }
-            catch (InterruptedException e) {
-                log.error("Sensor poller thread interrupted: " + getName());
+            } catch (InterruptedException e) {
+                log.error("Sensor poller thread interrupted: " + sensorHost.getDescription());
                 setStop();
-            }
-            catch (Throwable t) {
+            } catch (Throwable t) {
                 log.error("Exception: ", t);
                 try {
                     Thread.sleep(60 * 1000);
@@ -78,6 +46,30 @@ public class SensorPoller extends Thread {
                 }
             }
         }
+    };
+    private Thread thread = new Thread(runnable);
+
+
+    SensorPoller(SensorHost sensorHost, SensorHostInterface sensorHostInterface, SampleRepository sampleRepository) {
+        this.sensorHost = sensorHost;
+        this.sensorHostInterface = sensorHostInterface;
+        this.sampleRepository = sampleRepository;
+    }
+
+    void setStop() {
+        stop = true;
+    }
+
+    void start() {
+        thread.start();
+    }
+
+    boolean isAlive() {
+        return thread.isAlive();
+    }
+
+    String getName() {
+        return sensorHost.getDescription();
     }
 
     void loop(SensorHost sensorHost) {
@@ -104,7 +96,7 @@ public class SensorPoller extends Thread {
 
     @Override
     public String toString() {
-        return "SensorPoller sensorHost id = " + sensorHostId;
+        return "SensorPoller sensorHost id = " + sensorHost.getId();
     }
 
     // TODO
@@ -117,4 +109,5 @@ public class SensorPoller extends Thread {
     public boolean equals(Object obj) {
         return super.equals(obj);
     }
+
 }

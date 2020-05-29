@@ -37,9 +37,7 @@ public class SensorPollerTest extends AbstractIntegrationTest {
         SensorHost host = new SensorHost();
         initSensorHost(host);
         sensorHostRepo.save(host);
-        SensorPoller poller = new SensorPoller("Poller", host.getId());
-        poller.setSampleRepository(sampleRepo);
-        poller.setSensorHostInterface(new MockSensorHostInterfaceImpl());
+        SensorPoller poller = new SensorPoller(host, new MockSensorHostInterface(), sampleRepo);
 
         Sensor sensor = new Sensor();
         initSensor(sensor);
@@ -83,7 +81,7 @@ public class SensorPollerTest extends AbstractIntegrationTest {
         sensor.setUnit(Sensor.Unit.DEG_C);
     }
 
-    private class MockSensorHostInterfaceImpl implements SensorHostInterface {
+    private class MockSensorHostInterface extends SensorHostInterface {
 
         @Override
         public Map<String, Object> getSensorData(SensorHost sensorHost) {

@@ -75,22 +75,22 @@ public class DbUtilsTest extends AbstractIntegrationTest {
     private void addSensors() {
         SensorHost sensorHost;
 
-        sensorHost = addSensorHost("ESP8266", "http://sensor1.zhome.net", "Front Room");
+        sensorHost = addSensorHost("ESP8266", "http://FrontRoomSensor.zhome.net", "Front Room");
+            addSensor(sensorHost, "temperature", Sensor.Unit.DEG_C, "Temperature", "Temp");
+            addSensor(sensorHost, "humidity", Sensor.Unit.PCT, "Humidity", "Hum");
+//            addSensor(sensorHost, "baro", Sensor.Unit.HPA, "Barometer", "Baro");
+
+        sensorHost = addSensorHost("BME280", "http://http://OutdoorSensor.zhome.net", "Outside");
             addSensor(sensorHost, "temperature", Sensor.Unit.DEG_C, "Temperature", "Temp");
             addSensor(sensorHost, "humidity", Sensor.Unit.PCT, "Humidity", "Hum");
             addSensor(sensorHost, "baro", Sensor.Unit.HPA, "Barometer", "Baro");
 
-        sensorHost = addSensorHost("BME280", "http://sensor2.zhome.net", "Outside");
+        sensorHost = addSensorHost("BME280", "http://AtticSensor.zhome.net", "Attic");
             addSensor(sensorHost, "temperature", Sensor.Unit.DEG_C, "Temperature", "Temp");
             addSensor(sensorHost, "humidity", Sensor.Unit.PCT, "Humidity", "Hum");
             addSensor(sensorHost, "baro", Sensor.Unit.HPA, "Barometer", "Baro");
 
-        sensorHost = addSensorHost("BME280", "http://sensor3.zhome.net", "Attic");
-            addSensor(sensorHost, "temperature", Sensor.Unit.DEG_C, "Temperature", "Temp");
-            addSensor(sensorHost, "humidity", Sensor.Unit.PCT, "Humidity", "Hum");
-            addSensor(sensorHost, "baro", Sensor.Unit.HPA, "Barometer", "Baro");
-
-        sensorHost = addSensorHost("BME280", "http://sensor4.zhome.net", "Upstairs");
+        sensorHost = addSensorHost("BME280", "http://UpstairSensor.zhome.net", "Upstairs");
             addSensor(sensorHost, "temperature", Sensor.Unit.DEG_C, "Temperature", "Temp");
             addSensor(sensorHost, "humidity", Sensor.Unit.PCT, "Humidity", "Hum");
             addSensor(sensorHost, "baro", Sensor.Unit.HPA, "Barometer", "Baro");
