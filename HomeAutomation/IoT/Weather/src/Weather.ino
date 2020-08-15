@@ -79,7 +79,7 @@ void setup() {
     mlx.writeRegister(MLX90393::BURST_SEL_REG, 0);
     mlx.writeRegister(MLX90393::RES_XYZ_REG, 0);
     mlx.writeRegister(MLX90393::RES_XYZ_REG, 0);
-    mlx.writeRegister(MLX90393::DIG_FLT_REG, 4);
+    mlx.writeRegister(MLX90393::DIG_FLT_REG, 7);
     mlx.writeRegister(MLX90393::OSR_REG, 0);
     mlx.writeRegister(MLX90393::X_OFFSET_REG, 0);
     mlx.writeRegister(MLX90393::Y_OFFSET_REG, 0);
@@ -127,7 +127,7 @@ void debugPrint(const char* message) {
 
 float readCompass() {
     mlx.sendCommand(MLX90393::CMD_START_MEASUREMENT | MLX90393::X_FLAG | MLX90393::Y_FLAG);
-    delay(1000);
+    delay(500);
     MLX90393::txyzRaw data;
     const uint8_t status = mlx.readMeasurement(MLX90393::X_FLAG | MLX90393::Y_FLAG, data);
     if (status == MLX90393::STATUS_ERROR) {
