@@ -20,6 +20,7 @@
 
 #include "Particle.h"
 #include "MLX90393.h"
+#include <math.h>
 
 // This example does not require the cloud so you can run it in manual mode or
 // normal cloud-connected mode
@@ -27,7 +28,8 @@ SYSTEM_MODE(MANUAL);
 
 const size_t UART_TX_BUF_SIZE = 20;
 
-MLX90393::txyzRaw readCompass();
+float readCompass();
+void rewriteLcd(const char* msg);
 void onDataReceived(const uint8_t* data, size_t len, const BlePeerDevice& peer, void* context);
 
 // These UUIDs were defined by Nordic Semiconductor and are now the defacto standard for
@@ -55,23 +57,42 @@ void setup() {
     setupLCD();
 
     BLE.on();
-
     BLE.addCharacteristic(txCharacteristic);
     BLE.addCharacteristic(rxCharacteristic);
-
     BleAdvertisingData data;
     data.appendServiceUUID(serviceUuid);
     BLE.advertise(&data);
 
-
+    Wire.begin();
+    // Wire.setSpeed(CLOCK_SPEED_100KHZ);
     // Magnetometer
     // I2C
     // Arduino A4 = SDA
     // Arduino A5 = SCL
     // DRDY ("Data Ready"line connected to A3 (omit third parameter to used timed reads)
     // uint8_t status = mlx.begin(0, 0, A3);
-    /* uint8_t status = */ mlx.begin(0, 0);
+    /* uint8_t status = */ mlx.begin(0, 0, -1, Wire);
 
+    mlx.writeRegister(MLX90393::GAIN_SEL_REG, 0);
+    mlx.writeRegister(MLX90393::HALLCONF_REG, 0);
+    mlx.writeRegister(MLX90393::TCMP_EN_REG, 0);
+    mlx.writeRegister(MLX90393::BURST_SEL_REG, 0);
+    mlx.writeRegister(MLX90393::RES_XYZ_REG, 0);
+    mlx.writeRegister(MLX90393::RES_XYZ_REG, 0);
+    mlx.writeRegister(MLX90393::DIG_FLT_REG, 4);
+    mlx.writeRegister(MLX90393::OSR_REG, 0);
+    mlx.writeRegister(MLX90393::X_OFFSET_REG, 0);
+    mlx.writeRegister(MLX90393::Y_OFFSET_REG, 0);
+}
+
+void loop() {
+    float heading = readCompass();  // contains a delay
+    sprintf(buffer, "Heading %03.1f", heading);
+    rewriteLcd(buffer);
+
+    if (BLE.connected()) {        
+        txCharacteristic.setValue(buffer);
+    }
 }
 
 void setupLCD() {
@@ -88,26 +109,38 @@ void setupLCD() {
 
     Serial1.write('|'); //Put LCD into setting mode
     Serial1.write(188 + 0); //Set blue backlight amount to 0-29
+
+    Serial1.write("Hello");
 }
 
-void loop() {
-    if (BLE.connected()) {
-        uint8_t txBuf[] = {'H', 'e', 'l', 'l', 'o', '\n'};
-        txCharacteristic.setValue(txBuf, 6);
-    MLX90393::txyzRaw heading = readCompass();
-    sprintf("Compass %i", buffer, heading.z);
+void rewriteLcd(const char* msg) {
+    Serial1.write('|'); //Put LCD into setting mode
+    Serial1.write('-'); //Clear
     Serial1.write(buffer);
-    txCharacteristic.setValue(buffer);
+}
+
+void debugPrint(const char* message) {
+    Serial1.write('|'); //Put LCD into setting mode
+    Serial1.write('-'); //Clear
+    Serial1.write(message);
+}
+
+float readCompass() {
+    mlx.sendCommand(MLX90393::CMD_START_MEASUREMENT | MLX90393::X_FLAG | MLX90393::Y_FLAG);
+    delay(1000);
+    MLX90393::txyzRaw data;
+    const uint8_t status = mlx.readMeasurement(MLX90393::X_FLAG | MLX90393::Y_FLAG, data);
+    if (status == MLX90393::STATUS_ERROR) {
+        sprintf(buffer, "Status = %0X", status);
+        debugPrint(buffer);
+        delay(1000);
     }
 
-}
-
-
-
-MLX90393::txyzRaw readCompass() {
-    MLX90393::txyzRaw data;
-    /*c onst uint8_t status =*/ mlx.readMeasurement(MLX90393::Z_FLAG, data);
-    return data;
+    float heading = atan2f(float(int16_t(data.y)), float(int16_t(-data.x)));
+    if (heading < 0) {
+        heading += 2*3.14159;
+    }
+    return heading * (360.0/(2*3.14159));
 }
 
 

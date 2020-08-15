@@ -25,7 +25,7 @@ class MLX90393
 public:
   enum { STATUS_OK = 0, STATUS_ERROR = 0xff } return_status_t;
   enum { Z_FLAG = 0x8, Y_FLAG = 0x4, X_FLAG = 0x2, T_FLAG = 0x1 } axis_flag_t;
-  enum { I2C_BASE_ADDR = 0x0c };
+  enum { I2C_BASE_ADDR = 0x0C };
   enum { GAIN_SEL_REG = 0x0, GAIN_SEL_MASK = 0x0070, GAIN_SEL_SHIFT = 4 };
   enum { HALLCONF_REG = 0x0, HALLCONF_MASK = 0x000f, HALLCONF_SHIFT = 0 };
   enum { BURST_SEL_REG = 0x1, BURST_SEL_MASK = 0x03c0, BURST_SEL_SHIFT = 6};
