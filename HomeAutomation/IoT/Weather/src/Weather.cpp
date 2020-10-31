@@ -3,78 +3,231 @@
 /******************************************************/
 
 #line 1 "/Users/johnzet/projects/Home/HomeAutomation/IoT/Weather/src/Weather.ino"
-// /*
-//  * Project Weather
-//  * Description:
-//  * Author:
-//  * Date:
-//  */
-
-// // setup() runs once, when the device is first turned on.
-// void setup() {
-//   // Put initialization like pinMode and begin functions here.
-
-// }
-
-// // loop() runs over and over again, as quickly as it can execute.
-// void loop() {
-//   // The core of your code will likely live here.
-
-// }
-
-
 #include "Particle.h"
 #include "MLX90393.h"
 #include <math.h>
 #include "SparkFunBME280.h"
 
-// This example does not require the cloud so you can run it in manual mode or
-// normal cloud-connected mode
 void setup();
 void loop();
 void setupLCD();
+void setupBLE();
+void setupMagnetometer();
+void setupHallSensor();
+void setupBME280();
 void debugPrint(const char* message);
-#line 28 "/Users/johnzet/projects/Home/HomeAutomation/IoT/Weather/src/Weather.ino"
+#line 6 "/Users/johnzet/projects/Home/HomeAutomation/IoT/Weather/src/Weather.ino"
 SYSTEM_MODE(MANUAL);
-
-const size_t UART_TX_BUF_SIZE = 20;
 
 float readCompass();
 void rewriteLcd(const char* msg);
 void onDataReceived(const uint8_t* data, size_t len, const BlePeerDevice& peer, void* context);
+void setBluetoothDataBytes();
 
-// These UUIDs were defined by Nordic Semiconductor and are now the defacto standard for
-// UART-like services over BLE. Many apps support the UUIDs now, like the Adafruit Bluefruit app.
-const BleUuid serviceUuid("6E400001-B5A3-F393-E0A9-E50E24DCCA9E");
-const BleUuid rxUuid("6E400002-B5A3-F393-E0A9-E50E24DCCA9E");
-const BleUuid txUuid("6E400003-B5A3-F393-E0A9-E50E24DCCA9E");
+// GATT Characteristics https://www.bluetooth.com/specifications/gatt/characteristics/
+// Some guy's Kestrel notes:  https://bad-radio.solutions/notes_ble
 
-BleCharacteristic txCharacteristic("tx", BleCharacteristicProperty::NOTIFY, txUuid, serviceUuid);
-BleCharacteristic rxCharacteristic("rx", BleCharacteristicProperty::WRITE_WO_RSP, rxUuid, serviceUuid, onDataReceived, NULL);
+const BleUuid kestrelServiceUuid(               "03290000-EAB4-DEA1-B24E-44EC023874DB");
+const BleUuid deviceInfoServiceUuid(            "0000180a-0000-1000-8000-00805f9b34fb");
+const BleUuid batteryServiceUuid(               "0000180f-0000-1000-8000-00805f9b34fb");
+
+// From https://www.hybrid-analysis.com/sample/ed3c0e341b224014088381590c1f817acdabcf26015cff7ae63f1c454a0f3bd5?environmentId=200
+
+const BleUuid mfgNameUuid(                      "00002a29-0000-1000-8000-00805f9b34fb");
+const BleUuid deviceNameUuid(                   "00002a00-0000-1000-8000-00805f9b34fb");
+const BleUuid appearanceUuid(                   "00002a01-0000-1000-8000-00805f9b34fb");
+const BleUuid serialNumberUuid(                 "00002a25-0000-1000-8000-00805f9b34fb");
+const BleUuid hardwareVersionUuid(              "00002a27-0000-1000-8000-00805f9b34fb");
+const BleUuid firmwareVersionUuid(              "00002a26-0000-1000-8000-00805f9b34fb");
+const BleUuid softwareVersionUuid(              "00002a28-0000-1000-8000-00805f9b34fb");
+const BleUuid modelNumberUuid(                  "00002a24-0000-1000-8000-00805f9b34fb");
+
+const BleUuid characteristic16bitUuid(          "03290310-EAB4-DEA1-B24E-44EC023874DB");
+const BleUuid characteristic32bitUuid(          "03290320-EAB4-DEA1-B24E-44EC023874DB");
+
+const BleUuid batteryLevelUuid(                 "00002a19-0000-1000-8000-00805f9b34fb");
+
+BleCharacteristic deviceNameCharacteristic("device name", BleCharacteristicProperty::READ, deviceNameUuid, kestrelServiceUuid);
+BleCharacteristic appearanceCharacteristic("Appearance", BleCharacteristicProperty::READ, appearanceUuid, kestrelServiceUuid);
+
+BleCharacteristic mfgNameCharacteristic("mfg name", BleCharacteristicProperty::READ, mfgNameUuid, deviceInfoServiceUuid);
+BleCharacteristic modelNumberCharacteristic("model number", BleCharacteristicProperty::READ, modelNumberUuid, deviceInfoServiceUuid);
+
+BleCharacteristic serialNumberCharacteristic("serial number", BleCharacteristicProperty::READ, serialNumberUuid, deviceInfoServiceUuid);
+BleCharacteristic hardwareVersionCharacteristic("hardware version", BleCharacteristicProperty::READ, hardwareVersionUuid, deviceInfoServiceUuid);
+BleCharacteristic firmwareVersionCharacteristic("firmware version", BleCharacteristicProperty::READ, firmwareVersionUuid, deviceInfoServiceUuid);
+BleCharacteristic softwareVersionCharacteristic("software version", BleCharacteristicProperty::READ, softwareVersionUuid, deviceInfoServiceUuid);
+
+BleCharacteristic characteristic16bit("Characteristic 16-bit", BleCharacteristicProperty::READ | BleCharacteristicProperty::NOTIFY, characteristic16bitUuid, kestrelServiceUuid);
+BleCharacteristic characteristic32bit("Characteristic 32-bit", BleCharacteristicProperty::READ | BleCharacteristicProperty::NOTIFY, characteristic32bitUuid, kestrelServiceUuid);
+
+BleCharacteristic batteryLevelCharacteristic("Battery Lavel", BleCharacteristicProperty::READ | BleCharacteristicProperty::NOTIFY, batteryLevelUuid, batteryServiceUuid);
+
 
 MLX90393 mlx;
 BME280 bme280;
-char buffer[100];
+char buffer1[100];
+// char buffer2[100];
+system_tick_t previousMicroseconds = 0;
+system_tick_t currentMicroseconds = 0;
+
+struct sampleBytes_t {
+    uint16_t windSpeed;
+    uint16_t windDirection;
+    uint16_t temperature;
+    uint16_t humidity;
+    uint16_t pressure;
+    uint32_t altitude;
+};
+
+struct sample_t {
+    float windSpeedMps;
+    float windDirectionDeg;
+    float temperatureC;
+    float humidity;
+    float pressureBar;
+    float altitudeM;
+};
+
+void setBluetoothDataBytes(sampleBytes_t sampleBytes);
+void setBluetoothData(sample_t sample);
 
 void onDataReceived(const uint8_t* data, size_t len, const BlePeerDevice& peer, void* context) {
-    // Log.trace("Received data from: %02X:%02X:%02X:%02X:%02X:%02X:", peer.address()[0], peer.address()[1], peer.address()[2], peer.address()[3], peer.address()[4], peer.address()[5]);
-
     for (size_t ii = 0; ii < len; ii++) {
         Serial.write(data[ii]);
     }
 }
 
+// --------------------------------------------------------------------------- setup ------------------------------------------------------------------
 void setup() {
     Serial.begin();
     setupLCD();
+    setupBLE();
+    setupMagnetometer();
+    setupHallSensor();
+    setupBME280();
+}
 
+// ---------------------------------------------------------------------------- loop -------------------------------------------------------------------
+void loop() {
+    // float windSpeed = 0.0;
+    // if ((micros() - currentMicroseconds) < (1000.0 * 1000.0 * 20.0)) {
+    //     float periodS = float(currentMicroseconds - previousMicroseconds) / (1000.0 * 1000.0);
+    //     if (periodS < 10.0 && periodS > 0.1) {
+    //         windSpeed = 5.0 / periodS;
+    //     }
+    // }
+    // float heading = readCompass();  // contains a delay
+    // sprintf(buffer1, "%2.0f MPH %3.0f deg  ", windSpeed, heading);
+    // rewriteLcd(buffer1);
+
+    delay(2000);
+    if (BLE.connected()) {   
+        batteryLevelCharacteristic.setValue((uint8_t)(90 + (rand() % 10)));
+
+        sample_t sample;
+        sample.windSpeedMps =       4.917;
+        sample.temperatureC =       5.556;
+        sample.humidity =           34.5;
+        sample.pressureBar =        0.850;
+        sample.windDirectionDeg =   123;
+        sample.altitudeM =          1.526;
+
+        setBluetoothData(sample);
+    }
+
+    // sprintf(buffer1, "%2.0fC %2.0f%% %3.1fhPa", bme280.readTempC(), bme280.readFloatHumidity(), (float)bme280.readFloatPressure()/100.0f);
+    // Serial1.print(buffer1);
+}
+
+void setBluetoothData(sample_t sample) {
+    sampleBytes_t sampleBytes;
+
+    sampleBytes.windSpeed = static_cast<uint16_t>(sample.windSpeedMps * 1000);
+    sampleBytes.temperature = static_cast<uint16_t>(sample.temperatureC * 100);
+    sampleBytes.humidity = static_cast<uint16_t>(sample.humidity * 100);
+    sampleBytes.pressure = static_cast<uint16_t>(sample.pressureBar * 10000);
+    sampleBytes.windDirection = static_cast<uint16_t>(sample.windDirectionDeg);
+    sampleBytes.altitude = static_cast<uint32_t>(sample.altitudeM * 10000);
+
+    setBluetoothDataBytes(sampleBytes);
+}
+
+void setBluetoothDataBytes(sampleBytes_t sampleBytes) {
+    
+    // // 16-bit int LSB      wind speed m/s     temp deg C                            humidity 72.8%     pressure mbar*10   wind dir deg                             
+    // uint8_t data16bit[] = {0x76, 0x11,        0x2B, 0x02,        0x00, 0x00,        0x70, 0x1C,        0xC0, 0x21,        0x7B, 0x00};
+    // // 32-bit int LSB                                     altitude m*10
+    // uint8_t data32bit[] = {0x00, 0x00, 0x00, 0x00,        0xEE, 0x39, 0x00, 0x00,        0x00, 0x00, 0x00, 0x00};
+
+    size_t bufferSize = 12;
+    uint8_t data16bit[bufferSize]; 
+    uint8_t data32bit[bufferSize]; 
+    memset(data16bit, 0, bufferSize);
+    memset(data32bit, 0, bufferSize);
+
+    // memcpy will copy in reverse order since this is a little-endian machine
+    memcpy(data16bit+0, &sampleBytes.windSpeed, sizeof(sampleBytes.windSpeed));
+    memcpy(data16bit+2, &sampleBytes.temperature, sizeof(sampleBytes.temperature));
+    memcpy(data16bit+6, &sampleBytes.humidity, sizeof(sampleBytes.humidity));
+    memcpy(data16bit+8, &sampleBytes.pressure, sizeof(sampleBytes.pressure));
+    memcpy(data16bit+10, &sampleBytes.windDirection, sizeof(sampleBytes.windDirection));
+    memcpy(data32bit+4, &sampleBytes.altitude, sizeof(sampleBytes.altitude));
+    
+    characteristic16bit.setValue(data16bit, 12);
+    characteristic32bit.setValue(data32bit, 12);
+}
+
+void setupLCD() {
+     Serial1.begin(9600); //Begin communication with OpenLCD
+
+    Serial1.write('|'); //Put LCD into setting mode
+    Serial1.write('-'); //Clear
+    
+    Serial1.write('|'); //Put LCD into setting mode
+    Serial1.write(128 + 0); //Set white/red backlight amount to 0-29    
+
+    Serial1.write('|'); //Put LCD into setting mode
+    Serial1.write(158 + 15); //Set green backlight amount to 0-29
+
+    Serial1.write('|'); //Put LCD into setting mode
+    Serial1.write(188 + 0); //Set blue backlight amount to 0-29
+
+    Serial1.write("Hello");
+}
+
+void setupBLE() {
     BLE.on();
-    BLE.addCharacteristic(txCharacteristic);
-    BLE.addCharacteristic(rxCharacteristic);
-    BleAdvertisingData data;
-    data.appendServiceUUID(serviceUuid);
-    BLE.advertise(&data);
+    BLE.addCharacteristic(modelNumberCharacteristic);
+    BLE.addCharacteristic(mfgNameCharacteristic);
+    BLE.addCharacteristic(deviceNameCharacteristic);
+    BLE.addCharacteristic(appearanceCharacteristic);
+    BLE.addCharacteristic(serialNumberCharacteristic);
+    BLE.addCharacteristic(hardwareVersionCharacteristic);
+    BLE.addCharacteristic(firmwareVersionCharacteristic);
+    BLE.addCharacteristic(softwareVersionCharacteristic);
 
+    BLE.addCharacteristic(characteristic16bit);
+    BLE.addCharacteristic(characteristic32bit);
+    BLE.addCharacteristic(batteryLevelCharacteristic);
+    
+    mfgNameCharacteristic.setValue("Kestrel by NK");
+    deviceNameCharacteristic.setValue("FIRE - 2334359");
+    appearanceCharacteristic.setValue("");
+    modelNumberCharacteristic.setValue("5500FWL");
+    serialNumberCharacteristic.setValue("2334359");
+    hardwareVersionCharacteristic.setValue("Rev 11B");
+    firmwareVersionCharacteristic.setValue("1.21");
+    softwareVersionCharacteristic.setValue("");
+
+    BleAdvertisingData data;
+    data.appendLocalName("FIRE");  // don't change this
+    data.appendServiceUUID(kestrelServiceUuid);
+    // data.appendServiceUUID(batteryServiceUuid);  // won't pair with this added
+    BLE.advertise(&data);
+}
+
+void setupMagnetometer() {
     Wire.begin();
     // Wire.setSpeed(CLOCK_SPEED_100KHZ);
     // Magnetometer
@@ -95,7 +248,16 @@ void setup() {
     mlx.writeRegister(MLX90393::OSR_REG, 0);
     mlx.writeRegister(MLX90393::X_OFFSET_REG, 0);
     mlx.writeRegister(MLX90393::Y_OFFSET_REG, 0);
+}
 
+void setupHallSensor() {
+    void hallSensorInterrupt();
+    byte hallSensorPin = D2;
+    pinMode(hallSensorPin, INPUT);
+    attachInterrupt(hallSensorPin, hallSensorInterrupt, FALLING);
+}
+
+void setupBME280() {
     bme280.settings.commInterface = I2C_MODE;
     bme280.settings.I2CAddress = 0x77;
     //tStandby can be:
@@ -139,44 +301,12 @@ void setup() {
     bme280.settings.runMode = 3;
     
     bme280.begin();
-    
-}
-
-void loop() {
-    float heading = readCompass();  // contains a delay
-    sprintf(buffer, "Heading %03.0f     ", heading);
-    rewriteLcd(buffer);
-
-    if (BLE.connected()) {        
-        txCharacteristic.setValue(buffer);
-    }
-
-    sprintf(buffer, "%02.0fC %02.0f %03.1fhPa", bme280.readTempC(), bme280.readFloatHumidity(), (float)bme280.readFloatPressure()/100.0f);
-    Serial1.print(buffer);
-    }
-
-void setupLCD() {
-     Serial1.begin(9600); //Begin communication with OpenLCD
-
-    Serial1.write('|'); //Put LCD into setting mode
-    Serial1.write('-'); //Clear
-    
-    Serial1.write('|'); //Put LCD into setting mode
-    Serial1.write(128 + 0); //Set white/red backlight amount to 0-29    
-
-    Serial1.write('|'); //Put LCD into setting mode
-    Serial1.write(158 + 15); //Set green backlight amount to 0-29
-
-    Serial1.write('|'); //Put LCD into setting mode
-    Serial1.write(188 + 0); //Set blue backlight amount to 0-29
-
-    Serial1.write("Hello");
 }
 
 void rewriteLcd(const char* msg) {
     Serial1.write('|'); //Put LCD into setting mode
     Serial1.write('-'); //Clear
-    Serial1.write(buffer);
+    Serial1.write(msg);
 }
 
 void debugPrint(const char* message) {
@@ -191,8 +321,8 @@ float readCompass() {
     MLX90393::txyzRaw data;
     const uint8_t status = mlx.readMeasurement(MLX90393::X_FLAG | MLX90393::Y_FLAG, data);
     if (status == MLX90393::STATUS_ERROR) {
-        sprintf(buffer, "Status = %0X", status);
-        debugPrint(buffer);
+        sprintf(buffer1, "Status = %0X", status);
+        debugPrint(buffer1);
         delay(1000);
     }
 
@@ -203,7 +333,12 @@ float readCompass() {
     return heading * (360.0/(2*3.14159));
 }
 
-
-
-
-
+void hallSensorInterrupt() {
+    if (previousMicroseconds <=0) {
+        previousMicroseconds = micros();
+        currentMicroseconds = previousMicroseconds;
+        return;
+    }
+    previousMicroseconds = currentMicroseconds;
+    currentMicroseconds = micros();   
+}
