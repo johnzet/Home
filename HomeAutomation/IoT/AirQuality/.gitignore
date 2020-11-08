@@ -1,0 +1,8 @@
+*.hex
+*.elf
+*.bin
+*.lst
+*.map
+*.crc_block
+*.dfu
+
