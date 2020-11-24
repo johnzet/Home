@@ -9,6 +9,10 @@ float readCompass();
 void rewriteLcd(const char* msg);
 void onDataReceived(const uint8_t* data, size_t len, const BlePeerDevice& peer, void* context);
 void setBluetoothDataBytes();
+float convertKphToMph(float kph);
+float convertKphToMps(float kph);
+float convertCToF(float degC);
+float convertMbarToInHg(float mBar);
 
 // GATT Characteristics https://www.bluetooth.com/specifications/gatt/characteristics/
 // Some guy's Kestrel notes:  https://bad-radio.solutions/notes_ble
@@ -53,6 +57,7 @@ char buffer1[100];
 // char buffer2[100];
 system_tick_t previousMicroseconds = 0;
 system_tick_t currentMicroseconds = 0;
+int screenNumber = 0;
 
 struct sampleBytes_t {
     uint16_t windSpeed;
@@ -84,6 +89,7 @@ void onDataReceived(const uint8_t* data, size_t len, const BlePeerDevice& peer, 
 // --------------------------------------------------------------------------- setup ------------------------------------------------------------------
 void setup() {
     Serial.begin();
+    pinMode(A2, INPUT);
     setupLCD();
     setupBLE();
     setupMagnetometer();
@@ -93,34 +99,55 @@ void setup() {
 
 // ---------------------------------------------------------------------------- loop -------------------------------------------------------------------
 void loop() {
-    // float windSpeed = 0.0;
-    // if ((micros() - currentMicroseconds) < (1000.0 * 1000.0 * 20.0)) {
-    //     float periodS = float(currentMicroseconds - previousMicroseconds) / (1000.0 * 1000.0);
-    //     if (periodS < 10.0 && periodS > 0.1) {
-    //         windSpeed = 5.0 / periodS;
-    //     }
-    // }
-    // float heading = readCompass();  // contains a delay
-    // sprintf(buffer1, "%2.0f MPH %3.0f deg  ", windSpeed, heading);
-    // rewriteLcd(buffer1);
+    float windSpeedKph = 0.0;
+    if ((micros() - currentMicroseconds) < (1000.0 * 1000.0 * 20.0)) {
+        float periodS = float(currentMicroseconds - previousMicroseconds) / (1000.0 * 1000.0);
+        if (periodS < 20.0 && periodS > 0.1) {
+            windSpeedKph = 29.0 / periodS;
+        }
+    } else {
+        previousMicroseconds = micros();
+        currentMicroseconds = previousMicroseconds;
+    }
+    float heading = readCompass();  // contains a delay
+    float battVoltage = analogRead(A2) * 1.168 / 1024;
 
-    delay(2000);
+    delay(500);
     if (BLE.connected()) {   
         batteryLevelCharacteristic.setValue((uint8_t)(90 + (rand() % 10)));
 
         sample_t sample;
-        sample.windSpeedMps =       4.917;
-        sample.temperatureC =       5.556;
-        sample.humidity =           34.5;
-        sample.pressureBar =        0.850;
-        sample.windDirectionDeg =   123;
-        sample.altitudeM =          1.526;
+        sample.windSpeedMps =       convertKphToMps(windSpeedKph);
+        sample.temperatureC =       bme280.readTempC();
+        sample.humidity =           bme280.readFloatHumidity();
+        sample.pressureBar =        bme280.readFloatPressure()/100000.0f;
+        sample.windDirectionDeg =   heading;
+        sample.altitudeM =          1.483;  // Briggsdale, CO = 4865 ft
 
         setBluetoothData(sample);
     }
 
-    // sprintf(buffer1, "%2.0fC %2.0f%% %3.1fhPa", bme280.readTempC(), bme280.readFloatHumidity(), (float)bme280.readFloatPressure()/100.0f);
-    // Serial1.print(buffer1);
+    uint8_t degreeSymbol = 0b11011111;
+
+    switch (screenNumber) {
+        case 0:
+        case 1:
+            sprintf(buffer1, "%4.1f MPH  %3.0f%c  %3.0f%cF  %2.0f%%", convertKphToMph(windSpeedKph), heading, degreeSymbol, bme280.readTempF(), degreeSymbol, bme280.readFloatHumidity());
+            screenNumber++;
+            break;
+        case 2:
+        case 3:
+            sprintf(buffer1, "%4.1f MPH  %3.0f%c  %5.1f mBar %3.1fV", convertKphToMph(windSpeedKph), heading, degreeSymbol, bme280.readFloatPressure()/100.0f, battVoltage);
+            screenNumber++;
+            if (screenNumber == 4) {
+                screenNumber = 0;
+            }
+            break;
+        default:
+            sprintf(buffer1, "Wrong screen number");
+            screenNumber = 0;
+    }
+    rewriteLcd(buffer1);
 }
 
 void setBluetoothData(sample_t sample) {
@@ -163,20 +190,26 @@ void setBluetoothDataBytes(sampleBytes_t sampleBytes) {
 
 void setupLCD() {
      Serial1.begin(9600); //Begin communication with OpenLCD
+    
+    delay(250);
 
     Serial1.write('|'); //Put LCD into setting mode
     Serial1.write('-'); //Clear
-    
+
     Serial1.write('|'); //Put LCD into setting mode
     Serial1.write(128 + 0); //Set white/red backlight amount to 0-29    
 
     Serial1.write('|'); //Put LCD into setting mode
-    Serial1.write(158 + 15); //Set green backlight amount to 0-29
+    Serial1.write(158 + 0); //Set green backlight amount to 0-29
 
     Serial1.write('|'); //Put LCD into setting mode
-    Serial1.write(188 + 0); //Set blue backlight amount to 0-29
+    Serial1.write(188 + 15); //Set blue backlight amount to 0-29
 
-    Serial1.write("Hello");
+    Serial1.write('|'); //Put LCD into setting mode
+    Serial1.write('-'); //Clear
+
+    Serial1.write("John Zehetner     Fake Kestrel");
+    delay(3000);
 }
 
 void setupBLE() {
@@ -309,7 +342,7 @@ float readCompass() {
         delay(1000);
     }
 
-    float heading = atan2f(float(int16_t(data.y)), float(int16_t(-data.x)));
+    float heading = atan2f(float(int16_t(-data.y)), float(int16_t(data.x)));
     if (heading < 0) {
         heading += 2*3.14159;
     }
@@ -324,4 +357,20 @@ void hallSensorInterrupt() {
     }
     previousMicroseconds = currentMicroseconds;
     currentMicroseconds = micros();   
+}
+
+float convertKphToMph(float kph) {
+    return kph * 0.6214;
+}
+
+float convertCToF(float degC) {
+    return 32.0 + 1.8 * degC;
+}
+
+float convertKphToMps(float kph) {
+    return kph * 0.2778;
+}
+
+float convertMbarToInHg(float mBar) {
+    return mBar * 0.02953;
 }
