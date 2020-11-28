@@ -109,7 +109,7 @@ void loop() {
         previousMicroseconds = micros();
         currentMicroseconds = previousMicroseconds;
     }
-    float heading = readCompass();  // contains a delay
+    float heading = fminf(359, readCompass());  // contains a delay
 
     float lipoHigh = 4.2;
     float lipoLow = 3.0;
