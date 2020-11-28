@@ -110,21 +110,25 @@ void loop() {
         currentMicroseconds = previousMicroseconds;
     }
     float heading = readCompass();  // contains a delay
+
+    float lipoHigh = 4.2;
+    float lipoLow = 3.0;
     float battVoltage = analogRead(A2) * 1.168 / 1024;
+    float battPercent = fmaxf(0, 100.0 * (battVoltage - lipoLow) / (lipoHigh - lipoLow));
+    uint8_t battPctByte = static_cast<uint8_t>(battPercent);
 
     delay(500);
     if (BLE.connected()) {   
-        batteryLevelCharacteristic.setValue((uint8_t)(90 + (rand() % 10)));
-
         sample_t sample;
         sample.windSpeedMps =       convertKphToMps(windSpeedKph);
         sample.temperatureC =       bme280.readTempC();
         sample.humidity =           bme280.readFloatHumidity();
         sample.pressureBar =        bme280.readFloatPressure()/100000.0f;
         sample.windDirectionDeg =   heading;
-        sample.altitudeM =          1.483;  // Briggsdale, CO = 4865 ft
-
+        sample.altitudeM =          1.483;  // Pawnee Sportsmen's Center, Briggsdale, CO = 4865 ft
         setBluetoothData(sample);
+
+        batteryLevelCharacteristic.setValue((uint8_t)battPctByte);
     }
 
     uint8_t degreeSymbol = 0b11011111;
@@ -137,7 +141,7 @@ void loop() {
             break;
         case 2:
         case 3:
-            sprintf(buffer1, "%4.1f MPH  %3.0f%c  %5.1f mBar %3.1fV", convertKphToMph(windSpeedKph), heading, degreeSymbol, bme280.readFloatPressure()/100.0f, battVoltage);
+            sprintf(buffer1, "%4.1f MPH  %3.0f%c  %5.1fmB  Bat%3.0f%%", convertKphToMph(windSpeedKph), heading, degreeSymbol, bme280.readFloatPressure()/100.0f, battPercent);
             screenNumber++;
             if (screenNumber == 4) {
                 screenNumber = 0;
