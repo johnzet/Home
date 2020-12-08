@@ -29,7 +29,6 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.v4.app.ActivityCompat;
@@ -37,11 +36,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.text.MessageFormat;
+import java.nio.ByteBuffer;
 import java.util.Formatter;
 import java.util.Locale;
 
@@ -64,7 +62,6 @@ public class DeviceControlActivity extends Activity implements LocationListener 
     private float mGroundSpeed = 0.0f;
     private TextView mSampleCountField;
     private int mSampleCount = 0;
-    private String mDeviceName;
     private String mDeviceAddress;
     private BluetoothLeService mBluetoothLeService;
     private boolean mConnected = false;
@@ -82,7 +79,6 @@ public class DeviceControlActivity extends Activity implements LocationListener 
                 finish();
             }
             // Automatically connects to the device upon successful start-up initialization.
-            mBluetoothLeService.setActivity(DeviceControlActivity.this);
             mBluetoothLeService.connect(mDeviceAddress);
         }
 
@@ -92,12 +88,6 @@ public class DeviceControlActivity extends Activity implements LocationListener 
         }
     };
 
-    // Handles various events fired by the Service.
-    // ACTION_GATT_CONNECTED: connected to a GATT server.
-    // ACTION_GATT_DISCONNECTED: disconnected from a GATT server.
-    // ACTION_GATT_SERVICES_DISCOVERED: discovered GATT services.
-    // ACTION_DATA_AVAILABLE: received data from the device.  This can be a result of read
-    //                        or notification operations.
     private final BroadcastReceiver mGattUpdateReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -111,13 +101,23 @@ public class DeviceControlActivity extends Activity implements LocationListener 
                 updateConnectionState(R.string.disconnected);
                 invalidateOptionsMenu();
                 clearUI();
-            } else if (BluetoothLeService.ACTION_GATT_SERVICES_DISCOVERED.equals(action)) {
             } else if (BluetoothLeService.ACTION_DATA_AVAILABLE.equals(action)) {
+
+                byte[] byteArray = intent.getByteArrayExtra("characteristic_16_BIT");
+                byte[] windSpeedBytes = {0x00, 0x00};
+                if (byteArray == null || byteArray.length != 12) {
+                    return;
+                }
+
+                windSpeedBytes[0] = byteArray[1];
+                windSpeedBytes[1] = byteArray[0];  // big to little endian
+                ByteBuffer wrapped = ByteBuffer.wrap(windSpeedBytes);
+                short rawWindSpeed = wrapped.getShort();
+                float windSpeedMpS = (float)rawWindSpeed / 1000.0f;
+                setWindSpeedMpH(windSpeedMpS * 2.237f);
             }
         }
     };
-
-//    mBluetoothLeService.readCharacteristic(characteristic);
 
     private void clearUI() {
         mWindSpeedField.setText(R.string.no_data);
@@ -131,9 +131,8 @@ public class DeviceControlActivity extends Activity implements LocationListener 
         setContentView(R.layout.gatt_services_characteristics);
 
         final Intent intent = getIntent();
-        mDeviceName = intent.getStringExtra(EXTRAS_DEVICE_NAME);
+        String mDeviceName = intent.getStringExtra(EXTRAS_DEVICE_NAME);
         mDeviceAddress = intent.getStringExtra(EXTRAS_DEVICE_ADDRESS);
-        mDeviceName = intent.getStringExtra(EXTRAS_DEVICE_NAME);
 
         // Sets up UI references.
         ((TextView) findViewById(R.id.device_address)).setText(mDeviceAddress);
@@ -143,10 +142,13 @@ public class DeviceControlActivity extends Activity implements LocationListener 
         mGroundSpeedField = findViewById(R.id.ground_speed_value);
         mSampleCountField = findViewById(R.id.sample_count_value);
 
-        getActionBar().setTitle(mDeviceName);
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+        if (getActionBar() != null) {
+            getActionBar().setTitle(mDeviceName);
+            getActionBar().setDisplayHomeAsUpEnabled(true);
+        }
         Intent gattServiceIntent = new Intent(this, BluetoothLeService.class);
         bindService(gattServiceIntent, mServiceConnection, BIND_AUTO_CREATE);
+
 
         LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -198,6 +200,7 @@ public class DeviceControlActivity extends Activity implements LocationListener 
         return true;
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {
@@ -233,19 +236,14 @@ public class DeviceControlActivity extends Activity implements LocationListener 
     }
 
     @SuppressLint({"DefaultLocale", "SetTextI18n"})
-    public void addWindSpeedMpH(float windSpeedMpH) {
+    public void setWindSpeedMpH(float windSpeedMpH) {
         if (mPauseDataCollection) {
             return;
         }
-        try {
-            mWindSpeed = windSpeedMpH;
-            mWindSpeedField.setText(String.format("%4.1f", windSpeedMpH));
-            mSampleCountField.setText(Integer.toString(++mSampleCount));
-            addCsvDataPoint();
-        }
-        catch (Exception /*CalledFromWrongThreadException*/ e) {
-            // blah blah blah - TODO fix this some time
-        }
+        mWindSpeed = windSpeedMpH;
+        mWindSpeedField.setText(String.format("%4.1f", windSpeedMpH));
+        mSampleCountField.setText(Integer.toString(++mSampleCount));
+        addCsvDataPoint();
     }
 
     public void onClearClickBtn(View view) {
@@ -324,7 +322,6 @@ public class DeviceControlActivity extends Activity implements LocationListener 
 
         if(location != null)
         {
-            Location myLocation = new Location(location);
             mGroundSpeed = convertMpsToMph(location.getSpeed());
 
             Formatter fmt = new Formatter(new StringBuilder());
