@@ -1,3 +1,11 @@
 EESchema-DOCLIB  Version 2.0
 #
+$CMP ParticleArgon
+F https://docs.particle.io/datasheets/wi-fi/argon-datasheet/
+$ENDCMP
+#
+$CMP Particle_Argon
+F https://docs.particle.io/datasheets/wi-fi/argon-datasheet/
+$ENDCMP
+#
 #End Doc Library
