@@ -1,3 +1,4 @@
 (sym_lib_table
   (lib (name JohnZPCB)(type Legacy)(uri ${KIPRJMOD}/JohnZPCB.lib)(options "")(descr ""))
+  (lib (name AirQualPcb-eagle-import)(type Legacy)(uri ${KIPRJMOD}/AirQualPcb-eagle-import.lib)(options "")(descr ""))
 )
