@@ -1,4 +1,4 @@
-17196932649028874
+17198541836228874
 Aesthetics
 BREADBOARD_SPACING
 BREADBOARD SPACING
@@ -50364,6 +50364,13 @@ Qwiic_Logo
 0
 0
 0
+JohnZPCB
+VLS3012HBX
+
+
+0
+2
+2
 Jumper
 SolderJumper-2_P1.3mm_Bridged2Bar_Pad1.0x1.5mm
 SMD Solder Jumper, 1x1.5mm Pads, 0.3mm gap, bridged with 2 copper strips

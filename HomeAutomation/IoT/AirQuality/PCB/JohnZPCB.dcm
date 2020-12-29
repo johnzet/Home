@@ -4,4 +4,8 @@ $CMP Particle_Argon
 F https://docs.particle.io/datasheets/wi-fi/argon-datasheet/
 $ENDCMP
 #
+$CMP RP402Nxx1x
+F https://www.n-redc.co.jp/en/pdf/datasheet/rp402-ea.pdf
+$ENDCMP
+#
 #End Doc Library
