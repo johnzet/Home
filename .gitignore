@@ -1,5 +1,8 @@
 *.plist
 *.idea
 .DS_Store
-
+*.FCStd1
+*.bak
+*-bak
+*.bck
 HomeAutomation/IoT/Weather/target
