@@ -103,7 +103,6 @@ void onDataReceived(const uint8_t* data, size_t len, const BlePeerDevice& peer, 
 // --------------------------------------------------------------------------- setup ------------------------------------------------------------------
 void setup() {
     Serial.begin();
-    pinMode(A2, INPUT);
     setupLCD();
     setupBLE();
     setupMagnetometer();
@@ -127,7 +126,8 @@ void loop() {
 
     float lipoHigh = 4.2;
     float lipoLow = 3.0;
-    float battVoltage = analogRead(A2) * 1.168 / 1024;
+    // float battVoltage = analogRead(A2) * 1.168 / 1024;
+    float battVoltage = analogRead(BATT) * 0.001162;
     float battPercent = fmaxf(0, 100.0 * (battVoltage - lipoLow) / (lipoHigh - lipoLow));
     uint8_t battPctByte = static_cast<uint8_t>(battPercent);
 
@@ -142,7 +142,7 @@ void loop() {
         sample.altitudeM =          1.483;  // Pawnee Sportsmen's Center, Briggsdale, CO = 4865 ft
         setBluetoothData(sample);
 
-        batteryLevelCharacteristic.setValue((uint8_t)battPctByte);
+        batteryLevelCharacteristic.setValue(battPctByte);
     }
 
     uint8_t degreeSymbol = 0b11011111;
