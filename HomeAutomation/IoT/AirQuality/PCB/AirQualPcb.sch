@@ -129,58 +129,48 @@ NoConn ~ 6200 2950
 Wire Wire Line
 	5950 3050 6200 3050
 Wire Wire Line
-	7700 3250 7700 2550
+	8450 1600 8450 1700
+Connection ~ 8450 2250
 Wire Wire Line
-	7600 2350 7600 3150
+	8450 2100 8450 2250
 Wire Wire Line
-	8450 2350 8450 2450
-Connection ~ 8450 3000
-Wire Wire Line
-	8450 2850 8450 3000
-Wire Wire Line
-	7700 2550 8000 2550
+	7700 1800 8000 1800
 $Comp
 L power:GND #PWR06
 U 1 1 5FE6DB96
-P 8000 3200
-F 0 "#PWR06" H 8000 2950 50  0001 C CNN
-F 1 "GND" H 8005 3072 50  0000 R CNN
-F 2 "" H 8000 3200 50  0001 C CNN
-F 3 "" H 8000 3200 50  0001 C CNN
-	1    8000 3200
+P 8000 2450
+F 0 "#PWR06" H 8000 2200 50  0001 C CNN
+F 1 "GND" H 8005 2322 50  0000 R CNN
+F 2 "" H 8000 2450 50  0001 C CNN
+F 3 "" H 8000 2450 50  0001 C CNN
+	1    8000 2450
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	8450 3000 8500 3000
+	8450 2250 8500 2250
 $Comp
 L SparkFun-Resistors:RESISTOR0603 R1
 U 1 1 5FE5C47B
-P 8450 2650
-F 0 "R1" V 8355 2718 45  0000 L CNN
-F 1 "270K" V 8439 2718 45  0000 L CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" H 8450 2800 20  0001 C CNN
-F 3 "" H 8450 2650 60  0001 C CNN
-F 4 " " V 8534 2718 60  0000 L CNN "Field4"
-	1    8450 2650
+P 8450 1900
+F 0 "R1" V 8355 1968 45  0000 L CNN
+F 1 "270K" V 8439 1968 45  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 8450 2050 20  0001 C CNN
+F 3 "" H 8450 1900 60  0001 C CNN
+F 4 " " V 8534 1968 60  0000 L CNN "Field4"
+	1    8450 1900
 	0    1    1    0   
 $EndComp
-Wire Wire Line
-	8500 3200 8250 3200
-Wire Wire Line
-	8250 3200 8250 2550
-Wire Wire Line
-	8250 2550 8000 2550
-Connection ~ 8000 2550
+Connection ~ 8000 1800
 $Comp
 L SparkFun-Connectors:CONN_03 J1
 U 1 1 5FE5F4F6
-P 8600 3000
-F 0 "J1" H 8372 2955 45  0000 R CNN
-F 1 "Power Switch" H 8372 3039 45  0000 R CNN
-F 2 "Connectors:1X03" H 8600 3250 20  0001 C CNN
-F 3 "" H 8600 3000 50  0001 C CNN
-F 4 "NO/NC" H 8350 3150 45  0000 R BNN "Field4"
-	1    8600 3000
+P 8600 2250
+F 0 "J1" H 8372 2205 45  0000 R CNN
+F 1 "Power Switch" H 8372 2289 45  0000 R CNN
+F 2 "Connectors:1X03" H 8600 2500 20  0001 C CNN
+F 3 "" H 8600 2250 50  0001 C CNN
+F 4 "NO/NC" H 8350 2400 45  0000 R BNN "Field4"
+	1    8600 2250
 	-1   0    0    1   
 $EndComp
 $Comp
@@ -348,7 +338,7 @@ Wire Wire Line
 Wire Wire Line
 	4650 2750 4700 2750
 Wire Wire Line
-	8450 2350 7600 2350
+	8450 1600 7600 1600
 $Comp
 L Device:C C9
 U 1 1 5FEE7D83
@@ -501,32 +491,32 @@ Connection ~ 6700 4800
 Wire Wire Line
 	6700 4800 7200 4800
 Wire Wire Line
-	8000 2550 8000 2700
-Connection ~ 8000 3100
+	8000 1800 8000 1950
+Connection ~ 8000 2350
 Wire Wire Line
-	8000 3100 8500 3100
+	8000 2350 8500 2350
 Wire Wire Line
-	8000 3200 8000 3100
+	8000 2450 8000 2350
 Wire Wire Line
-	8300 3000 8450 3000
+	8300 2250 8450 2250
 $Comp
 L dk_Transistors-FETs-MOSFETs-Single:BSS138 Q1
 U 1 1 5FF9946F
-P 8000 2900
-F 0 "Q1" H 8108 2953 60  0000 L CNN
-F 1 "BSS138" H 8108 2847 60  0000 L CNN
-F 2 "digikey-footprints:SOT-23-3" H 8200 3100 60  0001 L CNN
-F 3 "https://www.onsemi.com/pub/Collateral/BSS138-D.PDF" H 8200 3200 60  0001 L CNN
-F 4 "BSS138CT-ND" H 8200 3300 60  0001 L CNN "Digi-Key_PN"
-F 5 "BSS138" H 8200 3400 60  0001 L CNN "MPN"
-F 6 "Discrete Semiconductor Products" H 8200 3500 60  0001 L CNN "Category"
-F 7 "Transistors - FETs, MOSFETs - Single" H 8200 3600 60  0001 L CNN "Family"
-F 8 "https://www.onsemi.com/pub/Collateral/BSS138-D.PDF" H 8200 3700 60  0001 L CNN "DK_Datasheet_Link"
-F 9 "/product-detail/en/on-semiconductor/BSS138/BSS138CT-ND/244294" H 8200 3800 60  0001 L CNN "DK_Detail_Page"
-F 10 "MOSFET N-CH 50V 220MA SOT-23" H 8200 3900 60  0001 L CNN "Description"
-F 11 "ON Semiconductor" H 8200 4000 60  0001 L CNN "Manufacturer"
-F 12 "Active" H 8200 4100 60  0001 L CNN "Status"
-	1    8000 2900
+P 8000 2150
+F 0 "Q1" H 8108 2203 60  0000 L CNN
+F 1 "BSS138" H 8108 2097 60  0000 L CNN
+F 2 "digikey-footprints:SOT-23-3" H 8200 2350 60  0001 L CNN
+F 3 "https://www.onsemi.com/pub/Collateral/BSS138-D.PDF" H 8200 2450 60  0001 L CNN
+F 4 "BSS138CT-ND" H 8200 2550 60  0001 L CNN "Digi-Key_PN"
+F 5 "BSS138" H 8200 2650 60  0001 L CNN "MPN"
+F 6 "Discrete Semiconductor Products" H 8200 2750 60  0001 L CNN "Category"
+F 7 "Transistors - FETs, MOSFETs - Single" H 8200 2850 60  0001 L CNN "Family"
+F 8 "https://www.onsemi.com/pub/Collateral/BSS138-D.PDF" H 8200 2950 60  0001 L CNN "DK_Datasheet_Link"
+F 9 "/product-detail/en/on-semiconductor/BSS138/BSS138CT-ND/244294" H 8200 3050 60  0001 L CNN "DK_Detail_Page"
+F 10 "MOSFET N-CH 50V 220MA SOT-23" H 8200 3150 60  0001 L CNN "Description"
+F 11 "ON Semiconductor" H 8200 3250 60  0001 L CNN "Manufacturer"
+F 12 "Active" H 8200 3350 60  0001 L CNN "Status"
+	1    8000 2150
 	-1   0    0    -1  
 $EndComp
 $Comp
@@ -564,7 +554,6 @@ Wire Wire Line
 	3850 1750 6100 1750
 Wire Wire Line
 	3500 1600 7600 1600
-Connection ~ 7600 2350
 $Comp
 L dk_Transistors-FETs-MOSFETs-Single:BSS138 Q2
 U 1 1 5FFD8488
@@ -721,9 +710,7 @@ Wire Wire Line
 	4900 3500 5450 3500
 Connection ~ 5450 3500
 Wire Wire Line
-	6100 1750 6100 2850
-Wire Wire Line
-	7600 1600 7600 2350
+	6100 1750 6100 1950
 $Comp
 L Device:C C4
 U 1 1 5FEDDF17
@@ -763,4 +750,68 @@ Wire Wire Line
 	7200 5300 7700 5300
 Wire Wire Line
 	7200 4800 7700 4800
+Connection ~ 7600 1600
+Wire Wire Line
+	7600 1600 7600 3150
+Wire Wire Line
+	7700 1800 7700 3250
+Wire Wire Line
+	8250 1800 8000 1800
+Wire Wire Line
+	8500 2450 8250 2450
+Wire Wire Line
+	8250 2450 8250 1800
+$Comp
+L SparkFun-Connectors:CONN_02 J6
+U 1 1 5FF0A496
+P 6850 1950
+F 0 "J6" H 6622 1905 45  0000 R CNN
+F 1 "Fan" H 6622 1989 45  0000 R CNN
+F 2 "Connectors:1X02" H 6850 2200 20  0001 C CNN
+F 3 "" H 6850 1950 50  0001 C CNN
+F 4 "" H 6600 2100 45  0000 R BNN "Field4"
+	1    6850 1950
+	-1   0    0    1   
+$EndComp
+Connection ~ 6100 1950
+Wire Wire Line
+	6100 1950 6100 2850
+$Comp
+L Device:C C10
+U 1 1 5FF1CC9B
+P 6250 2150
+F 0 "C10" H 6365 2196 50  0000 L CNN
+F 1 "1uF" H 6365 2105 50  0000 L CNN
+F 2 "Capacitors:0603" H 6288 2000 50  0001 C CNN
+F 3 "https://www.digikey.com/en/products/detail/GRM188R60J106ME47D/490-3896-1-ND/965938?itemSeq=349211413" H 6250 2150 50  0001 C CNN
+	1    6250 2150
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0101
+U 1 1 5FF29F68
+P 6450 2350
+F 0 "#PWR0101" H 6450 2100 50  0001 C CNN
+F 1 "GND" H 6455 2177 50  0000 C CNN
+F 2 "" H 6450 2350 50  0001 C CNN
+F 3 "" H 6450 2350 50  0001 C CNN
+	1    6450 2350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6250 2300 6450 2300
+Wire Wire Line
+	6450 2300 6450 2350
+Wire Wire Line
+	6450 2300 6750 2300
+Wire Wire Line
+	6750 2300 6750 2050
+Connection ~ 6450 2300
+Wire Wire Line
+	6100 1950 6250 1950
+Wire Wire Line
+	6250 2000 6250 1950
+Connection ~ 6250 1950
+Wire Wire Line
+	6250 1950 6750 1950
 $EndSCHEMATC
