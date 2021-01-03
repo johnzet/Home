@@ -8,7 +8,9 @@ FreeCAD strategy:
 		Run macro CopyPlacementFromAssembly to transfer Placement to the individual documents
 		Copy each document file.
 		Create another container document (AssembledComponents.FCStd) and load the copied documents.
-		Create copies of each contained component (Create a copy -> Create transformed copy).  Drag into an enclosure half.  Copy the placement again.  
+		Create copies of each contained component (Create a copy -> Create transformed copy).  
+		Drag into an enclosure half.  
+		Copy the placement again.  
 		Create a sub-object shape binder.
 		Draw sketches against the binders and cut holes.
 		Be sure to 3D print from the copy files.
