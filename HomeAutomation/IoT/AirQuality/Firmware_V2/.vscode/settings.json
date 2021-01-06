@@ -1,0 +1,14 @@
+{
+    "extensions.ignoreRecommendations": true,
+    "C_Cpp.default.configurationProvider": "particle.particle-vscode-core",
+    "cortex-debug.openocdPath": "${command:particle.getDebuggerOpenocdPath}",
+    "files.associations": {
+        "*.ino": "cpp"
+    },
+    "arduino.path": "/Applications",
+    "arduino.additionalUrls": "https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json",
+    "arduino.commandPath": "Contents/MacOS/Arduino",
+    "particle.firmwareVersion": "1.5.2",
+    "particle.targetPlatform": "photon",
+    "particle.targetDevice": "220038000b47363433353735"
+}
