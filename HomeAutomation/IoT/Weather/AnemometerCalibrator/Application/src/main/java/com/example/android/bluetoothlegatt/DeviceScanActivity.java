@@ -192,13 +192,15 @@ public class DeviceScanActivity extends ListActivity {
             mBluetoothAdapter.getBluetoothLeScanner().startScan(scanFilters, scanSettings, new ScanCallback() {
                 @Override
                 public void onScanResult(int callbackType, final ScanResult result) {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            mLeDeviceListAdapter.addDevice(result.getDevice());
-                            mLeDeviceListAdapter.notifyDataSetChanged();
-                        }
-                    });
+                    if (callbackType ==  ScanSettings.CALLBACK_TYPE_FIRST_MATCH || callbackType ==  ScanSettings.CALLBACK_TYPE_ALL_MATCHES) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                mLeDeviceListAdapter.addDevice(result.getDevice());
+                                mLeDeviceListAdapter.notifyDataSetChanged();
+                            }
+                        });
+                    }
                 }
 
                 @Override

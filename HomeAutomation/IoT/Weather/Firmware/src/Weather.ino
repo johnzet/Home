@@ -34,19 +34,39 @@ const BleUuid modelNumberUuid(                  "00002a24-0000-1000-8000-00805f9
 const BleUuid characteristic16bitUuid(          "03290310-EAB4-DEA1-B24E-44EC023874DB");
 const BleUuid characteristic32bitUuid(          "03290320-EAB4-DEA1-B24E-44EC023874DB");
 
+const BleUuid unknownCharacteristic101Uuid(     "03290101-EAB4-DEA1-B24E-44EC023874DB");
+const BleUuid unknownCharacteristic102Uuid(     "03290102-EAB4-DEA1-B24E-44EC023874DB");
+const BleUuid unknownCharacteristic103Uuid(     "03290103-EAB4-DEA1-B24E-44EC023874DB");
+const BleUuid unknownCharacteristic104Uuid(     "03290104-EAB4-DEA1-B24E-44EC023874DB");
+const BleUuid unknownCharacteristic105Uuid(     "03290105-EAB4-DEA1-B24E-44EC023874DB");
+const BleUuid unknownCharacteristic200Uuid(     "03290200-EAB4-DEA1-B24E-44EC023874DB");
+const BleUuid unknownCharacteristic300Uuid(     "03290300-EAB4-DEA1-B24E-44EC023874DB");
+const BleUuid unknownCharacteristic330Uuid(     "03290330-EAB4-DEA1-B24E-44EC023874DB");
+const BleUuid unknownCharacteristic340Uuid(     "03290340-EAB4-DEA1-B24E-44EC023874DB");
+
 const BleUuid batteryLevelUuid(                 "00002a19-0000-1000-8000-00805f9b34fb");
 
-BleCharacteristic deviceNameCharacteristic("device name", BleCharacteristicProperty::READ, deviceNameUuid, kestrelServiceUuid);
-BleCharacteristic appearanceCharacteristic("Appearance", BleCharacteristicProperty::READ, appearanceUuid, kestrelServiceUuid);
-BleCharacteristic mfgNameCharacteristic("mfg name", BleCharacteristicProperty::READ, mfgNameUuid, deviceInfoServiceUuid);
-BleCharacteristic modelNumberCharacteristic("model number", BleCharacteristicProperty::READ, modelNumberUuid, deviceInfoServiceUuid);
-BleCharacteristic serialNumberCharacteristic("serial number", BleCharacteristicProperty::READ, serialNumberUuid, deviceInfoServiceUuid);
-BleCharacteristic hardwareVersionCharacteristic("hardware version", BleCharacteristicProperty::READ, hardwareVersionUuid, deviceInfoServiceUuid);
-BleCharacteristic firmwareVersionCharacteristic("firmware version", BleCharacteristicProperty::READ, firmwareVersionUuid, deviceInfoServiceUuid);
-BleCharacteristic softwareVersionCharacteristic("software version", BleCharacteristicProperty::READ, softwareVersionUuid, deviceInfoServiceUuid);
+BleCharacteristic deviceNameCharacteristic("Device Name", BleCharacteristicProperty::READ, deviceNameUuid, deviceInfoServiceUuid);
+BleCharacteristic appearanceCharacteristic("Appearance", BleCharacteristicProperty::READ, appearanceUuid, deviceInfoServiceUuid);
+BleCharacteristic mfgNameCharacteristic("Manufacturer Name String", BleCharacteristicProperty::READ, mfgNameUuid, deviceInfoServiceUuid);
+BleCharacteristic modelNumberCharacteristic("Model Number String", BleCharacteristicProperty::READ, modelNumberUuid, deviceInfoServiceUuid);
+BleCharacteristic serialNumberCharacteristic("Serial Number String", BleCharacteristicProperty::READ, serialNumberUuid, deviceInfoServiceUuid);
+BleCharacteristic hardwareVersionCharacteristic("Hardware Revision String", BleCharacteristicProperty::READ, hardwareVersionUuid, deviceInfoServiceUuid);
+BleCharacteristic firmwareVersionCharacteristic("Firmware Revision String", BleCharacteristicProperty::READ, firmwareVersionUuid, deviceInfoServiceUuid);
+BleCharacteristic softwareVersionCharacteristic("Software Revision String", BleCharacteristicProperty::READ, softwareVersionUuid, deviceInfoServiceUuid);
 
 BleCharacteristic characteristic16bit("Characteristic 16-bit", BleCharacteristicProperty::READ | BleCharacteristicProperty::NOTIFY, characteristic16bitUuid, kestrelServiceUuid);
 BleCharacteristic characteristic32bit("Characteristic 32-bit", BleCharacteristicProperty::READ | BleCharacteristicProperty::NOTIFY, characteristic32bitUuid, kestrelServiceUuid);
+
+BleCharacteristic unknownCharacteristic101("Unknown 101", BleCharacteristicProperty::READ | BleCharacteristicProperty::NOTIFY, unknownCharacteristic101Uuid, kestrelServiceUuid);
+BleCharacteristic unknownCharacteristic102("Unknown 102", BleCharacteristicProperty::READ, unknownCharacteristic102Uuid, kestrelServiceUuid);
+BleCharacteristic unknownCharacteristic103("Unknown 103", BleCharacteristicProperty::READ, unknownCharacteristic103Uuid, kestrelServiceUuid);
+BleCharacteristic unknownCharacteristic104("Unknown 104", BleCharacteristicProperty::READ, unknownCharacteristic104Uuid, kestrelServiceUuid);
+BleCharacteristic unknownCharacteristic105("Unknown 105", BleCharacteristicProperty::READ | BleCharacteristicProperty::NOTIFY, unknownCharacteristic105Uuid, kestrelServiceUuid);
+BleCharacteristic unknownCharacteristic200("Unknown 200", BleCharacteristicProperty::READ, unknownCharacteristic200Uuid, kestrelServiceUuid);
+BleCharacteristic unknownCharacteristic300("Unknown 300", BleCharacteristicProperty::READ | BleCharacteristicProperty::NOTIFY, unknownCharacteristic300Uuid, kestrelServiceUuid);
+BleCharacteristic unknownCharacteristic330("Unknown 330", BleCharacteristicProperty::READ | BleCharacteristicProperty::NOTIFY, unknownCharacteristic330Uuid, kestrelServiceUuid);
+BleCharacteristic unknownCharacteristic340("Unknown 340", BleCharacteristicProperty::READ | BleCharacteristicProperty::NOTIFY, unknownCharacteristic340Uuid, kestrelServiceUuid);
 
 BleCharacteristic batteryLevelCharacteristic("Battery Lavel", BleCharacteristicProperty::READ | BleCharacteristicProperty::NOTIFY, batteryLevelUuid, batteryServiceUuid);
 
@@ -110,10 +130,10 @@ void loop() {
     }
     float heading = fminf(359, readCompass());  // contains a delay
 
-    float lipoHigh = 4.2;
+    float lipoHigh = 4.1; //4.2;   // voltage drop through wires and switch
     float lipoLow = 3.0;
     // float battVoltage = analogRead(A2) * 1.168 / 1024;
-    float battVoltage = analogRead(BATT) * 0.001162;
+    float battVoltage = analogRead(BATT) * 0.0011224;
     float battPercent = fmaxf(0, 100.0 * (battVoltage - lipoLow) / (lipoHigh - lipoLow));
     uint8_t battPctByte = static_cast<uint8_t>(battPercent);
 
@@ -129,6 +149,11 @@ void loop() {
         setBluetoothData(sample);
 
         batteryLevelCharacteristic.setValue(battPctByte);
+        // unknownCharacteristic101.setValue("\x10\x0e\x00\x01\x05\x00\x00\x00\x00\x0f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00");
+        // unknownCharacteristic105.setValue("\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00");
+        // unknownCharacteristic300.setValue("{\x7f` \x00\x00\x00\x00");
+        // unknownCharacteristic330.setValue("g\x04\x1a\t\x00\xff\xff\xff\xff\xff\xff\xff\x01\x80\x01\x80T\x06}\t");
+        // unknownCharacteristic340.setValue("\xff\xff\xff\x01\x80\xff\xff\xff\x01\x80\x01\x80\xa0\x0f\xff\xff\xff\xff\xff\xff");
     }
 
     uint8_t degreeSymbol = 0b11011111;
@@ -229,8 +254,19 @@ void setupBLE() {
 
     BLE.addCharacteristic(characteristic16bit);
     BLE.addCharacteristic(characteristic32bit);
-    BLE.addCharacteristic(batteryLevelCharacteristic);
+
+    BLE.addCharacteristic(unknownCharacteristic101);
+    BLE.addCharacteristic(unknownCharacteristic102);
+    BLE.addCharacteristic(unknownCharacteristic103);
+    BLE.addCharacteristic(unknownCharacteristic104);
+    BLE.addCharacteristic(unknownCharacteristic105);
+    BLE.addCharacteristic(unknownCharacteristic200);
+    BLE.addCharacteristic(unknownCharacteristic300);
+    BLE.addCharacteristic(unknownCharacteristic330);
+    BLE.addCharacteristic(unknownCharacteristic340);
     
+    BLE.addCharacteristic(batteryLevelCharacteristic);
+
     mfgNameCharacteristic.setValue("Kestrel by NK");
     deviceNameCharacteristic.setValue("FIRE - 2334359");
     appearanceCharacteristic.setValue("");
@@ -240,10 +276,33 @@ void setupBLE() {
     firmwareVersionCharacteristic.setValue("1.21");
     softwareVersionCharacteristic.setValue("");
 
+    // unknownCharacteristic101.setValue("\x10\x0e\x00\x01\x05\x00\x00\x00\x00\x0f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00");
+    // unknownCharacteristic102.setValue("\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00");
+    // unknownCharacteristic103.setValue("\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00");
+    // unknownCharacteristic104.setValue("\x00\x00\x00\x00\x00\x00\x00");
+    // unknownCharacteristic105.setValue("\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00");
+    // unknownCharacteristic200.setValue("0.06\x00\x00\x00\x00\x00\x00");
+    // unknownCharacteristic300.setValue("{\x7f` \x00\x00\x00\x00");
+    // unknownCharacteristic330.setValue("g\x04\x1a\t\x00\xff\xff\xff\xff\xff\xff\xff\x01\x80\x01\x80T\x06}\t");
+    // unknownCharacteristic340.setValue("\xff\xff\xff\x01\x80\xff\xff\xff\x01\x80\x01\x80\xa0\x0f\xff\xff\xff\xff\xff\xff");
+
+    unknownCharacteristic101.setValue("\x10\x0e\x00\x01\x05\x00\x00\x00\x00\x0f");
+    unknownCharacteristic102.setValue("\x00");
+    unknownCharacteristic103.setValue("\x00");
+    unknownCharacteristic104.setValue("\x00");
+    unknownCharacteristic105.setValue("\x00");
+    unknownCharacteristic200.setValue("0.06\x00");
+    unknownCharacteristic300.setValue("{\x7f` \x00");
+    unknownCharacteristic330.setValue("g\x04\x1a\t\x00\xff\xff\xff\xff\xff\xff\xff\x01\x80\x01\x80T\x06}\t");
+    unknownCharacteristic340.setValue("\xff\xff\xff\x01\x80\xff\xff\xff\x01\x80\x01\x80\xa0\x0f\xff\xff\xff\xff\xff\xff");
+
     BleAdvertisingData data;
     data.appendLocalName("FIRE");  // don't change this
     data.appendServiceUUID(kestrelServiceUuid);
+    data.deviceName("FIRE - 2334359", sizeof("FIRE - 2334359"));
     // data.appendServiceUUID(batteryServiceUuid);  // won't pair with this added
+    BLE.setDeviceName("FIRE - 2334359");
+    BLE.setAdvertisingType(BleAdvertisingEventType::CONNECTABLE_SCANNABLE_UNDIRECRED);
     BLE.advertise(&data);
 }
 

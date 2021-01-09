@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "name": "Mac",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/System/Volumes/Data/Users/johnzet/.particle/toolchains/deviceOS/1.5.2/user/inc/**",
+                "/System/Volumes/Data/Users/johnzet/.particle/toolchains/deviceOS/1.5.2/system/inc/**",
+                "/System/Volumes/Data/Users/johnzet/.particle/toolchains/deviceOS/1.5.2/wiring/inc/**",
+                "/System/Volumes/Data/Users/johnzet/.particle/toolchains/deviceOS/1.5.2/hal/inc/**",
+                "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/**"
+            ],
+            "defines": [],
+            "macFrameworkPath": [],
+            "compilerPath": "/usr/local/bin/gcc-7",
+            "cStandard": "gnu11",
+            "cppStandard": "gnu++14",
+            "intelliSenseMode": "gcc-x64"
+        }
+    ],
+    "version": 4
+}
