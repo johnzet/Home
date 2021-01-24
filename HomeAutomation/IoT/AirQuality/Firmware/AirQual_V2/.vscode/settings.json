@@ -1,0 +1,18 @@
+{
+    "extensions.ignoreRecommendations": false,
+    "C_Cpp.default.configurationProvider": "particle.particle-vscode-core",
+    // "C_Cpp.default.compilerArgs": [
+
+    // ],
+    "files.associations": {
+        "*.ino": "cpp"
+    },
+    "particle.firmwareVersion": "2.0.1",
+    "particle.targetPlatform": "argon",
+    "particle.targetDevice": "AirQuality_V2",
+    // "C_Cpp.default.browse.path": [
+    //     "./src/"
+    // ],
+    "cortex-debug.openocdPath": "${command:particle.getDebuggerOpenocdPath}",
+    "particle.enableVerboseLocalCompilerLogging": true
+}

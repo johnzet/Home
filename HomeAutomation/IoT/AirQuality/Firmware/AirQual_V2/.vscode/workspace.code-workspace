@@ -1,0 +1,28 @@
+{
+	"folders": [
+		{
+			"name": "🔍Decompiler!",
+			"uri": "decompileFs:/"
+		},
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"extensions.ignoreRecommendations": false,
+		"files.associations": {
+			"*.ino": "cpp"
+		},
+		"cortex-debug.armToolchainPath": "/Applications/ARM/bin",
+		"cortex-debug.openocdPath": "${command:particle.getDebuggerOpenocdPath}",
+		"explorer.confirmDragAndDrop": false,
+		"arduino.commandPath": "Contents/MacOS/Arduino",
+		"arduino.ignoreBoards": [],
+		"debug.onTaskErrors": "prompt",
+		"files.autoSave": "onFocusChange",
+		"window.zoomLevel": 0,
+		"particle.enableVerboseLocalCompilerLogging": true,
+		"C_Cpp.loggingLevel": "Debug",
+		"vscode-decompiler.tool.ghidra.path": "/usr/local/Caskroom/ghidra/9.2.1,20201215/ghidra_9.2.1_PUBLIC/support/analyzeHeadless"
+	}
+}

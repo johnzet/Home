@@ -5,4 +5,5 @@
 *.map
 *.crc_block
 *.dfu
+target
 
