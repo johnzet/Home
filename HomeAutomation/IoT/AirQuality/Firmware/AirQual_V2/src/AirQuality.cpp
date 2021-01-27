@@ -9,7 +9,9 @@ void loop();
 #line 1 "/Users/johnzet/projects/Home/HomeAutomation/IoT/AirQuality/Firmware/AirQual_V2/src/AirQuality.ino"
 #pragma GCC push_options
 #pragma GCC optimize ("O0")
-// #include "NrfMe"
+
+#include "sensirion_uart.h"
+#include "sps30.h"
 // #include "Serial_LCD_SparkFun.h"
 // #include "HttpClient.h"
 
@@ -29,6 +31,10 @@ void loop();
 
 // SYSTEM_MODE(SEMI_AUTOMATIC)
 // SYSTEM_THREAD(ENABLED)
+
+int sps30_setup(void);
+int sps30_measure(void);
+
 void setup()
 {
 // #if defined(DEBUG_BUILD)
@@ -36,10 +42,15 @@ void setup()
   BLE.off();
 // #endif
 
-  Serial.begin(9600);
-  Serial.println("in setup");
-//   Serial1.begin(9600);
-    
+// Sensirion driver https://github.com/Sensirion/embedded-uart-sps
+
+    Serial.begin(115200);
+    Serial1.begin(115200);
+
+    Serial.println("in setup");
+
+    sps30_setup();
+
 //   lcd.setBrightness(5);
   
 //   sensorByte = 0;
@@ -92,8 +103,9 @@ void setup()
 
 void loop()
 {
-    Serial.println("in loop");
-    delay(1000);
+    delay(2000);
+
+    sps30_measure();
 
 //    int pm25=0, pm10=0;
 //    
@@ -151,6 +163,109 @@ void loop()
     
 }
 
+int sps30_setup(void) {
+    struct sps30_measurement m;
+    char serial[SPS30_MAX_SERIAL_LEN];
+    const uint8_t AUTO_CLEAN_DAYS = 4;
+    int16_t ret;
+
+    while (sensirion_uart_open() != 0) {
+        Serial.printf("UART init failed\n");
+        delay(1000);
+    }
+
+    if (sps30_probe() != 0) {
+        Serial.printf("SPS30 sensor probing failed\n");
+        return 1;
+    }
+    Serial.printf("SPS30 sensor probing successful\n");
+
+    struct sps30_version_information version_information;
+    ret = sps30_read_version(&version_information);
+    if (ret) {
+        Serial.printf("error %d reading version information\n", ret);
+    } else {
+        Serial.printf("FW: %u.%u HW: %u, SHDLC: %u.%u\n",
+               version_information.firmware_major,
+               version_information.firmware_minor,
+               version_information.hardware_revision,
+               version_information.shdlc_major,
+               version_information.shdlc_minor);
+    }
+
+    ret = sps30_get_serial(serial);
+    if (ret)
+        Serial.printf("error %d reading serial\n", ret);
+    else
+        Serial.printf("SPS30 Serial: %s\n", serial);
+
+    ret = sps30_set_fan_auto_cleaning_interval_days(AUTO_CLEAN_DAYS);
+    if (ret)
+        Serial.printf("error %d setting the auto-clean interval\n", ret);
+}
+
+int sps30_measure(void) {
+    struct sps30_measurement m;
+    int16_t ret;
+
+    ret = sps30_start_measurement();
+    if (ret < 0) {
+        Serial.printf("error starting measurement\n");
+    }
+
+    ret = sps30_read_measurement(&m);
+    if (ret < 0) {
+        Serial.printf("error reading measurement\n");
+    } else {
+        if (SPS30_IS_ERR_STATE(ret)) {
+            Serial.printf(
+                "Chip state: %u - measurements may not be accurate\n",
+                SPS30_GET_ERR_STATE(ret));
+        }
+
+        Serial.printf("measured values:\n"
+                "\t%0.2f pm1.0\n"
+                "\t%0.2f pm2.5\n"
+                "\t%0.2f pm4.0\n"
+                "\t%0.2f pm10.0\n"
+                "\t%0.2f nc0.5\n"
+                "\t%0.2f nc1.0\n"
+                "\t%0.2f nc2.5\n"
+                "\t%0.2f nc4.5\n"
+                "\t%0.2f nc10.0\n"
+                "\t%0.2f typical particle size\n\n",
+                m.mc_1p0, m.mc_2p5, m.mc_4p0, m.mc_10p0, m.nc_0p5,
+                m.nc_1p0, m.nc_2p5, m.nc_4p0, m.nc_10p0,
+                m.typical_particle_size);
+    }
+
+    /* Stop measurement for 1min to preserve power. Also enter sleep mode
+        * if the firmware version is >=2.0.
+        */
+    ret = sps30_stop_measurement();
+    if (ret) {
+        Serial.printf("Stopping measurement failed\n");
+    }
+
+    // if (version_information.firmware_major >= 2) {
+        ret = sps30_sleep();
+        if (ret) {
+            Serial.printf("Entering sleep failed\n");
+        }
+    // }
+
+    // if (version_information.firmware_major >= 2) {
+        ret = sps30_wake_up();
+        if (ret) {
+            Serial.printf("Error %i waking up sensor\n", ret);
+        }
+    // }
+
+
+   
+
+    return 0;
+}
 
 #pragma GCC pop_options
 
