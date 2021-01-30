@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+  <!-- Inherit our applications main module.                      -->
+  <inherits name='ru.scrumdev.sample.GwtServer' />
+
+  <!-- Specify the path to any remote services.                   -->
+  <servlet path="/GwtServer/greet" class="ru.scrumdev.sample.server.GreetingServiceImpl" />
+
+</module>

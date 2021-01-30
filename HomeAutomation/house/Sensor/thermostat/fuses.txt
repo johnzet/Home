@@ -1,0 +1,12 @@
+Fuses
+
+BOD level 2.7V
+SPI enable true
+WDT off
+Boot size 1024 words (3C00)
+Boot rst true
+SUT cksel ExtOsc 8 MHz 16KCK 14CK 4MS1
+
+Extended 0xFD
+High 0xDA
+Low 0xEF

@@ -1,0 +1,140 @@
+<!DOCTYPE CrossStudio_Project_File>
+<solution Name="AutomationModule" target="8" version="2">
+  <project Name="AutomationModule">
+    <configuration
+      Name="Common"
+      Placement="Flash"
+      Target="STM32F405RG"
+      arm_architecture="v7EM"
+      arm_core_type="Cortex-M4"
+      arm_fp_abi="Hard"
+      arm_fpu_type="FPv4-SP-D16"
+      arm_gcc_target="arm-unknown-eabi"
+      arm_linker_heap_size="4096"
+      arm_linker_jtag_pad_pre_dr="1"
+      arm_linker_jtag_pad_pre_ir="5"
+      arm_linker_process_stack_size="0"
+      arm_linker_stack_size="2048"
+      arm_simulator_memory_simulation_filename="$(ProjectDir)/STM32SimulatorMemory.dll"
+      arm_simulator_memory_simulation_parameter="STM32F405RG;0x100000;0x20000"
+      arm_target_connect_with_reset="Yes"
+      arm_target_debug_interface_type="ADIv5"
+      arm_target_interface_type="SWD"
+      arm_target_loader_applicable_loaders="Flash"
+      arm_target_loader_default_loader="Flash"
+      arm_target_restrict_memory_accesses="Yes"
+      arm_use_gcc_libraries="Yes"
+      build_remove_unused_symbols="Yes"
+      c_preprocessor_definitions="DISABLE_WATCHDOG=1;HIDE_UNIT_TESTS_ONLY=1;HIDE_TARGET_IS_SIMULATOR=1;HSI_VALUE=180000000;STM32F405xx;STM32F40_41xxx;ARM_MATH_CM4;STARTUP_FROM_RESET;__SYSTEM_STM32F4XX;__TARGET_PROCESSOR_STM32F405RG;__FPU_PRESENT"
+      c_user_include_directories="$(ProjectDir)/include;$(ProjectDir)/include/core;$(ProjectDir)/STM32/include;$(ProjectDir)/CMSIS_3/CMSIS/Include;$(ProjectDir)/freeRtos/src;$(ProjectDir)/freeRtos/src/include;$(ProjectDir)/freeRtos/src/portable/GCC/ARM_CM4F;$(ProjectDir)/test;C:\\projects\\embUnit"
+      debug_register_definition_file="$(ProjectDir)/STM32F40x_Peripherals.xml"
+      link_include_standard_libraries="Yes"
+      linker_additional_files=""
+      linker_memory_map_file="$(ProjectDir)/STM32F405RG_MemoryMap.xml"
+      linker_section_placement_file="$(StudioDir)/targets/Cortex_M/flash_placement.xml"
+      macros="Family=STM32;Target=STM32F405RG;Placement=Flash;libctl=No"
+      project_dependencies="embUnit"
+      project_directory=""
+      project_type="Executable"
+      target_get_partname_script="GetPartName()"
+      target_match_partname_script="MatchPartName(&quot;$(Target)&quot;)"
+      target_reset_script="Reset()"
+      target_script_file="$(ProjectDir)/STM32_Target.js"
+      target_trace_initialize_script="EnableTrace(&quot;$(TraceInterfaceType)&quot;)" />
+    <configuration
+      Name="Flash"
+      arm_target_flash_loader_file_path="$(LOADER:$(TargetsDir)/STM32/Release/STM32F2xx_Loader_rpc.elf)"
+      arm_target_flash_loader_type="LIBMEM RPC Loader"
+      arm_target_loader_can_erase_all="Yes"
+      arm_target_loader_can_lock_all="No"
+      arm_target_loader_can_lock_range="No"
+      arm_target_loader_can_unlock_all="No"
+      arm_target_loader_can_unlock_range="No"
+      target_reset_script="FLASHReset()" />
+    <folder Name="Source Files">
+      <configuration Name="Common" filter="c;cpp;cxx;cc;h;s;asm;inc" />
+      <folder
+        Name="CMSIS_3"
+        exclude=""
+        filter=""
+        path="CMSIS_3"
+        recurse="Yes" />
+      <folder Name="STM32" exclude="" filter="" path="STM32" recurse="Yes" />
+      <folder
+        Name="freeRtos"
+        exclude=""
+        filter=""
+        path="freeRtos"
+        recurse="Yes" />
+      <folder
+        Name="include"
+        exclude=""
+        filter="*.h"
+        path="include"
+        recurse="Yes" />
+      <folder
+        Name="src"
+        exclude="exclude"
+        filter="*.h;*.c;*.cpp;*.s"
+        path="src"
+        recurse="Yes" />
+    </folder>
+    <folder Name="System Files">
+      <file file_name="thumb_crt0.s" />
+      <file file_name="STM32_Startup.s" />
+      <file file_name="flash_placement.xml" />
+    </folder>
+    <folder Name="test" exclude="" filter="" path="test" recurse="Yes" />
+  </project>
+  <configuration Name="THUMB Debug" inherited_configurations="THUMB;Debug" />
+  <configuration
+    Name="THUMB"
+    Platform="ARM"
+    arm_instruction_set="Thumb"
+    arm_library_instruction_set="Thumb"
+    c_preprocessor_definitions="__THUMB"
+    hidden="Yes" />
+  <configuration
+    Name="Debug"
+    c_preprocessor_definitions="DEBUG"
+    gcc_debugging_level="Level 3"
+    gcc_optimization_level="None"
+    hidden="Yes" />
+  <configuration
+    Name="THUMB Release"
+    inherited_configurations="THUMB;Release" />
+  <configuration
+    Name="Release"
+    c_preprocessor_definitions="NDEBUG"
+    gcc_debugging_level="Level 1"
+    gcc_optimization_level="Level 1"
+    hidden="Yes" />
+  <configuration
+    Name="Common"
+    arm_architecture="v7EM"
+    arm_core_type="Cortex-M4"
+    arm_fp_abi="Hard"
+    arm_fpu_type="FPv4-SP-D16"
+    build_remove_unused_symbols="No"
+    cpp_enable_rtti="Yes"
+    double_is_float="Yes"
+    gcc_c_language_standard="gnu11"
+    gcc_cplusplus_language_standard="gnu++11"
+    gcc_enable_all_warnings="Yes" />
+  <project Name="embUnit">
+    <configuration
+      Name="Common"
+      build_remove_unused_symbols="Yes"
+      cpp_enable_exceptions="No"
+      gcc_optimization_level="None"
+      project_directory="../../../embUnit"
+      project_type="Library" />
+    <folder Name="Source Files">
+      <configuration
+        Name="Common"
+        filter="c;cpp;cxx;cc;h;s;asm;inc"
+        gcc_optimization_level="Debug" />
+      <folder Name="src" exclude="" filter="" path="embUnit" recurse="Yes" />
+    </folder>
+  </project>
+</solution>

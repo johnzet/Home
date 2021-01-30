@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>5.0</ProjectVersion>
+    <ProjectGuid>{75b9b62f-299e-4ffc-a574-d0228151afd2}</ProjectGuid>
+    <avrdevice>ATmega328P</avrdevice>
+    <avrdeviceseries>none</avrdeviceseries>
+    <OutputType>Executable</OutputType>
+    <Language>CPP</Language>
+    <OutputFile>$(MSBuildProjectName).elf</OutputFile>
+    <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
+    <UseGlobalToolchain>True</UseGlobalToolchain>
+    <ToolchainDirPath>
+    </ToolchainDirPath>
+    <MakeDirPath>
+    </MakeDirPath>
+    <GlobalToolchainPath>C:\Program Files (x86)\Atmel\AVR Studio 5.0\AVR ToolChain\bin</GlobalToolchainPath>
+    <AvrGccProjectExtensions>
+    </AvrGccProjectExtensions>
+    <AssemblyName>thermostat</AssemblyName>
+    <Name>thermostat</Name>
+    <RootNamespace>thermostat</RootNamespace>
+    <ToolchainName>com.Atmel.AVRGCC8.CPP</ToolchainName>
+    <ToolchainFlavour>Native</ToolchainFlavour>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <ToolchainSettings>
+      <AvrGccCpp>
+        <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
+        <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
+        <avrgcc.compiler.preprocessor.DoNotSearchSystemDirectories>True</avrgcc.compiler.preprocessor.DoNotSearchSystemDirectories>
+        <avrgcc.compiler.optimization.level>Optimize for size (-Os)</avrgcc.compiler.optimization.level>
+        <avrgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>True</avrgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>
+        <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
+        <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
+        <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
+        <avrgcccpp.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcccpp.compiler.general.ChangeDefaultCharTypeUnsigned>
+        <avrgcccpp.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcccpp.compiler.general.ChangeDefaultBitFieldUnsigned>
+        <avrgcccpp.compiler.preprocessor.DoNotSearchSystemDirectories>True</avrgcccpp.compiler.preprocessor.DoNotSearchSystemDirectories>
+        <avrgcccpp.compiler.symbols.DefSymbols>
+          <ListValues>
+            <Value>F_CPU=8000000UL</Value>
+          </ListValues>
+        </avrgcccpp.compiler.symbols.DefSymbols>
+        <avrgcccpp.compiler.directories.IncludePaths>
+          <ListValues>
+            <Value>C:\arduino-1.0\hardware\arduino\cores\arduino</Value>
+            <Value>C:\arduino-1.0\hardware\arduino\variants\standard</Value>
+            <Value>C:\arduino-1.0\hardware\tools\avr\avr\include</Value>
+            <Value>C:\arduino-1.0\hardware\tools\avr\lib\gcc\avr\4.3.2\include</Value>
+            <Value>C:\arduino-1.0\libraries\Wire</Value>
+            <Value>C:\arduino-1.0\libraries\Wire\utility</Value>
+            <Value>../Arduino_Core</Value>
+          </ListValues>
+        </avrgcccpp.compiler.directories.IncludePaths>
+        <avrgcccpp.compiler.optimization.level>Optimize for size (-Os)</avrgcccpp.compiler.optimization.level>
+        <avrgcccpp.compiler.optimization.PrepareFunctionsForGarbageCollection>True</avrgcccpp.compiler.optimization.PrepareFunctionsForGarbageCollection>
+        <avrgcccpp.compiler.optimization.PackStructureMembers>True</avrgcccpp.compiler.optimization.PackStructureMembers>
+        <avrgcccpp.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcccpp.compiler.optimization.AllocateBytesNeededForEnum>
+        <avrgcccpp.compiler.warnings.AllWarnings>True</avrgcccpp.compiler.warnings.AllWarnings>
+        <avrgcccpp.linker.general.DoNotUseStandardStartFiles>True</avrgcccpp.linker.general.DoNotUseStandardStartFiles>
+        <avrgcccpp.linker.general.DoNotUseDefaultLibraries>True</avrgcccpp.linker.general.DoNotUseDefaultLibraries>
+        <avrgcccpp.linker.general.NoStartupOrDefaultLibs>True</avrgcccpp.linker.general.NoStartupOrDefaultLibs>
+        <avrgcccpp.linker.general.OmitAllSymbolInformation>True</avrgcccpp.linker.general.OmitAllSymbolInformation>
+        <avrgcccpp.linker.general.NoSharedLibraries>True</avrgcccpp.linker.general.NoSharedLibraries>
+        <avrgcccpp.linker.libraries.Libraries>
+          <ListValues>
+            <Value>Arduino_Core</Value>
+          </ListValues>
+        </avrgcccpp.linker.libraries.Libraries>
+        <avrgcccpp.linker.libraries.LibrarySearchPaths>
+          <ListValues>
+            <Value>../Arduino_Core/Release</Value>
+          </ListValues>
+        </avrgcccpp.linker.libraries.LibrarySearchPaths>
+        <avrgcccpp.linker.optimization.GarbageCollectUnusedSections>True</avrgcccpp.linker.optimization.GarbageCollectUnusedSections>
+      </AvrGccCpp>
+    </ToolchainSettings>
+    <MemorySettings>
+      <MemorySegments>
+        <InitialStack IsEnabled="0">
+          <Address>0x800</Address>
+        </InitialStack>
+      </MemorySegments>
+    </MemorySettings>
+    <GenerateHexFile>True</GenerateHexFile>
+    <GenerateMapFile>True</GenerateMapFile>
+    <GenerateListFile>True</GenerateListFile>
+    <GenerateEepFile>True</GenerateEepFile>
+    <UsesExternalMakeFile>True</UsesExternalMakeFile>
+    <ExternalMakeFilePath>C:\projects\house\sensor\thermostat\Release\Makefile</ExternalMakeFilePath>
+    <OutputDirectory>C:\projects\house\sensor\thermostat\Release</OutputDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <ToolchainSettings>
+      <AvrGcc>
+        <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
+        <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
+        <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
+        <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
+        <avrgcc.compiler.optimization.DebugLevel>Default (-g2)</avrgcc.compiler.optimization.DebugLevel>
+        <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
+        <avrgcccpp.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcccpp.compiler.general.ChangeDefaultCharTypeUnsigned>
+        <avrgcccpp.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcccpp.compiler.general.ChangeDefaultBitFieldUnsigned>
+        <avrgcccpp.compiler.optimization.PackStructureMembers>True</avrgcccpp.compiler.optimization.PackStructureMembers>
+        <avrgcccpp.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcccpp.compiler.optimization.AllocateBytesNeededForEnum>
+        <avrgcccpp.compiler.optimization.DebugLevel>Default (-g2)</avrgcccpp.compiler.optimization.DebugLevel>
+        <avrgcccpp.compiler.warnings.AllWarnings>True</avrgcccpp.compiler.warnings.AllWarnings>
+        <avrgcccpp.assembler.debugging.DebugLevel>Default (-g2)</avrgcccpp.assembler.debugging.DebugLevel>
+      </AvrGcc>
+    </ToolchainSettings>
+    <MemorySettings>
+    </MemorySettings>
+    <GenerateHexFile>True</GenerateHexFile>
+    <GenerateMapFile>True</GenerateMapFile>
+    <GenerateListFile>True</GenerateListFile>
+    <GenerateEepFile>True</GenerateEepFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Lcd.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Lcd.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SHT2x.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SHT2x.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SoftwareSerial.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="thermostat.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="XBee.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\AvrGCC.targets" />
+</Project>

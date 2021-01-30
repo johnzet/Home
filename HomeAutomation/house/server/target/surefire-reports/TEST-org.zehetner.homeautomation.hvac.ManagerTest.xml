@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite failures="0" time="0.001" errors="0" skipped="0" tests="7" name="org.zehetner.homeautomation.hvac.ManagerTest">
+  <properties>
+    <property name="idea.version" value="13.1.1"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.6.0_26\jre\bin"/>
+    <property name="java.vm.version" value="20.1-b02"/>
+    <property name="java.vm.vendor" value="Sun Microsystems Inc."/>
+    <property name="java.vendor.url" value="http://java.sun.com/"/>
+    <property name="path.separator" value=";"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value="Service Pack 1"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="C:\projects\house\server"/>
+    <property name="java.runtime.version" value="1.6.0_26-b03"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="basedir" value="C:\projects\house\server"/>
+    <property name="java.endorsed.dirs" value="C:\Program Files\Java\jdk1.6.0_26\jre\lib\endorsed"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="surefire.real.class.path" value="C:\projects\house\server\target\surefire\surefirebooter1913727219197242816.jar"/>
+    <property name="java.io.tmpdir" value="C:\Users\johnz\AppData\Local\Temp\"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Sun Microsystems Inc."/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 7"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk1.6.0_26\jre\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files (x86)\AMD APP\bin\x86_64;C:\Program Files (x86)\AMD APP\bin\x86;C:\Program Files\CollabNet\Subversion Client;C:\Program Files (x86)\AMD APP\bin\x86_64;C:\avrdude_gui;c:\Program Files\Java\jdk1.6.0_26\bin;C:\Program Files (x86)\AMD APP\bin\x86_64;C:\Program Files\RA2HP\;C:\csvn\bin\;C:\csvn\Python25\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\ActivIdentity\ActivClient\;C:\Program Files (x86)\ActivIdentity\ActivClient\;c:\apache-maven-3.0.3\bin;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;c:\cygwin\Cygwin.bat;C:\Program Files (x86)\IVI Foundation\VISA\WinNT\Bin\;C:\Program Files\IVI Foundation\VISA\Win64\Bin\;C:\Program Files (x86)\IVI Foundation\VISA\WinNT\Bin;C:\Program Files (x86)\IVI Foundation\IVI\bin;C:\Program Files\IVI Foundation\IVI\bin;C:\Program Files\TortoiseSVN\bin;."/>
+    <property name="surefire.test.class.path" value="C:\projects\house\server\target\test-classes;C:\projects\house\server\target\classes;C:\Users\johnz\.m2\repository\junit\junit\4.9\junit-4.9.jar;C:\Users\johnz\.m2\repository\org\hamcrest\hamcrest-core\1.1\hamcrest-core-1.1.jar;C:\Users\johnz\.m2\repository\javax\servlet\javax.servlet-api\3.0.1\javax.servlet-api-3.0.1.jar;C:\Users\johnz\.m2\repository\com\rapplogic\xbee\0.9.Z\xbee-0.9.Z.jar;C:\Users\johnz\.m2\repository\log4j\log4j\1.2.17\log4j-1.2.17.jar;C:\Users\johnz\.m2\repository\org\rxtx\rxtx\2.2\rxtx-2.2.jar;C:\Users\johnz\.m2\repository\commons-collections\commons-collections\3.2.1\commons-collections-3.2.1.jar;C:\Users\johnz\.m2\repository\commons-io\commons-io\2.4\commons-io-2.4.jar;C:\Users\johnz\.m2\repository\org\json\json\20090211\json-20090211.jar;C:\Users\johnz\.m2\repository\org\rrd4j\rrd4j\2.1.1\rrd4j-2.1.1.jar;C:\Users\johnz\.m2\repository\com\thoughtworks\xstream\xstream\1.4.4\xstream-1.4.4.jar;C:\Users\johnz\.m2\repository\xmlpull\xmlpull\1.1.3.1\xmlpull-1.1.3.1.jar;C:\Users\johnz\.m2\repository\xpp3\xpp3_min\1.1.4c\xpp3_min-1.1.4c.jar;C:\Users\johnz\.m2\repository\joda-time\joda-time\2.2\joda-time-2.2.jar;"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="50.0"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="6.1"/>
+    <property name="user.home" value="C:\Users\johnz"/>
+    <property name="user.timezone" value="America/Denver"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="java.specification.version" value="1.6"/>
+    <property name="file.encoding" value="Cp1252"/>
+    <property name="user.name" value="johnz"/>
+    <property name="java.class.path" value="C:\projects\house\server\target\test-classes;C:\projects\house\server\target\classes;C:\Users\johnz\.m2\repository\junit\junit\4.9\junit-4.9.jar;C:\Users\johnz\.m2\repository\org\hamcrest\hamcrest-core\1.1\hamcrest-core-1.1.jar;C:\Users\johnz\.m2\repository\javax\servlet\javax.servlet-api\3.0.1\javax.servlet-api-3.0.1.jar;C:\Users\johnz\.m2\repository\com\rapplogic\xbee\0.9.Z\xbee-0.9.Z.jar;C:\Users\johnz\.m2\repository\log4j\log4j\1.2.17\log4j-1.2.17.jar;C:\Users\johnz\.m2\repository\org\rxtx\rxtx\2.2\rxtx-2.2.jar;C:\Users\johnz\.m2\repository\commons-collections\commons-collections\3.2.1\commons-collections-3.2.1.jar;C:\Users\johnz\.m2\repository\commons-io\commons-io\2.4\commons-io-2.4.jar;C:\Users\johnz\.m2\repository\org\json\json\20090211\json-20090211.jar;C:\Users\johnz\.m2\repository\org\rrd4j\rrd4j\2.1.1\rrd4j-2.1.1.jar;C:\Users\johnz\.m2\repository\com\thoughtworks\xstream\xstream\1.4.4\xstream-1.4.4.jar;C:\Users\johnz\.m2\repository\xmlpull\xmlpull\1.1.3.1\xmlpull-1.1.3.1.jar;C:\Users\johnz\.m2\repository\xpp3\xpp3_min\1.1.4c\xpp3_min-1.1.4c.jar;C:\Users\johnz\.m2\repository\joda-time\joda-time\2.2\joda-time-2.2.jar;"/>
+    <property name="java.vm.specification.version" value="1.0"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk1.6.0_26\jre"/>
+    <property name="sun.java.command" value="C:\projects\house\server\target\surefire\surefirebooter1913727219197242816.jar C:\projects\house\server\target\surefire\surefire5075531607619359441tmp C:\projects\house\server\target\surefire\surefire4329670744119526415tmp"/>
+    <property name="java.specification.vendor" value="Sun Microsystems Inc."/>
+    <property name="user.language" value="en"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.6.0_26"/>
+    <property name="java.ext.dirs" value="C:\Program Files\Java\jdk1.6.0_26\jre\lib\ext;C:\Windows\Sun\Java\lib\ext"/>
+    <property name="sun.boot.class.path" value="C:\Program Files\Java\jdk1.6.0_26\jre\lib\resources.jar;C:\Program Files\Java\jdk1.6.0_26\jre\lib\rt.jar;C:\Program Files\Java\jdk1.6.0_26\jre\lib\sunrsasign.jar;C:\Program Files\Java\jdk1.6.0_26\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.6.0_26\jre\lib\jce.jar;C:\Program Files\Java\jdk1.6.0_26\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.6.0_26\jre\lib\modules\jdk.boot.jar;C:\Program Files\Java\jdk1.6.0_26\jre\classes"/>
+    <property name="java.vendor" value="Sun Microsystems Inc."/>
+    <property name="localRepository" value="C:\Users\johnz\.m2\repository"/>
+    <property name="file.separator" value="\"/>
+    <property name="java.vendor.url.bug" value="http://java.sun.com/cgi-bin/bugreport.cgi"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+  </properties>
+  <testcase time="0" classname="org.zehetner.homeautomation.hvac.ManagerTest" name="testGetSingleton"/>
+  <testcase time="0" classname="org.zehetner.homeautomation.hvac.ManagerTest" name="testGetMechanical"/>
+  <testcase time="0" classname="org.zehetner.homeautomation.hvac.ManagerTest" name="testGetSensors"/>
+  <testcase time="0" classname="org.zehetner.homeautomation.hvac.ManagerTest" name="testGetSettings"/>
+  <testcase time="0" classname="org.zehetner.homeautomation.hvac.ManagerTest" name="testGetStateEngine"/>
+  <testcase time="0" classname="org.zehetner.homeautomation.hvac.ManagerTest" name="testGetSensorPoller"/>
+  <testcase time="0" classname="org.zehetner.homeautomation.hvac.ManagerTest" name="testGetDataLogger"/>
+</testsuite>

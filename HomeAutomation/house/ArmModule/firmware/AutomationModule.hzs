@@ -1,0 +1,77 @@
+<!DOCTYPE CrossStudio_Session_File>
+<session>
+ <Bookmarks/>
+ <Breakpoints/>
+ <ExecutionProfileWindow/>
+ <FrameBufferWindow>
+  <FrameBufferWindow addressText="" bufferWidth="-1" bufferHeight="-1" addressSpace="" />
+ </FrameBufferWindow>
+ <Memory1>
+  <MemoryWindow autoEvaluate="0" addressText="&amp;0xe000ed04" addressOrder="0" refreshPeriod="0" columnsText="" sizeText="4" viewMode="0" dataSize="4" radix="16" name="AutomationModule" addressSpace="" />
+ </Memory1>
+ <Memory2>
+  <MemoryWindow autoEvaluate="0" addressText="" addressOrder="0" refreshPeriod="0" columnsText="" sizeText="" viewMode="0" dataSize="1" radix="16" name="AutomationModule" addressSpace="" />
+ </Memory2>
+ <Memory3>
+  <MemoryWindow autoEvaluate="0" addressText="" addressOrder="0" refreshPeriod="0" columnsText="" sizeText="" viewMode="0" dataSize="1" radix="16" name="AutomationModule" addressSpace="" />
+ </Memory3>
+ <Memory4>
+  <MemoryWindow autoEvaluate="0" addressText="" addressOrder="0" refreshPeriod="0" columnsText="" sizeText="" viewMode="0" dataSize="1" radix="16" name="AutomationModule" addressSpace="" />
+ </Memory4>
+ <Project>
+  <ProjectSessionItem path="AutomationModule" name="unnamed" />
+  <ProjectSessionItem path="AutomationModule;AutomationModule" name="unnamed" />
+  <ProjectSessionItem path="AutomationModule;AutomationModule;Source Files" name="unnamed" />
+  <ProjectSessionItem path="AutomationModule;AutomationModule;Source Files;include" name="unnamed" />
+  <ProjectSessionItem path="AutomationModule;AutomationModule;Source Files;src" name="unnamed" />
+  <ProjectSessionItem path="AutomationModule;AutomationModule;test" name="unnamed" />
+  <ProjectSessionItem path="AutomationModule;embUnit" name="unnamed" />
+  <ProjectSessionItem path="AutomationModule;embUnit;Source Files" name="unnamed" />
+  <ProjectSessionItem path="AutomationModule;embUnit;Source Files;src" name="unnamed" />
+ </Project>
+ <Register1>
+  <RegisterWindow openNodes="SCB;SCB/ICSR" binaryNodes="" unsignedNodes="" decimalNodes="" octalNodes="" asciiNodes="" visibleNodes="CPU - Current Context/r0;CPU - Current Context/r1;CPU - Current Context/r2;CPU - Current Context/r3;CPU - Current Context/r4;CPU - Current Context/r5;CPU - Current Context/r6;CPU - Current Context/r7;CPU - Current Context/r8;CPU - Current Context/r9;CPU - Current Context/r10;CPU - Current Context/r11;CPU - Current Context/r12;CPU - Current Context/sp(r13);CPU - Current Context/lr(r14);CPU - Current Context/pc(r15);CPU - Current Context/apsr;SCB/ICTR;SCB/ACTLR;SCB/ICSR;SCB/VTOR;SCB/AIRCR;SCB/SCR;SCB/CCR;SCB/SHPR1;SCB/SHPR2;SCB/SHPR3;SCB/SHCSR;SCB/MMFSR;SCB/BFSR;SCB/UFSR;SCB/HFSR;SCB/DFSR;SCB/MMFAR;SCB/BFAR;SCB/AFSR;SCB/CPACR;SCB/STIR" name="AutomationModule" />
+ </Register1>
+ <Register2>
+  <RegisterWindow openNodes="CPU - Current Context" binaryNodes="" unsignedNodes="" decimalNodes="" octalNodes="" asciiNodes="" visibleNodes="CPU - Current Context/r0;CPU - Current Context/r1;CPU - Current Context/r2;CPU - Current Context/r3;CPU - Current Context/r4;CPU - Current Context/r5;CPU - Current Context/r6;CPU - Current Context/r7;CPU - Current Context/r8;CPU - Current Context/r9;CPU - Current Context/r10;CPU - Current Context/r11;CPU - Current Context/r12;CPU - Current Context/sp(r13);CPU - Current Context/lr(r14);CPU - Current Context/pc(r15);CPU - Current Context/apsr;CPU/r0;CPU/r1;CPU/r2;CPU/r3;CPU/r4;CPU/r5;CPU/r6;CPU/r7;CPU/r8;CPU/r9;CPU/r10;CPU/r11;CPU/r12;CPU/sp(r13);CPU/lr(r14);CPU/pc(r15);CPU/xpsr;CPU/msp;CPU/psp;CPU/cfbp" name="AutomationModule" />
+ </Register2>
+ <Register3>
+  <RegisterWindow openNodes="CPU - Current Context" binaryNodes="" unsignedNodes="" decimalNodes="" octalNodes="" asciiNodes="" visibleNodes="CPU - Current Context/r0;CPU - Current Context/r1;CPU - Current Context/r2;CPU - Current Context/r3;CPU - Current Context/r4;CPU - Current Context/r5;CPU - Current Context/r6;CPU - Current Context/r7;CPU - Current Context/r8;CPU - Current Context/r9;CPU - Current Context/r10;CPU - Current Context/r11;CPU - Current Context/r12;CPU - Current Context/sp(r13);CPU - Current Context/lr(r14);CPU - Current Context/pc(r15);CPU - Current Context/apsr;CPU/r0;CPU/r1;CPU/r2;CPU/r3;CPU/r4;CPU/r5;CPU/r6;CPU/r7;CPU/r8;CPU/r9;CPU/r10;CPU/r11;CPU/r12;CPU/sp(r13);CPU/lr(r14);CPU/pc(r15);CPU/xpsr;CPU/msp;CPU/psp;CPU/cfbp" name="AutomationModule" />
+ </Register3>
+ <Register4>
+  <RegisterWindow openNodes="CPU - Current Context" binaryNodes="" unsignedNodes="" decimalNodes="" octalNodes="" asciiNodes="" visibleNodes="CPU - Current Context/r0;CPU - Current Context/r1;CPU - Current Context/r2;CPU - Current Context/r3;CPU - Current Context/r4;CPU - Current Context/r5;CPU - Current Context/r6;CPU - Current Context/r7;CPU - Current Context/r8;CPU - Current Context/r9;CPU - Current Context/r10;CPU - Current Context/r11;CPU - Current Context/r12;CPU - Current Context/sp(r13);CPU - Current Context/lr(r14);CPU - Current Context/pc(r15);CPU - Current Context/apsr;CPU/r0;CPU/r1;CPU/r2;CPU/r3;CPU/r4;CPU/r5;CPU/r6;CPU/r7;CPU/r8;CPU/r9;CPU/r10;CPU/r11;CPU/r12;CPU/sp(r13);CPU/lr(r14);CPU/pc(r15);CPU/xpsr;CPU/msp;CPU/psp;CPU/cfbp" name="AutomationModule" />
+ </Register4>
+ <TargetWindow programAction="" uploadFileType="" programLoadAddress="" programSize="" uploadFileName="" uploadMemoryInterface="" programFileName="" uploadStartAddress="" programFileType="" uploadSize="" programMemoryInterface="" />
+ <TraceWindow>
+  <Trace enabled="Yes" />
+ </TraceWindow>
+ <Watch1>
+  <Watches active="1" update="Never" >
+   <Watchpoint evalMode="2" linenumber="27" numelements="58" evalType="0" radix="1" name="packetBuffer" expression="packetBuffer" filename="test/WiFiTask_test.cpp" />
+   <Watchpoint evalMode="2" linenumber="155" numelements="60" evalType="0" radix="16" name="httpRequestBuffer" expression="this->httpRequestBuffer" filename="src/WiFiTask.cpp" />
+  </Watches>
+ </Watch1>
+ <Watch2>
+  <Watches active="0" update="Never" />
+ </Watch2>
+ <Watch3>
+  <Watches active="0" update="Never" />
+ </Watch3>
+ <Watch4>
+  <Watches active="0" update="Never" />
+ </Watch4>
+ <Files>
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="28" debugPath="include/WiFiTask.h" y="29" path="include/WiFiTask.h" left="0" selected="0" name="unnamed" top="13" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="include/main.h" y="23" path="include/main.h" left="0" selected="0" name="unnamed" top="0" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="src/main.cpp" y="15" path="src/main.cpp" left="0" selected="0" name="unnamed" top="0" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="freeRtos/src/tasks.c" y="2697" path="freeRtos/src/tasks.c" left="0" selected="0" name="unnamed" top="2667" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="freeRtos/src/portmacro.h" y="131" path="freeRtos/src/portmacro.h" left="0" selected="0" name="unnamed" top="127" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="src/portable/port.c" y="408" path="src/portable/port.c" left="0" selected="0" name="unnamed" top="23" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="freeRtos/src/include/FreeRTOSConfig.h" y="150" path="freeRtos/src/include/FreeRTOSConfig.h" left="0" selected="0" name="unnamed" top="146" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="STM32/include/stm32f4xx.h" y="146" path="STM32/include/stm32f4xx.h" left="0" selected="0" name="unnamed" top="74" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="test/WiFiTask_test.cpp" y="29" path="test/WiFiTask_test.cpp" left="0" selected="1" name="unnamed" top="0" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="" x="0" debugPath="../../../embUnit/embUnit/TestResult.c" y="64" path="../../../embUnit/embUnit/TestResult.c" left="0" selected="0" name="unnamed" top="44" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="src/WiFiTask.cpp" y="154" path="src/WiFiTask.cpp" left="0" selected="0" name="unnamed" top="142" />
+ </Files>
+ <ARMCrossStudioWindow activeProject="AutomationModule" autoConnectTarget="ARM Simulator" debugSearchFileMap="" fileDialogInitialDirectory="C:/projects/house/ArmModule" fileDialogDefaultFilter="*.c" autoConnectCapabilities="268735" debugSearchPath="" buildConfiguration="THUMB Debug" />
+</session>

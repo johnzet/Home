@@ -1,0 +1,30 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{E66E83B9-2572-4076-B26E-6BE79FF3018A}") = "thermostat", "thermostat\thermostat.cppproj", "{75B9B62F-299E-4FFC-A574-D0228151AFD2}"
+EndProject
+Project("{E66E83B9-2572-4076-B26E-6BE79FF3018A}") = "gateway", "gateway\gateway.cppproj", "{33817BA5-1FB5-4CBC-8A00-CA95B336C0C1}"
+EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "bootloader", "bootloader\bootloader.cproj", "{753C6E90-7386-46DF-A9B6-D46F3C355620}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{75B9B62F-299E-4FFC-A574-D0228151AFD2}.Debug|AVR.ActiveCfg = Debug|AVR
+		{75B9B62F-299E-4FFC-A574-D0228151AFD2}.Release|AVR.ActiveCfg = Release|AVR
+		{75B9B62F-299E-4FFC-A574-D0228151AFD2}.Release|AVR.Build.0 = Release|AVR
+		{33817BA5-1FB5-4CBC-8A00-CA95B336C0C1}.Debug|AVR.ActiveCfg = Debug|AVR
+		{33817BA5-1FB5-4CBC-8A00-CA95B336C0C1}.Debug|AVR.Build.0 = Debug|AVR
+		{33817BA5-1FB5-4CBC-8A00-CA95B336C0C1}.Release|AVR.ActiveCfg = Release|AVR
+		{33817BA5-1FB5-4CBC-8A00-CA95B336C0C1}.Release|AVR.Build.0 = Release|AVR
+		{753C6E90-7386-46DF-A9B6-D46F3C355620}.Debug|AVR.ActiveCfg = Debug|AVR
+		{753C6E90-7386-46DF-A9B6-D46F3C355620}.Debug|AVR.Build.0 = Debug|AVR
+		{753C6E90-7386-46DF-A9B6-D46F3C355620}.Release|AVR.ActiveCfg = Release|AVR
+		{753C6E90-7386-46DF-A9B6-D46F3C355620}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

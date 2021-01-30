@@ -1,0 +1,16 @@
+org\zehetner\homeautomation\mock\MockHttpServletRequest.class
+org\zehetner\homeautomation\UtilsTest.class
+org\zehetner\homeautomation\stateengine\ProgramSetTest.class
+org\zehetner\homeautomation\mock\MockHttpServletResponse$1.class
+org\zehetner\homeautomation\mock\MockHttpServletResponse.class
+org\zehetner\homeautomation\server\responder\RootPageResponderTest.class
+org\zehetner\homeautomation\server\servlets\RootServletTest.class
+org\zehetner\homeautomation\sprinklers\ZoneTest.class
+org\zehetner\homeautomation\server\responder\SprinklersAjaxResponderTest.class
+org\zehetner\homeautomation\TimeTest.class
+org\zehetner\homeautomation\common\CombinedPropertiesTest.class
+org\zehetner\homeautomation\stateengine\SprinklerProgramTest.class
+org\zehetner\homeautomation\mock\MockSprinklerHttpComm.class
+org\zehetner\homeautomation\sprinklers\SprinklerStateEngineTest.class
+org\zehetner\homeautomation\utils\TestUtils.class
+org\zehetner\homeautomation\sprinklers\SprinklerMechanicalTest.class

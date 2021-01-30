@@ -1,0 +1,10 @@
+Sensor Rev B
+
+	No bypass cap on the microcontroller
+	Why is there a 100 ohm resistor on Din line of the Xbee?
+	Imon pad is a little close to the xbee socket plastic
+	Mark polarity on buzzer and led - top silkscreen
+	Increase button caps from 0.1uF to 10uF
+	Move 100uF LCD cap to the power supply-side of the MOSFET
+	
+	

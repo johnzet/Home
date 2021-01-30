@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# AvrStudio Solution File, Format Version 11.00
+Project("{D1100916-62DA-4D80-A9B4-55A1E7CCEEB3}") = "thermostat", "thermostat\thermostat.avrgccproj", "{75B9B62F-299E-4FFC-A574-D0228151AFD2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{74F344B2-2EAC-4200-81DA-A70118D283C4} = {74F344B2-2EAC-4200-81DA-A70118D283C4}
+	EndProjectSection
+EndProject
+Project("{D1100916-62DA-4D80-A9B4-55A1E7CCEEB3}") = "Arduino_Core", "Arduino_Core\Arduino_Core.avrgccproj", "{74F344B2-2EAC-4200-81DA-A70118D283C4}"
+EndProject
+Project("{D1100916-62DA-4D80-A9B4-55A1E7CCEEB3}") = "gateway", "gateway\gateway.avrgccproj", "{33817BA5-1FB5-4CBC-8A00-CA95B336C0C1}"
+EndProject
+Project("{D1100916-62DA-4D80-A9B4-55A1E7CCEEB3}") = "bootloader", "bootloader\bootloader.avrgccproj", "{753C6E90-7386-46DF-A9B6-D46F3C355620}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{75B9B62F-299E-4FFC-A574-D0228151AFD2}.Debug|AVR.ActiveCfg = Debug|AVR
+		{75B9B62F-299E-4FFC-A574-D0228151AFD2}.Debug|AVR.Build.0 = Debug|AVR
+		{75B9B62F-299E-4FFC-A574-D0228151AFD2}.Release|AVR.ActiveCfg = Release|AVR
+		{75B9B62F-299E-4FFC-A574-D0228151AFD2}.Release|AVR.Build.0 = Release|AVR
+		{74F344B2-2EAC-4200-81DA-A70118D283C4}.Debug|AVR.ActiveCfg = Debug|AVR
+		{74F344B2-2EAC-4200-81DA-A70118D283C4}.Debug|AVR.Build.0 = Debug|AVR
+		{74F344B2-2EAC-4200-81DA-A70118D283C4}.Release|AVR.ActiveCfg = Release|AVR
+		{74F344B2-2EAC-4200-81DA-A70118D283C4}.Release|AVR.Build.0 = Release|AVR
+		{33817BA5-1FB5-4CBC-8A00-CA95B336C0C1}.Debug|AVR.ActiveCfg = Debug|AVR
+		{33817BA5-1FB5-4CBC-8A00-CA95B336C0C1}.Debug|AVR.Build.0 = Debug|AVR
+		{33817BA5-1FB5-4CBC-8A00-CA95B336C0C1}.Release|AVR.ActiveCfg = Release|AVR
+		{33817BA5-1FB5-4CBC-8A00-CA95B336C0C1}.Release|AVR.Build.0 = Release|AVR
+		{753C6E90-7386-46DF-A9B6-D46F3C355620}.Debug|AVR.ActiveCfg = Debug|AVR
+		{753C6E90-7386-46DF-A9B6-D46F3C355620}.Debug|AVR.Build.0 = Debug|AVR
+		{753C6E90-7386-46DF-A9B6-D46F3C355620}.Release|AVR.ActiveCfg = Release|AVR
+		{753C6E90-7386-46DF-A9B6-D46F3C355620}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

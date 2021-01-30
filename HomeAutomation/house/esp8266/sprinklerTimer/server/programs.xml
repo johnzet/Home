@@ -1,0 +1,26 @@
+<list>
+  <SprinklerProgram>
+    <name>Program A</name>
+    <enabled>false</enabled>
+    <multiplier>100</multiplier>
+    <repeat>
+      <type>EVERY_N_DAYS</type>
+      <optionalDaysInterval>3</optionalDaysInterval>
+      <dayList/>
+    </repeat>
+    <startTime>
+      <hour>17</hour>
+      <minute>14</minute>
+    </startTime>
+    <actions>
+      <SprinklerAction>
+        <durationMinutes>11</durationMinutes>
+        <zone>ZONE_3</zone>
+      </SprinklerAction>
+      <SprinklerAction>
+        <durationMinutes>15</durationMinutes>
+        <zone>ZONE_7</zone>
+      </SprinklerAction>
+    </actions>
+  </SprinklerProgram>
+</list>

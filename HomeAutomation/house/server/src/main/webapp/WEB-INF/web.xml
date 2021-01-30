@@ -1,0 +1,77 @@
+<web-app version="2.4"
+         xmlns="http://java.sun.com/xml/ns/j2ee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+    <display-name>Home Automation Server</display-name>
+    <description>Home Automation Server</description>
+    <display-name>>Home Automation Server</display-name>
+
+    <listener>
+        <listener-class>
+            org.zehetner.homeautomation.listeners.RootContextListener
+        </listener-class>
+    </listener>
+
+    <servlet>
+        <servlet-name>Root</servlet-name>
+        <servlet-class>
+            org.zehetner.homeautomation.server.servlets.RootServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Root</servlet-name>
+        <url-pattern>/home</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Hvac</servlet-name>
+        <servlet-class>
+            org.zehetner.homeautomation.server.servlets.HvacServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Hvac</servlet-name>
+        <url-pattern>/hvac</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Hvac Ajax</servlet-name>
+        <servlet-class>
+            org.zehetner.homeautomation.server.servlets.HvacAjaxServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Hvac Ajax</servlet-name>
+        <url-pattern>/hvacAjax</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>History</servlet-name>
+        <servlet-class>
+            org.zehetner.homeautomation.server.servlets.HistoryServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>History</servlet-name>
+        <url-pattern>/history</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Sprinklers</servlet-name>
+        <servlet-class>
+            org.zehetner.homeautomation.server.servlets.SprinklersServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Sprinklers</servlet-name>
+        <url-pattern>/sprinklers</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Sprinklers Ajax</servlet-name>
+        <servlet-class>
+            org.zehetner.homeautomation.server.servlets.SprinklersAjaxServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Sprinklers Ajax</servlet-name>
+        <url-pattern>/sprinklersAjax</url-pattern>
+    </servlet-mapping>
+</web-app>
+

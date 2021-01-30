@@ -1,0 +1,45 @@
+html {
+    font-family: Georgia, Arial, serif;
+}
+
+table {
+    border-collapse: collapse;
+    background-color: lightcyan;
+}
+
+table > thead {
+    border-bottom: 1px solid blue;
+}
+
+table > thead  td {
+    padding: 3px 7px;
+}
+table > tbody  td {
+    padding: 3px 7px;
+}
+
+h1 > span {
+    background-color: lightblue;
+    border: 1px solid blue;
+    padding: 3px;
+}
+
+.top-links {
+    margin-bottom: 30px;
+}
+
+.top-links > span {
+    border-bottom: 1px solid blue;
+    width: auto;
+}
+
+.top-links > span > a {
+    text-decoration: none;
+    margin-right: 20px;
+    border: 1px solid transparent;
+}
+
+.top-links > span > a:hover {
+    background-color: yellow;
+    border: 1px solid orange;
+}

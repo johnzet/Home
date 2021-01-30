@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>6.1</ProjectVersion>
+    <ProjectGuid>{753c6e90-7386-46df-a9b6-d46f3c355620}</ProjectGuid>
+    <avrdevice>ATmega2560</avrdevice>
+    <avrdeviceseries>none</avrdeviceseries>
+    <OutputType>Executable</OutputType>
+    <Language>C</Language>
+    <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
+    <AvrGccProjectExtensions>
+    </AvrGccProjectExtensions>
+    <AssemblyName>AVRGCC1</AssemblyName>
+    <Name>AVRGCC1</Name>
+    <RootNamespace>AVRGCC1</RootNamespace>
+    <avrtool>
+    </avrtool>
+    <avrtoolinterface>ISP</avrtoolinterface>
+    <com_atmel_avrdbg_tool_ispmk2>
+      <ToolType>com.atmel.avrdbg.tool.ispmk2</ToolType>
+      <ToolName>AVRISP mkII</ToolName>
+      <ToolNumber>000200105429</ToolNumber>
+      <KeepTimersRunning>true</KeepTimersRunning>
+      <OverrideVtor>false</OverrideVtor>
+      <OverrideVtorValue>
+      </OverrideVtorValue>
+      <Channel>
+        <host>127.0.0.1</host>
+        <port>64597</port>
+        <ssl>False</ssl>
+      </Channel>
+      <ToolOptions>
+        <InterfaceName>ISP</InterfaceName>
+        <InterfaceProperties>
+          <JtagDbgClock>249000</JtagDbgClock>
+          <JtagProgClock>1000000</JtagProgClock>
+          <IspClock>1000000</IspClock>
+          <JtagInChain>false</JtagInChain>
+          <JtagEnableExtResetOnStartSession>false</JtagEnableExtResetOnStartSession>
+          <JtagDevicesBefore>0</JtagDevicesBefore>
+          <JtagDevicesAfter>0</JtagDevicesAfter>
+          <JtagInstrBitsBefore>0</JtagInstrBitsBefore>
+          <JtagInstrBitsAfter>0</JtagInstrBitsAfter>
+        </InterfaceProperties>
+      </ToolOptions>
+    </com_atmel_avrdbg_tool_ispmk2>
+    <com_atmel_avrdbg_tool_simulator>
+      <ToolType xmlns="">com.atmel.avrdbg.tool.simulator</ToolType>
+      <ToolName xmlns="">AVR Simulator</ToolName>
+      <ToolNumber xmlns="">
+      </ToolNumber>
+      <Channel xmlns="">
+        <host>127.0.0.1</host>
+        <port>56680</port>
+        <ssl>False</ssl>
+      </Channel>
+    </com_atmel_avrdbg_tool_simulator>
+    <ToolchainName>com.Atmel.AVRGCC8.C</ToolchainName>
+    <ToolchainFlavour>Native</ToolchainFlavour>
+    <AsfVersion>3.1.3</AsfVersion>
+    <KeepTimersRunning>true</KeepTimersRunning>
+    <eraseonlaunchrule>0</eraseonlaunchrule>
+    <OverrideVtor>false</OverrideVtor>
+    <OverrideVtorValue>exception_table</OverrideVtorValue>
+    <preserveEEPROM>True</preserveEEPROM>
+    <AsfFrameworkConfig>
+      <framework-data>
+        <options />
+        <configurations />
+        <files />
+        <documentation help="" />
+        <offline-documentation help="" />
+        <dependencies>
+          <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.3.0" />
+        </dependencies>
+      </framework-data>
+    </AsfFrameworkConfig>
+    <CacheFlash>true</CacheFlash>
+    <ProgFlashFromRam>true</ProgFlashFromRam>
+    <RamSnippetAddress>0x20000000</RamSnippetAddress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputFileName>bootloader</OutputFileName>
+    <OutputFileExtension>.elf</OutputFileExtension>
+    <ToolchainSettings>
+      <AvrGcc>
+  <avrgcc.common.optimization.RelaxBranches>True</avrgcc.common.optimization.RelaxBranches>
+  <avrgcc.common.outputfiles.hex>True</avrgcc.common.outputfiles.hex>
+  <avrgcc.common.outputfiles.lss>True</avrgcc.common.outputfiles.lss>
+  <avrgcc.common.outputfiles.eep>True</avrgcc.common.outputfiles.eep>
+  <avrgcc.common.outputfiles.srec>True</avrgcc.common.outputfiles.srec>
+  <avrgcc.compiler.symbols.DefSymbols>
+    <ListValues>
+      <Value>AtMega2560_3V3</Value>
+      <Value>AtMega2560</Value>
+    </ListValues>
+  </avrgcc.compiler.symbols.DefSymbols>
+  <avrgcc.compiler.directories.IncludePaths>
+    <ListValues>
+      <Value>C:\arduino-1.0\hardware\arduino\cores\arduino</Value>
+      <Value>C:\arduino-1.0\hardware\tools\avr\avr\include</Value>
+      <Value>C:\arduino-1.0\hardware\tools\avr\lib\gcc\avr\4.3.2\include</Value>
+      <Value>C:\arduino-1.0\hardware\tools\avr\lib\gcc\avr\4.3.2\install-tools\include</Value>
+    </ListValues>
+  </avrgcc.compiler.directories.IncludePaths>
+  <avrgcc.compiler.optimization.level>Optimize for size (-Os)</avrgcc.compiler.optimization.level>
+  <avrgcc.compiler.optimization.OtherFlags>-fdata-sections</avrgcc.compiler.optimization.OtherFlags>
+  <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
+  <avrgcc.compiler.warnings.Pedantic>True</avrgcc.compiler.warnings.Pedantic>
+  <avrgcc.compiler.warnings.PedanticWarningsAsErrors>True</avrgcc.compiler.warnings.PedanticWarningsAsErrors>
+  <avrgcc.compiler.miscellaneous.OtherFlags>-std=gnu99  -fno-exceptions</avrgcc.compiler.miscellaneous.OtherFlags>
+  <avrgcc.linker.general.NoSharedLibraries>True</avrgcc.linker.general.NoSharedLibraries>
+  <avrgcc.linker.libraries.Libraries>
+    <ListValues>
+      <Value>libm</Value>
+    </ListValues>
+  </avrgcc.linker.libraries.Libraries>
+  <avrgcc.linker.memorysettings.Flash>
+    <ListValues>
+      <Value>.text_AtMega328P=0x3C00</Value>
+      <Value>.text=0x1F800</Value>
+      <Value>.text_AtMega260=0x1F800</Value>
+    </ListValues>
+  </avrgcc.linker.memorysettings.Flash>
+</AvrGcc>
+    </ToolchainSettings>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputFileName>bootloader</OutputFileName>
+    <OutputFileExtension>.elf</OutputFileExtension>
+    <ToolchainSettings>
+      <AvrGcc>
+  <avrgcc.common.optimization.RelaxBranches>True</avrgcc.common.optimization.RelaxBranches>
+  <avrgcc.common.outputfiles.hex>True</avrgcc.common.outputfiles.hex>
+  <avrgcc.common.outputfiles.lss>True</avrgcc.common.outputfiles.lss>
+  <avrgcc.common.outputfiles.eep>True</avrgcc.common.outputfiles.eep>
+  <avrgcc.common.outputfiles.srec>True</avrgcc.common.outputfiles.srec>
+  <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
+  <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
+  <avrgcc.compiler.directories.IncludePaths>
+    <ListValues>
+      <Value>C:\arduino-1.0\hardware\arduino\cores\arduino</Value>
+    </ListValues>
+  </avrgcc.compiler.directories.IncludePaths>
+  <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
+  <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
+  <avrgcc.compiler.optimization.DebugLevel>Default (-g2)</avrgcc.compiler.optimization.DebugLevel>
+  <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
+  <avrgcc.linker.libraries.Libraries>
+    <ListValues>
+      <Value>libm</Value>
+    </ListValues>
+  </avrgcc.linker.libraries.Libraries>
+  <avrgcc.linker.memorysettings.InitialStack>0x800</avrgcc.linker.memorysettings.InitialStack>
+  <avrgcc.linker.memorysettings.Flash>
+    <ListValues>
+      <Value>.hidetext=0x1c00</Value>
+    </ListValues>
+  </avrgcc.linker.memorysettings.Flash>
+  <avrgcc.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcc.assembler.debugging.DebugLevel>
+</AvrGcc>
+    </ToolchainSettings>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="bootloader.c">
+      <SubType>compile</SubType>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\AvrGCC.targets" />
+</Project>

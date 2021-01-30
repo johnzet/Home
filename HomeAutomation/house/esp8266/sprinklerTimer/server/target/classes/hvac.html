@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Zehetner House HVAC</title>
+<script type="text/javascript" src="javascript/core.js"></script>
+<script type="text/javascript" src="javascript/hvac.js"></script>
+<script type="text/javascript">
+    function periodicRefresh(period) '{'
+        setTimeout("location.reload(true);", period);
+    '}'
+</script>
+</head>
+<body onload="periodicRefresh(10000);">
+
+<h2>Indoor {0} deg F &nbsp;&nbsp;&nbsp; {1}%</h2>
+<br/>
+<h2>Outdoor {2} deg F &nbsp;&nbsp;&nbsp; {3}%</h2>
+<br/>
+<h2>Barometer {4} inHg</h2>
+<br/>
+
+<table>
+<tr><td><img alt="Up" src="images/arrow_up_32.png" onclick="increaseTemp()"/></td></tr>
+<tr><td><span id="setTempField" style="width: 60px; font-size: larger;">{5}</span></td></tr>
+<tr><td><img alt="Down" src="images/arrow_down_32.png" onclick="decreaseTemp()"/></td></tr>
+</table>
+
+<br/>
+
+<select name="mode" onchange="modeChange(this)">
+    <option {7} value="OFF">Off</option>
+    <option {8} value="HEAT">Heat</option>-
+    <option {9} value="COOL">Cool</option>
+</select>
+
+<input type="checkbox" name="fanOn" onchange="fanOn(this)" {10}>Fan On</input>
+
+<br/>
+
+<span style="color: red;">{6}</span>
+
+</body>
+</html>
