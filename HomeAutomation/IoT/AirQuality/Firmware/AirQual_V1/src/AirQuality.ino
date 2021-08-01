@@ -118,13 +118,8 @@ delay(1000);
             lcd.selectLine(2);
             //Serial1.print(bme280.readTempC(), 0);
             //Serial1.print("C ");
-            Serial1.print(bme280.readTempC(), 0);
-            Serial1.print("C ");
-            Serial1.print(bme280.readFloatHumidity(), 0);
-            Serial1.print("% ");
-            Serial1.print(bme280.readFloatPressure()/82.5, 0);
-            Serial1.print("hPa");
-            
+            float pressure = (bme280.readFloatPressure() / 100.0) + 170.2;  // https://novalynx.com/manuals/bp-elevation-correction-tables.pdf
+            Serial1.printf("%4.1f %2.0f%% %6.1f", bme280.readTempC(), bme280.readFloatHumidity(), pressure);            
 
     bme280.settings.runMode = 0;
     }

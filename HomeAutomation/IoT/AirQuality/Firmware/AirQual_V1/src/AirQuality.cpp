@@ -3,7 +3,7 @@
 /******************************************************/
 
 #include "Particle.h"
-#line 1 "/Users/johnzet/projects/Home/HomeAutomation/IoT/AirQuality/src/AirQuality.ino"
+#line 1 "/Users/johnzet/projects/Home/HomeAutomation/IoT/AirQuality/Firmware/AirQual_V1/src/AirQuality.ino"
 #include "Serial_LCD_SparkFun.h"
 #include "HttpClient.h"
 #include "SparkFunBME280.h"
@@ -11,7 +11,7 @@
 
 void setup();
 void loop();
-#line 6 "/Users/johnzet/projects/Home/HomeAutomation/IoT/AirQuality/src/AirQuality.ino"
+#line 6 "/Users/johnzet/projects/Home/HomeAutomation/IoT/AirQuality/Firmware/AirQual_V1/src/AirQuality.ino"
 Serial_LCD_SparkFun lcd;
 BME280 bme280;
 HttpClient httpClient;
@@ -127,13 +127,8 @@ delay(1000);
             lcd.selectLine(2);
             //Serial1.print(bme280.readTempC(), 0);
             //Serial1.print("C ");
-            Serial1.print(bme280.readTempC(), 0);
-            Serial1.print("C ");
-            Serial1.print(bme280.readFloatHumidity(), 0);
-            Serial1.print("% ");
-            Serial1.print(bme280.readFloatPressure()/82.5, 0);
-            Serial1.print("hPa");
-            
+            float pressure = (bme280.readFloatPressure() / 100.0) + 170.2;  // https://novalynx.com/manuals/bp-elevation-correction-tables.pdf
+            Serial1.printf("%4.1f %2.0f%% %6.1f", bme280.readTempC(), bme280.readFloatHumidity(), pressure);            
 
     bme280.settings.runMode = 0;
     }

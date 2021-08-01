@@ -4,167 +4,230 @@
 
 #include "Particle.h"
 #line 1 "/Users/johnzet/projects/Home/HomeAutomation/IoT/AirQuality/Firmware/AirQual_V2/src/AirQuality.ino"
+// #pragma GCC push_options
+// #pragma GCC optimize ("O0")
+
+#include "Wire.h"
+#include "SPS30/sensirion_uart.h"  
+#include "SPS30/sps30.h"   // Sensirion driver https://github.com/Sensirion/embedded-uart-sps
+#include "BME280/BME280.h"
+#include "LCD/SerLCD.h"
+#include "SGP40/SparkFun_SGP40_Arduino_Library.h"
+
 void setup();
 void loop();
-#line 1 "/Users/johnzet/projects/Home/HomeAutomation/IoT/AirQuality/Firmware/AirQual_V2/src/AirQuality.ino"
-#pragma GCC push_options
-#pragma GCC optimize ("O0")
+void setupWiFi();
+#line 11 "/Users/johnzet/projects/Home/HomeAutomation/IoT/AirQuality/Firmware/AirQual_V2/src/AirQuality.ino"
+BME280 bme280;
+SGP40 sgp40;
+SerLCD lcd;
+char buffer[1024];
+int loopCounter = 0;
+const uint32_t baseColor = 0x808080;
+const byte degreeChar = 0x00;
+const byte muChar = 0x01;
+const byte squaredChar = 0x02;
+const byte cubedChar = 0x03;
+const byte subTwoChar = 0x04;
+const int BUTTON1 = D5;
+const int BUTTON2 = D6;
+const int maxPageNumber = 5;
 
-#include "sensirion_uart.h"
-#include "sps30.h"
-// #include "Serial_LCD_SparkFun.h"
-// #include "HttpClient.h"
+void bme280_setup(void);
+void sps30_setup(void);
+void lcd_setup(void);
+void sgp40_setup(void);
+sps30_measurement sps30_measure(void);
+int pageNumber = 0;
 
-// #include "SparkFunBME280.h"
-// #include "Wire.h"
+SYSTEM_THREAD(ENABLED)
+SYSTEM_MODE(MANUAL)
 
-// Serial_LCD_SparkFun lcd;
-// BME280 bme280;
-// HttpClient httpClient;
-// http_request_t httpRequest;
-// http_response_t httpResponse;
-// char buffer[1024];
-// char sensorData[10];
-// int sensorByteIndex;
-// int sensorByte;
-// int loopCounter = 0;
-
-// SYSTEM_MODE(SEMI_AUTOMATIC)
-// SYSTEM_THREAD(ENABLED)
-
-int sps30_setup(void);
-int sps30_measure(void);
-
+// --------------------------------------------------- SETUP --------------------------------------------
 void setup()
 {
-// #if defined(DEBUG_BUILD)
-  // Mesh.off();
-  BLE.off();
-// #endif
-
-// Sensirion driver https://github.com/Sensirion/embedded-uart-sps
-
     Serial.begin(115200);
     Serial1.begin(115200);
 
-    Serial.println("in setup");
+    Serial.println("Starting Air Quality Monitor by John Zehetner");
 
+    setupWiFi();
+    
+    pinMode(PWR, INPUT);
+	pinMode(CHG, INPUT);
+    pinMode(BUTTON2, INPUT_PULLUP);
+    
+    Wire.begin();
+
+    lcd_setup();
     sps30_setup();
-
-//   lcd.setBrightness(5);
-  
-//   sensorByte = 0;
-
-//   Wire.begin();
-//   bme280.settings.commInterface = I2C_MODE;
-//   bme280.settings.I2CAddress = 0x77;
-
-//     //tStandby can be:
-//     //  0, 0.5ms
-//     //  1, 62.5ms
-//     //  2, 125ms
-//     //  3, 250ms
-//     //  4, 500ms
-//     //  5, 1000ms
-//     //  6, 10ms
-//     //  7, 20ms
-//     bme280.settings.tStandby = 0;
-
-//     //filter can be off or number of FIR coefficients to use:
-//     //  0, filter off
-//     //  1, coefficients = 2
-//     //  2, coefficients = 4
-//     //  3, coefficients = 8
-//     //  4, coefficients = 16
-//     bme280.settings.filter = 0;
-
-//     //tempOverSample can be:
-//     //  0, skipped
-//     //  1 through 5, oversampling *1, *2, *4, *8, *16 respectively
-//     bme280.settings.tempOverSample = 1;
-
-//     //pressOverSample can be:
-//     //  0, skipped
-//     //  1 through 5, oversampling *1, *2, *4, *8, *16 respectively
-//     bme280.settings.pressOverSample = 1;
-
-//     //humidOverSample can be:
-//     //  0, skipped
-//     //  1 through 5, oversampling *1, *2, *4, *8, *16 respectively
-//     bme280.settings.humidOverSample = 1;
-//     delay(10);  //Make sure sensor had enough time to turn on. BME280 requires 2ms to start up.         Serial.begin(57600);
-
-//     bme280.begin();
-
-//   httpRequest.ip = IPAddress(192, 168, 1, 3);
-//   httpRequest.port = 8004;
-//   httpRequest.path = String("/api/v1/dNEFRG25CFJgMXKkvV82/telemetry");
+    bme280_setup();
+    sgp40_setup();
 }
 
+// --------------------------------------------------- LOOP --------------------------------------------
 void loop()
 {
-    delay(2000);
+    if (Particle.connected() == true) {
+        Particle.process();
+    }
 
-    sps30_measure();
+    float tempC = bme280.readTempC();
+    float tempF = bme280.readTempF();
+    float humidity = bme280.readFloatHumidity();
+    int voc = sgp40.getVOCindex(humidity, tempC);
+    float voltage = analogRead(BATT) * 0.0011224;
+    float batPercent = (voltage-3.3)/0.9 * 100.0; 
+	boolean usbPowered = digitalRead(PWR);
+	boolean charging = !digitalRead(CHG) && usbPowered;
 
-//    int pm25=0, pm10=0;
-//    
-//    int sensorByte = Serial.read();
-//     if (sensorByte < 0 ) {
-//         return;
-//     }
-//     sensorData[sensorByteIndex++] = sensorByte & 0xFF;
+    struct sps30_measurement airQ = sps30_measure();            
+    float standardPressure = 1013.2;
+    float pressure = (bme280.readFloatPressure() / 100.0) + 170.2;  // https://novalynx.com/manuals/bp-elevation-correction-tables.pdf
 
-//     if (sensorByteIndex >= 10) {
-//         sensorByteIndex = 0;
+    Serial.printlnf("BME280: %5.2f˚C %2.0f%% %6.1f mBar", tempC, humidity, pressure);
+    Serial.printlnf("SPS30:\n"
+        "\tPM1.0 %.3g µg/m^3    PM2.5 %.3g µg/m^3\n"
+        "\tPM4.0 %.3g µg/m^3    PM10  %.3g µg/m^3\n"
+        "\tNC0.5 %.4g #/cm^3    NC1.0 %.4g #/cm^3\n"
+        "\tNC2.5 %.4g #/cm^3    NC4.0 %.4g #/cm^3\n"
+        "\tNC10  %.4g #/cm^3\n"
+        "\tSize %.2g µm",
+        airQ.mc_1p0, airQ.mc_2p5, airQ.mc_4p0, airQ.mc_10p0, airQ.nc_0p5,
+        airQ.nc_1p0, airQ.nc_2p5, airQ.nc_4p0, airQ.nc_10p0,
+        airQ.typical_particle_size);
+    Serial.printf("VOC Index = %3i\n", voc);
+    Serial.printlnf("Battery voltage %4.2fV %s, %s", voltage, (charging? "Charging" : "Not Charging"), (usbPowered? "USB Connected" : "USB NotConnected"));
+    Serial.println("\n");
 
-//         if (sensorData[0] == 0xAA && sensorData[9] == 0xAB) {
-//             pm25 = sensorData[2] + sensorData[3] * 256;
-//             pm10 = sensorData[4] + sensorData[5] * 256;
-    
-            
-    
-//         }
-//         loopCounter++;
-//     }
-//     if (loopCounter >= 5) {
-//         loopCounter = 0;
+    sgp40.getVOCindex(humidity, tempC);  // SGP40 datasheet suggests a sample period of 1 second.  loop() is called less often, though.
+    lcd.clear();
+    sgp40.getVOCindex(humidity, tempC);  // SGP40 datasheet suggests a sample period of 1 second.  loop() is called less often, though.
+    switch(pageNumber) {
+        case 0:
+            lcd.printf("%.3g", tempC); lcd.writeChar(degreeChar); lcd.printf("C "); lcd.printf("%.3g", tempF); lcd.writeChar(degreeChar); lcd.printf("F  %2.0f%%", humidity);   
+            lcd.setCursor(0, 1);
+            lcd.printf("%6.1fmb %5.1fmb", pressure, pressure - standardPressure);
+            lcd.setCursor(0, 2);
+            lcd.printf("PM2.5,10 %4.0f %4.0f", airQ.mc_2p5, airQ.mc_10p0);
+            lcd.setCursor(0, 3); 
+            lcd.printf("VOC Index %3i  %3.0f%%", voc, batPercent);  
+            break;
+        case 1:
+            lcd.print("PM1,2.5,4,10 "); lcd.writeChar(muChar); lcd.print("g/m"); lcd.writeChar(cubedChar);
+            lcd.setCursor(0, 1);
+            lcd.printf("%4.0f  %4.0f", airQ.mc_1p0, airQ.mc_2p5);
+            lcd.setCursor(0, 2);
+            lcd.printf("%4.0f  %4.0f", airQ.mc_4p0, airQ.mc_10p0);
+            lcd.setCursor(0, 3);
+            lcd.printf("Typ Size %.2g ", airQ.typical_particle_size); lcd.writeChar(muChar); lcd.print("m");
+            break;
+        case 2:
+            lcd.print("Count 0.5,1,2.5,4,10");
+            lcd.setCursor(0, 1);
+            lcd.printf("%.4g  #/cm", airQ.nc_0p5); lcd.writeChar(cubedChar);
+            lcd.setCursor(0, 2);
+            lcd.printf("%.4g  %.4g", airQ.nc_1p0, airQ.nc_2p5);
+            lcd.setCursor(0, 3);
+            lcd.printf("%.4g  %.4g", airQ.nc_4p0, airQ.nc_10p0);
+            break;
+        case 3:
+            lcd.printf("VOC Index %3i", voc);  
+            lcd.setCursor(0, 1);
+            lcd.print(" 100 is typical");    
+            lcd.setCursor(0, 2);
+            lcd.print("   for indoors");    
+            lcd.setCursor(0, 3);
+            lcd.print(" 500 is max");    
+            break;
+        case 4:
+            lcd.printf("Battery %4.2fV", voltage);
+            lcd.setCursor(0, 1);
+            lcd.printf("%3.0f%%", batPercent);
+            lcd.setCursor(0, 2);
+            lcd.print((charging? "Charging" : "Not Charging"));
+            lcd.setCursor(0, 3);
+            lcd.print((usbPowered? "USB Connected" : "USB Disconnected"));
+            break;
+        case maxPageNumber:
+            lcd.printf("Sensors");
+            lcd.setCursor(0, 1);
+            lcd.printf(" Bosch BME280");
+            lcd.setCursor(0, 2);
+            lcd.printf(" Sensirion SPS30");
+            lcd.setCursor(0, 3);
+            lcd.printf(" Sensirion SGP40");
+            break;    
+        default:
+            pageNumber = 0;
+            break;    
+    }
 
-//     //runMode can be:
-//     //  0, Sleep mode
-//     //  1 or 2, Forced mode
-//     //  3, Normal mode
-//         bme280.settings.runMode = 3;
-// delay(1000);
-
-//             lcd.clear();
-//             lcd.home();
-
-//             lcd.selectLine(1);
-//             // Serial1.print("P2.5,10um=");
-//             Serial1.print("AirQ ");
-//             Serial1.print(pm25, DEC);
-//             Serial1.print(",");
-//             Serial1.print(pm10, DEC);
-
-//             lcd.selectLine(2);
-//             //Serial1.print(bme280.readTempC(), 0);
-//             //Serial1.print("C ");
-//             Serial1.print(bme280.readTempC(), 0);
-//             Serial1.print("C ");
-//             Serial1.print(bme280.readFloatHumidity(), 0);
-//             Serial1.print("% ");
-//             Serial1.print(bme280.readFloatPressure()/82.5, 0);
-//             Serial1.print("hPa");
-            
-
-//     bme280.settings.runMode = 0;
-//     }
-    
+    system_tick_t delayStartTime = millis();
+    boolean nextPageTrigger = false;
+    while ((millis()-delayStartTime) < 2000 && !nextPageTrigger) {
+        if (digitalRead(BUTTON2) == LOW) {
+            pageNumber++;
+            if (pageNumber > maxPageNumber) {
+                pageNumber = 0;
+            }
+            nextPageTrigger = true;
+            lcd.clear();
+        } else {
+            delay(100);
+        }
+    }
 }
 
-int sps30_setup(void) {
-    struct sps30_measurement m;
+void bme280_setup(void) {
+    bme280.settings.commInterface = I2C_MODE;
+    bme280.settings.I2CAddress = 0x77;
+
+    // BME280 runMode can be:
+    //  0, Sleep mode
+    //  1 or 2, Forced mode
+    //  3, Normal mode
+    bme280.settings.runMode = 3;
+
+    //tStandby can be:
+    //  0, 0.5ms
+    //  1, 62.5ms
+    //  2, 125ms
+    //  3, 250ms
+    //  4, 500ms
+    //  5, 1000ms
+    //  6, 10ms
+    //  7, 20ms
+    bme280.settings.tStandby = 0;
+
+    //filter can be off or number of FIR coefficients to use:
+    //  0, filter off
+    //  1, coefficients = 2
+    //  2, coefficients = 4
+    //  3, coefficients = 8
+    //  4, coefficients = 16
+    bme280.settings.filter = 1;
+
+    //tempOverSample can be:
+    //  0, skipped
+    //  1 through 5, oversampling *1, *2, *4, *8, *16 respectively
+    bme280.settings.tempOverSample = 2;
+
+    //pressOverSample can be:
+    //  0, skipped
+    //  1 through 5, oversampling *1, *2, *4, *8, *16 respectively
+    bme280.settings.pressOverSample = 2;
+
+    //humidOverSample can be:
+    //  0, skipped
+    //  1 through 5, oversampling *1, *2, *4, *8, *16 respectively
+    bme280.settings.humidOverSample = 2;
+    delay(10);  //Make sure sensor had enough time to turn on. BME280 requires 2ms to start up. 
+
+    bme280.begin();
+}
+
+void sps30_setup(void) {
     char serial[SPS30_MAX_SERIAL_LEN];
     const uint8_t AUTO_CLEAN_DAYS = 4;
     int16_t ret;
@@ -176,7 +239,7 @@ int sps30_setup(void) {
 
     if (sps30_probe() != 0) {
         Serial.printf("SPS30 sensor probing failed\n");
-        return 1;
+        return;
     }
     Serial.printf("SPS30 sensor probing successful\n");
 
@@ -202,16 +265,107 @@ int sps30_setup(void) {
     ret = sps30_set_fan_auto_cleaning_interval_days(AUTO_CLEAN_DAYS);
     if (ret)
         Serial.printf("error %d setting the auto-clean interval\n", ret);
-}
-
-int sps30_measure(void) {
-    struct sps30_measurement m;
-    int16_t ret;
 
     ret = sps30_start_measurement();
     if (ret < 0) {
         Serial.printf("error starting measurement\n");
     }
+}
+
+void setupWiFi() {
+    // BLE.selectAntenna(BleAntennaType::EXTERNAL);
+    WiFi.on();
+    WiFi.selectAntenna(ANT_INTERNAL);
+    WiFi.clearCredentials();
+    WiFi.setCredentials("zhome", "fydua1vare", WPA2);
+    WiFi.connect();
+    Particle.connect();
+}
+
+void lcd_setup(void) {
+    byte degreeCharData[] = {
+        0b01100,
+        0b10010,
+        0b10010,
+        0b01100,
+        0b00000,
+        0b00000,
+        0b00000,
+        0b00000};
+
+    byte muCharData[] = {
+        0b00000,
+        0b10001,
+        0b10001,
+        0b10001,
+        0b10011,
+        0b11101,
+        0b10000,
+        0b10000};
+
+    byte squaredCharData[] = {
+        0b01100,
+        0b10010,
+        0b00100,
+        0b01000,
+        0b11110,
+        0b00000,
+        0b00000,
+        0b00000};
+
+    byte cubedCharData[] = {
+        0b11100,
+        0b00010,
+        0b01100,
+        0b00010,
+        0b11100,
+        0b00000,
+        0b00000,
+        0b00000};
+
+    byte subTwoCharData[] = {
+        0b00000,
+        0b00000,
+        0b00000,
+        0b01100,
+        0b10010,
+        0b00100,
+        0b01000,
+        0b11110};
+
+    lcd.begin(Wire);
+
+    lcd.disableSystemMessages();
+    if (0) {
+        lcd.clear();
+        lcd.print("  Starting");
+        lcd.saveSplash();
+        lcd.enableSplash();
+    }
+
+    lcd.createChar(degreeChar, degreeCharData);
+    lcd.createChar(muChar, muCharData);
+    lcd.createChar(squaredChar, squaredCharData);
+    lcd.createChar(cubedChar, cubedCharData);
+    lcd.createChar(subTwoChar, subTwoCharData);
+
+    lcd.setFastBacklight(baseColor);
+    lcd.clear();
+    lcd.println("Air Quality Monitor");
+    lcd.setCursor(0, 2);
+    lcd.println("    John Zehetner");
+}
+
+void sgp40_setup(void) {
+    sgp40.enableDebugging(Serial);
+    if (sgp40.begin() != SGP40_SUCCESS) {
+        Serial.println("SGP40 not detected.");
+    }
+}
+
+sps30_measurement sps30_measure(void) {
+    struct sps30_measurement m;
+    int16_t ret;
 
     ret = sps30_read_measurement(&m);
     if (ret < 0) {
@@ -222,50 +376,10 @@ int sps30_measure(void) {
                 "Chip state: %u - measurements may not be accurate\n",
                 SPS30_GET_ERR_STATE(ret));
         }
-
-        Serial.printf("measured values:\n"
-                "\t%0.2f pm1.0\n"
-                "\t%0.2f pm2.5\n"
-                "\t%0.2f pm4.0\n"
-                "\t%0.2f pm10.0\n"
-                "\t%0.2f nc0.5\n"
-                "\t%0.2f nc1.0\n"
-                "\t%0.2f nc2.5\n"
-                "\t%0.2f nc4.5\n"
-                "\t%0.2f nc10.0\n"
-                "\t%0.2f typical particle size\n\n",
-                m.mc_1p0, m.mc_2p5, m.mc_4p0, m.mc_10p0, m.nc_0p5,
-                m.nc_1p0, m.nc_2p5, m.nc_4p0, m.nc_10p0,
-                m.typical_particle_size);
     }
 
-    /* Stop measurement for 1min to preserve power. Also enter sleep mode
-        * if the firmware version is >=2.0.
-        */
-    ret = sps30_stop_measurement();
-    if (ret) {
-        Serial.printf("Stopping measurement failed\n");
-    }
-
-    // if (version_information.firmware_major >= 2) {
-        ret = sps30_sleep();
-        if (ret) {
-            Serial.printf("Entering sleep failed\n");
-        }
-    // }
-
-    // if (version_information.firmware_major >= 2) {
-        ret = sps30_wake_up();
-        if (ret) {
-            Serial.printf("Error %i waking up sensor\n", ret);
-        }
-    // }
-
-
-   
-
-    return 0;
+    return m;
 }
 
-#pragma GCC pop_options
+// #pragma GCC pop_options
 

@@ -8,7 +8,7 @@
     "arduino.path": "/Applications",
     "arduino.additionalUrls": "https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json",
     "arduino.commandPath": "Contents/MacOS/Arduino",
-    "particle.firmwareVersion": "1.5.2",
+    "particle.firmwareVersion": "2.0.1",
     "particle.targetPlatform": "photon",
-    "particle.targetDevice": "220038000b47363433353735"
+    "particle.targetDevice": "PhotonAirQual"
 }

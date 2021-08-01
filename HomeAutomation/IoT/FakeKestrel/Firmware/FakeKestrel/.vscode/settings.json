@@ -1,0 +1,11 @@
+{
+    "cortex-debug.openocdPath": "${command:particle.getDebuggerOpenocdPath}",
+    "C_Cpp.default.configurationProvider": "particle.particle-vscode-core",
+    "particle.firmwareVersion": "2.0.1",
+    "particle.targetPlatform": "argon",
+    "particle.targetDevice": "FakeKestrel",
+    "files.associations": {
+        "unordered_map": "cpp",
+        "initializer_list": "cpp"
+    }
+}
