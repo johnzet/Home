@@ -211,17 +211,17 @@ void bme280_setup(void) {
     //tempOverSample can be:
     //  0, skipped
     //  1 through 5, oversampling *1, *2, *4, *8, *16 respectively
-    bme280.settings.tempOverSample = 2;
+    bme280.settings.tempOverSample = 1;
 
     //pressOverSample can be:
     //  0, skipped
     //  1 through 5, oversampling *1, *2, *4, *8, *16 respectively
-    bme280.settings.pressOverSample = 2;
+    bme280.settings.pressOverSample = 1;
 
     //humidOverSample can be:
     //  0, skipped
     //  1 through 5, oversampling *1, *2, *4, *8, *16 respectively
-    bme280.settings.humidOverSample = 2;
+    bme280.settings.humidOverSample = 1;
     delay(10);  //Make sure sensor had enough time to turn on. BME280 requires 2ms to start up. 
 
     bme280.begin();
