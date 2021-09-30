@@ -26,8 +26,6 @@ F 3 "" H 5950 3050 50  0001 C CNN
 $EndComp
 Text GLabel 6000 2850 0    50   Input ~ 0
 3V3
-Wire Wire Line
-	6200 2850 6100 2850
 $Comp
 L JohnZPCB:Particle_Argon U2
 U 1 1 5FDE89DE
@@ -300,10 +298,7 @@ Wire Wire Line
 Wire Wire Line
 	4050 2750 3850 2750
 Wire Wire Line
-	3850 2750 3850 1750
-Connection ~ 6100 2850
-Wire Wire Line
-	6100 2850 6000 2850
+	3850 2750 3850 1800
 $Comp
 L Device:C C5
 U 1 1 5FEB8A6F
@@ -529,8 +524,6 @@ F 3 "" H 5200 4650 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	3850 1750 6100 1750
-Wire Wire Line
 	3500 1600 7150 1600
 Text Notes 3850 4850 0    50   ~ 0
 Rx & Tx are swapped
@@ -584,8 +577,6 @@ Wire Wire Line
 Wire Wire Line
 	5200 4650 5150 4650
 Connection ~ 5150 4650
-Wire Wire Line
-	6100 1750 6100 2850
 $Comp
 L SparkFun-Connectors:CONN_02 J6
 U 1 1 5FFB50BA
@@ -805,4 +796,51 @@ F 3 "~" H 4950 6150 50  0001 C CNN
 	1    4950 6150
 	1    0    0    -1  
 $EndComp
+Wire Wire Line
+	6000 2850 6200 2850
+Wire Wire Line
+	7250 1800 3850 1800
+Connection ~ 7250 1800
+$Comp
+L SparkFun-Connectors:CONN_03 J9
+U 1 1 6107E41C
+P 6300 5900
+F 0 "J9" H 6072 5855 45  0000 R CNN
+F 1 "Power Supply Rails" H 6072 5939 45  0000 R CNN
+F 2 "Connectors:1X03" H 6300 6150 20  0001 C CNN
+F 3 "" H 6300 5900 50  0001 C CNN
+F 4 "NO/NC" H 6050 6050 45  0001 R BNN "Field4"
+	1    6300 5900
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:GND #PWR0104
+U 1 1 61080786
+P 6150 6000
+F 0 "#PWR0104" H 6150 5750 50  0001 C CNN
+F 1 "GND" V 6155 5872 50  0000 R CNN
+F 2 "" H 6150 6000 50  0001 C CNN
+F 3 "" H 6150 6000 50  0001 C CNN
+	1    6150 6000
+	0    1    1    0   
+$EndComp
+Text GLabel 6150 6100 0    50   Input ~ 0
+3V3
+$Comp
+L power:+5V #PWR0105
+U 1 1 610813A9
+P 6150 5900
+F 0 "#PWR0105" H 6150 5750 50  0001 C CNN
+F 1 "+5V" V 6165 6028 50  0000 L CNN
+F 2 "" H 6150 5900 50  0001 C CNN
+F 3 "" H 6150 5900 50  0001 C CNN
+	1    6150 5900
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	6150 5900 6200 5900
+Wire Wire Line
+	6200 6000 6150 6000
+Wire Wire Line
+	6150 6100 6200 6100
 $EndSCHEMATC
