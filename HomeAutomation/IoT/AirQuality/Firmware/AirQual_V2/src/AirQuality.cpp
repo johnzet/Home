@@ -2,11 +2,12 @@
 //       THIS IS A GENERATED FILE - DO NOT EDIT       //
 /******************************************************/
 
-#include "Particle.h"
 #line 1 "/Users/johnzet/projects/Home/HomeAutomation/IoT/AirQuality/Firmware/AirQual_V2/src/AirQuality.ino"
 // #pragma GCC push_options
 // #pragma GCC optimize ("O0")
 
+#include "application.h"
+#include "MQTT.h"
 #include "Wire.h"
 #include "SPS30/sensirion_uart.h"  
 #include "SPS30/sps30.h"   // Sensirion driver https://github.com/Sensirion/embedded-uart-sps
@@ -17,11 +18,12 @@
 void setup();
 void loop();
 void setupWiFi();
-#line 11 "/Users/johnzet/projects/Home/HomeAutomation/IoT/AirQuality/Firmware/AirQual_V2/src/AirQuality.ino"
+#line 13 "/Users/johnzet/projects/Home/HomeAutomation/IoT/AirQuality/Firmware/AirQual_V2/src/AirQuality.ino"
 BME280 bme280;
 SGP40 sgp40;
 SerLCD lcd;
 char buffer[1024];
+char mqttBuffer[100];
 int loopCounter = 0;
 const uint32_t baseColor = 0x808080;
 const byte degreeChar = 0x00;
@@ -39,6 +41,32 @@ void lcd_setup(void);
 void sgp40_setup(void);
 sps30_measurement sps30_measure(void);
 int pageNumber = 0;
+
+void mqttCallback(char* topic, byte* payload, unsigned int length);
+MQTT mqttClient("192.168.100.2", 1883, 90 /* keepalive timeout */, mqttCallback, MQTT_MAX_PACKET_SIZE);
+boolean mqttConfigured = false;
+std::string outdoor1Topic = std::string("homeassistant/sensor/outdoor1/state");
+float outdoorTempC;
+float outdoorHumidity = 0;
+time32_t mqttLastCallbackTime;
+
+// recieve message
+void mqttCallback(char* topic, byte* payload, unsigned int length) {
+    strncpy(mqttBuffer, (char *)payload, length);
+    mqttBuffer[length] = NULL;
+    Serial.printlnf("MQTT Subscription: %s", mqttBuffer);
+    JSONValue jsonPayload = JSONValue::parseCopy(mqttBuffer);
+    
+    JSONObjectIterator iter(jsonPayload);
+    while(iter.next()) {
+        if (iter.name() == "temperature") {
+            outdoorTempC = iter.value().toDouble();
+        } else if (iter.name() == "humidity") {
+            outdoorHumidity = iter.value().toDouble();
+        }
+    }
+    mqttLastCallbackTime = Time.now();
+}
 
 SYSTEM_THREAD(ENABLED)
 SYSTEM_MODE(MANUAL)
@@ -63,6 +91,8 @@ void setup()
     sps30_setup();
     bme280_setup();
     sgp40_setup();
+
+    mqttLastCallbackTime = Time.now();
 }
 
 // --------------------------------------------------- LOOP --------------------------------------------
@@ -105,13 +135,28 @@ void loop()
     sgp40.getVOCindex(humidity, tempC);  // SGP40 datasheet suggests a sample period of 1 second.  loop() is called less often, though.
     switch(pageNumber) {
         case 0:
-            lcd.printf("%.3g", tempC); lcd.writeChar(degreeChar); lcd.printf("C "); lcd.printf("%.3g", tempF); lcd.writeChar(degreeChar); lcd.printf("F  %2.0f%%", humidity);   
+            if ((Time.now()-mqttLastCallbackTime)>60*2) {
+                outdoorHumidity = -1;
+                outdoorTempC = 0;
+            }
+            lcd.printf("In  %.3g", tempC); lcd.writeChar(degreeChar); lcd.printf("C  %2.0f%%", humidity); 
             lcd.setCursor(0, 1);
-            lcd.printf("%6.1fmb %5.1fmb", pressure, pressure - standardPressure);
+            if (outdoorHumidity < 0) {
+                lcd.println("Out - Check Sensor");
+            } else {
+                lcd.printf("Out %.3g", outdoorTempC); lcd.writeChar(degreeChar); lcd.printf("C  %2.0f%%", outdoorHumidity);
+            }
             lcd.setCursor(0, 2);
-            lcd.printf("PM2.5,10 %4.0f %4.0f", airQ.mc_2p5, airQ.mc_10p0);
-            lcd.setCursor(0, 3); 
-            lcd.printf("VOC Index %3i  %3.0f%%", voc, batPercent);  
+            lcd.printf("%6.1fmb  %5.1fmb", pressure, pressure - standardPressure);
+            lcd.setCursor(0, 3);
+            lcd.printf("PM2.5 %4.0f VOC %3i", airQ.mc_2p5, voc);
+            // lcd.printf("%.3g", tempC); lcd.writeChar(degreeChar); lcd.printf("C "); lcd.printf("%.3g", tempF); lcd.writeChar(degreeChar); lcd.printf("F  %2.0f%%", humidity);   
+            // lcd.setCursor(0, 1);
+            // lcd.printf("%6.1fmb %5.1fmb", pressure, pressure - standardPressure);
+            // lcd.setCursor(0, 2);
+            // lcd.printf("PM2.5,10 %4.0f %4.0f", airQ.mc_2p5, airQ.mc_10p0);
+            // lcd.setCursor(0, 3); 
+            // lcd.printf("VOC Index %3i  %3.0f%%", voc, batPercent);  
             break;
         case 1:
             lcd.print("PM1,2.5,4,10 "); lcd.writeChar(muChar); lcd.print("g/m"); lcd.writeChar(cubedChar);
@@ -163,6 +208,18 @@ void loop()
             break;    
     }
 
+    if (!mqttClient.isConnected()) {
+        mqttConfigured = false;
+        mqttClient.connect("airqual1", "airqual1", "airqual1");
+    }
+
+    if (mqttClient.isConnected()) {
+        if (!mqttConfigured) {
+            mqttClient.subscribe(outdoor1Topic.c_str());
+            mqttConfigured = true;
+        }
+    }
+
     system_tick_t delayStartTime = millis();
     boolean nextPageTrigger = false;
     while ((millis()-delayStartTime) < 2000 && !nextPageTrigger) {
@@ -174,6 +231,7 @@ void loop()
             nextPageTrigger = true;
             lcd.clear();
         } else {
+            mqttClient.loop();
             delay(100);
         }
     }
