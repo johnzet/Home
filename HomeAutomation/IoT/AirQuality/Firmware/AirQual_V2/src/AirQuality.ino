@@ -94,8 +94,10 @@ void loop()
     }
 
     float tempC = bme280.readTempC();
-    float tempF = bme280.readTempF();
+    float tempF = tempC*1.8+32;
     float humidity = bme280.readFloatHumidity();
+    float pressure = (bme280.readFloatPressure() / 100.0) + 170.2;  // https://novalynx.com/manuals/bp-elevation-correction-tables.pdf
+
     int voc = sgp40.getVOCindex(humidity, tempC);
     float voltage = analogRead(BATT) * 0.0011224;
     float batPercent = (voltage-3.3)/0.9 * 100.0; 
@@ -104,7 +106,6 @@ void loop()
 
     struct sps30_measurement airQ = sps30_measure();            
     float standardPressure = 1013.2;
-    float pressure = (bme280.readFloatPressure() / 100.0) + 170.2;  // https://novalynx.com/manuals/bp-elevation-correction-tables.pdf
 
     Serial.printlnf("BME280: %5.2f˚C %2.0f%% %6.1f mBar", tempC, humidity, pressure);
     Serial.printlnf("SPS30:\n"
@@ -130,12 +131,12 @@ void loop()
                 outdoorHumidity = -1;
                 outdoorTempC = 0;
             }
-            lcd.printf("In  %.3g", tempC); lcd.writeChar(degreeChar); lcd.printf("C  %2.0f%%", humidity); 
+            lcd.printf("In  %3.1f", tempC); lcd.writeChar(degreeChar); lcd.printf("C %2.0f%%", humidity); lcd.printf("  %2.0f", tempF); lcd.writeChar(degreeChar); lcd.printf("F");
             lcd.setCursor(0, 1);
             if (outdoorHumidity < 0) {
                 lcd.println("Out - Check Sensor");
             } else {
-                lcd.printf("Out %.3g", outdoorTempC); lcd.writeChar(degreeChar); lcd.printf("C  %2.0f%%", outdoorHumidity);
+                lcd.printf("Out %3.1f", outdoorTempC); lcd.writeChar(degreeChar); lcd.printf("C %2.0f%%", outdoorHumidity); lcd.printf("  %2.0f", outdoorTempC*1.8+32); lcd.writeChar(degreeChar); lcd.printf("F");
             }
             lcd.setCursor(0, 2);
             lcd.printf("%6.1fmb  %5.1fmb", pressure, pressure - standardPressure);
