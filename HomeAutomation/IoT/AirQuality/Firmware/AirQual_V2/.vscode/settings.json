@@ -4,9 +4,9 @@
     "files.associations": {
         "*.ino": "cpp"
     },
-    "particle.firmwareVersion": "2.0.1",
+    "particle.firmwareVersion": "3.1.0",
     "particle.targetPlatform": "argon",
-    "particle.targetDevice": "AirQuality_V2",
+    "particle.targetDevice": "AirQuality_Black",
     "cortex-debug.openocdPath": "${command:particle.getDebuggerOpenocdPath}",
     "particle.enableVerboseLocalCompilerLogging": true,
     "files.autoSave": "onFocusChange",

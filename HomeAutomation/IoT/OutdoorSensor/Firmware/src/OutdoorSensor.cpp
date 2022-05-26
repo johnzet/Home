@@ -2,7 +2,7 @@
 //       THIS IS A GENERATED FILE - DO NOT EDIT       //
 /******************************************************/
 
-#line 1 "/Users/johnzet/projects/Home/HomeAutomation/IoT/OutdoorSensor/src/OutdoorSensor.ino"
+#line 1 "/Users/johnzet/projects/Home/HomeAutomation/IoT/OutdoorSensor/Firmware/src/OutdoorSensor.ino"
 #include "application.h"
 #include "MQTT.h"
 #include "Serial_LCD_SparkFun.h"
@@ -11,7 +11,7 @@
 
 void setup();
 void loop();
-#line 7 "/Users/johnzet/projects/Home/HomeAutomation/IoT/OutdoorSensor/src/OutdoorSensor.ino"
+#line 7 "/Users/johnzet/projects/Home/HomeAutomation/IoT/OutdoorSensor/Firmware/src/OutdoorSensor.ino"
 Serial_LCD_SparkFun lcd;
 BME280 bme280;
 char buffer[1024];
@@ -55,7 +55,7 @@ void setup()
     //  0, Sleep mode
     //  1 or 2, Forced mode
     //  3, Normal mode
-    bme280.settings.runMode = 3;
+    bme280.settings.runMode = 0;
 
     //tStandby can be:
     //  0, 0.5ms
@@ -74,22 +74,22 @@ void setup()
     //  2, coefficients = 4
     //  3, coefficients = 8
     //  4, coefficients = 16
-    bme280.settings.filter = 0;
+    bme280.settings.filter = 1;
 
     //tempOverSample can be:
     //  0, skipped
     //  1 through 5, oversampling *1, *2, *4, *8, *16 respectively
-    bme280.settings.tempOverSample = 1;
+    bme280.settings.tempOverSample = 2;
 
     //pressOverSample can be:
     //  0, skipped
     //  1 through 5, oversampling *1, *2, *4, *8, *16 respectively
-    bme280.settings.pressOverSample = 1;
+    bme280.settings.pressOverSample = 2;
 
     //humidOverSample can be:
     //  0, skipped
     //  1 through 5, oversampling *1, *2, *4, *8, *16 respectively
-    bme280.settings.humidOverSample = 1;
+    bme280.settings.humidOverSample = 2;
     delay(10);  //Make sure sensor had enough time to turn on. BME280 requires 2ms to start up.         Serial.begin(57600);
 
     bme280.begin();
@@ -98,9 +98,11 @@ void setup()
 void loop()
 {
 
+    bme280.settings.runMode = 3;
     float tempC = bme280.readTempC();
     float humidity = bme280.readFloatHumidity();
     float pressure = (bme280.readFloatPressure() / 100.0) + 170.2;  // https://novalynx.com/manuals/bp-elevation-correction-tables.pdf
+    bme280.settings.runMode = 0;
 
     lcd.clear();
     lcd.home();
@@ -122,10 +124,10 @@ void loop()
         if (!mqttConfigured) {
             mqttClient.publish(topicTemperatureConfig, "{\"device_class\": \"temperature\", \"name\": \"Temperature\", \"state_topic\": \"" + topicState + "\", \"unit_of_measurement\": \"°C\", \"value_template\": \"{{ value_json.temperature}}\" }");
             mqttClient.publish(topicHumidityConfig, "{\"device_class\": \"humidity\", \"name\": \"Humidity\", \"state_topic\": \"" + topicState + "\", \"unit_of_measurement\": \"%\", \"value_template\": \"{{ value_json.humidity}}\" }");
+            mqttClient.publish(topicPressureConfig, "{\"device_class\": \"pressure\", \"name\": \"Pressure\", \"state_topic\": \"" + topicState + "\", \"unit_of_measurement\": \"mBar\", \"value_template\": \"{{ value_json.pressure }}\" }");
             mqttConfigured = true;
         }
-        // sprintf(buffer, "{\"temperature\": %4.1f, \"humidity\": %2.0f, \"pressure\": %6.1f}", tempC, humidity, pressure);
-        sprintf(buffer, "{\"temperature\": %4.1f, \"humidity\": %2.0f}", tempC, humidity);
+        sprintf(buffer, "{\"temperature\": %4.1f, \"humidity\": %2.0f, \"pressure\": %6.1f}", tempC, humidity, pressure);
         mqttClient.publish(topicState, buffer);
     }
 

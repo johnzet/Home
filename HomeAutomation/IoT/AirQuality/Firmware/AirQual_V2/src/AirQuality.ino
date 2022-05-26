@@ -41,6 +41,11 @@ float outdoorTempC;
 float outdoorHumidity = 0;
 time32_t mqttLastCallbackTime;
 
+// ***************************************************** Configure *********************************************
+const char* mqttClientId = "airqual1";
+const char* mqttUser = "airqual1";
+const char* mqttPasswd = "airqual1";
+
 // recieve message
 void mqttCallback(char* topic, byte* payload, unsigned int length) {
     strncpy(mqttBuffer, (char *)payload, length);
@@ -202,7 +207,7 @@ void loop()
 
     if (!mqttClient.isConnected()) {
         mqttConfigured = false;
-        mqttClient.connect("airqual1", "airqual1", "airqual1");
+        mqttClient.connect(mqttClientId, mqttUser, mqttPasswd);
     }
 
     if (mqttClient.isConnected()) {
@@ -401,6 +406,7 @@ void lcd_setup(void) {
 
     lcd.setFastBacklight(baseColor);
     lcd.clear();
+    delay(100);
     lcd.println("Air Quality Monitor");
     lcd.setCursor(0, 2);
     lcd.println("    John Zehetner");
