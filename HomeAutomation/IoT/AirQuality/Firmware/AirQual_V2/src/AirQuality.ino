@@ -16,7 +16,7 @@ SerLCD lcd;
 char buffer[1024];
 char mqttBuffer[100];
 int loopCounter = 0;
-const uint32_t baseColor = 0x808080;
+const uint32_t baseColor = 0x808080;  // 0x000000 is dark
 const byte degreeChar = 0x00;
 const byte muChar = 0x01;
 const byte squaredChar = 0x02;

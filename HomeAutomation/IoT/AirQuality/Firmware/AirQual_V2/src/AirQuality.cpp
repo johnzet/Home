@@ -26,6 +26,7 @@ char buffer[1024];
 char mqttBuffer[100];
 int loopCounter = 0;
 const uint32_t baseColor = 0x808080;
+// const uint32_t baseColor = 0x000000;
 const byte degreeChar = 0x00;
 const byte muChar = 0x01;
 const byte squaredChar = 0x02;
@@ -301,7 +302,6 @@ void sps30_setup(void) {
         delay(1000);
     }
 
-    delay(1000);
     if (sps30_probe() != 0) {
         Serial.printf("SPS30 sensor probing failed\n");
         return;

@@ -7,7 +7,6 @@
     "particle.firmwareVersion": "3.1.0",
     "particle.targetPlatform": "argon",
     "particle.targetDevice": "AirQuality_Black",
-    "cortex-debug.openocdPath": "${command:particle.getDebuggerOpenocdPath}",
     "particle.enableVerboseLocalCompilerLogging": true,
     "files.autoSave": "onFocusChange",
     "C_Cpp.autoAddFileAssociations": false,
