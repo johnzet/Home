@@ -1,0 +1,4299 @@
+(kicad_sch
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "db8a3653-4242-4031-a761-1a48889a472f")
+	(paper "A4")
+	(lib_symbols
+		(symbol "ArmModule-eagle-import:CAP_0603"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "C"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "0.22u"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "ArmModule:CAP_0603"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_locked" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "CAP_0603_1_0"
+				(polyline
+					(pts
+						(xy -1.27 0) (xy -0.33 0)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -0.33 -1.905) (xy -0.33 1.905)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.305 0) (xy 1.27 0)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0.9439 -1.9109)
+					(mid 0.3044 0.0001)
+					(end 0.944 1.911)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -3.81 0 0)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "ArmModule-eagle-import:GND"
+			(power global)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "#NetPort"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_locked" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "GND_1_0"
+				(polyline
+					(pts
+						(xy -1.905 1.016) (xy 1.905 1.016)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 0) (xy 1.27 0)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -0.508 -1.016) (xy 0.508 -1.016)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin power_in line
+					(at 0 3.556 270)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "ArmModule-eagle-import:HEADER1X4"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "J"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "ArmModule:HDR-1X4"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_locked" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "HEADER1X4_1_0"
+				(polyline
+					(pts
+						(xy -3.175 5.715) (xy 5.08 5.715)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.175 -5.715) (xy -3.175 5.715)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 5.08 5.715) (xy 5.08 -5.715)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 5.08 -5.715) (xy -3.175 -5.715)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin no_connect line
+					(at -5.715 3.81 0)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+				(pin no_connect line
+					(at -5.715 1.27 0)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+				(pin no_connect line
+					(at -5.715 -1.27 0)
+					(length 2.54)
+					(name "3"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+				(pin no_connect line
+					(at -5.715 -3.81 0)
+					(length 2.54)
+					(name "4"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "ArmModule-eagle-import:MOSFET_N"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "Q"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "ArmModule:SOT23"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_locked" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "MOSFET_N_1_0"
+				(polyline
+					(pts
+						(xy 0.128 1.721) (xy 0.128 -2.279)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.128 -0.279) (xy -1.872 -0.279)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.128 1.721) (xy 1.128 -2.279)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.128 -2.279) (xy 2.128 -2.279)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.128 1.721) (xy 1.128 1.721)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.128 1.721) (xy 2.128 1.721)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.128 1.721) (xy 3.128 2.721)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.128 -2.279) (xy 3.128 -3.279)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.128 -2.279) (xy 2.128 -2.029) (xy 2.128 -2.529) (xy 3.128 -2.279)
+					)
+					(stroke
+						(width 0.002)
+						(type solid)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(pin no_connect line
+					(at -4.602 -0.279 0)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+				(pin no_connect line
+					(at 3.128 -6.009 90)
+					(length 2.54)
+					(name "3"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+				(pin no_connect line
+					(at 3.128 5.451 270)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+				(pin no_connect line
+					(at 3.128 5.451 270)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "ArmModule-eagle-import:MOSFET_P"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "Q"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "ArmModule:SOT23"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_locked" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "MOSFET_P_1_0"
+				(polyline
+					(pts
+						(xy -1.872 -0.279) (xy -1.097 -0.275)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center -0.556 -0.226)
+					(radius 0.5)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.128 1.721) (xy 0.128 -2.279)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.128 1.721) (xy 1.128 -2.279)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.128 1.721) (xy 2.128 1.471) (xy 2.128 1.971) (xy 1.128 1.721)
+					)
+					(stroke
+						(width 0.002)
+						(type solid)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.128 -2.279) (xy 3.128 -2.279)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.128 1.721) (xy 2.128 1.721)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.128 1.721) (xy 3.128 2.721)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.128 -2.279) (xy 3.128 -3.279)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin no_connect line
+					(at -4.602 -0.279 0)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+				(pin no_connect line
+					(at 3.128 5.451 270)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+				(pin no_connect line
+					(at 3.128 -6.009 90)
+					(length 2.54)
+					(name "3"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "ArmModule-eagle-import:RES_0603"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "R"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "0"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "ArmModule:RES_0603"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "SCREEN" "select value"
+				(at 0 -1.524 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_locked" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "RES_0603_1_0"
+				(polyline
+					(pts
+						(xy -3.81 0) (xy -3.175 1.27)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.175 1.27) (xy -1.905 -1.27)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.905 -1.27) (xy -0.635 1.27)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -0.635 1.27) (xy 0.635 -1.27)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.635 -1.27) (xy 1.905 1.27)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.905 1.27) (xy 3.175 -1.27)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.175 -1.27) (xy 3.81 0)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -6.35 0 0)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 6.35 0 180)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "ArmModule-eagle-import:XBEE-1B3"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "U"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "WiFi"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "ArmModule:XBEE-SMD"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_locked" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "XBEE-1B3_1_0"
+				(polyline
+					(pts
+						(xy -15.24 12.7) (xy 15.24 12.7)
+					)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -15.24 -15.24) (xy -15.24 12.7)
+					)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 15.24 12.7) (xy 15.24 -15.24)
+					)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 15.24 -15.24) (xy -15.24 -15.24)
+					)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin power_in line
+					(at -17.86 10.16 0)
+					(length 2.54)
+					(name "VDD"
+						(effects
+							(font
+								(size 1.524 1.524)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at -17.86 7.62 0)
+					(length 2.54)
+					(name "DOUT"
+						(effects
+							(font
+								(size 1.524 1.524)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -17.86 5.08 0)
+					(length 2.54)
+					(name "DIN"
+						(effects
+							(font
+								(size 1.524 1.524)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+				(pin no_connect line
+					(at -17.86 2.54 0)
+					(length 2.54)
+					(name "DIO12"
+						(effects
+							(font
+								(size 1.524 1.524)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+				(pin input inverted
+					(at -17.86 0 0)
+					(length 2.54)
+					(name "RESET"
+						(effects
+							(font
+								(size 1.524 1.524)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+				(pin no_connect line
+					(at -17.86 -2.54 0)
+					(length 2.54)
+					(name "RSSI"
+						(effects
+							(font
+								(size 1.524 1.524)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+				(pin no_connect line
+					(at -17.86 -5.08 0)
+					(length 2.54)
+					(name "DIO11"
+						(effects
+							(font
+								(size 1.524 1.524)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+				(pin no_connect line
+					(at -17.86 -7.62 0)
+					(length 2.54)
+					(name "RES"
+						(effects
+							(font
+								(size 1.524 1.524)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+				(pin no_connect inverted
+					(at -17.86 -10.16 0)
+					(length 2.54)
+					(name "DTR"
+						(effects
+							(font
+								(size 1.524 1.524)
+							)
+						)
+					)
+					(number "9"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at -17.86 -12.7 0)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 1.524 1.524)
+							)
+						)
+					)
+					(number "10"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+				(pin no_connect line
+					(at 17.86 -12.7 180)
+					(length 2.54)
+					(name "DIO4"
+						(effects
+							(font
+								(size 1.524 1.524)
+							)
+						)
+					)
+					(number "11"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+				(pin output inverted
+					(at 17.86 -10.16 180)
+					(length 2.54)
+					(name "CTS"
+						(effects
+							(font
+								(size 1.524 1.524)
+							)
+						)
+					)
+					(number "12"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+				(pin no_connect line
+					(at 17.86 -7.62 180)
+					(length 2.54)
+					(name "DIO9"
+						(effects
+							(font
+								(size 1.524 1.524)
+							)
+						)
+					)
+					(number "13"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+				(pin no_connect line
+					(at 17.86 -5.08 180)
+					(length 2.54)
+					(name "RES"
+						(effects
+							(font
+								(size 1.524 1.524)
+							)
+						)
+					)
+					(number "14"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+				(pin no_connect line
+					(at 17.86 -2.54 180)
+					(length 2.54)
+					(name "DIO5"
+						(effects
+							(font
+								(size 1.524 1.524)
+							)
+						)
+					)
+					(number "15"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+				(pin input inverted
+					(at 17.86 0 180)
+					(length 2.54)
+					(name "RTS"
+						(effects
+							(font
+								(size 1.524 1.524)
+							)
+						)
+					)
+					(number "16"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+				(pin no_connect line
+					(at 17.86 2.54 180)
+					(length 2.54)
+					(name "DIO3"
+						(effects
+							(font
+								(size 1.524 1.524)
+							)
+						)
+					)
+					(number "17"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+				(pin no_connect line
+					(at 17.86 5.08 180)
+					(length 2.54)
+					(name "DIO2"
+						(effects
+							(font
+								(size 1.524 1.524)
+							)
+						)
+					)
+					(number "18"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+				(pin no_connect line
+					(at 17.86 7.62 180)
+					(length 2.54)
+					(name "DIO1"
+						(effects
+							(font
+								(size 1.524 1.524)
+							)
+						)
+					)
+					(number "19"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+				(pin no_connect line
+					(at 17.86 10.16 180)
+					(length 2.54)
+					(name "DIO0"
+						(effects
+							(font
+								(size 1.524 1.524)
+							)
+						)
+					)
+					(number "20"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+	)
+	(text "D"
+		(exclude_from_sim no)
+		(at 101.689 79.207 90)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify right bottom)
+		)
+		(uuid "07136187-d291-406b-86b6-9c190e16bfc4")
+	)
+	(text "UART1_TX"
+		(exclude_from_sim no)
+		(at 133.246 63.973 0)
+		(effects
+			(font
+				(size 0.987 0.987)
+			)
+			(justify left top)
+		)
+		(uuid "08a9591b-9c1d-49e3-8a7e-9d04de291053")
+	)
+	(text "UART2_RTS"
+		(exclude_from_sim no)
+		(at 189.721 124.907 0)
+		(effects
+			(font
+				(size 0.987 0.987)
+			)
+			(justify left top)
+		)
+		(uuid "0b1bd1b1-aff4-4f92-992c-7f1deaa60e4e")
+	)
+	(text "RESET"
+		(exclude_from_sim no)
+		(at 77.472 69.144 0)
+		(effects
+			(font
+				(size 0.987 0.987)
+			)
+			(justify left top)
+		)
+		(uuid "0cca8b4e-7c5d-46f0-9545-19139d606425")
+	)
+	(text "100nF"
+		(exclude_from_sim no)
+		(at 126.371 130.02 90)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left top)
+		)
+		(uuid "163adf63-590c-4aae-ba6d-46927d7e5327")
+	)
+	(text "100nF"
+		(exclude_from_sim no)
+		(at 128.911 79.22 90)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left top)
+		)
+		(uuid "19076734-8215-4ca4-a551-d95f66719703")
+	)
+	(text "3V3"
+		(exclude_from_sim no)
+		(at 136.634 113.262 0)
+		(effects
+			(font
+				(size 0.987 0.987)
+			)
+			(justify left top)
+		)
+		(uuid "1d23125a-bb24-4e88-8684-f6f77ab1f890")
+	)
+	(text "U302"
+		(exclude_from_sim no)
+		(at 162.352 111.76 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left bottom)
+		)
+		(uuid "1f3692ff-103f-4bb0-98e3-4a270dc4dfa5")
+	)
+	(text "UART1_RX"
+		(exclude_from_sim no)
+		(at 133.31 61.293 0)
+		(effects
+			(font
+				(size 0.987 0.987)
+			)
+			(justify left top)
+		)
+		(uuid "2044499f-0bcb-4693-9edb-757c5c9bbea7")
+	)
+	(text "J302"
+		(exclude_from_sim no)
+		(at 163.133 146.685 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left bottom)
+		)
+		(uuid "3368c3bc-aace-4867-8d5b-6226f884983b")
+	)
+	(text "UART1_RTS"
+		(exclude_from_sim no)
+		(at 189.378 69.098 0)
+		(effects
+			(font
+				(size 0.987 0.987)
+			)
+			(justify left top)
+		)
+		(uuid "3fde4021-4326-46f9-ab72-65a639ee5fc9")
+	)
+	(text "\" \""
+		(exclude_from_sim no)
+		(at 98.675 56.697 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left bottom)
+		)
+		(uuid "46e1d003-60fc-473d-83c4-de0b6e4e5624")
+	)
+	(text "UART2_TX"
+		(exclude_from_sim no)
+		(at 132.608 119.827 0)
+		(effects
+			(font
+				(size 0.987 0.987)
+			)
+			(justify left top)
+		)
+		(uuid "5141faa7-393a-45c3-9992-e85987587a47")
+	)
+	(text "RESET"
+		(exclude_from_sim no)
+		(at 135.863 124.907 0)
+		(effects
+			(font
+				(size 0.987 0.987)
+			)
+			(justify left top)
+		)
+		(uuid "56d55bee-e1de-4469-9a77-8624a199725c")
+	)
+	(text "10K"
+		(exclude_from_sim no)
+		(at 207.24 79.144 90)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left top)
+		)
+		(uuid "59109181-a990-4a55-8168-e554023d7603")
+	)
+	(text "D"
+		(exclude_from_sim no)
+		(at 97.719 62.887 90)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify right bottom)
+		)
+		(uuid "68098ebc-c5fe-4988-ba09-c137c545a1af")
+	)
+	(text "WiFi"
+		(exclude_from_sim no)
+		(at 163.044 83.82 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left top)
+		)
+		(uuid "6c32c3b8-7506-46aa-a65e-391d1aa47da2")
+	)
+	(text "GND"
+		(exclude_from_sim no)
+		(at 125.095 89.414 90)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left bottom)
+		)
+		(uuid "80f224b3-d4ce-4f3b-86ac-167bad144b98")
+	)
+	(text "U301"
+		(exclude_from_sim no)
+		(at 162.68 55.88 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left bottom)
+		)
+		(uuid "81538511-e787-46a3-afee-cc13062f1df4")
+	)
+	(text "UART1_CTS"
+		(exclude_from_sim no)
+		(at 189.416 79.046 0)
+		(effects
+			(font
+				(size 0.987 0.987)
+			)
+			(justify left top)
+		)
+		(uuid "961cdcfb-3587-420b-819a-41702bcfe0d1")
+	)
+	(text "\" \""
+		(exclude_from_sim no)
+		(at 98.645 73.017 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left bottom)
+		)
+		(uuid "999e1796-aac9-4120-a8b5-aad942e5b282")
+	)
+	(text "J301"
+		(exclude_from_sim no)
+		(at 163.461 92.075 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left bottom)
+		)
+		(uuid "b1867ace-49b9-446b-a226-8dffb367f8f1")
+	)
+	(text "Q302"
+		(exclude_from_sim no)
+		(at 95.619 64.143 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left top)
+		)
+		(uuid "b3270bf8-6595-4a2d-9ebf-586705a1dda1")
+	)
+	(text "S"
+		(exclude_from_sim no)
+		(at 97.689 79.207 90)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify right bottom)
+		)
+		(uuid "b92cc9df-23ff-4aac-9eb5-b411d27a2045")
+	)
+	(text "BOOT0"
+		(exclude_from_sim no)
+		(at 209.772 66.414 0)
+		(effects
+			(font
+				(size 0.987 0.987)
+			)
+			(justify left top)
+		)
+		(uuid "bc774ffb-893a-4c88-9080-8ad5ea97795f")
+	)
+	(text "\" \""
+		(exclude_from_sim no)
+		(at 165.97 158.115 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left top)
+		)
+		(uuid "bf25778c-480e-45fc-96b2-98536223b584")
+	)
+	(text "UART2_CTS"
+		(exclude_from_sim no)
+		(at 189.579 134.996 0)
+		(effects
+			(font
+				(size 0.987 0.987)
+			)
+			(justify left top)
+		)
+		(uuid "c1b855f7-e156-4756-a518-7a4a89798792")
+	)
+	(text "S"
+		(exclude_from_sim no)
+		(at 101.719 62.887 90)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify right bottom)
+		)
+		(uuid "ca73d18c-7a28-4483-94ff-3ec58c515c3e")
+	)
+	(text "GND"
+		(exclude_from_sim no)
+		(at 203.835 94.494 90)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left bottom)
+		)
+		(uuid "cf34cbfc-0342-448e-8f89-0900ed6f630a")
+	)
+	(text "R301"
+		(exclude_from_sim no)
+		(at 204.24 79.89 90)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left bottom)
+		)
+		(uuid "d1e7c741-0957-49ba-811a-a4d6c7276e99")
+	)
+	(text "3V3"
+		(exclude_from_sim no)
+		(at 136.886 57.543 0)
+		(effects
+			(font
+				(size 0.987 0.987)
+			)
+			(justify left top)
+		)
+		(uuid "d57737de-6ad5-4cf9-82b0-92cd338af95f")
+	)
+	(text "Q301"
+		(exclude_from_sim no)
+		(at 95.917 80.463 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left top)
+		)
+		(uuid "d600c806-86d6-44d0-814c-1b5198d5ef89")
+	)
+	(text "GND"
+		(exclude_from_sim no)
+		(at 122.555 145.294 90)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left bottom)
+		)
+		(uuid "dbd6b26b-a7e3-4981-888a-8e4f566a658b")
+	)
+	(text "UART2_RX"
+		(exclude_from_sim no)
+		(at 132.538 117.216 0)
+		(effects
+			(font
+				(size 0.987 0.987)
+			)
+			(justify left top)
+		)
+		(uuid "de1fc6b8-745e-4b58-8856-18e4e9ac961f")
+	)
+	(text "C302"
+		(exclude_from_sim no)
+		(at 125.089 78.984 90)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left bottom)
+		)
+		(uuid "df8e75cd-14c4-40a6-9549-6d9a015a67ec")
+	)
+	(text "XBee"
+		(exclude_from_sim no)
+		(at 162.499 139.7 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left top)
+		)
+		(uuid "e05ba93f-6f1c-4492-aaa1-3c9af62847cd")
+	)
+	(text "C301"
+		(exclude_from_sim no)
+		(at 122.549 129.456 90)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left bottom)
+		)
+		(uuid "ea153910-0bf9-46ea-ad12-292245367ca2")
+	)
+	(text "\" \""
+		(exclude_from_sim no)
+		(at 165.97 103.505 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left top)
+		)
+		(uuid "f1d092ae-fe03-4ea0-bc4e-75ac4365e96f")
+	)
+	(junction
+		(at 107.98 69.85)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "0c51662a-8452-4adf-b254-e12583df5544")
+	)
+	(junction
+		(at 124.46 138.43)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a089b6dc-2f13-4b0f-889d-29bd4003806c")
+	)
+	(junction
+		(at 127 82.55)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "ba5c4393-2319-4361-8446-72def0028920")
+	)
+	(junction
+		(at 91.44 62.42)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "bc953012-44bf-47cf-a120-d60624b9266d")
+	)
+	(junction
+		(at 205.74 67.31)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c1249f05-a530-4f18-954e-7b00911420c2")
+	)
+	(junction
+		(at 88.93 70.04)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f1b9177b-8bd8-473c-8688-7006ec9f4ee8")
+	)
+	(wire
+		(pts
+			(xy 182.96 67.31) (xy 205.74 67.31)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "07e2c57b-e44f-4de5-9b76-9f9804c9baa5")
+	)
+	(wire
+		(pts
+			(xy 182.96 80.01) (xy 187.96 80.01)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "08c35886-4882-425d-992b-5bce9b8ad046")
+	)
+	(wire
+		(pts
+			(xy 124.46 138.43) (xy 124.46 139.7)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "0d497d60-de98-4cad-a7a2-a96c5d8a654b")
+	)
+	(wire
+		(pts
+			(xy 107.98 78.74) (xy 104.14 78.74)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "0e4d8dc1-25bb-47dd-b419-74e479b181a6")
+	)
+	(wire
+		(pts
+			(xy 91.44 62.42) (xy 92.71 62.42)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "1e9f62f8-7f1b-4ede-b7c0-a1e7955977a9")
+	)
+	(wire
+		(pts
+			(xy 98.41 69.74) (xy 98.41 71.01)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "23429d87-11ae-4622-8cf8-a05accc164af")
+	)
+	(wire
+		(pts
+			(xy 160.02 101.6) (xy 158.75 101.6)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "279f8027-8fd3-4696-b5e7-32b3cd2130db")
+	)
+	(wire
+		(pts
+			(xy 160.02 93.98) (xy 158.75 93.98)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "29b475ad-1837-4647-9582-4139620ad1b3")
+	)
+	(wire
+		(pts
+			(xy 147.24 64.77) (xy 142.24 64.77)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "3433f790-0bcf-4762-9d26-382ce79399c8")
+	)
+	(wire
+		(pts
+			(xy 88.93 70.04) (xy 88.93 62.42)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "34a4d20c-7b7a-4b3d-bc70-50c2ad1e04a6")
+	)
+	(wire
+		(pts
+			(xy 190.5 62.23) (xy 190.5 50.8)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "353091da-0de0-4fe2-954f-6179b96658bb")
+	)
+	(wire
+		(pts
+			(xy 107.98 62.42) (xy 107.98 69.85)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "3e924d98-89c5-494c-8bb8-71dae199df04")
+	)
+	(wire
+		(pts
+			(xy 104.17 62.42) (xy 107.98 62.42)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "46c241e1-7c4e-4050-a618-7c43eb6008c5")
+	)
+	(wire
+		(pts
+			(xy 160.02 99.06) (xy 158.75 99.06)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "47e05797-4b1c-4afe-aaaf-c825b4fbedcd")
+	)
+	(wire
+		(pts
+			(xy 187.96 59.69) (xy 187.96 53.34)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "481ce332-a1d1-4d7a-8b02-aaa71ea3ec0e")
+	)
+	(wire
+		(pts
+			(xy 104.14 53.34) (xy 104.14 69.74)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "4c7847c9-2aa7-48a5-bd4a-75d1b55f935f")
+	)
+	(wire
+		(pts
+			(xy 182.96 59.69) (xy 187.96 59.69)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "601e7586-5cfe-4457-9426-7ad70d7e61f2")
+	)
+	(wire
+		(pts
+			(xy 182.96 62.23) (xy 190.5 62.23)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "63053017-1351-4e28-939c-55c727048037")
+	)
+	(wire
+		(pts
+			(xy 92.68 78.74) (xy 88.93 78.74)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "6a0def59-6c05-4077-b426-fc9c6e96db16")
+	)
+	(wire
+		(pts
+			(xy 182.96 135.89) (xy 187.96 135.89)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "705a0660-563a-4577-8291-181f5c590f98")
+	)
+	(wire
+		(pts
+			(xy 127 82.55) (xy 127 83.82)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "7419f70f-684d-4e16-bcd8-3d6b834a0bdb")
+	)
+	(wire
+		(pts
+			(xy 127 82.55) (xy 147.24 82.55)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "78cdcded-1514-4a96-ae11-01d3cc22c37c")
+	)
+	(wire
+		(pts
+			(xy 147.24 69.85) (xy 107.98 69.85)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "79e5fc24-dcd0-4d96-b35d-5d0d765ae2fb")
+	)
+	(wire
+		(pts
+			(xy 193.04 64.77) (xy 193.04 48.26)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "7e1acf76-553c-4ff2-8a05-d9fddf7e37ea")
+	)
+	(wire
+		(pts
+			(xy 104.14 69.74) (xy 98.41 69.74)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "823633eb-d49a-467c-b40a-6c7371f548e4")
+	)
+	(wire
+		(pts
+			(xy 147.24 59.69) (xy 127 59.69)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "84afe9b2-44dc-4a62-a151-9f91fcc79301")
+	)
+	(wire
+		(pts
+			(xy 190.5 50.8) (xy 98.44 50.8)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "8ad24ffc-0c2b-4ae8-b5bf-e0480aa4c1d2")
+	)
+	(wire
+		(pts
+			(xy 88.93 78.74) (xy 88.93 70.04)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "91fa8302-5076-4850-84e5-143ef667caab")
+	)
+	(wire
+		(pts
+			(xy 88.93 70.04) (xy 83.85 70.04)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "92921aa6-ad4b-4864-a423-15fe70dec59c")
+	)
+	(wire
+		(pts
+			(xy 98.44 50.8) (xy 98.44 54.69)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "9370863f-147d-4c83-aca6-65b2974d7822")
+	)
+	(wire
+		(pts
+			(xy 147.24 62.23) (xy 142.24 62.23)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "9680737b-a752-4814-8b91-cbf2b6b2a035")
+	)
+	(wire
+		(pts
+			(xy 160.02 156.21) (xy 158.75 156.21)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "9c36fc15-f0b7-4a99-afd4-1f9b2ab84e34")
+	)
+	(wire
+		(pts
+			(xy 205.74 67.31) (xy 208.28 67.31)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "a0ee5c42-f687-4243-a929-e0d34cc58ebe")
+	)
+	(wire
+		(pts
+			(xy 205.74 67.31) (xy 205.74 71.12)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "adb69749-c9ac-4c7a-ae9b-bb9b428d8c2a")
+	)
+	(wire
+		(pts
+			(xy 88.93 62.42) (xy 91.44 62.42)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "adf95799-19b9-4f06-9239-cec98238a11c")
+	)
+	(wire
+		(pts
+			(xy 160.02 148.59) (xy 158.75 148.59)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "b38a2258-7b7f-405d-b0b0-eb6ecd1e123f")
+	)
+	(wire
+		(pts
+			(xy 205.74 83.82) (xy 205.74 88.9)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "b40e1211-d7ae-40ec-8fe5-6f734cd2b102")
+	)
+	(wire
+		(pts
+			(xy 182.96 69.85) (xy 187.96 69.85)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "b47ef70b-6137-4fb2-ba14-cd3fd1e4de26")
+	)
+	(wire
+		(pts
+			(xy 160.02 153.67) (xy 158.75 153.67)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "bc0c28db-897e-497c-8cad-70f465db3780")
+	)
+	(wire
+		(pts
+			(xy 147.24 115.57) (xy 124.46 115.57)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "c2c4260b-5fdf-4047-aa2c-39579ad900cb")
+	)
+	(wire
+		(pts
+			(xy 127 59.69) (xy 127 72.39)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "c3ca6b60-ab8b-47cd-9cff-53a9f577e425")
+	)
+	(wire
+		(pts
+			(xy 160.02 96.52) (xy 158.75 96.52)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "cf7fe2fb-e185-4540-8545-2c5b3be11c12")
+	)
+	(wire
+		(pts
+			(xy 91.44 48.26) (xy 91.44 62.42)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "d4667014-a603-495f-859e-cd8a06c9eb31")
+	)
+	(wire
+		(pts
+			(xy 187.96 53.34) (xy 104.14 53.34)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "d54886f8-d123-4b20-b6d7-52dca7b10697")
+	)
+	(wire
+		(pts
+			(xy 127 80.01) (xy 127 82.55)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "d8b4d148-e194-4ed6-b5b7-8fcf81be7e60")
+	)
+	(wire
+		(pts
+			(xy 193.04 48.26) (xy 91.44 48.26)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "da6d92ee-96e0-4b3c-a9bb-48db3aebfda9")
+	)
+	(wire
+		(pts
+			(xy 160.02 151.13) (xy 158.75 151.13)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "dc4fe059-b7b1-4c7f-91a0-62271399c22b")
+	)
+	(wire
+		(pts
+			(xy 182.96 64.77) (xy 193.04 64.77)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "de2c5abc-5844-4c1b-a1b9-46fba796d062")
+	)
+	(wire
+		(pts
+			(xy 182.96 125.73) (xy 187.96 125.73)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "e4dad75a-e80e-4a0f-88e3-4ce748ccaf96")
+	)
+	(wire
+		(pts
+			(xy 107.98 69.85) (xy 107.98 78.74)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "e6ae9ccf-4263-4f53-a1cf-07e05668e55e")
+	)
+	(wire
+		(pts
+			(xy 124.46 130.81) (xy 124.46 138.43)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "e733836c-822c-4184-bde4-1cdd298b5c49")
+	)
+	(wire
+		(pts
+			(xy 147.24 120.65) (xy 142.24 120.65)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "e84650ee-9f47-49a7-b07f-7dd31bb5a052")
+	)
+	(wire
+		(pts
+			(xy 147.24 118.11) (xy 142.24 118.11)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "ecb6d17f-a23b-4720-a575-d0ce22d35184")
+	)
+	(wire
+		(pts
+			(xy 124.46 115.57) (xy 124.46 123.19)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "f3281167-fd6c-4147-a724-1d1cc1430f32")
+	)
+	(wire
+		(pts
+			(xy 147.24 125.73) (xy 142.24 125.73)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "fbbae31f-1630-40dd-bd46-4c917c169bf9")
+	)
+	(wire
+		(pts
+			(xy 124.46 138.43) (xy 147.24 138.43)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "ff2aee38-4c35-4d3a-94df-9941032f0e22")
+	)
+	(global_label "UART2_TX"
+		(shape bidirectional)
+		(at 147.24 120.65 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.016 1.016)
+			)
+			(justify left)
+		)
+		(uuid "0087c928-e457-4470-a558-13d533d52105")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 157.7257 120.65 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "UART1_RTS"
+		(shape bidirectional)
+		(at 160.02 101.6 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.016 1.016)
+			)
+			(justify left)
+		)
+		(uuid "2026e67f-7b30-4d01-a57f-92a365a17232")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 171.5217 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "UART2_RTS"
+		(shape bidirectional)
+		(at 182.96 125.73 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.016 1.016)
+			)
+			(justify right)
+		)
+		(uuid "2073e935-0aed-4cb2-890d-5473abce7ad0")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 171.4583 125.73 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
+	(global_label "UART1_TX"
+		(shape bidirectional)
+		(at 147.24 64.77 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.016 1.016)
+			)
+			(justify left)
+		)
+		(uuid "341a19a1-0cc9-4781-9fec-fdc74012007c")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 157.7257 64.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "UART1_CTS"
+		(shape bidirectional)
+		(at 182.96 80.01 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.016 1.016)
+			)
+			(justify right)
+		)
+		(uuid "3ee50e83-9fa0-4ff1-a3ba-f130350b9f77")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 171.4583 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
+	(global_label "UART1_RTS"
+		(shape bidirectional)
+		(at 182.96 69.85 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.016 1.016)
+			)
+			(justify right)
+		)
+		(uuid "3fd30c75-4192-4b61-a2f0-36690ae6df4d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 171.4583 69.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
+	(global_label "BOOT0"
+		(shape bidirectional)
+		(at 182.96 67.31 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.016 1.016)
+			)
+			(justify right)
+		)
+		(uuid "5531f849-1f05-4258-bc66-6c7d36a97b11")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 174.7966 67.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
+	(global_label "UART2_TX"
+		(shape bidirectional)
+		(at 160.02 151.13 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.016 1.016)
+			)
+			(justify left)
+		)
+		(uuid "60865dd7-3b0a-47c1-969b-2b15535f7f1e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 170.5057 151.13 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "UART1_RX"
+		(shape bidirectional)
+		(at 147.24 62.23 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.016 1.016)
+			)
+			(justify left)
+		)
+		(uuid "6154a722-39ff-4424-a33f-f6726429c23e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 157.9676 62.23 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "3V3"
+		(shape bidirectional)
+		(at 147.24 59.69 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.016 1.016)
+			)
+			(justify left)
+		)
+		(uuid "7703a922-aa13-404d-a841-5c88a9a4215b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 153.323 59.69 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "UART2_RTS"
+		(shape bidirectional)
+		(at 160.02 156.21 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.016 1.016)
+			)
+			(justify left)
+		)
+		(uuid "7cbb18b9-e3eb-4d4a-a604-bd56cf251fba")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 171.5217 156.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "UART2_RX"
+		(shape bidirectional)
+		(at 160.02 148.59 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.016 1.016)
+			)
+			(justify left)
+		)
+		(uuid "837f8c9d-21a6-4d6c-b1c4-337daf9c3364")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 170.7476 148.59 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "RESET"
+		(shape bidirectional)
+		(at 92.68 78.74 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.016 1.016)
+			)
+			(justify left)
+		)
+		(uuid "90dfae59-f798-4549-bdfb-40381bc1478e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 100.553 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "3V3"
+		(shape bidirectional)
+		(at 147.24 115.57 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.016 1.016)
+			)
+			(justify left)
+		)
+		(uuid "b42d425b-9c22-4fb3-bcbd-7991032244e8")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 153.323 115.57 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "UART2_RX"
+		(shape bidirectional)
+		(at 147.24 118.11 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.016 1.016)
+			)
+			(justify left)
+		)
+		(uuid "c2974f99-83ce-4e13-857f-0279f9cddb98")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 157.9676 118.11 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "RESET"
+		(shape bidirectional)
+		(at 147.24 125.73 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.016 1.016)
+			)
+			(justify left)
+		)
+		(uuid "c66dcd0b-25ba-4e56-a6bd-b06c9dd936dd")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 155.113 125.73 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "UART2_CTS"
+		(shape bidirectional)
+		(at 160.02 153.67 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.016 1.016)
+			)
+			(justify left)
+		)
+		(uuid "cdddc4e5-2909-4b7d-9229-d7381f262e6b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 171.5217 153.67 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "UART1_RX"
+		(shape bidirectional)
+		(at 160.02 93.98 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.016 1.016)
+			)
+			(justify left)
+		)
+		(uuid "e2b677bb-2945-4230-8feb-b05d92f76430")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 170.7476 93.98 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "UART1_TX"
+		(shape bidirectional)
+		(at 160.02 96.52 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.016 1.016)
+			)
+			(justify left)
+		)
+		(uuid "ecb7ff96-a477-43c9-be1e-4efe67e54a69")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 170.5057 96.52 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "UART1_CTS"
+		(shape bidirectional)
+		(at 160.02 99.06 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.016 1.016)
+			)
+			(justify left)
+		)
+		(uuid "ee620233-c32a-4b85-8914-7879b03f3538")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 171.5217 99.06 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "UART2_CTS"
+		(shape bidirectional)
+		(at 182.96 135.89 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.016 1.016)
+			)
+			(justify right)
+		)
+		(uuid "f0ec6417-64fd-48d1-a3f0-52e9d6776dfb")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 171.4583 135.89 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ArmModule-eagle-import:HEADER1X4")
+		(at 165.735 97.79 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "26b5a607-d28d-4dd5-81fe-fbb917a91103")
+		(property "Reference" "J301"
+			(at 165.735 97.79 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "HEADER1X4"
+			(at 165.735 97.79 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "ArmModule:HDR-1X4"
+			(at 165.735 97.79 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 165.735 97.79 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 165.735 97.79 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "b6dbd5fb-2a12-40c2-93c0-19a556e07b81")
+		)
+		(pin "1"
+			(uuid "740305f2-1b8e-4b89-92ce-1ddce1b9473a")
+		)
+		(pin "3"
+			(uuid "6c534fab-2104-4801-b5d4-aff8453331d6")
+		)
+		(pin "4"
+			(uuid "fa687904-9c3c-47c6-8791-b5dd1b7081e3")
+		)
+		(instances
+			(project "ArmModule"
+				(path "/8c32f129-2c21-4ee3-b1df-f4045335a47d"
+					(reference "J301")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ArmModule-eagle-import:CAP_0603")
+		(at 124.46 127 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "3096b7fb-19c0-41f8-9c35-48a1655a509b")
+		(property "Reference" "C301"
+			(at 124.46 127 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100nF"
+			(at 124.46 127 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "ArmModule:CAP_0603"
+			(at 124.46 127 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 124.46 127 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 124.46 127 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "f7013f2e-77cd-49c3-b79e-de3baed4e3a6")
+		)
+		(pin "2"
+			(uuid "6943751b-9b99-45ef-971e-6c005033083b")
+		)
+		(instances
+			(project "ArmModule"
+				(path "/8c32f129-2c21-4ee3-b1df-f4045335a47d"
+					(reference "C301")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ArmModule-eagle-import:MOSFET_P")
+		(at 98.719 59.292 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "418917c6-10fa-4978-86e5-736ca2acb2d2")
+		(property "Reference" "Q302"
+			(at 98.719 59.292 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "MOSFET_P"
+			(at 98.719 59.292 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "ArmModule:SOT23"
+			(at 98.719 59.292 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 98.719 59.292 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 98.719 59.292 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "3"
+			(uuid "b180e4b1-23f0-4f10-ba13-4ad04068b695")
+		)
+		(pin "1"
+			(uuid "6da2c02c-dd2c-4539-b6dd-98a4a6e9ca43")
+		)
+		(pin "2"
+			(uuid "a2653eee-a9e7-4c50-955b-727adde9c52b")
+		)
+		(instances
+			(project "ArmModule"
+				(path "/8c32f129-2c21-4ee3-b1df-f4045335a47d"
+					(reference "Q302")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ArmModule-eagle-import:CAP_0603")
+		(at 127 76.2 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "4cd7cafa-2412-4a2d-a759-ed38df258c64")
+		(property "Reference" "C302"
+			(at 127 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100nF"
+			(at 127 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "ArmModule:CAP_0603"
+			(at 127 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 127 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 127 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "bd08b418-c6f2-4d0e-a4a7-7ef36fbeda17")
+		)
+		(pin "2"
+			(uuid "e1ba5017-6fe4-49b4-a818-56aa0ce1e024")
+		)
+		(instances
+			(project "ArmModule"
+				(path "/8c32f129-2c21-4ee3-b1df-f4045335a47d"
+					(reference "C302")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ArmModule-eagle-import:GND")
+		(at 205.74 92.456 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "5c1a92c4-7698-4bdd-82c9-3c7e2a571de5")
+		(property "Reference" "#NetPort303"
+			(at 205.74 92.456 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 205.74 92.456 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 205.74 92.456 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 205.74 92.456 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 205.74 92.456 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "06c0cc46-cb14-4e9f-9240-6c06845734f3")
+		)
+		(instances
+			(project "ArmModule"
+				(path "/8c32f129-2c21-4ee3-b1df-f4045335a47d"
+					(reference "#NetPort303")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ArmModule-eagle-import:MOSFET_N")
+		(at 98.689 75.612 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "63cbac61-66c3-4344-abb3-113ddd92f8ea")
+		(property "Reference" "Q301"
+			(at 98.689 75.612 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "MOSFET_N"
+			(at 98.689 75.612 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "ArmModule:SOT23"
+			(at 98.689 75.612 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 98.689 75.612 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 98.689 75.612 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "b69ebbfa-e050-4219-8350-7738989e47a9")
+		)
+		(pin "3"
+			(uuid "9c9f6823-000b-4e99-bee7-e89db37bc902")
+		)
+		(pin "3"
+			(uuid "81713b5b-1675-4056-a8b1-35613f7fb643")
+		)
+		(pin "1"
+			(uuid "8e1f3442-700b-439e-9012-540a2e855518")
+		)
+		(instances
+			(project "ArmModule"
+				(path "/8c32f129-2c21-4ee3-b1df-f4045335a47d"
+					(reference "Q301")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ArmModule-eagle-import:GND")
+		(at 127 87.376 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "8602e793-5999-4b2f-9501-2877e285a63f")
+		(property "Reference" "#NetPort302"
+			(at 127 87.376 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 127 87.376 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 127 87.376 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 127 87.376 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 127 87.376 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "c49b97e4-41cb-4ea5-9b5c-133fe59897ae")
+		)
+		(instances
+			(project "ArmModule"
+				(path "/8c32f129-2c21-4ee3-b1df-f4045335a47d"
+					(reference "#NetPort302")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ArmModule-eagle-import:XBEE-1B3")
+		(at 165.1 125.73 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "8657f611-f75c-4409-9a9e-46c53788ea8f")
+		(property "Reference" "U302"
+			(at 165.1 125.73 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "XBee"
+			(at 165.1 125.73 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "ArmModule:XBEE-SMD"
+			(at 165.1 125.73 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 165.1 125.73 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 165.1 125.73 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "12"
+			(uuid "3e358930-4df6-4231-b406-12b9821f3a61")
+		)
+		(pin "16"
+			(uuid "b745e99f-fdcf-423a-942c-dc9e35d3e795")
+		)
+		(pin "19"
+			(uuid "1f19cba7-2b3b-4c51-9767-2ca0f92734cf")
+		)
+		(pin "15"
+			(uuid "b09edc36-384b-4734-8120-b82eaa3aeea2")
+		)
+		(pin "5"
+			(uuid "dc5cb4c1-8b28-4830-9bfc-c75e14578153")
+		)
+		(pin "17"
+			(uuid "2079ef53-0ade-4599-aeb9-61e34361e4c8")
+		)
+		(pin "7"
+			(uuid "674d83be-71ad-42d2-92a7-d308d6ef68f0")
+		)
+		(pin "10"
+			(uuid "74158ceb-7829-46c6-ab84-82f47a893d39")
+		)
+		(pin "14"
+			(uuid "e85d57dc-01b4-4d87-a2bb-09eb2ad0f9e9")
+		)
+		(pin "8"
+			(uuid "6fb6f02b-e2f7-4ee9-a93c-459e468b893d")
+		)
+		(pin "11"
+			(uuid "ba6e3943-1bf4-4f6c-b682-67f60f04d64c")
+		)
+		(pin "13"
+			(uuid "7434950f-9692-49ea-a9da-140d40c43a02")
+		)
+		(pin "18"
+			(uuid "8c074155-a371-4e9c-902a-b3b967c2d295")
+		)
+		(pin "9"
+			(uuid "dba928d4-82f9-483e-b7d8-77c1a7fc782a")
+		)
+		(pin "6"
+			(uuid "620819cd-c78f-4bca-a797-95bc2cb9fcfe")
+		)
+		(pin "20"
+			(uuid "31a5132f-5ec6-4598-a6d1-e4b1a38eb4ab")
+		)
+		(pin "3"
+			(uuid "cd7dbe46-eb7f-4863-bd61-9031bf557cf7")
+		)
+		(pin "2"
+			(uuid "20d4b776-3959-45b8-87f2-0ced8bdd755b")
+		)
+		(pin "1"
+			(uuid "b917f844-247f-4992-8593-d0cb74355a20")
+		)
+		(pin "4"
+			(uuid "09f4f233-58e0-41c0-a35d-02475257a055")
+		)
+		(instances
+			(project "ArmModule"
+				(path "/8c32f129-2c21-4ee3-b1df-f4045335a47d"
+					(reference "U302")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ArmModule-eagle-import:XBEE-1B3")
+		(at 165.1 69.85 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "bbabd130-a7dc-4e71-ae95-34ea66ac07c9")
+		(property "Reference" "U301"
+			(at 165.1 69.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "WiFi"
+			(at 165.1 69.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "ArmModule:XBEE-SMD"
+			(at 165.1 69.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 165.1 69.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 165.1 69.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "3"
+			(uuid "01d67856-15ef-4915-8823-4c1c75ae7af3")
+		)
+		(pin "9"
+			(uuid "1651e19f-c502-4da5-9fc9-66ed1cbb30d6")
+		)
+		(pin "10"
+			(uuid "3f4bbbac-b681-40a9-b368-c48684b8199a")
+		)
+		(pin "4"
+			(uuid "9c956bb7-e9e3-4ed9-ad59-5489ec786cd4")
+		)
+		(pin "7"
+			(uuid "c4041ba9-01e3-44d3-be15-81b560234fd5")
+		)
+		(pin "6"
+			(uuid "5ecf7653-a35a-4e51-bf91-7d04024fa7f0")
+		)
+		(pin "15"
+			(uuid "780b63e6-f6c0-4430-9f5a-5c7534808dc2")
+		)
+		(pin "5"
+			(uuid "a61c8faf-b30c-4bf2-ae10-dfb36b0b0ddd")
+		)
+		(pin "13"
+			(uuid "089bae5f-9712-42f5-90bd-c5f0abf80717")
+		)
+		(pin "16"
+			(uuid "576144a6-c8de-4612-b462-bce8377cd514")
+		)
+		(pin "8"
+			(uuid "cc80aad4-3411-4d06-9213-77678e1d40b7")
+		)
+		(pin "1"
+			(uuid "1d6cb62f-878a-4a0e-b2e3-5eeada5405db")
+		)
+		(pin "2"
+			(uuid "f146ec77-d3b3-4849-b2e1-79a5118c1e57")
+		)
+		(pin "17"
+			(uuid "e2311bd7-d6b2-4c32-8cb5-6182ec776e42")
+		)
+		(pin "12"
+			(uuid "17ecd1e2-d93f-4b55-9d0c-104fc96a899a")
+		)
+		(pin "14"
+			(uuid "a99872a2-1aad-4b77-8e7f-5522016b86c6")
+		)
+		(pin "11"
+			(uuid "0060bc93-b564-4c26-8404-d6fc5367246a")
+		)
+		(pin "19"
+			(uuid "15d201d8-3c2f-4f47-8cc5-8e91734975c6")
+		)
+		(pin "18"
+			(uuid "f38693ad-fef4-4ebd-ada8-fbcf2fcd9af7")
+		)
+		(pin "20"
+			(uuid "2bc1634a-ff4b-4ecf-9d66-dac10967cce3")
+		)
+		(instances
+			(project "ArmModule"
+				(path "/8c32f129-2c21-4ee3-b1df-f4045335a47d"
+					(reference "U301")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ArmModule-eagle-import:GND")
+		(at 124.46 143.256 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "be559750-966e-4038-b5b0-a96575621575")
+		(property "Reference" "#NetPort301"
+			(at 124.46 143.256 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 124.46 143.256 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 124.46 143.256 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 124.46 143.256 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 124.46 143.256 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "006c1b28-f6a0-46dc-b296-e3b9806989e3")
+		)
+		(instances
+			(project "ArmModule"
+				(path "/8c32f129-2c21-4ee3-b1df-f4045335a47d"
+					(reference "#NetPort301")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ArmModule-eagle-import:RES_0603")
+		(at 205.74 77.47 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "c5bd9dc6-dafc-4d3a-b7b8-c9facd23667d")
+		(property "Reference" "R301"
+			(at 205.74 77.47 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10K"
+			(at 205.74 77.47 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "ArmModule:RES_0603"
+			(at 205.74 77.47 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 205.74 77.47 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 205.74 77.47 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SCREEN" "select value"
+			(at 205.74 80.518 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "3301e015-0fd6-416d-aaa6-61e21e6fdd92")
+		)
+		(pin "1"
+			(uuid "7d35552c-1f6e-4354-8aa6-52766f3f9dbd")
+		)
+		(instances
+			(project "ArmModule"
+				(path "/8c32f129-2c21-4ee3-b1df-f4045335a47d"
+					(reference "R301")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ArmModule-eagle-import:HEADER1X4")
+		(at 165.735 152.4 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "fc4f7568-e791-4a22-b242-ebe2766cc98f")
+		(property "Reference" "J302"
+			(at 165.735 152.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "HEADER1X4"
+			(at 165.735 152.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "ArmModule:HDR-1X4"
+			(at 165.735 152.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 165.735 152.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 165.735 152.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "4"
+			(uuid "fdde7a65-f588-4118-ae59-57d204928155")
+		)
+		(pin "1"
+			(uuid "ad505fb1-c540-43e8-b588-6f4ff825785b")
+		)
+		(pin "3"
+			(uuid "8e720c1a-4014-4fd6-a9ee-96c9bc32272f")
+		)
+		(pin "2"
+			(uuid "048684b1-5370-4ad7-b07f-702aed1227dc")
+		)
+		(instances
+			(project "ArmModule"
+				(path "/8c32f129-2c21-4ee3-b1df-f4045335a47d"
+					(reference "J302")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "3")
+		)
+	)
+)

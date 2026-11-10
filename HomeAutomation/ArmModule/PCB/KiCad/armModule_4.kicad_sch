@@ -1,0 +1,5477 @@
+(kicad_sch
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "72ecc37c-6df7-4b28-b81b-c26b6c3dccf9")
+	(paper "A4")
+	(lib_symbols
+		(symbol "ArmModule-eagle-import:GND"
+			(power global)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "#NetPort"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_locked" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "GND_1_0"
+				(polyline
+					(pts
+						(xy -1.905 1.016) (xy 1.905 1.016)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 0) (xy 1.27 0)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -0.508 -1.016) (xy 0.508 -1.016)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin power_in line
+					(at 0 3.556 270)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "ArmModule-eagle-import:HEADER1X2"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "J"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "ArmModule:SCREWTERMINAL-3.5MM-2"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_locked" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "HEADER1X2_1_0"
+				(polyline
+					(pts
+						(xy -2.54 3.175) (xy 1.905 3.175)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.54 -3.175) (xy -2.54 3.175)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.905 3.175) (xy 1.905 -3.175)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.905 -3.175) (xy -2.54 -3.175)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin no_connect line
+					(at -5.08 1.27 0)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+				(pin no_connect line
+					(at -5.08 -1.27 0)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "ArmModule-eagle-import:HEADER1X3"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "J"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "ArmModule:HDR-1X3"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_locked" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "HEADER1X3_1_0"
+				(polyline
+					(pts
+						(xy -2.5 4.175) (xy 1.905 4.175)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.5 -4) (xy -2.5 4.175)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.905 4.175) (xy 1.905 -4)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.905 -4) (xy -2.5 -4)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin no_connect line
+					(at -5.08 2.54 0)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+				(pin no_connect line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+				(pin no_connect line
+					(at -5.08 -2.54 0)
+					(length 2.54)
+					(name "3"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "ArmModule-eagle-import:RES_0603"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "R"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "0"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "ArmModule:RES_0603"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "SCREEN" "select value"
+				(at 0 -1.524 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_locked" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "RES_0603_1_0"
+				(polyline
+					(pts
+						(xy -3.81 0) (xy -3.175 1.27)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.175 1.27) (xy -1.905 -1.27)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.905 -1.27) (xy -0.635 1.27)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -0.635 1.27) (xy 0.635 -1.27)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.635 -1.27) (xy 1.905 1.27)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.905 1.27) (xy 3.175 -1.27)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.175 -1.27) (xy 3.81 0)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -6.35 0 0)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 6.35 0 180)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "ArmModule-eagle-import:SS_RELAY"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "RY"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "VO14642AABTR"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "ArmModule:SS_RELAY"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_locked" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "SS_RELAY_1_0"
+				(polyline
+					(pts
+						(xy -10 5) (xy 10 5)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -10 -5) (xy -10 5)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 10 5) (xy 10 -5)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 10 -5) (xy -10 -5)
+					)
+					(stroke
+						(width 0.25)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin input line
+					(at -12.54 2.54 0)
+					(length 2.54)
+					(name "Anode"
+						(effects
+							(font
+								(size 1.524 1.524)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -12.54 0 0)
+					(length 2.54)
+					(name "Cathode"
+						(effects
+							(font
+								(size 1.524 1.524)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+				(pin no_connect line
+					(at -12.54 -2.54 0)
+					(length 2.54)
+					(name "NC"
+						(effects
+							(font
+								(size 1.524 1.524)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 12.54 -2.54 180)
+					(length 2.54)
+					(name "Load1"
+						(effects
+							(font
+								(size 1.524 1.524)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 12.54 0 180)
+					(length 2.54)
+					(name "Center"
+						(effects
+							(font
+								(size 1.524 1.524)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 12.54 2.54 180)
+					(length 2.54)
+					(name "Load2"
+						(effects
+							(font
+								(size 1.524 1.524)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+	)
+	(text "Relay3"
+		(exclude_from_sim no)
+		(at 94.639 68.9 0)
+		(effects
+			(font
+				(size 0.987 0.987)
+			)
+			(justify left top)
+		)
+		(uuid "017d4198-9b8a-4f40-b6c0-eabfaa202c63")
+	)
+	(text "\" \""
+		(exclude_from_sim no)
+		(at 195.815 36.195 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left top)
+		)
+		(uuid "096fa963-c267-45ff-92bd-41f2a72217a3")
+	)
+	(text "RY403"
+		(exclude_from_sim no)
+		(at 133.398 67.39 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left bottom)
+		)
+		(uuid "13366e44-448a-482f-b200-7e9e4f7af6c3")
+	)
+	(text "VO14642AABTR"
+		(exclude_from_sim no)
+		(at 128.287 36.75 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left top)
+		)
+		(uuid "13db2949-6136-48d5-9496-9313f9c4754a")
+	)
+	(text "Relay5"
+		(exclude_from_sim no)
+		(at 94.639 109.54 0)
+		(effects
+			(font
+				(size 0.987 0.987)
+			)
+			(justify left top)
+		)
+		(uuid "16e3de08-d037-43d8-94b2-08dbdca3c7c7")
+	)
+	(text "VO14642AABTR"
+		(exclude_from_sim no)
+		(at 128.287 138.35 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left top)
+		)
+		(uuid "1793a023-d228-414f-b52c-f6675fc32404")
+	)
+	(text "570"
+		(exclude_from_sim no)
+		(at 108.488 51.03 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left top)
+		)
+		(uuid "1fa18531-f12f-4a94-a14c-7bc63a0d53b9")
+	)
+	(text "\" \""
+		(exclude_from_sim no)
+		(at 195.815 117.475 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left top)
+		)
+		(uuid "21313c14-21cd-4a32-a6f1-1086d55cdee0")
+	)
+	(text "Relay1"
+		(exclude_from_sim no)
+		(at 94.639 28.26 0)
+		(effects
+			(font
+				(size 0.987 0.987)
+			)
+			(justify left top)
+		)
+		(uuid "2af82896-f615-40a3-ae23-c467eee907b6")
+	)
+	(text "J407"
+		(exclude_from_sim no)
+		(at 176.432 161.013 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left bottom)
+		)
+		(uuid "2d647fca-2adf-4114-aa75-0e9db22b4753")
+	)
+	(text "GND"
+		(exclude_from_sim no)
+		(at 116.205 81.794 90)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left bottom)
+		)
+		(uuid "2fd9a21b-1396-4935-b213-a5f9322135ac")
+	)
+	(text "GND"
+		(exclude_from_sim no)
+		(at 116.205 41.154 90)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left bottom)
+		)
+		(uuid "31cfd6c1-ac73-4227-b010-ab7d699229ba")
+	)
+	(text "GND"
+		(exclude_from_sim no)
+		(at 116.205 142.754 90)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left bottom)
+		)
+		(uuid "32aebeb0-c6ea-470a-a0fe-88740776ef5e")
+	)
+	(text "570"
+		(exclude_from_sim no)
+		(at 108.488 132.31 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left top)
+		)
+		(uuid "403e8c04-b229-4b1e-846b-d2ae3bb3b739")
+	)
+	(text "R402"
+		(exclude_from_sim no)
+		(at 107.706 48.03 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left bottom)
+		)
+		(uuid "412033ac-50c7-459f-937c-84c9eefd0556")
+	)
+	(text "GND"
+		(exclude_from_sim no)
+		(at 116.205 61.474 90)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left bottom)
+		)
+		(uuid "42ad6cce-11cb-42b6-9c10-ee06832d1757")
+	)
+	(text "R408"
+		(exclude_from_sim no)
+		(at 107.707 169.95 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left bottom)
+		)
+		(uuid "446ca47b-dfde-4e1a-88ed-4d7fe008c539")
+	)
+	(text "GND"
+		(exclude_from_sim no)
+		(at 116.205 122.434 90)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left bottom)
+		)
+		(uuid "480b34e6-c0e3-4a83-b23d-604ef1a6ea50")
+	)
+	(text "RY401"
+		(exclude_from_sim no)
+		(at 133.726 26.75 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left bottom)
+		)
+		(uuid "495a7538-16ef-4b9e-8de7-d0b66b50e16d")
+	)
+	(text "Relay7"
+		(exclude_from_sim no)
+		(at 94.639 150.18 0)
+		(effects
+			(font
+				(size 0.987 0.987)
+			)
+			(justify left top)
+		)
+		(uuid "4eaedc9e-9b35-4be0-81e0-767095acd4b4")
+	)
+	(text "\" \""
+		(exclude_from_sim no)
+		(at 195.815 76.835 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left top)
+		)
+		(uuid "4fb2d080-6a51-47e1-b2e5-9916204071c8")
+	)
+	(text "\" \""
+		(exclude_from_sim no)
+		(at 195.815 158.115 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left top)
+		)
+		(uuid "51484c8f-d566-4e4d-a97a-2623546e26fd")
+	)
+	(text "Relay2"
+		(exclude_from_sim no)
+		(at 94.639 48.58 0)
+		(effects
+			(font
+				(size 0.987 0.987)
+			)
+			(justify left top)
+		)
+		(uuid "51a8e456-6998-459f-8f2d-82d5c187a831")
+	)
+	(text "VO14642AABTR"
+		(exclude_from_sim no)
+		(at 128.287 178.99 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left top)
+		)
+		(uuid "5a7d75c8-c7ea-421d-94a5-3504663cc285")
+	)
+	(text "RY407"
+		(exclude_from_sim no)
+		(at 133.398 148.67 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left bottom)
+		)
+		(uuid "5be4b56d-50ca-420e-99d9-83c94b143620")
+	)
+	(text "RY408"
+		(exclude_from_sim no)
+		(at 133.399 168.99 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left bottom)
+		)
+		(uuid "5d24e600-bcab-4c8d-8d2b-482c251a6068")
+	)
+	(text "R407"
+		(exclude_from_sim no)
+		(at 107.706 149.63 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left bottom)
+		)
+		(uuid "5f4a9a62-a172-447e-ab48-f21bb0a28e8d")
+	)
+	(text "VO14642AABTR"
+		(exclude_from_sim no)
+		(at 128.287 77.39 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left top)
+		)
+		(uuid "6015a3e0-723b-44fd-b39e-544e36b902f8")
+	)
+	(text "J405"
+		(exclude_from_sim no)
+		(at 192.942 172.085 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left bottom)
+		)
+		(uuid "61fd3fc2-753a-445c-8388-a64f7beec196")
+	)
+	(text "GND"
+		(exclude_from_sim no)
+		(at 116.205 183.394 90)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left bottom)
+		)
+		(uuid "637e3747-3f42-4d83-9cbf-4916bd5e08e7")
+	)
+	(text "VO14642AABTR"
+		(exclude_from_sim no)
+		(at 128.287 97.71 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left top)
+		)
+		(uuid "8292a909-407c-46cf-b883-4998dd8b5fee")
+	)
+	(text "570"
+		(exclude_from_sim no)
+		(at 108.488 30.71 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left top)
+		)
+		(uuid "838c3f8c-e16d-4c07-9c1f-60ec8fe6e4fe")
+	)
+	(text "\" \""
+		(exclude_from_sim no)
+		(at 179.305 147.597 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left top)
+		)
+		(uuid "84899d74-c404-464f-ab64-cee59a1b669f")
+	)
+	(text "570"
+		(exclude_from_sim no)
+		(at 108.488 111.99 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left top)
+		)
+		(uuid "8617d2bd-2238-45d4-b07b-a26de90d6c73")
+	)
+	(text "R403"
+		(exclude_from_sim no)
+		(at 107.706 68.35 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left bottom)
+		)
+		(uuid "8a97ee32-ced3-4c93-be65-6aea4db8db1c")
+	)
+	(text "VO14642AABTR"
+		(exclude_from_sim no)
+		(at 128.287 118.03 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left top)
+		)
+		(uuid "8ae6b5f6-e0da-4872-8e29-8e7b0f733051")
+	)
+	(text "VO14642AABTR"
+		(exclude_from_sim no)
+		(at 128.287 158.67 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left top)
+		)
+		(uuid "915e8676-315c-4e67-a797-246d770a2547")
+	)
+	(text "RY404"
+		(exclude_from_sim no)
+		(at 133.362 87.71 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left bottom)
+		)
+		(uuid "973ee633-4359-486c-9ba1-42146e2b5c34")
+	)
+	(text "J402"
+		(exclude_from_sim no)
+		(at 192.942 70.485 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left bottom)
+		)
+		(uuid "a300a177-c843-49b1-a6d5-42083c2c060c")
+	)
+	(text "RY405"
+		(exclude_from_sim no)
+		(at 133.398 108.03 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left bottom)
+		)
+		(uuid "a3a2fa7d-4283-4a79-926f-765871e132ac")
+	)
+	(text "24VAC"
+		(exclude_from_sim no)
+		(at 160.333 27.044 0)
+		(effects
+			(font
+				(size 0.987 0.987)
+			)
+			(justify left top)
+		)
+		(uuid "a4057626-ae90-4673-86d0-a9408a60e1db")
+	)
+	(text "J404"
+		(exclude_from_sim no)
+		(at 192.906 151.765 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left bottom)
+		)
+		(uuid "a44a927f-2d00-4143-bf39-eeb3756ec3ff")
+	)
+	(text "Relay6"
+		(exclude_from_sim no)
+		(at 94.639 129.86 0)
+		(effects
+			(font
+				(size 0.987 0.987)
+			)
+			(justify left top)
+		)
+		(uuid "a486fbe5-b22c-423c-8f73-2cd85d2e89c4")
+	)
+	(text "R406"
+		(exclude_from_sim no)
+		(at 107.743 129.31 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left bottom)
+		)
+		(uuid "b2aaea56-bd3c-4d24-9c56-30882bc8f328")
+	)
+	(text "\" \""
+		(exclude_from_sim no)
+		(at 195.815 178.435 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left top)
+		)
+		(uuid "b5882a35-396c-4861-8d75-765d5201a7c3")
+	)
+	(text "Relay4"
+		(exclude_from_sim no)
+		(at 94.639 89.22 0)
+		(effects
+			(font
+				(size 0.987 0.987)
+			)
+			(justify left top)
+		)
+		(uuid "b8f92e70-3c98-4b3a-a0ac-a4133701053e")
+	)
+	(text "R404"
+		(exclude_from_sim no)
+		(at 107.67 88.67 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left bottom)
+		)
+		(uuid "ca0e5207-f563-4fa0-af7f-ca52319091e4")
+	)
+	(text "RY406"
+		(exclude_from_sim no)
+		(at 133.435 128.35 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left bottom)
+		)
+		(uuid "cd1fc184-4d06-4a6a-960c-bec45907dbbd")
+	)
+	(text "VO14642AABTR"
+		(exclude_from_sim no)
+		(at 128.287 57.07 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left top)
+		)
+		(uuid "d27c253d-3af3-4997-b5a9-512b6852e05b")
+	)
+	(text "J406"
+		(exclude_from_sim no)
+		(at 176.469 139.423 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left bottom)
+		)
+		(uuid "d297420e-f3bc-4e55-8c3c-3eaa802c706c")
+	)
+	(text "J401"
+		(exclude_from_sim no)
+		(at 193.27 29.845 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left bottom)
+		)
+		(uuid "d80e8d62-d756-4532-8a3b-a428c36a3f87")
+	)
+	(text "570"
+		(exclude_from_sim no)
+		(at 108.488 172.95 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left top)
+		)
+		(uuid "d901410c-704d-458b-87bb-9f9f5c48d59f")
+	)
+	(text "GND"
+		(exclude_from_sim no)
+		(at 116.205 102.114 90)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left bottom)
+		)
+		(uuid "d93d033c-b3ca-4921-92d5-38b18bd424bd")
+	)
+	(text "R401"
+		(exclude_from_sim no)
+		(at 108.034 27.71 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left bottom)
+		)
+		(uuid "da751bb2-084b-4be6-9477-b66eae236fc7")
+	)
+	(text "\" \""
+		(exclude_from_sim no)
+		(at 179.305 169.188 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left top)
+		)
+		(uuid "de726dcb-834f-4fb7-be9a-14df4d9dd66a")
+	)
+	(text "RY402"
+		(exclude_from_sim no)
+		(at 133.398 47.07 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left bottom)
+		)
+		(uuid "df501e9c-f07d-4704-b103-b96593594833")
+	)
+	(text "570"
+		(exclude_from_sim no)
+		(at 108.488 152.63 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left top)
+		)
+		(uuid "ebfe49a5-a23d-4ec5-84ba-2c9473e653cd")
+	)
+	(text "570"
+		(exclude_from_sim no)
+		(at 108.488 71.35 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left top)
+		)
+		(uuid "ed8441b2-6129-4a85-bcb1-d9d84a1af7b2")
+	)
+	(text "R405"
+		(exclude_from_sim no)
+		(at 107.706 108.99 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left bottom)
+		)
+		(uuid "ef7fd851-6768-4cb8-bb68-76b52992e3d7")
+	)
+	(text "J403"
+		(exclude_from_sim no)
+		(at 192.942 111.125 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left bottom)
+		)
+		(uuid "f3485a4a-e1ec-4158-b2b2-e40cb04297aa")
+	)
+	(text "570"
+		(exclude_from_sim no)
+		(at 108.488 91.67 0)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left top)
+		)
+		(uuid "f92e239f-c37b-4596-bfa8-9ea8a371da09")
+	)
+	(text "GND"
+		(exclude_from_sim no)
+		(at 116.205 163.074 90)
+		(effects
+			(font
+				(size 1.48 1.48)
+			)
+			(justify left bottom)
+		)
+		(uuid "fcd6eaca-1133-4bd4-b55e-5ab12fd7fff0")
+	)
+	(text "Relay8"
+		(exclude_from_sim no)
+		(at 94.639 170.5 0)
+		(effects
+			(font
+				(size 0.987 0.987)
+			)
+			(justify left top)
+		)
+		(uuid "fd56b385-1784-4a2c-977c-d6888bd34d37")
+	)
+	(junction
+		(at 158.75 140.97)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "435ce5e0-06fd-44df-92b4-38ecfa065278")
+	)
+	(junction
+		(at 158.75 29.21)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "5ab57b89-420e-497b-b065-116315617c86")
+	)
+	(junction
+		(at 158.75 110.49)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "65a5eb5e-66ec-42a0-8c85-94ef624e8b77")
+	)
+	(junction
+		(at 158.75 49.53)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "67bc2606-d051-4e5c-b9ce-fc8d03ff5b7d")
+	)
+	(junction
+		(at 158.75 69.85)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "6dac98ed-a83b-4176-88ec-63248e6ee9d5")
+	)
+	(junction
+		(at 158.75 90.17)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8b7454e5-f9e8-4222-a111-8101c8aded1c")
+	)
+	(junction
+		(at 158.75 130.81)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c2a33f41-fdf1-4dbc-a098-e41b7111f5fa")
+	)
+	(wire
+		(pts
+			(xy 104.14 171.45) (xy 100.33 171.45)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "034b62a6-9008-4cda-af34-64c8d6523a88")
+	)
+	(wire
+		(pts
+			(xy 154.94 165.1) (xy 154.94 171.45)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "0673a647-dca2-4bc9-bfaa-5682c56c77fd")
+	)
+	(wire
+		(pts
+			(xy 149.54 115.57) (xy 190.5 115.57)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "075f26c2-d33f-44c4-bb4a-9ce6b43907c6")
+	)
+	(wire
+		(pts
+			(xy 124.46 113.03) (xy 118.11 113.03)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "0788e974-cec7-4919-9031-90a36c628319")
+	)
+	(wire
+		(pts
+			(xy 104.14 110.49) (xy 100.33 110.49)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "0a6e78d8-fa4d-4a49-88d2-097d78c1ec99")
+	)
+	(wire
+		(pts
+			(xy 118.11 52.07) (xy 118.11 55.88)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "0b8473b9-6ccc-4f12-a1c4-ad922e00a17c")
+	)
+	(wire
+		(pts
+			(xy 170.18 146.05) (xy 173.99 146.05)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "0beedc13-2087-4cc1-88b7-88145e223739")
+	)
+	(wire
+		(pts
+			(xy 173.99 143.51) (xy 154.94 143.51)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "0ed7e016-c4aa-4a9b-a61c-d8734436130a")
+	)
+	(wire
+		(pts
+			(xy 158.75 130.81) (xy 158.75 110.49)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "0f0327ff-1871-44e4-a700-6841734252d9")
+	)
+	(wire
+		(pts
+			(xy 170.18 167.64) (xy 173.99 167.64)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "11829e44-55ce-4c4a-9c2e-9b2b8b7ce09b")
+	)
+	(wire
+		(pts
+			(xy 190.5 173.99) (xy 170.18 173.99)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "13b561ee-8a4f-48a2-b696-0227015e4cf9")
+	)
+	(wire
+		(pts
+			(xy 149.54 54.61) (xy 170.18 54.61)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "1696e8a4-804c-4b73-82e4-166d587cd59c")
+	)
+	(wire
+		(pts
+			(xy 149.54 130.81) (xy 158.75 130.81)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "171b7a0f-655a-4dc1-8b7b-491d216477a2")
+	)
+	(wire
+		(pts
+			(xy 124.46 72.39) (xy 118.11 72.39)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "18695fe5-2e65-46c6-9b8e-d52eb9f0e54f")
+	)
+	(wire
+		(pts
+			(xy 149.54 156.21) (xy 190.5 156.21)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "1a6799d9-7aad-4513-993a-167a71f02176")
+	)
+	(wire
+		(pts
+			(xy 149.54 135.89) (xy 170.18 135.89)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "1be72c8c-7535-48f2-a65b-80c2c52a0e10")
+	)
+	(wire
+		(pts
+			(xy 149.54 69.85) (xy 158.75 69.85)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "231b7cc9-9978-4e13-a17b-e26a3c347962")
+	)
+	(wire
+		(pts
+			(xy 104.14 151.13) (xy 100.33 151.13)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "273104e3-fcb9-46d0-9e55-69d6527ce149")
+	)
+	(wire
+		(pts
+			(xy 158.75 49.53) (xy 158.75 29.21)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "2dacfdbf-8e4f-441a-b99f-94026af983aa")
+	)
+	(wire
+		(pts
+			(xy 116.84 151.13) (xy 124.46 151.13)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "31f76f91-f6f6-45a0-b09b-f8561696c706")
+	)
+	(wire
+		(pts
+			(xy 170.18 31.75) (xy 190.5 31.75)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "32125db8-6f83-4d46-bd0e-cc5e7cc07a44")
+	)
+	(wire
+		(pts
+			(xy 154.94 171.45) (xy 149.54 171.45)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "38a3f73a-e176-49a9-bd66-9b280ff3f45c")
+	)
+	(wire
+		(pts
+			(xy 104.14 69.85) (xy 100.33 69.85)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "3d107c7b-67a2-4209-a5f3-630e02e3a1be")
+	)
+	(wire
+		(pts
+			(xy 116.84 110.49) (xy 124.46 110.49)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "3da691db-c675-4783-bd41-746db0a60340")
+	)
+	(wire
+		(pts
+			(xy 116.84 90.17) (xy 124.46 90.17)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "48bc534f-7ae9-437b-9841-4b8b242bdef2")
+	)
+	(wire
+		(pts
+			(xy 149.54 29.21) (xy 158.75 29.21)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "50ac4c38-ab17-4b37-8c07-d9979a3c1657")
+	)
+	(wire
+		(pts
+			(xy 116.84 69.85) (xy 124.46 69.85)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "5e11d26f-a2b0-43fa-afe0-f403213b5bc5")
+	)
+	(wire
+		(pts
+			(xy 116.84 29.21) (xy 124.46 29.21)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "5e6b3038-dd24-4ed4-b7cf-5592ac053b7f")
+	)
+	(wire
+		(pts
+			(xy 170.18 153.67) (xy 170.18 146.05)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "65e1a159-78fe-4b6a-843f-6298263ccc6e")
+	)
+	(wire
+		(pts
+			(xy 118.11 92.71) (xy 118.11 96.52)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "66d172c7-dab4-418e-af43-040435e97e77")
+	)
+	(wire
+		(pts
+			(xy 158.75 29.21) (xy 163.83 29.21)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "71f65328-998a-4163-969f-a4735fa95383")
+	)
+	(wire
+		(pts
+			(xy 118.11 31.75) (xy 118.11 35.56)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "725e1f9f-87cf-4697-a67c-e1eb2d951490")
+	)
+	(wire
+		(pts
+			(xy 118.11 133.35) (xy 118.11 137.16)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "74e060a1-7555-4b6c-bd6a-b0f83009db1a")
+	)
+	(wire
+		(pts
+			(xy 149.54 90.17) (xy 158.75 90.17)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "759bb5a9-112d-49d1-a6fd-d9ddcd3acf53")
+	)
+	(wire
+		(pts
+			(xy 118.11 173.99) (xy 118.11 177.8)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "769d9851-462a-41b3-9591-06e9bd784910")
+	)
+	(wire
+		(pts
+			(xy 170.18 72.39) (xy 190.5 72.39)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "79698600-026d-4061-a868-7ff2fbf83b6e")
+	)
+	(wire
+		(pts
+			(xy 118.11 113.03) (xy 118.11 116.84)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "8231d837-de3e-4618-9804-2e7396b818d9")
+	)
+	(wire
+		(pts
+			(xy 116.84 171.45) (xy 124.46 171.45)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "8461f65d-3c32-4b24-8c33-7d06a60b4716")
+	)
+	(wire
+		(pts
+			(xy 158.75 140.97) (xy 173.99 140.97)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "8738f209-e453-4709-9152-bd8d556f2b0c")
+	)
+	(wire
+		(pts
+			(xy 170.18 95.25) (xy 170.18 72.39)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "87e453f0-cf27-43cb-9c22-69ba105ec26e")
+	)
+	(wire
+		(pts
+			(xy 118.11 153.67) (xy 118.11 157.48)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "880be756-432f-4324-a98c-db9ee99506ff")
+	)
+	(wire
+		(pts
+			(xy 158.75 69.85) (xy 158.75 49.53)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "94a81af7-9fc9-4022-abe9-34e1f95055ac")
+	)
+	(wire
+		(pts
+			(xy 158.75 90.17) (xy 158.75 69.85)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "97fddce9-0704-455c-84f6-6f5ac5d5c9ca")
+	)
+	(wire
+		(pts
+			(xy 170.18 135.89) (xy 170.18 113.03)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "9c4267b4-e349-477c-b326-196052de53a6")
+	)
+	(wire
+		(pts
+			(xy 154.94 151.13) (xy 149.54 151.13)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "9dc9d034-e4e8-4afc-8b16-3c0d803e751b")
+	)
+	(wire
+		(pts
+			(xy 124.46 52.07) (xy 118.11 52.07)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "9fc33585-dc29-44de-80f0-1786d0c739f1")
+	)
+	(wire
+		(pts
+			(xy 104.14 130.81) (xy 100.33 130.81)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "a071fbb7-6c7b-4c1e-8b0e-00d39988df25")
+	)
+	(wire
+		(pts
+			(xy 104.14 29.21) (xy 100.33 29.21)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "a759df85-98f9-47a1-b494-773407c812d7")
+	)
+	(wire
+		(pts
+			(xy 149.54 34.29) (xy 190.5 34.29)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "a8d47799-f4ca-459c-9f7f-b7286bebc40a")
+	)
+	(wire
+		(pts
+			(xy 124.46 92.71) (xy 118.11 92.71)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "a95d8c51-4f9d-4755-852b-efed6075e1c0")
+	)
+	(wire
+		(pts
+			(xy 158.75 110.49) (xy 158.75 90.17)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "b3c6498e-4c96-496d-a2d8-270342eda5eb")
+	)
+	(wire
+		(pts
+			(xy 158.75 162.56) (xy 173.99 162.56)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "b7b9f61f-200e-4f40-bca5-345d64fb43d3")
+	)
+	(wire
+		(pts
+			(xy 158.75 140.97) (xy 158.75 162.56)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "b8f62ad3-bf33-4d0d-b191-aee6f04477af")
+	)
+	(wire
+		(pts
+			(xy 124.46 133.35) (xy 118.11 133.35)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "ba9d860f-f5b8-4e36-8754-00afe8a1d22d")
+	)
+	(wire
+		(pts
+			(xy 170.18 113.03) (xy 190.5 113.03)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "bae69e25-f814-40e5-be2c-5e22da05c6a2")
+	)
+	(wire
+		(pts
+			(xy 149.54 110.49) (xy 158.75 110.49)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "bcdfb03e-9a02-47f7-96f2-242854d8d0a6")
+	)
+	(wire
+		(pts
+			(xy 116.84 130.81) (xy 124.46 130.81)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "bd8d80b7-0b23-4ebf-b55e-a0636bbce887")
+	)
+	(wire
+		(pts
+			(xy 149.54 95.25) (xy 170.18 95.25)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "c53e5d10-0198-4c76-83be-ea83249375ac")
+	)
+	(wire
+		(pts
+			(xy 149.54 176.53) (xy 190.5 176.53)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "c9d3420c-209d-45bc-b17d-20a8e3cacada")
+	)
+	(wire
+		(pts
+			(xy 173.99 165.1) (xy 154.94 165.1)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "ce090710-6360-4648-a3bb-f254cfea7558")
+	)
+	(wire
+		(pts
+			(xy 158.75 130.81) (xy 158.75 140.97)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "cef17ca0-83a7-424b-88c1-075bcc9eccd8")
+	)
+	(wire
+		(pts
+			(xy 170.18 54.61) (xy 170.18 31.75)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "d10584e1-5926-4afb-83b2-a82586f2288c")
+	)
+	(wire
+		(pts
+			(xy 149.54 49.53) (xy 158.75 49.53)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "d61a6e69-3abc-4b36-930d-a798ddf2c2b2")
+	)
+	(wire
+		(pts
+			(xy 149.54 74.93) (xy 190.5 74.93)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "da608fc9-02a8-4e1a-84a6-10cceec386bd")
+	)
+	(wire
+		(pts
+			(xy 124.46 153.67) (xy 118.11 153.67)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "dcda3cd4-81e8-4dbf-8076-5f89801211ec")
+	)
+	(wire
+		(pts
+			(xy 124.46 173.99) (xy 118.11 173.99)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "de180f7d-d16b-4405-8f05-e8141ba08ea5")
+	)
+	(wire
+		(pts
+			(xy 118.11 72.39) (xy 118.11 76.2)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "e35ce806-6b73-427d-a7b6-4597037d13aa")
+	)
+	(wire
+		(pts
+			(xy 154.94 143.51) (xy 154.94 151.13)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "e498ffdf-3f24-4238-845c-a73b64619733")
+	)
+	(wire
+		(pts
+			(xy 104.14 90.17) (xy 100.33 90.17)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "e8042973-8243-4496-8262-7d174efe5832")
+	)
+	(wire
+		(pts
+			(xy 104.14 49.53) (xy 100.33 49.53)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "ea5af28b-bf2f-4db4-a6e7-41ad9bee8d8e")
+	)
+	(wire
+		(pts
+			(xy 124.46 31.75) (xy 118.11 31.75)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "f724d6c3-6169-43a6-ac77-26b9f942d39b")
+	)
+	(wire
+		(pts
+			(xy 116.84 49.53) (xy 124.46 49.53)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "f8dfa6fc-7839-4caf-b754-d352649c0fc2")
+	)
+	(wire
+		(pts
+			(xy 170.18 173.99) (xy 170.18 167.64)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "fa33f51e-1225-4f53-9f0c-3210ff0dec29")
+	)
+	(wire
+		(pts
+			(xy 190.5 153.67) (xy 170.18 153.67)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(uuid "ffb05474-7e88-4a61-96d8-079f353f01ff")
+	)
+	(global_label "Center"
+		(shape bidirectional)
+		(at 149.54 173.99 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.016 1.016)
+			)
+			(justify left)
+		)
+		(uuid "17ffe2cb-a36e-4b15-87b9-0e970a14db89")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 157.7035 173.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "Relay3"
+		(shape bidirectional)
+		(at 104.14 69.85 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.016 1.016)
+			)
+			(justify left)
+		)
+		(uuid "1a12d8a5-4cd4-4fd5-b45d-79c6ecd1cda9")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 112.4969 69.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "Center"
+		(shape bidirectional)
+		(at 149.54 133.35 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.016 1.016)
+			)
+			(justify left)
+		)
+		(uuid "1f4937af-48fc-4f33-9f4e-7e8be50bd6ea")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 157.7035 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "Center"
+		(shape bidirectional)
+		(at 149.54 92.71 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.016 1.016)
+			)
+			(justify left)
+		)
+		(uuid "24143a34-286f-4097-b5fe-b6951a476965")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 157.7035 92.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "Center"
+		(shape bidirectional)
+		(at 149.54 72.39 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.016 1.016)
+			)
+			(justify left)
+		)
+		(uuid "2e1b8206-add1-41d3-9c87-73187e66dfb3")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 157.7035 72.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "Center"
+		(shape bidirectional)
+		(at 149.54 113.03 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.016 1.016)
+			)
+			(justify left)
+		)
+		(uuid "39573d48-94d8-40e9-a30f-37b7fdff51a9")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 157.7035 113.03 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "Center"
+		(shape bidirectional)
+		(at 149.54 153.67 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.016 1.016)
+			)
+			(justify left)
+		)
+		(uuid "53bab184-893b-48b0-8187-0d70f87165d8")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 157.7035 153.67 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "Relay5"
+		(shape bidirectional)
+		(at 104.14 110.49 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.016 1.016)
+			)
+			(justify left)
+		)
+		(uuid "590355b1-0433-45ad-8063-3c0236d2d9cc")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 112.4969 110.49 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "Relay1"
+		(shape bidirectional)
+		(at 104.14 29.21 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.016 1.016)
+			)
+			(justify left)
+		)
+		(uuid "5fc08c25-eb8a-4283-8742-145f80ddc500")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 112.4969 29.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "Relay2"
+		(shape bidirectional)
+		(at 104.14 49.53 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.016 1.016)
+			)
+			(justify left)
+		)
+		(uuid "8dc5957f-90c7-49f7-b5c9-72ac601b26ff")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 112.4969 49.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "Relay4"
+		(shape bidirectional)
+		(at 104.14 90.17 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.016 1.016)
+			)
+			(justify left)
+		)
+		(uuid "bce39efc-7028-4787-8cb4-6ac8f96733ca")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 112.4969 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "Relay7"
+		(shape bidirectional)
+		(at 104.14 151.13 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.016 1.016)
+			)
+			(justify left)
+		)
+		(uuid "be370272-e218-4965-839d-4e6c8159931d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 112.4969 151.13 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "Center"
+		(shape bidirectional)
+		(at 149.54 52.07 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.016 1.016)
+			)
+			(justify left)
+		)
+		(uuid "cb5b7693-4883-4aa9-aa89-d68a3bae7d31")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 157.7035 52.07 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "24VAC"
+		(shape bidirectional)
+		(at 158.75 29.21 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.016 1.016)
+			)
+			(justify right)
+		)
+		(uuid "d596034e-6119-4ee2-a698-610300a3d4ab")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 150.7801 29.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
+	(global_label "Relay8"
+		(shape bidirectional)
+		(at 104.14 171.45 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.016 1.016)
+			)
+			(justify left)
+		)
+		(uuid "dd1f5338-ddd9-4c1b-aca9-c522f6586641")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 112.4969 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "Relay6"
+		(shape bidirectional)
+		(at 104.14 130.81 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.016 1.016)
+			)
+			(justify left)
+		)
+		(uuid "fcaccf02-9f42-46ca-b539-b9cf5899dc35")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 112.4969 130.81 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "Center"
+		(shape bidirectional)
+		(at 149.54 31.75 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.016 1.016)
+			)
+			(justify left)
+		)
+		(uuid "fcbfdfc1-6395-478d-b40b-1dafe8efd823")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 157.7035 31.75 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ArmModule-eagle-import:GND")
+		(at 118.11 79.756 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "08d9cae9-5e5a-4dbd-8e28-faec91fc5115")
+		(property "Reference" "#NetPort403"
+			(at 118.11 79.756 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 118.11 79.756 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 118.11 79.756 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 118.11 79.756 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 118.11 79.756 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "63f80e11-8402-47c0-bb31-8a54cc5a2796")
+		)
+		(instances
+			(project "ArmModule"
+				(path "/aa004e7d-0a83-4eac-a848-a08235938816"
+					(reference "#NetPort403")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ArmModule-eagle-import:GND")
+		(at 118.11 59.436 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "08e27d92-103b-4145-9247-0b95c40def68")
+		(property "Reference" "#NetPort402"
+			(at 118.11 59.436 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 118.11 59.436 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 118.11 59.436 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 118.11 59.436 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 118.11 59.436 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "6caa669e-f1c8-4935-ae86-851a90cc7b0c")
+		)
+		(instances
+			(project "ArmModule"
+				(path "/aa004e7d-0a83-4eac-a848-a08235938816"
+					(reference "#NetPort402")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ArmModule-eagle-import:SS_RELAY")
+		(at 137 153.67 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "1834e07a-2460-4a49-bac6-7079345e56fc")
+		(property "Reference" "RY407"
+			(at 137 153.67 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "VO14642AABTR"
+			(at 137 153.67 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "ArmModule:SS_RELAY"
+			(at 137 153.67 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 137 153.67 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 137 153.67 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "6"
+			(uuid "527ccb63-89e8-473f-8b79-338448a5a6fe")
+		)
+		(pin "5"
+			(uuid "a45d0420-34f1-4037-89df-0bf9885e7fa0")
+		)
+		(pin "2"
+			(uuid "858a1b61-e639-4eb7-85f5-4854d8ed1a99")
+		)
+		(pin "3"
+			(uuid "e8ce2c0c-ad0a-4a8f-ba12-eacd30c4d8e8")
+		)
+		(pin "4"
+			(uuid "3e2d3940-c45b-4db7-8c47-84d419b2f390")
+		)
+		(pin "1"
+			(uuid "7e4f9cef-a47a-4693-a5a1-efdc6af2557b")
+		)
+		(instances
+			(project "ArmModule"
+				(path "/aa004e7d-0a83-4eac-a848-a08235938816"
+					(reference "RY407")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ArmModule-eagle-import:GND")
+		(at 118.11 140.716 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "18adf8cb-ede1-4a0a-8874-28e9b65c608d")
+		(property "Reference" "#NetPort406"
+			(at 118.11 140.716 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 118.11 140.716 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 118.11 140.716 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 118.11 140.716 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 118.11 140.716 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "ea1e5d5d-48bc-487b-8703-b9bffc1e3c81")
+		)
+		(instances
+			(project "ArmModule"
+				(path "/aa004e7d-0a83-4eac-a848-a08235938816"
+					(reference "#NetPort406")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ArmModule-eagle-import:GND")
+		(at 118.11 100.076 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "2c81e6ba-1a3c-49e6-8192-1b9ad9f7c723")
+		(property "Reference" "#NetPort404"
+			(at 118.11 100.076 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 118.11 100.076 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 118.11 100.076 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 118.11 100.076 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 118.11 100.076 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "fa9e87a0-d1d5-4c29-ac52-8d37315d672c")
+		)
+		(instances
+			(project "ArmModule"
+				(path "/aa004e7d-0a83-4eac-a848-a08235938816"
+					(reference "#NetPort404")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ArmModule-eagle-import:SS_RELAY")
+		(at 137 72.39 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "2d7bbab9-6097-4c7c-9cd1-99ef36cbc6f4")
+		(property "Reference" "RY403"
+			(at 137 72.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "VO14642AABTR"
+			(at 137 72.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "ArmModule:SS_RELAY"
+			(at 137 72.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 137 72.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 137 72.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "5"
+			(uuid "8a46c8e8-8513-44cc-a46a-376507930a99")
+		)
+		(pin "1"
+			(uuid "18eb4d16-2bd5-4ad9-939a-835cee06ee2d")
+		)
+		(pin "2"
+			(uuid "b5fa08e7-b55e-47ac-8229-5edb1bc48230")
+		)
+		(pin "3"
+			(uuid "43dfd2d7-b514-4368-a3e5-283d7199f760")
+		)
+		(pin "4"
+			(uuid "7d1ae4bb-e518-4b95-bd35-64d59677f9b4")
+		)
+		(pin "6"
+			(uuid "4b833b9a-c2f0-4b47-aeb2-a56ef42a9f94")
+		)
+		(instances
+			(project "ArmModule"
+				(path "/aa004e7d-0a83-4eac-a848-a08235938816"
+					(reference "RY403")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ArmModule-eagle-import:RES_0603")
+		(at 110.49 49.53 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "392f40ae-dc20-48fd-9c74-463a219c94be")
+		(property "Reference" "R402"
+			(at 110.49 49.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "570"
+			(at 110.49 49.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "ArmModule:RES_0603"
+			(at 110.49 49.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 110.49 49.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 110.49 49.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SCREEN" "select value"
+			(at 110.49 52.578 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "c8a9988b-d285-4ee8-9b23-1b8a550bc87c")
+		)
+		(pin "2"
+			(uuid "2742450e-ad31-4fdc-bc93-7967236a9196")
+		)
+		(instances
+			(project "ArmModule"
+				(path "/aa004e7d-0a83-4eac-a848-a08235938816"
+					(reference "R402")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ArmModule-eagle-import:RES_0603")
+		(at 110.49 151.13 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "39e35cd2-c4a3-4951-ab4d-4adc95e2c15f")
+		(property "Reference" "R407"
+			(at 110.49 151.13 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "570"
+			(at 110.49 151.13 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "ArmModule:RES_0603"
+			(at 110.49 151.13 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 110.49 151.13 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 110.49 151.13 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SCREEN" "select value"
+			(at 110.49 154.178 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "cd87c3b8-4d6e-4f15-8bc7-85d517ca775e")
+		)
+		(pin "2"
+			(uuid "5726dbb0-9725-4d92-bdf9-75b5d78f1670")
+		)
+		(instances
+			(project "ArmModule"
+				(path "/aa004e7d-0a83-4eac-a848-a08235938816"
+					(reference "R407")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ArmModule-eagle-import:SS_RELAY")
+		(at 137 133.35 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "401c8014-1aef-40b1-8ed2-4d6661256c23")
+		(property "Reference" "RY406"
+			(at 137 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "VO14642AABTR"
+			(at 137 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "ArmModule:SS_RELAY"
+			(at 137 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 137 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 137 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "62b82632-8f11-4ee3-880a-481b38e5ed41")
+		)
+		(pin "2"
+			(uuid "20151845-8d24-48d8-8b4e-eeef0d605b5e")
+		)
+		(pin "5"
+			(uuid "c5360497-1446-4b09-99b7-faefa7140c43")
+		)
+		(pin "6"
+			(uuid "79b37899-108c-4e0f-8ad4-729390ca9d01")
+		)
+		(pin "3"
+			(uuid "d553b390-99ae-4fad-969a-90cf478af2ce")
+		)
+		(pin "4"
+			(uuid "e952c9a8-e272-48e0-b405-611b0be83660")
+		)
+		(instances
+			(project "ArmModule"
+				(path "/aa004e7d-0a83-4eac-a848-a08235938816"
+					(reference "RY406")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ArmModule-eagle-import:HEADER1X2")
+		(at 195.58 175.26 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "53927cdd-b34a-4cc5-b772-3a987db7d6be")
+		(property "Reference" "J405"
+			(at 195.58 175.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "HEADER1X2"
+			(at 195.58 175.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "ArmModule:SCREWTERMINAL-3.5MM-2"
+			(at 195.58 175.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 195.58 175.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 195.58 175.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "335cb522-1107-470e-9f3c-84b28a575f4b")
+		)
+		(pin "2"
+			(uuid "331d7435-1c06-4256-9938-111195051d73")
+		)
+		(instances
+			(project "ArmModule"
+				(path "/aa004e7d-0a83-4eac-a848-a08235938816"
+					(reference "J405")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ArmModule-eagle-import:SS_RELAY")
+		(at 137 52.07 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "59ee8d8e-a510-4b84-9735-4050431a15b1")
+		(property "Reference" "RY402"
+			(at 137 52.07 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "VO14642AABTR"
+			(at 137 52.07 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "ArmModule:SS_RELAY"
+			(at 137 52.07 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 137 52.07 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 137 52.07 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "23f27acd-a4e3-47f6-8893-bf1da6fffe11")
+		)
+		(pin "1"
+			(uuid "cd59bc69-5b02-4963-8163-b21a733d584a")
+		)
+		(pin "6"
+			(uuid "bd4ca5ec-d4a6-43ed-b7a2-475d60a20c7e")
+		)
+		(pin "4"
+			(uuid "dbd75d1d-b04e-41bb-9c99-05390ebd10a5")
+		)
+		(pin "5"
+			(uuid "7654f28e-2c3c-4bff-85ff-648f8b0ee7a0")
+		)
+		(pin "3"
+			(uuid "26308211-1f44-4a7f-9de5-44c570499a48")
+		)
+		(instances
+			(project "ArmModule"
+				(path "/aa004e7d-0a83-4eac-a848-a08235938816"
+					(reference "RY402")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ArmModule-eagle-import:GND")
+		(at 118.11 39.116 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "64b6f20e-f725-4fa0-ac24-cd560d13725f")
+		(property "Reference" "#NetPort401"
+			(at 118.11 39.116 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 118.11 39.116 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 118.11 39.116 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 118.11 39.116 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 118.11 39.116 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "3edcc53b-61ff-48f0-a214-c71f7deacc75")
+		)
+		(instances
+			(project "ArmModule"
+				(path "/aa004e7d-0a83-4eac-a848-a08235938816"
+					(reference "#NetPort401")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ArmModule-eagle-import:HEADER1X2")
+		(at 195.58 33.02 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "69de3d7f-c7e0-4d0a-a214-3c184dece176")
+		(property "Reference" "J401"
+			(at 195.58 33.02 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "HEADER1X2"
+			(at 195.58 33.02 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "ArmModule:SCREWTERMINAL-3.5MM-2"
+			(at 195.58 33.02 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 195.58 33.02 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 195.58 33.02 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "cbced46c-da58-4062-81dc-eb8eb6cce31b")
+		)
+		(pin "1"
+			(uuid "550cc288-6a0f-40e4-8ad6-5611e148a9e6")
+		)
+		(instances
+			(project "ArmModule"
+				(path "/aa004e7d-0a83-4eac-a848-a08235938816"
+					(reference "J401")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ArmModule-eagle-import:SS_RELAY")
+		(at 137 92.71 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "731e87ec-df25-4c25-963a-7de429210f73")
+		(property "Reference" "RY404"
+			(at 137 92.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "VO14642AABTR"
+			(at 137 92.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "ArmModule:SS_RELAY"
+			(at 137 92.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 137 92.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 137 92.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "6"
+			(uuid "22d561b0-77aa-4044-b521-6e3bdd52b0f8")
+		)
+		(pin "5"
+			(uuid "3bfad1b7-3792-41a5-83cc-00d7139e3098")
+		)
+		(pin "3"
+			(uuid "266b5ddd-e28f-4b88-9d8b-9ba9710d17c2")
+		)
+		(pin "2"
+			(uuid "790ef379-a42c-4cd9-9dd3-e42fc8fa54bd")
+		)
+		(pin "1"
+			(uuid "349037ad-5391-4c4c-951c-a81e1af1d6c2")
+		)
+		(pin "4"
+			(uuid "69a8262f-c6a0-4ecc-a302-eb27962f75e5")
+		)
+		(instances
+			(project "ArmModule"
+				(path "/aa004e7d-0a83-4eac-a848-a08235938816"
+					(reference "RY404")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ArmModule-eagle-import:SS_RELAY")
+		(at 137 173.99 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "7c0798a8-9234-4766-a64b-ac2e783d59a4")
+		(property "Reference" "RY408"
+			(at 137 173.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "VO14642AABTR"
+			(at 137 173.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "ArmModule:SS_RELAY"
+			(at 137 173.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 137 173.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 137 173.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "4"
+			(uuid "5c101141-511b-4b0e-9f59-b2f7deaf2144")
+		)
+		(pin "5"
+			(uuid "d35af37d-3230-4648-822c-6b0fc46de04d")
+		)
+		(pin "6"
+			(uuid "7b47b892-5cac-493a-a240-c51f8bea1042")
+		)
+		(pin "2"
+			(uuid "419e2503-b637-4522-93ea-cbe99e81b963")
+		)
+		(pin "1"
+			(uuid "b0eefa61-022e-49d3-b016-be7af9ae313e")
+		)
+		(pin "3"
+			(uuid "566208c2-c386-4bc7-a48b-4d71c255b1af")
+		)
+		(instances
+			(project "ArmModule"
+				(path "/aa004e7d-0a83-4eac-a848-a08235938816"
+					(reference "RY408")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ArmModule-eagle-import:RES_0603")
+		(at 110.49 90.17 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "8d605ae9-f54d-49b3-af78-3e7eacc1e1d5")
+		(property "Reference" "R404"
+			(at 110.49 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "570"
+			(at 110.49 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "ArmModule:RES_0603"
+			(at 110.49 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 110.49 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 110.49 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SCREEN" "select value"
+			(at 110.49 93.218 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "1f63ca90-ec2a-4d9d-a6ab-e68e405fc42d")
+		)
+		(pin "1"
+			(uuid "309eb263-bf47-4da5-a4ff-ed63748113ba")
+		)
+		(instances
+			(project "ArmModule"
+				(path "/aa004e7d-0a83-4eac-a848-a08235938816"
+					(reference "R404")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ArmModule-eagle-import:HEADER1X2")
+		(at 195.58 114.3 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "92b343e7-e63c-4170-b396-b0c2fd2c22d9")
+		(property "Reference" "J403"
+			(at 195.58 114.3 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "HEADER1X2"
+			(at 195.58 114.3 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "ArmModule:SCREWTERMINAL-3.5MM-2"
+			(at 195.58 114.3 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 195.58 114.3 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 195.58 114.3 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "a4687ee6-5179-4851-b0fd-8b0bf2220e6c")
+		)
+		(pin "1"
+			(uuid "d4debad2-0f75-4d8f-91e5-1a8727f437b0")
+		)
+		(instances
+			(project "ArmModule"
+				(path "/aa004e7d-0a83-4eac-a848-a08235938816"
+					(reference "J403")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ArmModule-eagle-import:SS_RELAY")
+		(at 137 113.03 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "967a5403-36bb-4d98-b793-860fc1a571d4")
+		(property "Reference" "RY405"
+			(at 137 113.03 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "VO14642AABTR"
+			(at 137 113.03 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "ArmModule:SS_RELAY"
+			(at 137 113.03 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 137 113.03 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 137 113.03 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "3"
+			(uuid "093969b4-f166-43e9-a433-ea24ec3e0c83")
+		)
+		(pin "5"
+			(uuid "1dcdef5f-5d27-4876-b9c9-31bed1c8ce02")
+		)
+		(pin "2"
+			(uuid "78e79015-b782-44a3-87b5-42d6456e67cb")
+		)
+		(pin "4"
+			(uuid "38de35fe-96a8-4b66-a4ef-dc5fdf0a6eaf")
+		)
+		(pin "1"
+			(uuid "6b11435a-fba0-464e-aeeb-a281032b7b81")
+		)
+		(pin "6"
+			(uuid "7a56b1a6-eec3-4dbb-905b-2101ba63b574")
+		)
+		(instances
+			(project "ArmModule"
+				(path "/aa004e7d-0a83-4eac-a848-a08235938816"
+					(reference "RY405")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ArmModule-eagle-import:GND")
+		(at 118.11 120.396 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "9c5b90be-e21f-474f-8ce2-b9807799c736")
+		(property "Reference" "#NetPort405"
+			(at 118.11 120.396 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 118.11 120.396 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 118.11 120.396 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 118.11 120.396 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 118.11 120.396 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "de3aeb70-08ae-4acf-8370-6082655ca5e1")
+		)
+		(instances
+			(project "ArmModule"
+				(path "/aa004e7d-0a83-4eac-a848-a08235938816"
+					(reference "#NetPort405")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ArmModule-eagle-import:HEADER1X2")
+		(at 195.58 154.94 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "a9e4693d-ad18-4b85-9cbf-4ea5c7a8aa3d")
+		(property "Reference" "J404"
+			(at 195.58 154.94 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "HEADER1X2"
+			(at 195.58 154.94 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "ArmModule:SCREWTERMINAL-3.5MM-2"
+			(at 195.58 154.94 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 195.58 154.94 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 195.58 154.94 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "01259908-d6c7-4ce7-b799-caa9926bfbf5")
+		)
+		(pin "1"
+			(uuid "9857108f-a5c4-46a4-affa-771b5928fa0b")
+		)
+		(instances
+			(project "ArmModule"
+				(path "/aa004e7d-0a83-4eac-a848-a08235938816"
+					(reference "J404")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ArmModule-eagle-import:SS_RELAY")
+		(at 137 31.75 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "ab43169c-a32f-44cc-86b5-e3ecf724c829")
+		(property "Reference" "RY401"
+			(at 137 31.75 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "VO14642AABTR"
+			(at 137 31.75 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "ArmModule:SS_RELAY"
+			(at 137 31.75 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 137 31.75 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 137 31.75 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "5"
+			(uuid "9e9de7aa-ad4e-4f6d-a052-9019e134aa57")
+		)
+		(pin "6"
+			(uuid "53244120-6394-42cd-a562-9ed7a7816c32")
+		)
+		(pin "4"
+			(uuid "982e947a-7064-4851-b2e6-13917c050574")
+		)
+		(pin "2"
+			(uuid "7d11f7da-d2f2-46b3-80f1-59817d9882e0")
+		)
+		(pin "1"
+			(uuid "74be5734-483b-4a34-ab65-17ea75bd7766")
+		)
+		(pin "3"
+			(uuid "8ef4ec54-9e73-4753-a6fe-4768beae1187")
+		)
+		(instances
+			(project "ArmModule"
+				(path "/aa004e7d-0a83-4eac-a848-a08235938816"
+					(reference "RY401")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ArmModule-eagle-import:HEADER1X3")
+		(at 179.07 165.1 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "ad90d002-50f7-4522-9f07-deebf79efb1e")
+		(property "Reference" "J407"
+			(at 179.07 165.1 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "HEADER1X3"
+			(at 179.07 165.1 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "ArmModule:HDR-1X3"
+			(at 179.07 165.1 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 179.07 165.1 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 179.07 165.1 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "3"
+			(uuid "5526d3de-d5d5-4699-b7f2-4836d7d4cd8d")
+		)
+		(pin "2"
+			(uuid "9e0f86ac-2ba3-426d-9a7c-9878b927685b")
+		)
+		(pin "1"
+			(uuid "864d97a0-d871-4ccd-8e02-0afe4b9f9e79")
+		)
+		(instances
+			(project "ArmModule"
+				(path "/aa004e7d-0a83-4eac-a848-a08235938816"
+					(reference "J407")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ArmModule-eagle-import:GND")
+		(at 118.11 181.356 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "adaa568b-8d85-4091-a6ae-be3fb7a3d5f5")
+		(property "Reference" "#NetPort408"
+			(at 118.11 181.356 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 118.11 181.356 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 118.11 181.356 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 118.11 181.356 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 118.11 181.356 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "d34af247-1b30-44c6-b442-6c5fe6011998")
+		)
+		(instances
+			(project "ArmModule"
+				(path "/aa004e7d-0a83-4eac-a848-a08235938816"
+					(reference "#NetPort408")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ArmModule-eagle-import:HEADER1X2")
+		(at 195.58 73.66 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "b9c34844-34db-407c-ac76-c8ecc1e81e89")
+		(property "Reference" "J402"
+			(at 195.58 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "HEADER1X2"
+			(at 195.58 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "ArmModule:SCREWTERMINAL-3.5MM-2"
+			(at 195.58 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 195.58 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 195.58 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "1178c922-e2e2-431e-99bd-b349e5449f33")
+		)
+		(pin "2"
+			(uuid "9c024ae6-9711-4b5a-a6ea-b91a86f7f22b")
+		)
+		(instances
+			(project "ArmModule"
+				(path "/aa004e7d-0a83-4eac-a848-a08235938816"
+					(reference "J402")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ArmModule-eagle-import:GND")
+		(at 118.11 161.036 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "ba7b62de-8bd1-4594-8f7e-f4d4b4a75bab")
+		(property "Reference" "#NetPort407"
+			(at 118.11 161.036 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 118.11 161.036 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 118.11 161.036 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 118.11 161.036 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 118.11 161.036 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "e91ecf29-82aa-4b2d-827e-e6b0716714d8")
+		)
+		(instances
+			(project "ArmModule"
+				(path "/aa004e7d-0a83-4eac-a848-a08235938816"
+					(reference "#NetPort407")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ArmModule-eagle-import:RES_0603")
+		(at 110.49 130.81 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "bdb60496-bdec-47b7-808d-4c61c9089a4c")
+		(property "Reference" "R406"
+			(at 110.49 130.81 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "570"
+			(at 110.49 130.81 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "ArmModule:RES_0603"
+			(at 110.49 130.81 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 110.49 130.81 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 110.49 130.81 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SCREEN" "select value"
+			(at 110.49 133.858 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "fd8b200a-e8a1-4914-b5c4-647eabfb8cb0")
+		)
+		(pin "1"
+			(uuid "a528e3e7-61c9-4434-96d2-7bb88ddf0593")
+		)
+		(instances
+			(project "ArmModule"
+				(path "/aa004e7d-0a83-4eac-a848-a08235938816"
+					(reference "R406")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ArmModule-eagle-import:RES_0603")
+		(at 110.49 29.21 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "cc86437c-93df-459f-9051-f3d6c8c50817")
+		(property "Reference" "R401"
+			(at 110.49 29.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "570"
+			(at 110.49 29.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "ArmModule:RES_0603"
+			(at 110.49 29.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 110.49 29.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 110.49 29.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SCREEN" "select value"
+			(at 110.49 32.258 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "5271d9df-5f90-47ce-b08b-1ad00f19f787")
+		)
+		(pin "2"
+			(uuid "c33a8c5a-927e-472b-bd4d-7383072e5372")
+		)
+		(instances
+			(project "ArmModule"
+				(path "/aa004e7d-0a83-4eac-a848-a08235938816"
+					(reference "R401")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ArmModule-eagle-import:RES_0603")
+		(at 110.49 69.85 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "e13d87b9-c979-4a32-8c6e-931fe05dd05c")
+		(property "Reference" "R403"
+			(at 110.49 69.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "570"
+			(at 110.49 69.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "ArmModule:RES_0603"
+			(at 110.49 69.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 110.49 69.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 110.49 69.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SCREEN" "select value"
+			(at 110.49 72.898 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "c7e10991-bb12-470b-8ba3-5cbdc1299d1f")
+		)
+		(pin "2"
+			(uuid "8bd291a9-4ce2-4be1-ada7-d91858e1489f")
+		)
+		(instances
+			(project "ArmModule"
+				(path "/aa004e7d-0a83-4eac-a848-a08235938816"
+					(reference "R403")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ArmModule-eagle-import:RES_0603")
+		(at 110.49 171.45 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "e7a7d749-1117-4590-a0a3-14e3f3531e36")
+		(property "Reference" "R408"
+			(at 110.49 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "570"
+			(at 110.49 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "ArmModule:RES_0603"
+			(at 110.49 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 110.49 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 110.49 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SCREEN" "select value"
+			(at 110.49 174.498 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "60f08b87-0b28-4d87-b91e-d23e2b950d16")
+		)
+		(pin "1"
+			(uuid "d8ee9a42-d2ab-43dd-afa3-a715484af0c6")
+		)
+		(instances
+			(project "ArmModule"
+				(path "/aa004e7d-0a83-4eac-a848-a08235938816"
+					(reference "R408")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ArmModule-eagle-import:RES_0603")
+		(at 110.49 110.49 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "ecacc6ca-7549-4dfe-a316-31eca0f943d2")
+		(property "Reference" "R405"
+			(at 110.49 110.49 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "570"
+			(at 110.49 110.49 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "ArmModule:RES_0603"
+			(at 110.49 110.49 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 110.49 110.49 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 110.49 110.49 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SCREEN" "select value"
+			(at 110.49 113.538 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "0b0abd10-ce99-4ae3-949e-b777ccf4977d")
+		)
+		(pin "1"
+			(uuid "45acaa66-cb56-4069-8584-6540c7c7ac83")
+		)
+		(instances
+			(project "ArmModule"
+				(path "/aa004e7d-0a83-4eac-a848-a08235938816"
+					(reference "R405")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ArmModule-eagle-import:HEADER1X3")
+		(at 179.07 143.51 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "eee6fced-cd27-4e33-b61c-1b985f703b0c")
+		(property "Reference" "J406"
+			(at 179.07 143.51 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "HEADER1X3"
+			(at 179.07 143.51 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "ArmModule:HDR-1X3"
+			(at 179.07 143.51 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 179.07 143.51 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 179.07 143.51 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "3"
+			(uuid "0fc8afaa-989f-4aac-b2d6-fa2c303a3a5e")
+		)
+		(pin "2"
+			(uuid "59abde9a-5568-4da6-b9ef-f1f94edfb77e")
+		)
+		(pin "1"
+			(uuid "bd1ade4b-d606-4ef8-963b-1314db403823")
+		)
+		(instances
+			(project "ArmModule"
+				(path "/aa004e7d-0a83-4eac-a848-a08235938816"
+					(reference "J406")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "4")
+		)
+	)
+)
